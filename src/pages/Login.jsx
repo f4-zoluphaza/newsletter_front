@@ -34,12 +34,14 @@ export default function Login() {
             placeholder="이메일" 
             width="508.48px"
             height="60px"
+            borderRadius="12px"
             />
           <Input
             id="password"
-            placeholder="비밀번호 (숫자, 영문 8~12자리)"
+            placeholder="비밀번호"
             width="508.48px"
             height="60px"
+            borderRadius="12px"
           />
 
           <EyesImg src={PWOpen}/>

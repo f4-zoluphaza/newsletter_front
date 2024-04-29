@@ -15,7 +15,7 @@ export const BodyDiv = styled.div`
 export const WrapperDiv = styled.div`
   width: 510px;
   height: 100vh;
-  /* background-color: #fff8ec; */
+  background-color: #fff8ec;
   ${flexCenter()}
   flex-direction: column;
 `;
@@ -41,7 +41,8 @@ export const Form = styled.form`
 export const Input = styled.input`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  border-radius: 12px;
+  border-radius: ${(props) => props.borderRadius};
+  /* border-radius: 12px; */
   border: solid 2px #c0c0c0;
   margin-bottom: 10px;
 
@@ -51,6 +52,24 @@ export const Input = styled.input`
   padding-left: 20px;
   box-sizing: border-box;
 `;
+
+export const Submit = styled.input`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  border-radius: 12px;
+  border: solid 0px;
+  background-color: #588539;
+  box-sizing: border-box;
+
+  ${flexCenter()}
+  color: #FFFFFF;
+  font-size: 21px;
+  font-weight: 600;
+
+  cursor: pointer;
+`
+
+// Login---------------------------------------------------------------------------------------------------------------
 
 export const EyesImg = styled.img`
   width: 30px;
@@ -84,22 +103,6 @@ export const LoginStateP = styled.p`
   color: #767676;
   margin: 0 0 0 5px;
   padding: 0;
-`
-
-export const Submit = styled.input`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  border-radius: 12px;
-  border: solid 0px;
-  background-color: #588539;
-  box-sizing: border-box;
-
-  ${flexCenter()}
-  color: #FFFFFF;
-  font-size: 21px;
-  font-weight: 600;
-
-  cursor: pointer;
 `
 
 export const PWSearchSignUpDiv = styled.div`
@@ -141,3 +144,5 @@ export const Links = styled(Link)`
   color: #767676;
   font-size: 16px;
 `;
+
+// SignUp---------------------------------------------------------------------------------------------------------------
