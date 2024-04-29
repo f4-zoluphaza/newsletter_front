@@ -39,8 +39,8 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  width: 508.48px;
-  height: 60px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   border-radius: 12px;
   border: solid 2px #c0c0c0;
   margin-bottom: 10px;
@@ -87,8 +87,8 @@ export const LoginStateP = styled.p`
 `
 
 export const Submit = styled.input`
-  width: 508.48px;
-  height: 60px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   border-radius: 12px;
   border: solid 0px;
   background-color: #588539;
