@@ -5,7 +5,7 @@ import {
   WrapperDiv,
 } from '../styles/main/main-style-component.jsx';
 
-import Logo from '../image/logo.png';
+import Logo from '../images/Logo.svg';
 
 export default function MainPage(props) {
   return (

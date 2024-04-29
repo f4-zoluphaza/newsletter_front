@@ -5,7 +5,7 @@ import {
   WrapperDiv,
 } from '../../styles/main/main-style-component.styled';
 
-import Logo from '../../image/logo.png';
+import Logo from '../../images/Logo.svg';
 
 // export default function Nav() {
 //   return (
