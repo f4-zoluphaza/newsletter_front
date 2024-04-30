@@ -1,19 +1,36 @@
 import React from 'react';
 import {
+  BodyDiv,
   NavDiv,
   LogoImg,
   WrapperDiv,
+  LoginLinkSignupP,
+  Links,
+  HeaderDiv,
+  ExplainDiv,
 } from '../styles/main/main-style-component.jsx';
 
 import Logo from '../images/Logo.svg';
 
 export default function MainPage(props) {
   return (
-    <NavDiv>
-      <LogoImg src={Logo} />
-      <WrapperDiv>
-        <a href="">Login</a>|<a href="">Join</a>
-      </WrapperDiv>
-    </NavDiv>
+    <BodyDiv>
+      <NavDiv>
+        <LogoImg src={Logo} />
+        <WrapperDiv>
+          <Links>
+            <LoginLinkSignupP>Login</LoginLinkSignupP>
+          </Links>
+          <LoginLinkSignupP> | </LoginLinkSignupP>
+          <Links>
+            <LoginLinkSignupP>Join</LoginLinkSignupP>
+          </Links>
+        </WrapperDiv>
+      </NavDiv>
+
+      <HeaderDiv>
+        <explainDiv></explainDiv>
+      </HeaderDiv>
+    </BodyDiv>
   );
 }
