@@ -15,7 +15,7 @@ export const BodyDiv = styled.div`
 export const WrapperDiv = styled.div`
   width: 510px;
   height: 100vh;
-  background-color: #fff8ec;
+  /* background-color: #fff8ec; */
   ${flexCenter()}
   flex-direction: column;
 `;
@@ -24,7 +24,7 @@ export const LogoImg = styled.img`
   width: 256px;
   height: 200px;
 
-  margin-bottom: 35px;
+  margin-bottom: ${(props) => props.marginBottom || "35px"};
 `;
 
 export const Form = styled.form`
@@ -65,6 +65,8 @@ export const Submit = styled.input`
   color: #FFFFFF;
   font-size: 21px;
   font-weight: 600;
+
+  margin-top: ${(props) => props.marginTop};
 
   cursor: pointer;
 `
@@ -158,18 +160,22 @@ export const Button = styled.button`
   font-size: 13.7px;
   font-weight: 600;
 
-  margin-left: 5px;
+  margin: 7px 0 7px 7px;
 `
 
-export const EmailButtonDiv = styled.div`
+export const UnderDiv = styled.div`
   width: 410.975px;
-  height: 40px;
   /* background-color: #eea5a5; */
 
   ${flexCenter()}
-  justify-content: end;
+  justify-content: ${(props) => props.justifyContent || "start"};
+  align-items: start;
 `
 
-export const VaildInPutDiv = styled.div`
-  width: 410.975px;
+
+export const VaildP = styled.p`
+  font-size: 11px;
+  color: #767676; 
+
+  margin: 0;
 `

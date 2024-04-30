@@ -32,6 +32,7 @@ export default function Login() {
           alignItems="start">
           <Input 
             id="email" 
+            type="email"
             placeholder="이메일" 
             width="508.48px"
             height="60px"
@@ -39,6 +40,7 @@ export default function Login() {
             />
           <Input
             id="password"
+            type="password"
             placeholder="비밀번호"
             width="508.48px"
             height="60px"
