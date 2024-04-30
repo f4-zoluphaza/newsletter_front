@@ -77,7 +77,7 @@ export const EyesImg = styled.img`
   width: 30px;
   height: 30px;
   position: absolute;
-  top: 85px;
+  top: 105px;
   right: 20px;
 
   cursor: pointer;
