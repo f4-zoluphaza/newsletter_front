@@ -161,6 +161,8 @@ export const Button = styled.button`
   font-weight: 600;
 
   margin: 7px 0 7px 7px;
+
+  cursor: pointer;
 `
 
 export const UnderDiv = styled.div`

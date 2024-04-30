@@ -28,8 +28,9 @@ export default function SignUp() {
   const [validEmail, setValidEmail] = useState(null);
   const [validEmailCheck, setValidEmailCheck] = useState(null);
   const [validPW, setValidPW] = useState(null);
-  const [validPWCheck, setValidPWCheck] = useState(false);
+  const [validPWCheck, setValidPWCheck] = useState(null);
 
+  // 비밀번호 유효성 함수
   const handlePW = (e) => {
     const password = e.target.value;
     setForm({...form, password});
@@ -45,6 +46,19 @@ export default function SignUp() {
     }
   };
 
+  // 비밀번호 확인 유효성 함수
+  const hadlePWCheck = (e) => {
+    const passwordCheck = e.target.value;
+    setForm((prevForm) => ({...prevForm, passwordCheck}));
+
+    if(passwordCheck.trim() === ""){
+      setValidPWCheck(null);
+    }else if (passwordCheck === form.password){
+      setValidPWCheck(true);
+    }else{
+      setValidPWCheck(false)
+    }
+  }
 
   return (
     <BodyDiv>
@@ -110,15 +124,16 @@ export default function SignUp() {
           <Input
             id="passwordCheck"
             type="password"
+            onChange={hadlePWCheck}
             placeholder="비밀번호 확인"
             width="410.975px"
             height="53.82px"
             borderRadius="9.78px"
           />
 
-          <UnderDiv>
+          {validPWCheck === false ? (<UnderDiv>
             <VaildP>비밀번호가 일치하지 않습니다.</VaildP>
-          </UnderDiv>
+          </UnderDiv>) : null}
 
           <Submit 
             value="회원가입" 
