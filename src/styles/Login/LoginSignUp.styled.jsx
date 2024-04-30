@@ -33,7 +33,7 @@ export const Form = styled.form`
   /* background-color: aqua; */
   ${flexCenter()}
   flex-direction: column;
-  align-items: start;
+  align-items: ${(props) => props.alignItems};
   position: relative; //eyesImg 때문에 설정
 
 `;
@@ -44,10 +44,10 @@ export const Input = styled.input`
   border-radius: ${(props) => props.borderRadius};
   /* border-radius: 12px; */
   border: solid 2px #c0c0c0;
-  margin-bottom: 10px;
+  margin: 10px 0 10px 0;
 
   color: #767676;
-  font-size: 17px;
+  font-size: 16px;
 
   padding-left: 20px;
   box-sizing: border-box;
@@ -146,3 +146,30 @@ export const Links = styled(Link)`
 `;
 
 // SignUp---------------------------------------------------------------------------------------------------------------
+export const Button = styled.button`
+  width: 83.16px;
+  height: 35px;
+
+  border-radius: 20px;
+  border: solid 2px #C0C0C0;
+  
+  background-color: #ffffff;
+  color: #C0C0C0;
+  font-size: 13.7px;
+  font-weight: 600;
+
+  margin-left: 5px;
+`
+
+export const EmailButtonDiv = styled.div`
+  width: 410.975px;
+  height: 40px;
+  /* background-color: #eea5a5; */
+
+  ${flexCenter()}
+  justify-content: end;
+`
+
+export const VaildInPutDiv = styled.div`
+  width: 410.975px;
+`

@@ -28,7 +28,8 @@ export default function Login() {
     <BodyDiv>
       <WrapperDiv>
         <LogoImg src={Logo} />
-        <Form>
+        <Form
+          alignItems="start">
           <Input 
             id="email" 
             placeholder="이메일" 

@@ -6,6 +6,8 @@ import {
   Form,
   Input,
   Submit,
+  EmailButtonDiv,
+  Button,
 } from "../styles/Login/LoginSignUp.styled";
 
 import Logo from "../images/Logo.svg";
@@ -17,7 +19,8 @@ export default function SignUp() {
       <WrapperDiv>
         <LogoImg src={Logo} />
 
-        <Input
+        <Form>
+          <Input
             id="nickName"
             placeholder="닉네임"
             width="410.975px"
@@ -32,6 +35,11 @@ export default function SignUp() {
             height="53.82px"
             borderRadius="9.78px"
           />
+          <EmailButtonDiv>
+            <Button>중복 확인</Button>
+            <Button>인증 요청</Button>
+          </EmailButtonDiv>
+          
 
           <Input
             id="emailCheck"
@@ -40,6 +48,9 @@ export default function SignUp() {
             height="53.82px"
             borderRadius="9.78px"
           />
+          <EmailButtonDiv>
+            <Button>인증 확인</Button>
+          </EmailButtonDiv>
 
           <Input
             id="password"
@@ -56,6 +67,14 @@ export default function SignUp() {
             height="53.82px"
             borderRadius="9.78px"
           />
+
+          <Submit 
+            value="회원가입" 
+            type="submit" 
+            width="410.975px"
+            height="53.82px"/>
+        </Form>
+        
           
       </WrapperDiv>
     </BodyDiv>
