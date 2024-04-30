@@ -52,8 +52,7 @@ export const HeaderDiv = styled.div`
   height: 211px;
   margin-left: 185px;
   margin-right: 180px;
-  ${flexCenter()}
-  background-color: beige;
+  ${flexCenter()}/* background-color: beige; */
 `;
 
 export const ExplainDiv = styled.div`
@@ -96,10 +95,8 @@ export const Form = styled.form`
 `;
 
 export const SmallTextSpan = styled.span`
-  display: block;
   font-size: 15px;
   font-weight: bolder;
-  display: inline;
 `;
 
 export const SubscribeInput = styled.input`
@@ -109,8 +106,11 @@ export const SubscribeInput = styled.input`
   border: solid 2px #588539;
   margin-bottom: 10px;
   margin-left: 10px;
-
   box-sizing: border-box;
+
+  padding-left: 10px;
+
+  font-size: 15px;
 `;
 
 export const ButtonDiv = styled.div`
@@ -138,6 +138,74 @@ export const Button = styled.input`
   color: #000000;
   font-size: 16px;
   font-weight: 600;
+
+  cursor: pointer;
+`;
+
+export const PersonalInformationSpan = styled.span`
+  text-decoration: underline;
+`;
+
+// 검색 창
+export const SearchDiv = styled.div`
+  width: 1115px;
+  height: 60px;
+  margin-top: 30px;
+  margin-left: 185px;
+  margin-right: 180px;
+  ${flexCenter()}/* background-color: lightcoral; */
+`;
+
+export const SearchBorderDiv = styled.div`
+  width: 590px;
+  height: 50px;
+  margin-left: 185px;
+  margin-right: 180px;
+  border: solid 3px #588539;
+  border-radius: 35px;
+  ${flexCenter()}
+`;
+
+export const SearchInput = styled.input`
+  width: 500px;
+  height: 45px;
+  border: none;
+  margin-top: 1.5px;
+  margin-left: 30px;
+  outline: none;
+
+  font-size: 18px;
+`;
+
+export const SearchButton = styled.input`
+  width: 42px;
+  height: 43px;
+  border-radius: 12px;
+  border: solid 0px;
+  /* background-color: #588539; */
+  box-sizing: border-box;
+
+  margin-top: 3px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  /* color: #000000;
+  font-size: 16px;
+  font-weight: 600; */
+
+  cursor: pointer;
+`;
+
+export const SearchImg = styled.img`
+  width: 42px;
+  height: 43px;
+  border-radius: 12px;
+  border: solid 0px;
+  box-sizing: border-box;
+
+  margin-top: 3px;
+  margin-left: 20px;
+  margin-right: 20px;
 
   cursor: pointer;
 `;

@@ -16,9 +16,17 @@ import {
   SmallTextSpan,
   ButtonDiv,
   Button,
+  PersonalInformationSpan,
+  SearchDiv,
+  SearchBorderDiv,
+  SearchInput,
+  SearchButton,
+  SearchImg,
 } from '../styles/main/main-style-component.jsx';
 
 import Logo from '../images/Logo.svg';
+import Searchsvg from '../images/MainPage/Search.svg';
+// import Searchpng from '../images/MainPage/SearchTest.png';
 import Header from '../components/Header.jsx';
 
 export default function MainPage(props) {
@@ -54,11 +62,26 @@ export default function MainPage(props) {
             </ButtonDiv>
           </Form>
           {/* 정보동의 */}
-          <SmallTextSpan>
-            구독 시, 정보성 수진 어쩌구에 동의하게 됩니다.
-          </SmallTextSpan>
+          <SmallTextSpan>구독 시, </SmallTextSpan>
+          <Links>
+            <PersonalInformationSpan>
+              정보성 수신 어쩌구
+            </PersonalInformationSpan>
+          </Links>
+          <SmallTextSpan>에 동의하게 됩니다.</SmallTextSpan>
         </SubscribeDiv>
       </HeaderDiv>
+
+      {/* 검색창 */}
+      <SearchDiv>
+        <SearchBorderDiv>
+          <SearchInput type="text"></SearchInput>
+          <label for="search">
+            <SearchButton id="search" type="button" />
+            {/* <SearchImg id="search" src={Searchsvg} /> */}
+          </label>
+        </SearchBorderDiv>
+      </SearchDiv>
     </BodyDiv>
   );
 }
