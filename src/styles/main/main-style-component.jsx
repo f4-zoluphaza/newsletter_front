@@ -19,7 +19,6 @@ export const NavDiv = styled.div`
   align-items: center;
   margin-left: 110px;
   margin-right: 110px;
-  /* color: black; */
   /* background-color: skyblue; */
 `;
 

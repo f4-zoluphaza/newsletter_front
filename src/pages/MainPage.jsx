@@ -19,23 +19,15 @@ import {
 } from '../styles/main/main-style-component.jsx';
 
 import Logo from '../images/Logo.svg';
+import Header from '../components/Header.jsx';
 
 export default function MainPage(props) {
   return (
     <BodyDiv>
-      <NavDiv>
-        <LogoImg src={Logo} />
-        <WrapperDiv>
-          <Links>
-            <LoginLinkSignupP>Login</LoginLinkSignupP>
-          </Links>
-          <LoginLinkSignupP> | </LoginLinkSignupP>
-          <Links>
-            <LoginLinkSignupP>Join</LoginLinkSignupP>
-          </Links>
-        </WrapperDiv>
-      </NavDiv>
+      {/* 네비게이션바 */}
+      <Header></Header>
 
+      {/* 구독 헤더 */}
       <HeaderDiv>
         <ExplainDiv>
           <TitleSpan>오늘의 최신 기사를 가장 빠르게</TitleSpan>
