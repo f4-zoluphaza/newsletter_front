@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   BodyDiv,
   WrapperDiv,
@@ -15,6 +15,37 @@ import Logo from "../images/Logo.svg";
 
 
 export default function SignUp() {
+
+  //form 관리
+  const [form, setForm] = useState({
+    nickName: "",
+    email: "",
+    emailCheck: "",
+    password: "",
+    passwordCheck: "",
+  });
+
+  const [validEmail, setValidEmail] = useState(null);
+  const [validEmailCheck, setValidEmailCheck] = useState(null);
+  const [validPW, setValidPW] = useState(null);
+  const [validPWCheck, setValidPWCheck] = useState(false);
+
+  const handlePW = (e) => {
+    const password = e.target.value;
+    setForm({...form, password});
+
+    if(password.trim() === ""){
+      setValidPW(null);
+    }else{
+      const isValidPassword =
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&^#()])[A-Za-z\d@$!%*?&^#()]{8,12}$/.test(
+          password
+        );
+      setValidPW(isValidPassword);
+    }
+  };
+
+
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -64,15 +95,17 @@ export default function SignUp() {
           <Input
             id="password"
             type="password"
+            onChange={handlePW}
             placeholder="비밀번호 (숫자, 영문 8~12자리)"
             width="410.975px"
             height="53.82px"
             borderRadius="9.78px"
           />
 
-          <UnderDiv>
+          {validPW === false ? (<UnderDiv>
             <VaildP>비밀번호를 영문, 숫자, 특수문자 포함 8~12자리로 설정해주세요.</VaildP>
-          </UnderDiv>
+          </UnderDiv>) : null}
+          
 
           <Input
             id="passwordCheck"
