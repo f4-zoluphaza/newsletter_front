@@ -93,8 +93,8 @@ export const LoginStateDiv = styled.div`
   display: flex;
   align-items: center;
 
-  margin-top: 10px;
-  margin-bottom: 30px;
+  /* margin-top: 10px;
+  margin-bottom: 30px; */
 `
 
 export const CheckImg = styled.img`
@@ -179,8 +179,8 @@ export const UnderDiv = styled.div`
 
 
 export const VaildP = styled.p`
-  font-size: 11px;
-  color: #767676; 
+  font-size: 16px;
+  color: #E74F4F; 
 
   margin: 0;
 `
