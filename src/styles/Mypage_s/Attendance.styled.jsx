@@ -7,20 +7,15 @@ const flexCenter = () => `
   align-items: center;
 `;
 
-// 지아가 nav 공유하기 전 예비 NAV
-export const Navdiv = styled.div`
-  width: 100vh;
-  height: 170px;
-`
-
 export const BodyDiv = styled.div`
   width: 100vw;
-  height: 82vh;
+  height: 70vh;
 
   display: flex;
   justify-content: center;
+  margin-top: 70px;
 
-  background-color: bisque;
+  /* background-color: bisque; */
 `
 
 // 전체 레이아웃
@@ -28,7 +23,7 @@ export const LeftDiv = styled.div`
   width: 36%;
   height: 100%;
 
-  background-color: #cacaf3;
+  /* background-color: #cacaf3; */
 `
 
 export const RightDiv = styled.div`
@@ -39,11 +34,25 @@ export const RightDiv = styled.div`
 `
 
 // 메인 p
+
+export const MainWrapper = styled.div`
+  width: 95%;
+  height: auto;
+
+  border-bottom: ${(props) => props.borderBottom};
+
+  padding: 15px 0 10px 0;
+  box-sizing: border-box;
+
+  /* background-color: #ffff45; */
+`
+
 export const MainPDiv = styled.div`
   width: auto;
   height: auto;
 
   display: flex;
+  flex-direction: ${(props) => props.flexDirection};
   margin-top: ${(props) => props.marginTop || "0"};
 
   /* background-color: aqua; */
@@ -55,15 +64,20 @@ export const MainP = styled.div`
   font-weight: ${(props) => props.fontWeight || "500"};
 
   margin-right: ${(props) => props.marginRight || "10px"};
+  margin-bottom: ${(props) => props.marginBottom};
+  margin: ${(props) => props.margin}; 
+
+  cursor: ${(props) => props.cursor}; ;
+
 `
 
 // 등급 자세히 보기
-export const RankLink = styled(Link)`
+export const Links = styled(Link)`
   text-decoration: none;
-  color: #424242;
-  font-size: 20px;
-  font-weight: 600;
+  /* color: #424242; */
+  /* font-size: 20px; */
+  /* font-weight: 600; */
 
-  display: inline-block;
-  margin: 15px 0;
+  display: block;
+  /* margin: 20px 0; */
 `;
