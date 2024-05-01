@@ -14,10 +14,12 @@ export const BodyDiv = styled.div`
 
 export const WrapperDiv = styled.div`
   width: 510px;
-  height: 100vh;
+  height: ${(props) => props.height || "100vh"};
   /* background-color: #fff8ec; */
   ${flexCenter()}
   flex-direction: column;
+  justify-content: ${(props) => props.justifyContent};
+
 `;
 
 export const LogoImg = styled.img`
@@ -25,6 +27,7 @@ export const LogoImg = styled.img`
   height: 200px;
 
   margin-bottom: ${(props) => props.marginBottom || "35px"};
+
 `;
 
 export const Form = styled.form`
@@ -90,8 +93,8 @@ export const LoginStateDiv = styled.div`
   display: flex;
   align-items: center;
 
-  margin-top: 10px;
-  margin-bottom: 30px;
+  /* margin-top: 10px;
+  margin-bottom: 30px; */
 `
 
 export const CheckImg = styled.img`
@@ -176,8 +179,8 @@ export const UnderDiv = styled.div`
 
 
 export const VaildP = styled.p`
-  font-size: 11px;
-  color: #767676; 
+  font-size: 16px;
+  color: #E74F4F; 
 
   margin: 0;
 `

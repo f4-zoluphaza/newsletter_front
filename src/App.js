@@ -8,6 +8,11 @@ import SignUp from "./pages/SignUp"
 //mainPage
 import MainPage from './pages/MainPage';
 
+// mypage_s
+import Attendance from './pages/myPage/Attendance';
+import Unregister from './components/mypage/Unregister';
+import Unsubscribe from './pages/myPage/Unsubscribe';
+
 
 function App() {
   return (
@@ -17,6 +22,8 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/mainPage" element={<MainPage />} />
           <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/Mypage" element={<Attendance />} />
+          <Route path="/Mypage/Unsubscribe" element={<Unsubscribe />} />
           
         </Routes>
       </BrowserRouter>
