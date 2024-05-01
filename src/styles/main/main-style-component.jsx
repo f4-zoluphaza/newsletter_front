@@ -6,19 +6,27 @@ const flexCenter = () => `
   justify-content: center;
 `;
 
+export const Div = styled.div`
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+`;
+
 export const BodyDiv = styled.div`
+  width: 90vw;
   height: 100vh;
   /* background-color: beige; */
 `;
 
 export const NavDiv = styled.div`
-  width: 1300px;
+  width: 100%;
   height: 116px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 110px;
-  margin-right: 110px;
+
   /* background-color: skyblue; */
 `;
 
@@ -48,22 +56,20 @@ export const Links = styled(Link)`
 `;
 
 export const HeaderDiv = styled.div`
-  width: 1115px;
+  width: 100%;
   height: 211px;
-  margin-left: 185px;
-  margin-right: 180px;
-  ${flexCenter()}/* background-color: beige; */
+  ${flexCenter()}/* background-color: lightcyan; */
 `;
 
 export const ExplainDiv = styled.div`
-  width: 460px;
+  width: 40%;
   height: 107px;
   color: black;
-  margin-left: 90px;
-  margin-right: 50px;
+  margin-right: 5%;
   margin-top: 60px;
-  /* background-color: blue; */
   text-align: right;
+
+  /* background-color: blue; */
 `;
 
 export const TitleSpan = styled.span`
@@ -78,14 +84,13 @@ export const TextSpan = styled.span`
 `;
 
 export const SubscribeDiv = styled.div`
-  width: 500px;
+  width: 40%;
   height: 210px;
-  padding-left: 3px;
-  /* background-color: lightblue; */
+  /* background-color: orange; */
 `;
 
 export const Form = styled.form`
-  width: 500px;
+  width: 100%;
   height: 170px;
   margin-bottom: 10px;
   ${flexCenter()}
@@ -94,18 +99,24 @@ export const Form = styled.form`
   /* background-color: purple; */
 `;
 
+export const Label = styled.label`
+  width: 100%;
+  display: flex;
+  /* background-color: blue; */
+`;
+
 export const SmallTextSpan = styled.span`
   font-size: 15px;
   font-weight: bolder;
 `;
 
 export const SubscribeInput = styled.input`
-  width: 430px;
+  width: 100%;
   height: 45px;
   border-radius: 12px;
   border: solid 2px #588539;
+  margin-left: 5px;
   margin-bottom: 10px;
-  margin-left: 10px;
   box-sizing: border-box;
 
   padding-left: 10px;
@@ -114,11 +125,11 @@ export const SubscribeInput = styled.input`
 `;
 
 export const ButtonDiv = styled.div`
-  width: 500px;
+  width: 100%;
   height: 45px;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   /* background-color: blue; */
@@ -133,7 +144,7 @@ export const Button = styled.input`
   box-sizing: border-box;
 
   margin-left: 20px;
-  margin-right: 15px;
+  /* margin-right: 20px; */
 
   color: #000000;
   font-size: 16px;
@@ -148,19 +159,17 @@ export const PersonalInformationSpan = styled.span`
 
 // 검색 창
 export const SearchDiv = styled.div`
-  width: 1115px;
+  width: 100%;
   height: 60px;
   margin-top: 30px;
-  margin-left: 185px;
-  margin-right: 180px;
-  ${flexCenter()}background-color: lightcoral;
+  ${flexCenter()}/* background-color: lightcoral; */
 `;
 
 export const SearchBorderDiv = styled.div`
   width: 590px;
   height: 50px;
-  margin-left: 185px;
-  margin-right: 180px;
+  /* margin-left: 190px;
+  margin-right: 180px; */
   border: solid 3px #588539;
   border-radius: 35px;
   ${flexCenter()}
@@ -177,17 +186,16 @@ export const SearchInput = styled.input`
   font-size: 18px;
 `;
 
-export const SearchButton = styled.input`
+export const SearchImg = styled.img`
   width: 42px;
   height: 43px;
-  border-radius: 12px;
-  border: solid 0px;
-  /* background-color: #588539; */
-  box-sizing: border-box;
+  /* border-radius: 12px;
+  border: solid 0px; */
+  /* box-sizing: border-box; */
 
   margin-top: 3px;
   margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 15px;
 
   background-image: url('../images/MainPage/Search.svg');
 
@@ -198,12 +206,47 @@ export const SearchButton = styled.input`
   cursor: pointer;
 `;
 
-export const rangeButton = styled.input`
+export const RangeDiv = styled.div`
+  width: 100%;
+  height: 45px;
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+
+  /* background-color: lightgray; */
+`;
+
+export const RangeCenterDiv = styled.div`
+  width: 85%;
+  height: 45px;
+
+  display: flex;
+  justify-content: space-between;
+
+  /* background-color: #2a5dba; */
+`;
+
+export const RangeWapperDiv = styled.div`
+  width: 400px;
+  height: 45px;
+  border: solid 0px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+
+  /* background-color: lavender; */
+`;
+
+export const RangeButton = styled.input`
   width: 197px;
   height: 45px;
-  border-radius: 12px;
+  border-radius: 20px;
   border: solid 0px;
   box-sizing: border-box;
 
   background-color: #588539;
+
+  cursor: pointer;
 `;
