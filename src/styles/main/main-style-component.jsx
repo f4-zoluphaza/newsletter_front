@@ -6,25 +6,34 @@ const flexCenter = () => `
   justify-content: center;
 `;
 
+export const Div = styled.div`
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+`;
+
 export const BodyDiv = styled.div`
+  width: 90vw;
   height: 100vh;
   /* background-color: beige; */
 `;
 
 export const NavDiv = styled.div`
-  width: 1300px;
+  width: 100%;
   height: 116px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 110px;
-  margin-right: 110px;
+
   /* background-color: skyblue; */
 `;
 
 export const LogoImg = styled.img`
   width: 148px;
   height: 116px;
+  padding-top: 7px;
 `;
 
 export const WrapperDiv = styled.div`
@@ -48,23 +57,20 @@ export const Links = styled(Link)`
 `;
 
 export const HeaderDiv = styled.div`
-  width: 1115px;
+  width: 100%;
   height: 211px;
-  margin-left: 185px;
-  margin-right: 180px;
-  ${flexCenter()}
-  background-color: beige;
+  ${flexCenter()}/* background-color: lightcyan; */
 `;
 
 export const ExplainDiv = styled.div`
-  width: 460px;
+  width: 40%;
   height: 107px;
   color: black;
-  margin-left: 90px;
-  margin-right: 50px;
+  margin-right: 5%;
   margin-top: 60px;
-  /* background-color: blue; */
   text-align: right;
+
+  /* background-color: blue; */
 `;
 
 export const TitleSpan = styled.span`
@@ -79,14 +85,13 @@ export const TextSpan = styled.span`
 `;
 
 export const SubscribeDiv = styled.div`
-  width: 500px;
+  width: 40%;
   height: 210px;
-  padding-left: 3px;
-  /* background-color: lightblue; */
+  /* background-color: orange; */
 `;
 
 export const Form = styled.form`
-  width: 500px;
+  width:90%;
   height: 170px;
   margin-bottom: 10px;
   ${flexCenter()}
@@ -95,30 +100,37 @@ export const Form = styled.form`
   /* background-color: purple; */
 `;
 
+export const Label = styled.label`
+  width: 100%;
+  display: flex;
+  /* background-color: blue; */
+`;
+
 export const SmallTextSpan = styled.span`
-  display: block;
   font-size: 15px;
   font-weight: bolder;
-  display: inline;
 `;
 
 export const SubscribeInput = styled.input`
-  width: 430px;
+  width: 100%;
   height: 45px;
   border-radius: 12px;
   border: solid 2px #588539;
+  margin-left: 5px;
   margin-bottom: 10px;
-  margin-left: 10px;
-
   box-sizing: border-box;
+
+  padding-left: 10px;
+
+  font-size: 15px;
 `;
 
 export const ButtonDiv = styled.div`
-  width: 500px;
+  width: 100%;
   height: 45px;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   /* background-color: blue; */
@@ -133,11 +145,210 @@ export const Button = styled.input`
   box-sizing: border-box;
 
   margin-left: 20px;
-  margin-right: 15px;
+  /* margin-right: 20px; */
 
   color: #000000;
   font-size: 16px;
   font-weight: 600;
 
   cursor: pointer;
+`;
+
+export const PersonalInformationSpan = styled.span`
+  text-decoration: underline;
+`;
+
+// 검색 창
+export const SearchDiv = styled.div`
+  width: 100%;
+  height: 60px;
+  margin-top: 30px;
+  ${flexCenter()}/* background-color: lightcoral; */
+`;
+
+export const SearchBorderDiv = styled.div`
+  width: 600px;
+  height: 50px;
+  /* margin-left: 190px;
+  margin-right: 180px; */
+  border: solid 3px #588539;
+  border-radius: 35px;
+  ${flexCenter()}
+`;
+
+export const SearchInput = styled.input`
+  width: 500px;
+  height: 45px;
+  border: none;
+  margin-top: 1.5px;
+  margin-left: 30px;
+  outline: none;
+
+  font-size: 18px;
+`;
+
+export const SearchImg = styled.img`
+  width: 42px;
+  height: 43px;
+  /* border-radius: 12px;
+  border: solid 0px; */
+  /* box-sizing: border-box; */
+
+  margin-top: 3px;
+  margin-left: 20px;
+  margin-right: 15px;
+
+  background-image: url('../images/MainPage/Search.svg');
+
+  /* color: #000000;
+  font-size: 16px;
+  font-weight: 600; */
+
+  cursor: pointer;
+`;
+
+export const RangeDiv = styled.div`
+  width: 100%;
+  height: 45px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+
+  display: flex;
+  justify-content: center;
+
+  /* background-color: lightgray; */
+`;
+
+export const RangeCenterDiv = styled.div`
+  width: 80%;
+  height: 45px;
+
+  display: flex;
+  justify-content: space-between;
+
+  /* background-color: #2a5dba; */
+`;
+
+export const RangeWapperDiv = styled.div`
+  width: 400px;
+  height: 45px;
+  border: solid 0px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+
+  /* background-color: lavender; */
+`;
+
+export const RangeButton = styled.input`
+  width: 197px;
+  height: 45px;
+  border-radius: 20px;
+  border: solid 0px;
+  box-sizing: border-box;
+
+  background-color: ${(props) => props.backgroundcolor || "#000000" };
+
+  cursor: pointer;
+`;
+
+// 뉴스레터 컴포넌트
+
+export const PostAllDiv = styled.div`
+  width: 100%;
+  height: auto;
+  margin-bottom: 50px;
+
+  display: flex;
+  justify-content: center;
+
+  /* background-color: lightslategrey; */
+`;
+
+export const PostDiv = styled.div`
+  width: 85%;
+  height: 353px;
+
+  display: flex;
+  justify-content: space-evenly;
+
+  /* background-color: lightyellow; */
+`;
+
+export const PostWapperDiv = styled.div`
+  width: 310px;
+  height: 353px;
+  border-radius: 18px;
+  border: solid 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: #CDDFAB;
+`;
+
+export const NewsImg = styled.img`
+  width: 270px;
+  height: 170px;
+  border: solid 0;
+  border-radius: 5px;
+`;
+
+export const NewsTitleDiv = styled.div`
+  width: 260px;
+  height: 60px;
+  margin-top: 5px;
+  /* padding-left: 5px; */
+  
+  font-size: 20px;
+  font-weight: 900;
+
+  /* background-color: lightcyan; */
+`;
+
+export const Line = styled.hr`
+  width: 250px;
+  border-top: 1px; 
+  height: 0;
+
+  align-self: center;
+  border-color: gray;
+`;
+
+export const NewsDateDiv = styled.div`
+  width: 260px;
+  height: 20px;
+
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+
+  /* background-color: limegreen; */
+`;
+
+export const HeartSaveDiv = styled.div`
+  width: 260px;
+  height: 40px;
+  /* margin-top: 3px; */
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+
+  /* background-color: white; */
+`;
+
+export const HeartImgScript = styled.img`
+  width: 30px;
+  height: 30px;
+`;
+
+export const HeartCountScript = styled.span`
+  font-size: 28px;
+  /* background-color: red; */
 `;
