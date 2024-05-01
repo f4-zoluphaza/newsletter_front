@@ -20,7 +20,7 @@ import Logo from "../../images/Logo.svg";
 export default function Unsubscribe() {
   return (
     <BodyDiv>
-      <WrapperDiv>
+      <WrapperDiv height="67vh" justifyContent="start">
         <LogoImg src={Logo} marginBottom="20px"/>
         <MainP color="#588539" fontWeight="600" fontSize= "33px" margin= "0">뉴스레터 구독해지</MainP>
         <ModuleDiv paddingTop="30px" height="450px">

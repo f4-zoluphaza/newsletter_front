@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 import Header from "../../components/Header"
 import {
+  BodyDiv,
   WrapperDiv, 
   LeftDiv, 
   RightDiv, 
@@ -19,7 +20,11 @@ const [unregisterBt, setUnregisterBt] = useState(false)
 
   return (
     <div>
-        <Header/>
+      <BodyDiv>
+        <div style={{width:"90vw"}}>
+          <Header/>
+        </div>
+        
         <WrapperDiv>
           <LeftDiv>
             <MainWrapper
@@ -66,16 +71,15 @@ const [unregisterBt, setUnregisterBt] = useState(false)
                   <MainP fontWeight="600" fontSize="21px" marginBottom="5px">구독 해지</MainP>
                 </Links>
                 <MainP fontWeight="600" fontSize="21px" cursor="pointer" onClick={()=>setUnregisterBt(true)}>회원 탈퇴</MainP>
-              </MainPDiv>
-                
+              </MainPDiv> 
             </MainWrapper>
-            
 
           </LeftDiv>
           <RightDiv></RightDiv>
         </WrapperDiv>
 
         {unregisterBt === true ? (<Unregister setUnregisterBt={setUnregisterBt}/>): null}
+      </BodyDiv>
     </div>
     
   );

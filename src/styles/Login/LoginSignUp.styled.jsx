@@ -14,12 +14,12 @@ export const BodyDiv = styled.div`
 
 export const WrapperDiv = styled.div`
   width: 510px;
-  height: 100vh;
+  height: ${(props) => props.height || "100vh"};
   /* background-color: #fff8ec; */
   ${flexCenter()}
   flex-direction: column;
+  justify-content: ${(props) => props.justifyContent};
 
-  position: relative;
 `;
 
 export const LogoImg = styled.img`
@@ -27,9 +27,6 @@ export const LogoImg = styled.img`
   height: 200px;
 
   margin-bottom: ${(props) => props.marginBottom || "35px"};
-
-  position: absolute;
-  top: ${(props) => props.top || "100px"};
 
 `;
 

@@ -7,7 +7,11 @@ const flexCenter = () => `
   align-items: center;
 `;
 
-
+export const BodyDiv = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`
 
 export const WrapperDiv = styled.div`
   width: 100vw;
