@@ -101,12 +101,14 @@ export const BkackScreenDiv = styled.div`
 
 export const ModuleDiv = styled.div`
   width: 541px;
-  height: 528px;
+  height: ${(props) => props.height || "528px"};
 
   border-radius: 47px;
   background-color: #ffffff;
+  /* background-color: azure; */
 
   padding: 70px 50px 50px 50px;
+  padding-top: ${(props) => props.paddingTop};
   box-sizing: border-box;
 
   ${flexCenter()}
@@ -149,7 +151,7 @@ export const ButtonDiv = styled.div`
   display: flex;
   justify-content: space-around;
 
-  margin-top: 30px;
+  /* margin-top: 30px; */
 
   /* background-color: #d3d3ff; */
 `

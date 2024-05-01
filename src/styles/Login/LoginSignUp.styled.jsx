@@ -18,6 +18,8 @@ export const WrapperDiv = styled.div`
   /* background-color: #fff8ec; */
   ${flexCenter()}
   flex-direction: column;
+
+  position: relative;
 `;
 
 export const LogoImg = styled.img`
@@ -25,6 +27,10 @@ export const LogoImg = styled.img`
   height: 200px;
 
   margin-bottom: ${(props) => props.marginBottom || "35px"};
+
+  position: absolute;
+  top: ${(props) => props.top || "100px"};
+
 `;
 
 export const Form = styled.form`

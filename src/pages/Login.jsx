@@ -27,7 +27,7 @@ export default function Login() {
   return (
     <BodyDiv>
       <WrapperDiv>
-        <LogoImg src={Logo} />
+        <LogoImg src={Logo} top="150px" />
         <Form
           alignItems="start">
           <Input 

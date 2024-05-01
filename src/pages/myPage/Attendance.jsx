@@ -62,7 +62,7 @@ const [unregisterBt, setUnregisterBt] = useState(false)
               </MainPDiv>
                 
               <MainPDiv flexDirection="column">
-                <Links>
+                <Links to="/Mypage/Unsubscribe">
                   <MainP fontWeight="600" fontSize="21px" marginBottom="5px">구독 해지</MainP>
                 </Links>
                 <MainP fontWeight="600" fontSize="21px" cursor="pointer" onClick={()=>setUnregisterBt(true)}>회원 탈퇴</MainP>
