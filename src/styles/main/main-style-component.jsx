@@ -33,6 +33,7 @@ export const NavDiv = styled.div`
 export const LogoImg = styled.img`
   width: 148px;
   height: 116px;
+  padding-top: 7px;
 `;
 
 export const WrapperDiv = styled.div`
@@ -90,7 +91,7 @@ export const SubscribeDiv = styled.div`
 `;
 
 export const Form = styled.form`
-  width: 100%;
+  width:90%;
   height: 170px;
   margin-bottom: 10px;
   ${flexCenter()}
@@ -166,7 +167,7 @@ export const SearchDiv = styled.div`
 `;
 
 export const SearchBorderDiv = styled.div`
-  width: 590px;
+  width: 600px;
   height: 50px;
   /* margin-left: 190px;
   margin-right: 180px; */
@@ -210,6 +211,7 @@ export const RangeDiv = styled.div`
   width: 100%;
   height: 45px;
   margin-top: 20px;
+  margin-bottom: 25px;
 
   display: flex;
   justify-content: center;
@@ -218,7 +220,7 @@ export const RangeDiv = styled.div`
 `;
 
 export const RangeCenterDiv = styled.div`
-  width: 85%;
+  width: 80%;
   height: 45px;
 
   display: flex;
@@ -246,7 +248,107 @@ export const RangeButton = styled.input`
   border: solid 0px;
   box-sizing: border-box;
 
-  background-color: #588539;
+  background-color: ${(props) => props.backgroundcolor || "#000000" };
 
   cursor: pointer;
+`;
+
+// 뉴스레터 컴포넌트
+
+export const PostAllDiv = styled.div`
+  width: 100%;
+  height: auto;
+  margin-bottom: 50px;
+
+  display: flex;
+  justify-content: center;
+
+  /* background-color: lightslategrey; */
+`;
+
+export const PostDiv = styled.div`
+  width: 85%;
+  height: 353px;
+
+  display: flex;
+  justify-content: space-evenly;
+
+  /* background-color: lightyellow; */
+`;
+
+export const PostWapperDiv = styled.div`
+  width: 310px;
+  height: 353px;
+  border-radius: 18px;
+  border: solid 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: #CDDFAB;
+`;
+
+export const NewsImg = styled.img`
+  width: 270px;
+  height: 170px;
+  border: solid 0;
+  border-radius: 5px;
+`;
+
+export const NewsTitleDiv = styled.div`
+  width: 260px;
+  height: 60px;
+  margin-top: 5px;
+  /* padding-left: 5px; */
+  
+  font-size: 20px;
+  font-weight: 900;
+
+  /* background-color: lightcyan; */
+`;
+
+export const Line = styled.hr`
+  width: 250px;
+  border-top: 1px; 
+  height: 0;
+
+  align-self: center;
+  border-color: gray;
+`;
+
+export const NewsDateDiv = styled.div`
+  width: 260px;
+  height: 20px;
+
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+
+  /* background-color: limegreen; */
+`;
+
+export const HeartSaveDiv = styled.div`
+  width: 260px;
+  height: 40px;
+  /* margin-top: 3px; */
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+
+  /* background-color: white; */
+`;
+
+export const HeartImgScript = styled.img`
+  width: 30px;
+  height: 30px;
+`;
+
+export const HeartCountScript = styled.span`
+  font-size: 28px;
+  /* background-color: red; */
 `;
