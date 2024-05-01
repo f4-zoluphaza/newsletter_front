@@ -21,7 +21,8 @@ import {
   SearchBorderDiv,
   SearchInput,
   SearchButton,
-  SearchImg,
+  rangeDiv,
+  rangeInput,
 } from '../styles/main/main-style-component.jsx';
 
 import Logo from '../images/Logo.svg';
@@ -78,10 +79,14 @@ export default function MainPage(props) {
           <SearchInput type="text"></SearchInput>
           <label for="search">
             <SearchButton id="search" type="button" />
-            {/* <SearchImg id="search" src={Searchsvg} /> */}
           </label>
         </SearchBorderDiv>
       </SearchDiv>
+
+      {/* 정렬 */}
+      <rangeDiv>
+        <rangeInput type="button"></rangeInput>
+      </rangeDiv>
     </BodyDiv>
   );
 }

@@ -189,6 +189,8 @@ export const SearchButton = styled.input`
   margin-left: 20px;
   margin-right: 20px;
 
+  background-image: url('../images/MainPage/Search.svg');
+
   /* color: #000000;
   font-size: 16px;
   font-weight: 600; */
@@ -196,16 +198,25 @@ export const SearchButton = styled.input`
   cursor: pointer;
 `;
 
-export const SearchImg = styled.img`
-  width: 42px;
-  height: 43px;
+export const rangeDiv = styled.div`
+  width: 1232px;
+  height: 45px;
+  border-left: 110px;
+  border-right: 110px;
+  border-top: 30px;
+  /* border: solid 1px; */
+  ${flexCenter()}
+  background-color: gray;
+`;
+
+export const rangeInput = styled.input`
+  width: 197px;
+  height: 45px;
   border-radius: 12px;
   border: solid 0px;
   box-sizing: border-box;
 
-  margin-top: 3px;
-  margin-left: 20px;
-  margin-right: 20px;
+  background-color: #588539;
 
   cursor: pointer;
 `;
