@@ -91,7 +91,7 @@ export const SubscribeDiv = styled.div`
 `;
 
 export const Form = styled.form`
-  width:90%;
+  width: 90%;
   height: 170px;
   margin-bottom: 10px;
   ${flexCenter()}
@@ -248,7 +248,7 @@ export const RangeButton = styled.input`
   border: solid 0px;
   box-sizing: border-box;
 
-  background-color: ${(props) => props.backgroundcolor || "#000000" };
+  background-color: ${(props) => props.backgroundcolor || '#000000'};
 
   cursor: pointer;
 `;
@@ -287,7 +287,7 @@ export const PostWapperDiv = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: #CDDFAB;
+  background-color: #cddfab;
 `;
 
 export const NewsImg = styled.img`
@@ -302,7 +302,7 @@ export const NewsTitleDiv = styled.div`
   height: 60px;
   margin-top: 5px;
   /* padding-left: 5px; */
-  
+
   font-size: 20px;
   font-weight: 900;
 
@@ -311,7 +311,7 @@ export const NewsTitleDiv = styled.div`
 
 export const Line = styled.hr`
   width: 250px;
-  border-top: 1px; 
+  border-top: 1px;
   height: 0;
 
   align-self: center;
@@ -338,7 +338,6 @@ export const HeartSaveDiv = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-
 
   /* background-color: white; */
 `;
