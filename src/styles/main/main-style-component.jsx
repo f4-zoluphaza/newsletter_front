@@ -153,7 +153,7 @@ export const SearchDiv = styled.div`
   margin-top: 30px;
   margin-left: 185px;
   margin-right: 180px;
-  ${flexCenter()}/* background-color: lightcoral; */
+  ${flexCenter()}background-color: lightcoral;
 `;
 
 export const SearchBorderDiv = styled.div`
@@ -198,18 +198,7 @@ export const SearchButton = styled.input`
   cursor: pointer;
 `;
 
-export const rangeDiv = styled.div`
-  width: 1232px;
-  height: 45px;
-  border-left: 110px;
-  border-right: 110px;
-  border-top: 30px;
-  /* border: solid 1px; */
-  ${flexCenter()}
-  background-color: gray;
-`;
-
-export const rangeInput = styled.input`
+export const rangeButton = styled.input`
   width: 197px;
   height: 45px;
   border-radius: 12px;
@@ -217,6 +206,4 @@ export const rangeInput = styled.input`
   box-sizing: border-box;
 
   background-color: #588539;
-
-  cursor: pointer;
 `;

@@ -21,8 +21,7 @@ import {
   SearchBorderDiv,
   SearchInput,
   SearchButton,
-  rangeDiv,
-  rangeInput,
+  rangeButton,
 } from '../styles/main/main-style-component.jsx';
 
 import Logo from '../images/Logo.svg';
@@ -84,9 +83,9 @@ export default function MainPage(props) {
       </SearchDiv>
 
       {/* 정렬 */}
-      <rangeDiv>
-        <rangeInput type="button"></rangeInput>
-      </rangeDiv>
+      <SearchDiv>
+        <rangeButton id="search" type="button" />
+      </SearchDiv>
     </BodyDiv>
   );
 }
