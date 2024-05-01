@@ -3,9 +3,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Login-------------------------------------------------------------------
 import Login from './pages/Login';
+import SignUp from "./pages/SignUp"
 
 //mainPage
 import MainPage from './pages/MainPage';
+
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/mainPage" element={<MainPage />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          
         </Routes>
       </BrowserRouter>
     </div>

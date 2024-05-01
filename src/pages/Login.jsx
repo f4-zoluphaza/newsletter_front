@@ -28,12 +28,24 @@ export default function Login() {
     <BodyDiv>
       <WrapperDiv>
         <LogoImg src={Logo} />
-        <Form>
-          <Input id="email" placeholder="이메일"></Input>
+        <Form
+          alignItems="start">
+          <Input 
+            id="email" 
+            type="email"
+            placeholder="이메일" 
+            width="508.48px"
+            height="60px"
+            borderRadius="12px"
+            />
           <Input
             id="password"
-            placeholder="비밀번호 (숫자, 영문 8~12자리)"
-          ></Input>
+            type="password"
+            placeholder="비밀번호"
+            width="508.48px"
+            height="60px"
+            borderRadius="12px"
+          />
 
           <EyesImg src={PWOpen}/>
 
@@ -41,7 +53,11 @@ export default function Login() {
             <CheckImg src={Check}/>
             <LoginStateP>로그인 상태 유지</LoginStateP>
           </LoginStateDiv>
-          <Submit value="로그인" type="submit"/>
+          <Submit 
+            value="로그인" 
+            type="submit" 
+            width="508.48px"
+            height="60px"/>
         </Form>
 
         <PWSearchSignUpDiv>

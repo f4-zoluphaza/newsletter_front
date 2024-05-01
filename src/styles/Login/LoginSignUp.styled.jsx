@@ -24,7 +24,7 @@ export const LogoImg = styled.img`
   width: 256px;
   height: 200px;
 
-  margin-bottom: 35px;
+  margin-bottom: ${(props) => props.marginBottom || "35px"};
 `;
 
 export const Form = styled.form`
@@ -33,30 +33,51 @@ export const Form = styled.form`
   /* background-color: aqua; */
   ${flexCenter()}
   flex-direction: column;
-  align-items: start;
+  align-items: ${(props) => props.alignItems};
   position: relative; //eyesImg 때문에 설정
 
 `;
 
 export const Input = styled.input`
-  width: 508.48px;
-  height: 60px;
-  border-radius: 12px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  border-radius: ${(props) => props.borderRadius};
+  /* border-radius: 12px; */
   border: solid 2px #c0c0c0;
-  margin-bottom: 10px;
+  margin: 10px 0 10px 0;
 
   color: #767676;
-  font-size: 17px;
+  font-size: 16px;
 
   padding-left: 20px;
   box-sizing: border-box;
 `;
 
+export const Submit = styled.input`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  border-radius: 12px;
+  border: solid 0px;
+  background-color: #588539;
+  box-sizing: border-box;
+
+  ${flexCenter()}
+  color: #FFFFFF;
+  font-size: 21px;
+  font-weight: 600;
+
+  margin-top: ${(props) => props.marginTop};
+
+  cursor: pointer;
+`
+
+// Login---------------------------------------------------------------------------------------------------------------
+
 export const EyesImg = styled.img`
   width: 30px;
   height: 30px;
   position: absolute;
-  top: 85px;
+  top: 105px;
   right: 20px;
 
   cursor: pointer;
@@ -84,22 +105,6 @@ export const LoginStateP = styled.p`
   color: #767676;
   margin: 0 0 0 5px;
   padding: 0;
-`
-
-export const Submit = styled.input`
-  width: 508.48px;
-  height: 60px;
-  border-radius: 12px;
-  border: solid 0px;
-  background-color: #588539;
-  box-sizing: border-box;
-
-  ${flexCenter()}
-  color: #FFFFFF;
-  font-size: 21px;
-  font-weight: 600;
-
-  cursor: pointer;
 `
 
 export const PWSearchSignUpDiv = styled.div`
@@ -141,3 +146,38 @@ export const Links = styled(Link)`
   color: #767676;
   font-size: 16px;
 `;
+
+// SignUp---------------------------------------------------------------------------------------------------------------
+export const Button = styled.button`
+  width: 83.16px;
+  height: 35px;
+
+  border-radius: 20px;
+  border: solid 2px #C0C0C0;
+  
+  background-color: #ffffff;
+  color: #C0C0C0;
+  font-size: 13.7px;
+  font-weight: 600;
+
+  margin: 7px 0 7px 7px;
+
+  cursor: pointer;
+`
+
+export const UnderDiv = styled.div`
+  width: 410.975px;
+  /* background-color: #eea5a5; */
+
+  ${flexCenter()}
+  justify-content: ${(props) => props.justifyContent || "start"};
+  align-items: start;
+`
+
+
+export const VaildP = styled.p`
+  font-size: 11px;
+  color: #767676; 
+
+  margin: 0;
+`
