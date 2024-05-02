@@ -59,7 +59,7 @@ export const Links = styled(Link)`
 export const HeaderDiv = styled.div`
   width: 100%;
   height: 200px;
-  margin-top: 10px;
+  margin-top: 20px;
   /* background-color: lightcyan; */
   ${flexCenter()}
 `;
@@ -178,8 +178,8 @@ export const PersonalInformationSpan = styled.span`
 export const SearchDiv = styled.div`
   width: 100%;
   height: 55px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 40px;
+  margin-bottom: 42px;
   /* background-color: lightcoral; */
   ${flexCenter()}
 `;
@@ -217,11 +217,11 @@ export const SearchImg = styled.img`
   cursor: pointer;
 `;
 
+// 정렬
 export const RangeDiv = styled.div`
   width: 100%;
   height: 45px;
-  margin-top: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 
   display: flex;
   justify-content: center;
@@ -230,7 +230,8 @@ export const RangeDiv = styled.div`
 `;
 
 export const RangeCenterDiv = styled.div`
-  width: 80%;
+  /* width: 80%; //컴퓨터 */
+  width: 93%; //노트북
   height: 45px;
 
   display: flex;
@@ -240,7 +241,7 @@ export const RangeCenterDiv = styled.div`
 `;
 
 export const RangeWapperDiv = styled.div`
-  width: 400px;
+  width: 397px;
   height: 45px;
   border: solid 0px;
   box-sizing: border-box;
@@ -277,7 +278,8 @@ export const PostAllDiv = styled.div`
 `;
 
 export const PostDiv = styled.div`
-  width: 85%;
+  /* width: 85%; //컴퓨터 */
+  width: 97%;
   height: 353px;
 
   display: flex;
@@ -326,7 +328,7 @@ export const Line = styled.hr`
   border-style: solid;
 
   align-self: center;
-  border-color: gray;
+  /* border-color: gray; */
 `;
 
 export const NewsDateDiv = styled.div`
@@ -366,7 +368,7 @@ export const HeartCountScript = styled.span`
 // 포스터 페이지 순서
 export const PostNumberDiv = styled.div`
   width: 100%;
-  height: 80px;
+  height: 85px;
 
   display: flex;
   justify-content: ${(props) => props.justifycontent || 'center'};
@@ -385,10 +387,11 @@ export const BoldLine = styled.hr`
   border-color: #588539;
 `;
 
-// footer
+// Footer
 export const FooterDiv = styled.div`
   width: 100%;
   height: 90px;
+  margin-bottom: 20px;
 
   display: flex;
   justify-content: space-around;

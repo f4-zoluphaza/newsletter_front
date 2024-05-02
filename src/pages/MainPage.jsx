@@ -181,44 +181,44 @@ export default function MainPage(props) {
         {/* 게시물 페이지 번호 */}
         <PostNumberDiv>
           <Links>
-            <TextSpan fontsize="28px" fontweight="400">
+            <TextSpan fontsize="23px" fontweight="400">
               1
             </TextSpan>
           </Links>
-          <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
+          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
             |
           </TextSpan>
           <Links>
-            <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
+            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
               2
             </TextSpan>
           </Links>
-          <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
+          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
             |
           </TextSpan>
           <Links>
-            <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
+            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
               3
             </TextSpan>
           </Links>
-          <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
+          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
             |
           </TextSpan>
           <Links>
-            <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
+            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
               4
             </TextSpan>
           </Links>
-          <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
+          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
             |
           </TextSpan>
           <Links>
-            <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
+            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
               5
             </TextSpan>
           </Links>
           <Links>
-            <TextSpan fontsize="28px" marginleft="10px">
+            <TextSpan fontsize="23px" marginleft="10px">
               &gt;
             </TextSpan>
           </Links>

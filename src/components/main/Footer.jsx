@@ -18,14 +18,16 @@ export default function Footer() {
         <TextSpan fontsize="18px">김나영 임지아</TextSpan>
       </MakerDivContact>
       <MakerDivContact display="flex">
-        <TextSpan fontsize="18px">All rights reserved.</TextSpan>
+        <TextSpan fontsize="15px">
+          Copyright ⓒ Newstrike. All rights reserved.
+        </TextSpan>
       </MakerDivContact>
       <MakerDivContact>
         <TextSpan fontsize="18px" textalign="right">
-          Contact
+          CONTACT
         </TextSpan>
         <TextSpan fontsize="18px" textalign="right">
-          대표자 이메일 12345@NAVER.COM
+          대표자 이메일 12345@naver.com
         </TextSpan>
         <TextSpan fontsize="18px" textalign="right">
           02-901-2004
