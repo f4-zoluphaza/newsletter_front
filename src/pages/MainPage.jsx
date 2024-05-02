@@ -36,16 +36,16 @@ import {
   NewsDateDiv,
   HeartSaveDiv,
   HeartImgScript,
-  HeartCountScript
+  HeartCountScript,
 } from '../styles/main/main-style-component.jsx';
 
 import Logo from '../images/Logo.svg';
 import Searchsvg from '../images/MainPage/Search.svg';
-import NewsImage from "../images/MainPage/News.svg"
-import HeartImage from "../images/MainPage/Heart.svg"
-import ScriptImage from "../images/MainPage/Script.svg"
+import NewsImage from '../images/MainPage/News.svg';
+import HeartImage from '../images/MainPage/Heart.svg';
+import ScriptImage from '../images/MainPage/Script.svg';
 import Header from '../components/Header.jsx';
-import NewsPost from '../components/NewsletterPost.jsx'
+import NewsPost from '../components/NewsletterPost.jsx';
 
 export default function MainPage(props) {
   return (
@@ -75,8 +75,8 @@ export default function MainPage(props) {
               </ButtonDiv>
             </Form>
 
-        {/* 정보동의 */}
-          <SmallTextSpan>구독 시, </SmallTextSpan>
+            {/* 정보동의 */}
+            <SmallTextSpan>구독 시, </SmallTextSpan>
             <Links>
               <PersonalInformationSpan>
                 정보성 수신 어쩌구
@@ -98,39 +98,47 @@ export default function MainPage(props) {
         <RangeDiv>
           <RangeCenterDiv>
             <RangeWapperDiv>
-              <RangeButton value="목록" type="button" backgroundcolor="#588539" />
-              <RangeButton value="목록" type="button" backgroundcolor="#FAF3E5"/>
+              <RangeButton
+                value="목록"
+                type="button"
+                backgroundcolor="#588539"
+              />
+              <RangeButton
+                value="목록"
+                type="button"
+                backgroundcolor="#FAF3E5"
+              />
             </RangeWapperDiv>
-            <RangeButton value="목록" type="button" backgroundcolor="#CDDFAB"/>
+            <RangeButton value="목록" type="button" backgroundcolor="#CDDFAB" />
           </RangeCenterDiv>
         </RangeDiv>
-        
-      {/* 뉴스레터 게시물 */}
-      <PostAllDiv>
-        <PostDiv>
-          <NewsPost></NewsPost>
-          <NewsPost></NewsPost>
-          <NewsPost></NewsPost>
-          <NewsPost></NewsPost>
-        </PostDiv>
-      </PostAllDiv>
-      <PostAllDiv>
-        <PostDiv>
-          <NewsPost></NewsPost>
-          <PostWapperDiv></PostWapperDiv>
-          <PostWapperDiv></PostWapperDiv>
-          <PostWapperDiv></PostWapperDiv>
-        </PostDiv>
-      </PostAllDiv>
-      <PostAllDiv>
-        <PostDiv>
-          <NewsPost></NewsPost>
-          <PostWapperDiv></PostWapperDiv>
-          <PostWapperDiv></PostWapperDiv>
-          <PostWapperDiv></PostWapperDiv>
-        </PostDiv>
-      </PostAllDiv>
-      {/* <PostAllDiv>
+
+        {/* 뉴스레터 게시물 */}
+        <PostAllDiv>
+          <PostDiv>
+            <NewsPost></NewsPost>
+            <NewsPost></NewsPost>
+            <NewsPost></NewsPost>
+            <NewsPost></NewsPost>
+          </PostDiv>
+        </PostAllDiv>
+        <PostAllDiv>
+          <PostDiv>
+            <NewsPost></NewsPost>
+            <PostWapperDiv></PostWapperDiv>
+            <PostWapperDiv></PostWapperDiv>
+            <PostWapperDiv></PostWapperDiv>
+          </PostDiv>
+        </PostAllDiv>
+        <PostAllDiv>
+          <PostDiv>
+            <NewsPost></NewsPost>
+            <PostWapperDiv></PostWapperDiv>
+            <PostWapperDiv></PostWapperDiv>
+            <PostWapperDiv></PostWapperDiv>
+          </PostDiv>
+        </PostAllDiv>
+        {/* <PostAllDiv>
         <PostDiv>
           <NewsPost></NewsPost>
           <PostWapperDiv></PostWapperDiv>
@@ -138,7 +146,6 @@ export default function MainPage(props) {
           <PostWapperDiv></PostWapperDiv>
         </PostDiv>
       </PostAllDiv> */}
-      
       </BodyDiv>
     </Div>
   );
