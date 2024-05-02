@@ -58,15 +58,17 @@ export const Links = styled(Link)`
 
 export const HeaderDiv = styled.div`
   width: 100%;
-  height: 211px;
-  ${flexCenter()}/* background-color: lightcyan; */
+  height: 200px;
+  margin-top: 10px;
+  /* background-color: lightcyan; */
+  ${flexCenter()}
 `;
 
 export const ExplainDiv = styled.div`
   width: 40%;
   height: 107px;
   color: black;
-  margin-right: 5%;
+  margin-right: 4%;
   margin-top: 60px;
   text-align: right;
 
@@ -82,7 +84,8 @@ export const TitleSpan = styled.span`
 export const TextSpan = styled.span`
   display: block;
   font-size: ${(props) => props.fontsize || '20px'};
-  font-weight: ${(props) => props.fontweight || '500'}; ;
+  font-weight: ${(props) => props.fontweight || '500'};
+  text-align: ${(props) => props.textalign || 'left'};
 
   margin-left: ${(props) => props.marginleft || '0'};
 `;
@@ -96,7 +99,7 @@ export const SubscribeDiv = styled.div`
 export const Form = styled.form`
   width: 90%;
   height: 170px;
-  margin-bottom: 10px;
+  /* margin-bottom: 3px; */
   ${flexCenter()}
   flex-direction: column;
   align-items: start;
@@ -105,77 +108,88 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   width: 100%;
+  height: 47px;
+  margin-bottom: 9px;
   display: flex;
+  align-items: center;
   /* background-color: blue; */
 `;
 
-export const SmallTextSpan = styled.span`
-  font-size: 15px;
-  font-weight: bolder;
-`;
-
 export const SubscribeInput = styled.input`
-  width: 100%;
+  width: 80%;
   height: 45px;
   border-radius: 12px;
   border: solid 2px #588539;
-  margin-left: 5px;
-  margin-bottom: 10px;
+  margin-left: 12px;
+  /* margin-bottom: 10px; */
   box-sizing: border-box;
 
-  padding-left: 10px;
+  padding-left: 15px;
 
   font-size: 15px;
 `;
 
 export const ButtonDiv = styled.div`
-  width: 100%;
+  width: 95%;
   height: 45px;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly; //디자인1번
+  /* justify-content: right; //디자인2번 */
 
-  /* background-color: blue; */
+  /* background-color: yellow; */
 `;
 
 export const Button = styled.input`
-  width: 220px;
+  width: 227px;
   height: 45px;
   border-radius: 12px;
   border: solid 0px;
   background-color: #588539;
   box-sizing: border-box;
 
-  margin-left: 20px;
-  /* margin-right: 20px; */
+  margin-left: 3px; //디자인1번
+  /* margin-left: 12px; //디자인2번 */
+  /* margin-right: 3px; //디자인2번 */
 
   color: #000000;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
+  text-align: center;
 
   cursor: pointer;
 `;
 
+export const SmallTextSpan = styled.span`
+  font-size: 17px;
+  font-weight: 500;
+
+  padding-left: ${(props) => props.paddingleft || '7px'};
+`;
+
 export const PersonalInformationSpan = styled.span`
   text-decoration: underline;
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0;
 `;
 
 // 검색 창
 export const SearchDiv = styled.div`
   width: 100%;
-  height: 60px;
+  height: 55px;
   margin-top: 30px;
-  ${flexCenter()}/* background-color: lightcoral; */
+  margin-bottom: 30px;
+  /* background-color: lightcoral; */
+  ${flexCenter()}
 `;
 
 export const SearchBorderDiv = styled.div`
   width: 600px;
   height: 50px;
-  /* margin-left: 190px;
-  margin-right: 180px; */
   border: solid 3px #588539;
   border-radius: 35px;
+  /* background-color: beige; */
   ${flexCenter()}
 `;
 
@@ -187,25 +201,18 @@ export const SearchInput = styled.input`
   margin-left: 30px;
   outline: none;
 
-  font-size: 18px;
+  font-size: 20px;
 `;
 
 export const SearchImg = styled.img`
   width: 42px;
   height: 43px;
-  /* border-radius: 12px;
-  border: solid 0px; */
-  /* box-sizing: border-box; */
 
   margin-top: 3px;
   margin-left: 20px;
   margin-right: 15px;
 
   background-image: url('../images/MainPage/Search.svg');
-
-  /* color: #000000;
-  font-size: 16px;
-  font-weight: 600; */
 
   cursor: pointer;
 `;
@@ -378,7 +385,7 @@ export const BoldLine = styled.hr`
   border-color: #588539;
 `;
 
-// footer 
+// footer
 export const FooterDiv = styled.div`
   width: 100%;
   height: 90px;
@@ -387,11 +394,16 @@ export const FooterDiv = styled.div`
   justify-content: space-around;
 
   /* background-color: blue; */
-`
+`;
 
 export const MakerDivContact = styled.div`
-  width: 18%;
+  width: 22%;
   height: 80px;
   margin-top: 10px;
+
+  display: ${(props) => props.display || 'block'};
+  justify-content: ${(props) => props.justifycontent || 'center'};
+  align-items: center;
+
   /* background-color: pink; */
 `;

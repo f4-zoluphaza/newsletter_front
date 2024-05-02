@@ -40,7 +40,7 @@ import {
   PostNumberDiv,
   BoldLine,
   FooterDiv,
-  MakerDivContact
+  MakerDivContact,
 } from '../styles/main/main-style-component.jsx';
 
 import Logo from '../images/Logo.svg';
@@ -58,21 +58,43 @@ export default function MainPage(props) {
         {/* 네비게이션바 */}
         <Header></Header>
 
-        {/* 구독 헤더 */}
+        {/* 구독 Header */}
         <HeaderDiv>
           <ExplainDiv>
             <TitleSpan>오늘의 최신 기사를 가장 빠르게</TitleSpan>
-            <TextSpan>매일 야구 기사를 메일로 보내드립니다.</TextSpan>
-            <TextSpan>무료 야구 뉴스를 받아보세요!</TextSpan>
+            <TextSpan textalign="right">
+              매일 야구 기사를 메일로 보내드립니다.
+            </TextSpan>
+            <TextSpan textalign="right">무료 야구 뉴스를 받아보세요!</TextSpan>
           </ExplainDiv>
           <SubscribeDiv>
             <Form>
+              {/* //placeholder에 설명 글자
               <SubscribeInput
                 type="email"
                 placeholder="이메일"
               ></SubscribeInput>
               <SubscribeInput type="text" placeholder="닉네임"></SubscribeInput>
-
+              <ButtonDiv>
+                <Button value="뉴스레터 신청하기" type="submit" />
+                <Button value="가입 먼저하기" type="submit" />
+              </ButtonDiv>{' '}
+              */}
+              <Label>
+                <TextSpan textalign="center" fontweight="600">
+                  이메일
+                </TextSpan>
+                <SubscribeInput
+                  type="email"
+                  placeholder="1234abc@naver.com"
+                ></SubscribeInput>
+              </Label>
+              <Label>
+                <TextSpan textalign="center" fontweight="600">
+                  닉네임
+                </TextSpan>
+                <SubscribeInput type="text"></SubscribeInput>
+              </Label>
               <ButtonDiv>
                 <Button value="뉴스레터 신청하기" type="submit" />
                 <Button value="가입 먼저하기" type="submit" />
@@ -83,14 +105,14 @@ export default function MainPage(props) {
             <SmallTextSpan>구독 시, </SmallTextSpan>
             <Links>
               <PersonalInformationSpan>
-                정보성 수신 어쩌구
+                개인정보 수집 및 이용
               </PersonalInformationSpan>
             </Links>
-            <SmallTextSpan>에 동의하게 됩니다.</SmallTextSpan>
+            <SmallTextSpan paddingleft="0">에 동의하게 됩니다.</SmallTextSpan>
           </SubscribeDiv>
         </HeaderDiv>
 
-        {/* 검색창 */}
+        {/* 검색 창 */}
         <SearchDiv>
           <SearchBorderDiv>
             <SearchInput type="text"></SearchInput>
@@ -103,17 +125,21 @@ export default function MainPage(props) {
           <RangeCenterDiv>
             <RangeWapperDiv>
               <RangeButton
-                value="목록"
+                value="오늘의 뉴스"
                 type="button"
                 backgroundcolor="#588539"
               />
               <RangeButton
-                value="목록"
+                value="한입뉴스"
                 type="button"
                 backgroundcolor="#FAF3E5"
               />
             </RangeWapperDiv>
-            <RangeButton value="목록" type="button" backgroundcolor="#CDDFAB" />
+            <RangeButton
+              value="추천순"
+              type="button"
+              backgroundcolor="#CDDFAB"
+            />
           </RangeCenterDiv>
         </RangeDiv>
 
@@ -152,31 +178,76 @@ export default function MainPage(props) {
         </PostAllDiv> */}
 
         <PostNumberDiv>
-          <Links><TextSpan fontsize='30px'>1</TextSpan></Links>
-          <TextSpan fontsize='30px' marginleft='5px'>|</TextSpan>
-          <Links><TextSpan fontsize='30px' marginleft='5px'>2</TextSpan></Links>
-          <TextSpan fontsize='30px' marginleft='5px'>|</TextSpan>
-          <Links><TextSpan fontsize='30px' marginleft='5px'>3</TextSpan></Links>
-          <TextSpan fontsize='30px' marginleft='5px'>|</TextSpan>
-          <Links><TextSpan fontsize='30px' marginleft='5px'>4</TextSpan></Links>
-          <TextSpan fontsize='30px' marginleft='5px'>|</TextSpan>
-          <Links><TextSpan fontsize='30px' marginleft='5px'>5</TextSpan></Links>
-          <Links><TextSpan fontsize='30px' marginleft='10px'>&gt;</TextSpan></Links>
+          <Links>
+            <TextSpan fontsize="30px" fontweight="400">
+              1
+            </TextSpan>
+          </Links>
+          <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+            |
+          </TextSpan>
+          <Links>
+            <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+              2
+            </TextSpan>
+          </Links>
+          <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+            |
+          </TextSpan>
+          <Links>
+            <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+              3
+            </TextSpan>
+          </Links>
+          <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+            |
+          </TextSpan>
+          <Links>
+            <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+              4
+            </TextSpan>
+          </Links>
+          <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+            |
+          </TextSpan>
+          <Links>
+            <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+              5
+            </TextSpan>
+          </Links>
+          <Links>
+            <TextSpan fontsize="30px" marginleft="10px">
+              &gt;
+            </TextSpan>
+          </Links>
         </PostNumberDiv>
 
         <BoldLine></BoldLine>
 
         {/* footer 영역 */}
-          <FooterDiv>
-            <MakerDivContact>
-              <TextSpan fontweight="700">만든이들</TextSpan>
-              <TextSpan>조시은 인다운</TextSpan>
-              <TextSpan>김나영 임지아</TextSpan>
-            </MakerDivContact>
-            <MakerDivContact></MakerDivContact>
-            <MakerDivContact></MakerDivContact>
-          </FooterDiv>
-
+        <FooterDiv>
+          <MakerDivContact>
+            <TextSpan fontsize="18px" fontweight="700">
+              만든이들
+            </TextSpan>
+            <TextSpan fontsize="18px">조시은 인다운</TextSpan>
+            <TextSpan fontsize="18px">김나영 임지아</TextSpan>
+          </MakerDivContact>
+          <MakerDivContact display="flex">
+            <TextSpan fontsize="18px">All rights reserved.</TextSpan>
+          </MakerDivContact>
+          <MakerDivContact>
+            <TextSpan fontsize="18px" textalign="right">
+              Contact
+            </TextSpan>
+            <TextSpan fontsize="18px" textalign="right">
+              대표자 이메일 12345@NAVER.COM
+            </TextSpan>
+            <TextSpan fontsize="18px" textalign="right">
+              02-901-2004
+            </TextSpan>
+          </MakerDivContact>
+        </FooterDiv>
       </BodyDiv>
     </Div>
   );
