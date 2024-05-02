@@ -81,7 +81,10 @@ export const TitleSpan = styled.span`
 
 export const TextSpan = styled.span`
   display: block;
-  font-size: 20px;
+  font-size: ${(props) => props.fontsize || '20px'};
+  font-weight: ${(props) => props.fontweight || '500'}; ;
+
+  margin-left: ${(props) => props.marginleft || '0'};
 `;
 
 export const SubscribeDiv = styled.div`
@@ -291,7 +294,7 @@ export const PostWapperDiv = styled.div`
 `;
 
 export const NewsImg = styled.img`
-  width: 270px;
+  width: 90%;
   height: 170px;
   border: solid 0;
   border-radius: 5px;
@@ -311,8 +314,9 @@ export const NewsTitleDiv = styled.div`
 
 export const Line = styled.hr`
   width: 250px;
-  border-top: 1px;
-  height: 0;
+  border-top: 0.5px;
+  /* height: 0; */
+  border-style: solid;
 
   align-self: center;
   border-color: gray;
@@ -350,4 +354,44 @@ export const HeartImgScript = styled.img`
 export const HeartCountScript = styled.span`
   font-size: 28px;
   /* background-color: red; */
+`;
+
+// 포스터 페이지 순서
+export const PostNumberDiv = styled.div`
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  justify-content: ${(props) => props.justifycontent || 'center'};
+  /* align-items: center; //간격 조정 시*/
+
+  /* background-color: lightgreen; */
+`;
+
+export const BoldLine = styled.hr`
+  width: 90%;
+  border-top: 7px;
+  border-style: solid;
+  height: 0;
+
+  align-self: center;
+  border-color: #588539;
+`;
+
+// footer 
+export const FooterDiv = styled.div`
+  width: 100%;
+  height: 90px;
+
+  display: flex;
+  justify-content: space-around;
+
+  /* background-color: blue; */
+`
+
+export const MakerDivContact = styled.div`
+  width: 18%;
+  height: 80px;
+  margin-top: 10px;
+  /* background-color: pink; */
 `;

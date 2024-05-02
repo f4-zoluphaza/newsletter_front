@@ -37,6 +37,10 @@ import {
   HeartSaveDiv,
   HeartImgScript,
   HeartCountScript,
+  PostNumberDiv,
+  BoldLine,
+  FooterDiv,
+  MakerDivContact
 } from '../styles/main/main-style-component.jsx';
 
 import Logo from '../images/Logo.svg';
@@ -139,13 +143,40 @@ export default function MainPage(props) {
           </PostDiv>
         </PostAllDiv>
         {/* <PostAllDiv>
-        <PostDiv>
+          <PostDiv>
           <NewsPost></NewsPost>
           <PostWapperDiv></PostWapperDiv>
           <PostWapperDiv></PostWapperDiv>
           <PostWapperDiv></PostWapperDiv>
-        </PostDiv>
-      </PostAllDiv> */}
+          </PostDiv>
+        </PostAllDiv> */}
+
+        <PostNumberDiv>
+          <Links><TextSpan fontsize='30px'>1</TextSpan></Links>
+          <TextSpan fontsize='30px' marginleft='5px'>|</TextSpan>
+          <Links><TextSpan fontsize='30px' marginleft='5px'>2</TextSpan></Links>
+          <TextSpan fontsize='30px' marginleft='5px'>|</TextSpan>
+          <Links><TextSpan fontsize='30px' marginleft='5px'>3</TextSpan></Links>
+          <TextSpan fontsize='30px' marginleft='5px'>|</TextSpan>
+          <Links><TextSpan fontsize='30px' marginleft='5px'>4</TextSpan></Links>
+          <TextSpan fontsize='30px' marginleft='5px'>|</TextSpan>
+          <Links><TextSpan fontsize='30px' marginleft='5px'>5</TextSpan></Links>
+          <Links><TextSpan fontsize='30px' marginleft='10px'>&gt;</TextSpan></Links>
+        </PostNumberDiv>
+
+        <BoldLine></BoldLine>
+
+        {/* footer 영역 */}
+          <FooterDiv>
+            <MakerDivContact>
+              <TextSpan fontweight="700">만든이들</TextSpan>
+              <TextSpan>조시은 인다운</TextSpan>
+              <TextSpan>김나영 임지아</TextSpan>
+            </MakerDivContact>
+            <MakerDivContact></MakerDivContact>
+            <MakerDivContact></MakerDivContact>
+          </FooterDiv>
+
       </BodyDiv>
     </Div>
   );
