@@ -49,7 +49,8 @@ import NewsImage from '../images/MainPage/News.svg';
 import HeartImage from '../images/MainPage/Heart.svg';
 import ScriptImage from '../images/MainPage/Script.svg';
 import Header from '../components/Header.jsx';
-import NewsPost from '../components/NewsletterPost.jsx';
+import NewsletterPost from '../components/NewsletterPost.jsx';
+import Footer from '../components/main/Footer.jsx';
 
 export default function MainPage(props) {
   return (
@@ -146,15 +147,15 @@ export default function MainPage(props) {
         {/* 뉴스레터 게시물 */}
         <PostAllDiv>
           <PostDiv>
-            <NewsPost></NewsPost>
-            <NewsPost></NewsPost>
-            <NewsPost></NewsPost>
-            <NewsPost></NewsPost>
+            <NewsletterPost></NewsletterPost>
+            <NewsletterPost></NewsletterPost>
+            <NewsletterPost></NewsletterPost>
+            <NewsletterPost></NewsletterPost>
           </PostDiv>
         </PostAllDiv>
         <PostAllDiv>
           <PostDiv>
-            <NewsPost></NewsPost>
+            <NewsletterPost></NewsletterPost>
             <PostWapperDiv></PostWapperDiv>
             <PostWapperDiv></PostWapperDiv>
             <PostWapperDiv></PostWapperDiv>
@@ -162,7 +163,7 @@ export default function MainPage(props) {
         </PostAllDiv>
         <PostAllDiv>
           <PostDiv>
-            <NewsPost></NewsPost>
+            <NewsletterPost></NewsletterPost>
             <PostWapperDiv></PostWapperDiv>
             <PostWapperDiv></PostWapperDiv>
             <PostWapperDiv></PostWapperDiv>
@@ -170,84 +171,64 @@ export default function MainPage(props) {
         </PostAllDiv>
         {/* <PostAllDiv>
           <PostDiv>
-          <NewsPost></NewsPost>
+          <NewsletterPost></NewsletterPost>
           <PostWapperDiv></PostWapperDiv>
           <PostWapperDiv></PostWapperDiv>
           <PostWapperDiv></PostWapperDiv>
           </PostDiv>
         </PostAllDiv> */}
 
+        {/* 게시물 페이지 번호 */}
         <PostNumberDiv>
           <Links>
-            <TextSpan fontsize="30px" fontweight="400">
+            <TextSpan fontsize="28px" fontweight="400">
               1
             </TextSpan>
           </Links>
-          <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+          <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
             |
           </TextSpan>
           <Links>
-            <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+            <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
               2
             </TextSpan>
           </Links>
-          <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+          <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
             |
           </TextSpan>
           <Links>
-            <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+            <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
               3
             </TextSpan>
           </Links>
-          <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+          <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
             |
           </TextSpan>
           <Links>
-            <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+            <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
               4
             </TextSpan>
           </Links>
-          <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+          <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
             |
           </TextSpan>
           <Links>
-            <TextSpan fontsize="30px" marginleft="5px" fontweight="400">
+            <TextSpan fontsize="28px" marginleft="5px" fontweight="400">
               5
             </TextSpan>
           </Links>
           <Links>
-            <TextSpan fontsize="30px" marginleft="10px">
+            <TextSpan fontsize="28px" marginleft="10px">
               &gt;
             </TextSpan>
           </Links>
         </PostNumberDiv>
 
+        {/* footer 구분 선 */}
         <BoldLine></BoldLine>
 
         {/* footer 영역 */}
-        <FooterDiv>
-          <MakerDivContact>
-            <TextSpan fontsize="18px" fontweight="700">
-              만든이들
-            </TextSpan>
-            <TextSpan fontsize="18px">조시은 인다운</TextSpan>
-            <TextSpan fontsize="18px">김나영 임지아</TextSpan>
-          </MakerDivContact>
-          <MakerDivContact display="flex">
-            <TextSpan fontsize="18px">All rights reserved.</TextSpan>
-          </MakerDivContact>
-          <MakerDivContact>
-            <TextSpan fontsize="18px" textalign="right">
-              Contact
-            </TextSpan>
-            <TextSpan fontsize="18px" textalign="right">
-              대표자 이메일 12345@NAVER.COM
-            </TextSpan>
-            <TextSpan fontsize="18px" textalign="right">
-              02-901-2004
-            </TextSpan>
-          </MakerDivContact>
-        </FooterDiv>
+        <Footer></Footer>
       </BodyDiv>
     </Div>
   );
