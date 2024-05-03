@@ -35,8 +35,8 @@ import {
   Line,
   NewsDateDiv,
   HeartSaveDiv,
-  HeartImgScript,
-  HeartCountScript,
+  HeartImgScrap,
+  HeartCountScrap,
   PostNumberDiv,
   BoldLine,
   FooterDiv,
@@ -47,7 +47,7 @@ import Logo from '../images/Logo.svg';
 import Searchsvg from '../images/MainPage/Search.svg';
 import NewsImage from '../images/MainPage/News.svg';
 import HeartImage from '../images/MainPage/Heart.svg';
-import ScriptImage from '../images/MainPage/Script.svg';
+import ScraptImage from '../images/MainPage/Scrapt.svg';
 import Header from '../components/Header.jsx';
 import NewsletterPost from '../components/NewsletterPost.jsx';
 import Footer from '../components/main/Footer.jsx';

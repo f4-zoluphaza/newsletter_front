@@ -355,12 +355,12 @@ export const HeartSaveDiv = styled.div`
   /* background-color: white; */
 `;
 
-export const HeartImgScript = styled.img`
+export const HeartImgScrap = styled.img`
   width: 30px;
   height: 30px;
 `;
 
-export const HeartCountScript = styled.span`
+export const HeartCountScrap = styled.span`
   font-size: 28px;
   /* background-color: red; */
 `;
