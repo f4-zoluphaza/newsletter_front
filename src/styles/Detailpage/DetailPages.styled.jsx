@@ -21,19 +21,20 @@ export const BodyDiv = styled.div`
 
 export const NewsDivChat = styled.div`
   width: 100%;
-  height: 780px;
+  /* height: auto; */
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 13px;
 
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-evenly; //NewsDiv와 ChatbotDiv
 
   /* background-color: lightgrey; */
 `;
 
+// 뉴스레터 영역
 export const NewsDiv = styled.div`
   width: 45%;
-  height: auto;
+  /* height: auto; */
   border-radius: 12px;
 
   /* display: flex; */
@@ -48,6 +49,7 @@ export const NewsWrapperDiv = styled.div`
   width: 100%;
   height: ${(props) => props.height || '48px'};
   margin-top: ${(props) => props.margintop || '80px'};
+  margin-bottom: ${(props) => props.marginbottom || '0'};
   ${flexCenter()}/* background-color: lightyellow; */
 `;
 
@@ -59,7 +61,7 @@ export const NewsTitleWrapperDivDate = styled.div`
 `;
 
 export const Textspan = styled.span`
-  display: block;
+  display: ${(props) => props.display || 'block'};
   font-size: ${(props) => props.fontsize || '17px'};
   font-weight: ${(props) => props.fontweight || '500'};
   text-align: ${(props) => props.textalign || 'left'};
@@ -71,7 +73,7 @@ export const Textspan = styled.span`
 
 export const NewsImg = styled.img`
   width: 90%;
-  height: 250px;
+  height: 240px;
   border: solid 0;
 `;
 
@@ -82,9 +84,10 @@ export const NewsContentDiv = styled.div`
   /* background-color: lightsalmon; */
 `;
 
+// 챗봇 영역
 export const ChatbotDiv = styled.div`
   width: 45%;
-  height: auto; //수정필요
+  height: auto;
   border-radius: 12px;
 
   display: flex;
@@ -100,6 +103,10 @@ export const AllMessageDiv = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  //스크롤
+  max-height: 1000px;
+  overflow-y: auto;
 
   /* background-color: olive; */
 `;
@@ -153,9 +160,6 @@ export const AllChattingDiv = styled.div`
   height: 45px;
   margin-top: 30px;
 
-  display: flex;
-  flex-direction: center;
-
   /* background-color: antiquewhite; */
 `;
 
@@ -165,8 +169,8 @@ export const ChattingDiv = styled.div`
   border: solid 1px;
   border-radius: 10px;
   padding-right: 10px;
+  margin-left: 10px;
 
-  /* align-self: flex-end; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -189,10 +193,11 @@ export const ChattingInput = styled.input`
 // 좋아요, 스크랩, 공유 영역
 export const HeartScrapDivShare = styled.div`
   width: 100%;
-  height: 44px;
+  height: 120px;
 
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   /* background-color: azure; */
 `;
@@ -220,7 +225,7 @@ export const HeartDivScrap = styled.div`
 `;
 
 export const OnClickImg = styled.img`
-  width: ${(props) => props.width || '29px'};
+  width: ${(props) => props.width || '27px'};
   height: ${(props) => props.height || '29px'};
   border: solid 0;
 
@@ -237,4 +242,23 @@ export const HeartDiv = styled.div`
   flex-direction: column;
 
   /* background-color: darkgrey; */
+`;
+
+export const PreNextpostDiv = styled.div`
+  width: 265px;
+  height: 22px;
+  margin-top: 22px;
+
+  display: flex;
+  justify-content: space-between;
+
+  /* background-color: burlywood; */
+`;
+
+export const OnClickTextspan = styled.span`
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 500;
+
+  cursor: pointer;
 `;

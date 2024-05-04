@@ -23,6 +23,8 @@ import {
   HeartDivScrap,
   OnClickImg,
   HeartDiv,
+  PreNextpostDiv,
+  OnClickTextspan,
 } from '../../styles/Detailpage/DetailPages.styled.jsx';
 
 import Header from '../../components/Header.jsx';
@@ -66,12 +68,12 @@ export default function DetailPage() {
             </NewsWrapperDiv>
 
             {/* 뉴스레터 이미지 */}
-            <NewsWrapperDiv height="250px" margintop="15px">
+            <NewsWrapperDiv height="240px" margintop="15px">
               <NewsImg src={NewsImage}></NewsImg>
             </NewsWrapperDiv>
 
             {/* 뉴스레터 내용 */}
-            <NewsWrapperDiv height="auto" margintop="25px">
+            <NewsWrapperDiv height="auto" margintop="25px" marginbottom="30px">
               <NewsContentDiv>
                 <Textspan fontweight="600">
                   이정후, 메이저리그 첫 홈런으로 주목 받다
@@ -101,7 +103,16 @@ export default function DetailPage() {
                 <Textspan>
                   샌프란시스코 자이언츠의 새내기, 이정후 선수가 시범경기에서
                   대포알 같은 홈런을 쏘아 올리며 메이저리그 데뷔전부터 화려한
-                  임팩트를 남겼습니다.
+                  임팩트를 남겼습니다. 샌프란시스코 자이언츠의 새내기, 이정후
+                  선수가 시범경기에서 대포알 같은 홈런을 쏘아 올리며 메이저리그
+                  데뷔전부터 화려한 임팩트를 남겼습니다. 샌프란시스코 자이언츠의
+                  새내기, 이정후 선수가 시범경기에서 대포알 같은 홈런을 쏘아
+                  올리며 메이저리그 데뷔전부터 화려한 임팩트를 남겼습니다.
+                  샌프란시스코 자이언츠의 새내기, 이정후 선수가 시범경기에서
+                  대포알 같은 홈런을 쏘아 올리며 메이저리그 데뷔전부터 화려한
+                  임팩트를 남겼습니다. 샌프란시스코 자이언츠의 새내기, 이정후
+                  선수가 시범경기에서 대포알 같은 홈런을 쏘아 올리며 메이저리그
+                  데뷔전부터 화려한 임팩트를 남겼습니다.
                 </Textspan> */}
               </NewsContentDiv>
             </NewsWrapperDiv>
@@ -170,6 +181,7 @@ export default function DetailPage() {
                 </BotspeechbubbleDiv>
               </MessageDiv>
 
+              {/* 스크롤 예 */}
               {/* <MessageDiv>
                 <ChatbotImg src={CircleImage}></ChatbotImg>
                 <SendspeechbubbleDiv height="33px">
@@ -181,7 +193,32 @@ export default function DetailPage() {
               <MessageDiv height="auto" margintop="10px">
                 <BotspeechbubbleDiv>
                   <Textspan fontsize="15px" marginbottom="0">
-                    답변 생성 중입니다.
+                    타율 .500(5할)은 야구에서 매우 높은 타율로 간주됩니다.
+                    일반적으로 전문 야구 리그에서 선수들의 평균 타율은 대략
+                    .250에서 .300 사이입니다. 타율이 .300을 넘으면 그 선수를
+                    우수한 타자로 여기며, .400 이상의 타율은 역사적으로 매우
+                    드문 성취로 간주되며, 대부분의 경우 단기간 동안만
+                    유지됩니다. 타율 .500(5할)은 야구에서 매우 높은 타율로
+                    간주됩니다. 일반적으로 전문 야구 리그에서 선수들의 평균
+                    타율은 대략 .250에서 .300 사이입니다. 타율이 .300을 넘으면
+                    그 선수를 우수한 타자로 여기며, .400 이상의 타율은
+                    역사적으로 매우 드문 성취로 간주되며, 대부분의 경우 단기간
+                    동안만 유지됩니다. 타율 .500(5할)은 야구에서 매우 높은
+                    타율로 간주됩니다. 일반적으로 전문 야구 리그에서 선수들의
+                    평균 타율은 대략 .250에서 .300 사이입니다. 타율이 .300을
+                    넘으면 그 선수를 우수한 타자로 여기며, .400 이상의 타율은
+                    역사적으로 매우 드문 성취로 간주되며, 대부분의 경우 단기간
+                    동안만 유지됩니다. 타율 .500(5할)은 야구에서 매우 높은
+                    타율로 간주됩니다. 일반적으로 전문 야구 리그에서 선수들의
+                    평균 타율은 대략 .250에서 .300 사이입니다. 타율이 .300을
+                    넘으면 그 선수를 우수한 타자로 여기며, .400 이상의 타율은
+                    역사적으로 매우 드문 성취로 간주되며, 대부분의 경우 단기간
+                    동안만 유지됩니다. 타율 .500(5할)은 야구에서 매우 높은
+                    타율로 간주됩니다. 일반적으로 전문 야구 리그에서 선수들의
+                    평균 타율은 대략 .250에서 .300 사이입니다. 타율이 .300을
+                    넘으면 그 선수를 우수한 타자로 여기며, .400 이상의 타율은
+                    역사적으로 매우 드문 성취로 간주되며, 대부분의 경우 단기간
+                    동안만 유지됩니다.
                   </Textspan>
                 </BotspeechbubbleDiv>
               </MessageDiv> */}
@@ -209,16 +246,21 @@ export default function DetailPage() {
         <HeartScrapDivShare>
           <HeartScrapWrapperDivShare>
             <HeartDivScrap>
-              <OnClickImg src={ScrapBlackImage} width="25px" />
+              <OnClickImg src={ScrapBlackImage} width="28px" />
               <HeartDiv>
-                <OnClickImg src={HeartBlackImage} width="32px" />
-                <Textspan fontsize="12px" textalign="center" marginbottom="0">
+                <OnClickImg src={HeartBlackImage} width="33px" />
+                <Textspan fontsize="13px" textalign="center" marginbottom="0">
                   2
                 </Textspan>
               </HeartDiv>
             </HeartDivScrap>
             <OnClickImg src={ShareImage} />
           </HeartScrapWrapperDivShare>
+          {/* 이전글, 다음글 영역 */}
+          <PreNextpostDiv>
+            <OnClickTextspan>&lt; 이전 글 보기</OnClickTextspan>
+            <OnClickTextspan>다음 글 보기 &gt;</OnClickTextspan>
+          </PreNextpostDiv>
         </HeartScrapDivShare>
       </BodyDiv>
     </Div>
