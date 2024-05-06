@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   BodyDiv,
   WrapperDiv,
@@ -8,14 +8,12 @@ import {
   Submit,
   UnderDiv,
   Button,
-  VaildP
+  VaildP,
 } from "../styles/Login/LoginSignUp.styled";
 
 import Logo from "../images/Logo.svg";
 
-
 export default function SignUp() {
-
   //form 관리
   const [form, setForm] = useState({
     nickName: "",
@@ -33,11 +31,11 @@ export default function SignUp() {
   // 비밀번호 유효성 함수
   const handlePW = (e) => {
     const password = e.target.value;
-    setForm({...form, password});
+    setForm({ ...form, password });
 
-    if(password.trim() === ""){
+    if (password.trim() === "") {
       setValidPW(null);
-    }else{
+    } else {
       const isValidPassword =
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&^#()])[A-Za-z\d@$!%*?&^#()]{8,12}$/.test(
           password
@@ -49,21 +47,21 @@ export default function SignUp() {
   // 비밀번호 확인 유효성 함수
   const hadlePWCheck = (e) => {
     const passwordCheck = e.target.value;
-    setForm((prevForm) => ({...prevForm, passwordCheck}));
+    setForm((prevForm) => ({ ...prevForm, passwordCheck }));
 
-    if(passwordCheck.trim() === ""){
+    if (passwordCheck.trim() === "") {
       setValidPWCheck(null);
-    }else if (passwordCheck === form.password){
+    } else if (passwordCheck === form.password) {
       setValidPWCheck(true);
-    }else{
-      setValidPWCheck(false)
+    } else {
+      setValidPWCheck(false);
     }
-  }
+  };
 
   return (
     <BodyDiv>
       <WrapperDiv>
-        <LogoImg src={Logo} marginBottom="20px"/>
+        <LogoImg src={Logo} marginBottom="20px" />
 
         <Form>
           <Input
@@ -83,12 +81,25 @@ export default function SignUp() {
             height="53.82px"
             borderRadius="9.78px"
           />
-          <UnderDiv
-          justifyContent="end">
+          <UnderDiv justifyContent="end">
             <Button>중복 확인</Button>
             <Button>인증 요청</Button>
+
+            {/* <Button
+              backgroundColor="#588539"
+              color="#FFFFFF"
+              borderColor="#588539"
+            >
+              중복 확인
+            </Button>
+            <Button
+              backgroundColor="#588539"
+              color="#FFFFFF"
+              borderColor="#588539"
+            >
+              인증 요청
+            </Button> */}
           </UnderDiv>
-          
 
           <Input
             id="emailCheck"
@@ -99,12 +110,17 @@ export default function SignUp() {
             borderRadius="9.78px"
           />
 
-          <UnderDiv
-          justifyContent="space-between">
+          <UnderDiv justifyContent="space-between">
             <VaildP>인증번호가 올바르지 않습니다.</VaildP>
             <Button>인증 확인</Button>
+            {/* <Button
+              backgroundColor="#588539"
+              color="#FFFFFF"
+              borderColor="#588539"
+            >
+              인증 확인
+            </Button> */}
           </UnderDiv>
-          
 
           <Input
             id="password"
@@ -116,10 +132,13 @@ export default function SignUp() {
             borderRadius="9.78px"
           />
 
-          {validPW === false ? (<UnderDiv>
-            <VaildP>비밀번호를 영문, 숫자, 특수문자 포함 8~12자리로 설정해주세요.</VaildP>
-          </UnderDiv>) : null}
-          
+          {validPW === false ? (
+            <UnderDiv>
+              <VaildP>
+                비밀번호를 영문, 숫자, 특수문자 포함 8~12자리로 설정해주세요.
+              </VaildP>
+            </UnderDiv>
+          ) : null}
 
           <Input
             id="passwordCheck"
@@ -131,19 +150,20 @@ export default function SignUp() {
             borderRadius="9.78px"
           />
 
-          {validPWCheck === false ? (<UnderDiv>
-            <VaildP>비밀번호가 일치하지 않습니다.</VaildP>
-          </UnderDiv>) : null}
+          {validPWCheck === false ? (
+            <UnderDiv>
+              <VaildP>비밀번호가 일치하지 않습니다.</VaildP>
+            </UnderDiv>
+          ) : null}
 
-          <Submit 
-            value="회원가입" 
-            type="submit" 
+          <Submit
+            value="회원가입"
+            type="submit"
             width="410.975px"
             height="53.82px"
-            marginTop="60px"/>
+            marginTop="60px"
+          />
         </Form>
-        
-          
       </WrapperDiv>
     </BodyDiv>
   );
