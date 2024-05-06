@@ -26,6 +26,7 @@ import {
   PreNextpostDiv,
   OnClickTextspan,
   NoLoginChatDiv,
+  NoticeDiv,
 } from '../../styles/Detailpage/DetailPages.styled.jsx';
 
 import Header from '../../components/Header.jsx';
@@ -121,6 +122,11 @@ export default function NoLoginDetailPage() {
 
           {/* 챗봇 영역 - 로그인하지 않았을 때 */}
           <NoLoginChatDiv>
+            <NoticeDiv>
+              <Textspan fontweight="600" textalign="center" marginbottom="0">
+                로그인 후 챗봇을 이용해보세요!
+              </Textspan>
+            </NoticeDiv>
             <AllMessageDiv>
               <MessageDiv>
                 <ChatbotImg src={CircleImage}></ChatbotImg>

@@ -34,8 +34,13 @@ export const NewsDivChat = styled.div`
 // 뉴스레터 영역
 export const NewsDiv = styled.div`
   width: 45%;
-  /* height: auto; */
+  height: auto;
   border-radius: 12px;
+  padding-bottom: 40px;
+
+  /* 스크롤 */
+  max-height: 950px;
+  overflow-y: auto;
 
   /* display: flex; */
   /* justify-content: center;
@@ -49,7 +54,7 @@ export const NewsWrapperDiv = styled.div`
   width: 100%;
   height: ${(props) => props.height || '48px'};
   margin-top: ${(props) => props.margintop || '80px'};
-  margin-bottom: ${(props) => props.marginbottom || '0'};
+
   ${flexCenter()}/* background-color: lightyellow; */
 `;
 
@@ -98,13 +103,14 @@ export const ChatbotDiv = styled.div`
 
 export const AllMessageDiv = styled.div`
   width: 100%;
-  height: auto;
+  /* height: auto; */
 
   display: flex;
   flex-direction: column;
 
   //스크롤
-  max-height: 1000px;
+  max-height: 900px; //뉴스레터 700자&뉴스레터 스크롤
+  /* max-height: 1100px; //뉴스레터 1000자 */
   overflow-y: auto;
 
   /* background-color: olive; */
@@ -293,6 +299,17 @@ export const NoLoginChatDiv = styled.div`
 export const NoticeDiv = styled.div`
   width: 280px;
   height: 138px;
-
   border: solid 0;
+  border-radius: 20px;
+  background-color: #ffffff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4; /* ChatbotDiv의 레이어 위에 위치하도록 z-index 설정 */
 `;

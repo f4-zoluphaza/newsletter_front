@@ -73,17 +73,18 @@ export default function DetailPage() {
             </NewsWrapperDiv>
 
             {/* 뉴스레터 내용 */}
-            <NewsWrapperDiv height="auto" margintop="25px" marginbottom="30px">
+            <NewsWrapperDiv height="auto" margintop="25px">
               <NewsContentDiv>
                 <Textspan fontweight="600">
                   이정후, 메이저리그 첫 홈런으로 주목 받다
                 </Textspan>
-                <Textspan marginbottom="15px">
+                {/* Figma 예 */}
+                {/* <Textspan marginbottom="15px">
                   샌프란시스코 자이언츠의 새내기, 이정후 선수가 시범경기에서
                   대포알 같은 홈런을 쏘아 올리며 메이저리그 데뷔전부터 화려한
                   임팩트를 남겼습니다.
-                </Textspan>
-                <Textspan fontweight="600">
+                </Textspan> */}
+                {/* <Textspan fontweight="600">
                   시범경기 두 번째 출전, 홈런으로 존재감 과시
                 </Textspan>
                 <Textspan marginbottom="15px">
@@ -96,23 +97,46 @@ export default function DetailPage() {
                 <Textspan marginbottom="15px">
                   이 홈런은 발사각 18도, 타구 속도 시속 177km로 측정되어
                   127미터를 ...
-                </Textspan>
-                {/* <Textspan fontweight="600">
-                  이정후, 메이저리그 첫 홈런으로 주목 받다
-                </Textspan>
-                <Textspan>
+                </Textspan> */}
+
+                {/* 700자 예시 */}
+                <Textspan marginbottom="15px">
+                  샌프란시스코 자이언츠의 새내기, 이정후 선수가 시범경기에서
+                  임팩트를 남겼습니다. 샌프란시스코 자이언츠의 새내기, 이정후
+                  선수가 시범경기에서 대포알 같은 홈런을 쏘아 올리며 메이저리그
+                  데뷔전부터 화려한 임팩트를 남겼습니다. 샌프란시스코 자이언츠의
+                  새내기, 이 정후 선수가 시범경기에서 대포알 같은 홈런을 쏘아
+                  올리며 메이저리그 데뷔전부터 화려한 임팩트를 남겼습니다.
+                  <br></br>
                   샌프란시스코 자이언츠의 새내기, 이정후 선수가 시범경기에서
                   대포알 같은 홈런을 쏘아 올리며 메이저리그 데뷔전부터 화려한
                   임팩트를 남겼습니다. 샌프란시스코 자이언츠의 새내기, 이정후
                   선수가 시범경기에서 대포알 같은 홈런을 쏘아 올리며 메이저리그
                   데뷔전부터 화려한 임팩트를 남겼습니다. 샌프란시스코 자이언츠의
-                  새내기, 이정후 선수가 시범경기에서 대포알 같은 홈런을 쏘아
-                  올리며 메이저리그 데뷔전부터 화려한 임팩트를 남겼습니다.
+                  새내기, 이정후 선수가 시범경기에서 임팩트를 남겼습니다.
+                  <br></br>
                   샌프란시스코 자이언츠의 새내기, 이정후 선수가 시범경기에서
                   대포알 같은 홈런을 쏘아 올리며 메이저리그 데뷔전부터 화려한
+                  임팩트를 남겼습니다. 샌프란시스코 자이언츠의 새내기, 이 정후
+                  선수가 시범경기에서 대포알 같은 홈런을 쏘아 올리며 메이저리그
+                  데뷔전부터 화려한 임팩트를 남겼습니다. 샌프란시스코 자이언츠의
+                  새내기, 이정후 선수가 시범경기에서 대포알 같은 홈런을 쏘아
+                  올리며 메이저리그 데뷔전부터 화려한 임팩트를 남겼습니다.
+                  <br></br>
+                  샌프란시스코 자이언츠의 새내기, 이정후 선수가 시범경기에서
+                  대포알 같은 홈런을 쏘아 올리며 메이저리
+                </Textspan>
+                {/* 1000자 예시 */}
+                {/* <Textspan>
+                  샌프란시스코 자이언츠의 새내기, 이정후 선수가 시범경기에서
                   임팩트를 남겼습니다. 샌프란시스코 자이언츠의 새내기, 이정후
                   선수가 시범경기에서 대포알 같은 홈런을 쏘아 올리며 메이저리그
-                  데뷔전부터 화려한 임팩트를 남겼습니다.
+                  데뷔전부터 화려한 임팩트를 남겼습니다. 샌프란시스코 자이언츠의
+                  새내기, 이정후 선수가 시범경기에서 임팩트를 남겼습니다.
+                  샌프란시스코 자이언츠의 새내기, 이정후 선수가 시범경기에서
+                  대포알 같은 홈런을 쏘아 올리며 메이저리그 데뷔전부터 화려한
+                  임팩트를 남겼습니다. 이정후 선수가 시범경기에서 임팩트를
+                  남겼습니다. 이정후 선수가 시범경기에서 임팩트를 남겼습니다
                 </Textspan> */}
               </NewsContentDiv>
             </NewsWrapperDiv>
@@ -182,7 +206,7 @@ export default function DetailPage() {
               </MessageDiv>
 
               {/* 스크롤 예 */}
-              {/* <MessageDiv>
+              <MessageDiv>
                 <ChatbotImg src={CircleImage}></ChatbotImg>
                 <SendspeechbubbleDiv height="33px">
                   <Textspan fontsize="15px" marginbottom="0">
@@ -221,7 +245,7 @@ export default function DetailPage() {
                     동안만 유지됩니다.
                   </Textspan>
                 </BotspeechbubbleDiv>
-              </MessageDiv> */}
+              </MessageDiv>
             </AllMessageDiv>
 
             {/* 채팅 영역 */}
