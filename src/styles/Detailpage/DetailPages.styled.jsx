@@ -88,13 +88,12 @@ export const NewsContentDiv = styled.div`
 export const ChatbotDiv = styled.div`
   width: 45%;
   height: auto;
-  border-radius: 12px;
 
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 
-  /* background-color: lightcoral; */
+  /* background-color: khaki; */
 `;
 
 export const AllMessageDiv = styled.div`
@@ -109,6 +108,8 @@ export const AllMessageDiv = styled.div`
   overflow-y: auto;
 
   /* background-color: olive; */
+
+  z-index: 2;
 `;
 
 export const MessageDiv = styled.div`
@@ -161,6 +162,8 @@ export const AllChattingDiv = styled.div`
   margin-top: 30px;
 
   /* background-color: antiquewhite; */
+
+  z-index: 2;
 `;
 
 export const ChattingDiv = styled.div`
@@ -261,4 +264,35 @@ export const OnClickTextspan = styled.span`
   font-weight: 500;
 
   cursor: pointer;
+`;
+
+// 로그인 전 챗봇
+export const NoLoginChatDiv = styled.div`
+  width: 45%;
+  height: auto;
+  position: relative; /* 부모 요소로부터의 상대적 위치 설정 */
+
+  /* 원하는 배경 스타일을 가진 불투명한 레이어 */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #4f4f4f;
+    opacity: 0.5;
+    z-index: 3; /* 자식 요소 위에 위치하도록 z-index 설정 */
+  }
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+`;
+
+export const NoticeDiv = styled.div`
+  width: 280px;
+  height: 138px;
+
+  border: solid 0;
 `;

@@ -10,6 +10,7 @@ import MainPage from './pages/MainPage';
 
 //detailPage
 import DetailPage from './pages/detailPage/DetailPages';
+import NoLoginDetailPages from './pages/detailPage/NoLoginDetailPages';
 
 // mypage_s
 import Attendance from './pages/myPage/Attendance';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/mainPage" element={<MainPage />} />
           <Route path="/detailPage" element={<DetailPage />} />
+          <Route path="/NologindetailPage" element={<NoLoginDetailPages />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Mypage" element={<Attendance />} />
           <Route path="/Mypage/Unsubscribe" element={<Unsubscribe />} />
