@@ -17,6 +17,9 @@ import Attendance from './pages/myPage/Attendance';
 import Unregister from './components/mypage/Unregister';
 import Unsubscribe from './pages/myPage/Unsubscribe';
 
+// mypage_j
+import Scrap from './pages/myPage/Scrap';
+
 function App() {
   return (
     <div>
@@ -29,6 +32,7 @@ function App() {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Mypage" element={<Attendance />} />
           <Route path="/Mypage/Unsubscribe" element={<Unsubscribe />} />
+          <Route path="/Mypage/Scrap" element={<Scrap />} />
         </Routes>
       </BrowserRouter>
     </div>
