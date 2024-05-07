@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const flexCenter = () => `
   display: flex;
@@ -14,31 +14,28 @@ export const BodyDiv = styled.div`
 
 export const WrapperDiv = styled.div`
   width: 510px;
-  height: ${(props) => props.height || "100vh"};
+  height: ${(props) => props.height || '100vh'};
   /* background-color: #fff8ec; */
   ${flexCenter()}
   flex-direction: column;
   justify-content: ${(props) => props.justifyContent};
-
 `;
 
 export const LogoImg = styled.img`
   width: 256px;
   height: 200px;
 
-  margin-bottom: ${(props) => props.marginBottom || "35px"};
-
+  margin-bottom: ${(props) => props.marginBottom || '35px'};
 `;
 
 export const Form = styled.form`
-  width: 510px;
+  width: 550px;
   height: auto;
   /* background-color: aqua; */
   ${flexCenter()}
   flex-direction: column;
   align-items: ${(props) => props.alignItems};
   position: relative; //eyesImg 때문에 설정
-
 `;
 
 export const Input = styled.input`
@@ -72,7 +69,7 @@ export const Submit = styled.input`
   margin-top: ${(props) => props.marginTop};
 
   cursor: pointer;
-`
+`;
 
 // Login---------------------------------------------------------------------------------------------------------------
 
@@ -84,7 +81,7 @@ export const EyesImg = styled.img`
   right: 20px;
 
   cursor: pointer;
-`
+`;
 
 export const LoginStateDiv = styled.div`
   width: 200px;
@@ -95,20 +92,20 @@ export const LoginStateDiv = styled.div`
 
   /* margin-top: 10px;
   margin-bottom: 30px; */
-`
+`;
 
 export const CheckImg = styled.img`
   width: 16px;
   height: 16px;
 
   cursor: pointer;
-`
+`;
 export const LoginStateP = styled.p`
   font-size: 16px;
   color: #767676;
   margin: 0 0 0 5px;
   padding: 0;
-`
+`;
 
 export const PWSearchSignUpDiv = styled.div`
   width: 250px;
@@ -118,14 +115,14 @@ export const PWSearchSignUpDiv = styled.div`
   justify-content: space-around;
 
   margin-top: 30px;
-`
+`;
 
 export const PWSearchSignUpP = styled.p`
   font-size: 16px;
   color: #767676;
 
   cursor: pointer;
-`
+`;
 
 export const SocialLoginDiv = styled.div`
   width: 180px;
@@ -135,14 +132,14 @@ export const SocialLoginDiv = styled.div`
   justify-content: space-between;
 
   margin-top: 50px;
-`
+`;
 
 export const SocialLoginImg = styled.img`
   width: 80px;
   height: 80px;
 
   cursor: pointer;
-`
+`;
 
 export const Links = styled(Link)`
   text-decoration: none;
@@ -156,31 +153,30 @@ export const Button = styled.button`
   height: 35px;
 
   border-radius: 20px;
-  border: solid 2px #C0C0C0;
-  
+  border: solid 2px #c0c0c0;
+
   background-color: #ffffff;
-  color: #C0C0C0;
+  color: #c0c0c0;
   font-size: 13.7px;
   font-weight: 600;
 
   margin: 7px 0 7px 7px;
 
   cursor: pointer;
-`
+`;
 
 export const UnderDiv = styled.div`
   width: 410.975px;
   /* background-color: #eea5a5; */
 
   ${flexCenter()}
-  justify-content: ${(props) => props.justifyContent || "start"};
+  justify-content: ${(props) => props.justifyContent || 'start'};
   align-items: start;
-`
-
+`;
 
 export const VaildP = styled.p`
   font-size: 16px;
-  color: #E74F4F; 
+  color: #e74f4f;
 
   margin: 0;
-`
+`;

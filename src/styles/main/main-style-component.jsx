@@ -46,6 +46,7 @@ export const WrapperDiv = styled.div`
 export const LoginLinkSignupP = styled.p`
   color: black;
   font-size: 22px;
+  font-weight: 500;
   margin: 3px;
 
   cursor: pointer;

@@ -17,7 +17,8 @@ export const BodyDiv = styled.div`
 export const TitleDiv = styled.div`
   width: 100%;
   height: 80px;
-  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 30px;
 
   display: flex;
   justify-content: center;
