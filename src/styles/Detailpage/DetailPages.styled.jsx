@@ -42,10 +42,12 @@ export const NewsDiv = styled.div`
   max-height: 950px;
   overflow-y: auto;
 
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center;
-  flex-direction: column; */
+  // 스크롤바 보이지 않도록 설정
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+  scrollbar-width: none; //Firefox에서의 스크롤바 숨김
+  -ms-overflow-style: none; //IE 및 Edge에서의 스크롤바 숨김
 
   background-color: #cddfab; //고정
 `;
@@ -106,6 +108,7 @@ export const AllMessageDiv = styled.div`
   /* height: auto; */
 
   display: flex;
+  align-items: center;
   flex-direction: column;
 
   //스크롤
@@ -113,13 +116,16 @@ export const AllMessageDiv = styled.div`
   /* max-height: 1100px; //뉴스레터 1000자 */
   overflow-y: auto;
 
+  scrollbar-color: #588539 transparent; // 스크롤바 색
+  /* scrollbar-width: thin; //스크롤바 두께 */
+
   /* background-color: olive; */
 
   z-index: 2;
 `;
 
 export const MessageDiv = styled.div`
-  width: 100%;
+  width: 96%;
   height: ${(props) => props.height || '46px'};
   margin-top: ${(props) => props.margintop || '25px'};
 
