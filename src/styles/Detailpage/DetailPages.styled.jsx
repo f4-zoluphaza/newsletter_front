@@ -34,12 +34,13 @@ export const NewsDivChat = styled.div`
 // 뉴스레터 영역
 export const NewsDiv = styled.div`
   width: 45%;
-  height: auto;
+  height: 850px;
   border-radius: 12px;
   padding-bottom: 40px;
 
   /* 스크롤 */
-  max-height: 950px;
+  /* max-height: 950px; */
+  max-height: 780px;
   overflow-y: auto;
 
   // 스크롤바 보이지 않도록 설정
@@ -94,7 +95,7 @@ export const NewsContentDiv = styled.div`
 // 챗봇 영역
 export const ChatbotDiv = styled.div`
   width: 45%;
-  height: auto;
+  height: 820px;
 
   display: flex;
   justify-content: space-between;
@@ -112,7 +113,8 @@ export const AllMessageDiv = styled.div`
   flex-direction: column;
 
   //스크롤
-  max-height: 900px; //뉴스레터 700자&뉴스레터 스크롤
+  max-height: 720px; //디자인 기준
+  /* max-height: 900px; //뉴스레터 700자&뉴스레터 스크롤 */
   /* max-height: 1100px; //뉴스레터 1000자 */
   overflow-y: auto;
 
@@ -151,11 +153,11 @@ export const ChatbotImg = styled.img`
 `;
 
 export const SendspeechbubbleDiv = styled.div`
-  width: 50%;
+  width: auto;
   height: ${(props) => props.height || 'auto'};
   border: solid 0;
   border-radius: 13px;
-  padding-left: 10px;
+  padding: 3px 20px 3px 20px;
 
   display: flex;
   align-items: center;
@@ -164,12 +166,12 @@ export const SendspeechbubbleDiv = styled.div`
 `;
 
 export const BotspeechbubbleDiv = styled.div`
-  width: 380px;
+  width: 375px;
   /* height: ${(props) => props.height || 'auto'}; */
   height: auto;
   border: solid 0;
   border-radius: 16px;
-  padding: 10px 10px;
+  padding: 17px 20px 17px 20px;
 
   background-color: #cddfab;
 `;
@@ -177,7 +179,7 @@ export const BotspeechbubbleDiv = styled.div`
 export const AllChattingDiv = styled.div`
   width: 100%;
   height: 45px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 
   /* background-color: antiquewhite; */
 
