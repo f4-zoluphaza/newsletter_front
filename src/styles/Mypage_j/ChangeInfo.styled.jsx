@@ -25,39 +25,14 @@ export const BodyDiv = styled.div`
 `;
 
 export const WrapperDiv = styled.div`
-  width: 515px;
-  height: ${(props) => props.height || '100vh'};
-  background-color: lightgray;
+  width: 590px;
+  /* height: ${(props) => props.height || '100vh'}; */
+  height: auto;
+  /* background-color: lightgray; */
 
   display: flex;
   justify-content: space-between;
-  /* flex-direction: column; */
-`;
-
-export const LeftDiv = styled.div`
-  width: 100px;
-  height: auto;
-  /* background-color: gold; */
-  ${flexCenter()}
   flex-direction: column;
-  justify-content: ${(props) => props.justifyContent};
-`;
-
-export const RightDiv = styled.div`
-  width: 412px;
-  height: auto;
-  /* background-color: darkviolet; */
-  ${flexCenter()}
-  flex-direction: column;
-  justify-content: ${(props) => props.justifyContent};
-`;
-
-export const TitleDiv = styled.div`
-  width: 100%;
-  height: 47px;
-  margin-bottom: 20px;
-
-  /* background-color: pink; */
 `;
 
 export const TextDivForm = styled.div`
@@ -66,21 +41,64 @@ export const TextDivForm = styled.div`
   margin-top: 20px;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   /* background-color: lightseagreen; */
 `;
 
+export const LeftDiv = styled.div`
+  width: 130px;
+  height: auto;
+  padding-right: 5px;
+  margin-right: 40px;
+  /* background-color: gold; */
+
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+`;
+
+export const RightDiv = styled.div`
+  width: 100%;
+  height: auto;
+  /* background-color: darkviolet; */
+  ${flexCenter()}
+  flex-direction: column;
+  justify-content: ${(props) => props.justifyContent};
+`;
+
+export const TitleDiv = styled.div`
+  width: 68%;
+  height: 40px;
+  margin-bottom: 30px;
+
+  align-self: end;
+
+  /* background-color: pink; */
+`;
+
+export const TextDiv = styled.div`
+  width: 120px;
+  height: 53.82px;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  /* background-color: darkgray; */
+`;
+
 export const TextSpan = styled.span`
-  font-size: ${(props) => props.fontsize || '15px'};
+  font-size: ${(props) => props.fontsize || '18px'};
   font-weight: ${(props) => props.fontweight || '500'};
-  display: inline-block;
   color: ${(props) => props.color || '#767676'};
+
+  margin-top: ${(props) => props.margintop};
 `;
 
 export const Form = styled.form`
-  width: 412px;
+  width: 100%;
   height: auto;
   /* background-color: aqua; */
   ${flexCenter()}
@@ -92,7 +110,6 @@ export const Input = styled.input`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   border-radius: ${(props) => props.borderRadius};
-  /* border-radius: 12px; */
   border: solid 2px #c0c0c0;
   margin: 10px 0 10px 0;
 
@@ -123,11 +140,12 @@ export const Button = styled.button`
 `;
 
 export const UnderDiv = styled.div`
-  width: 100%;
+  width: 70%;
   height: 40px;
-  margin-top: 10px;
+  margin-top: ${(props) => props.margintop};
   /* background-color: #eea5a5; */
 
+  align-self: end;
   ${flexCenter()}
   justify-content: ${(props) => props.justifyContent || 'start'};
   align-items: center;
@@ -135,7 +153,7 @@ export const UnderDiv = styled.div`
 
 export const VaildP = styled.p`
   font-size: 16px;
-  color: #e74f4f;
+  color: ${(props) => props.color || '#e74f4f'};
 
   margin: 0;
 `;

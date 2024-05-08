@@ -3,12 +3,13 @@ import {
   Div,
   BodyDiv,
   WrapperDiv,
+  TextDivForm,
   LeftDiv,
   RightDiv,
   Form,
   Input,
   TitleDiv,
-  TextDivForm,
+  TextDiv,
   TextSpan,
   Button,
   UnderDiv,
@@ -70,16 +71,24 @@ export default function ChangeInfo() {
         <Header></Header>
 
         <WrapperDiv justifyContent="center">
-          <LeftDiv></LeftDiv>
+          {/* <LeftDiv>
+            <TextSpan margintop="110px">닉네임</TextSpan>
+            <TextSpan margintop="50px">이메일</TextSpan>
+            <TextSpan margintop="107px">인증 번호</TextSpan>
+            <TextSpan margintop="105px">비밀번호</TextSpan>
+            <TextSpan margintop="50px">비밀번호 확인</TextSpan>
+          </LeftDiv> */}
+          <TitleDiv>
+            <TextSpan fontsize="25px" fontweight="700" color="#000000">
+              정보 수정
+            </TextSpan>
+          </TitleDiv>
           <RightDiv>
-            <TitleDiv>
-              <TextSpan fontsize="25px" fontweight="700" color="#000000">
-                정보 수정
-              </TextSpan>
-            </TitleDiv>
             <Form>
               <TextDivForm>
-                {/* <TextSpan>닉네임</TextSpan> */}
+                <TextDiv>
+                  <TextSpan>닉네임</TextSpan>
+                </TextDiv>
                 <Input
                   id="nickName"
                   type="text"
@@ -91,7 +100,9 @@ export default function ChangeInfo() {
               </TextDivForm>
 
               <TextDivForm>
-                {/* <TextSpan>이메일</TextSpan> */}
+                <TextDiv>
+                  <TextSpan>이메일</TextSpan>
+                </TextDiv>
                 <Input
                   id="email"
                   type="email"
@@ -101,14 +112,18 @@ export default function ChangeInfo() {
                   borderRadius="9.78px"
                 />
               </TextDivForm>
-              <UnderDiv justifyContent="end">
-                <Button>중복 확인</Button>
+
+              <UnderDiv margintop="5px" justifyContent="end">
+                {/* <Button>중복 확인</Button> */}
                 <Button backgroundcolor="#588539" color="#FFFFFF">
                   인증 요청
                 </Button>
               </UnderDiv>
+
               <TextDivForm>
-                {/* <TextSpan>인증 번호</TextSpan> */}
+                <TextDiv>
+                  <TextSpan>인증 번호</TextSpan>
+                </TextDiv>
                 <Input
                   id="emailCheck"
                   type="number"
@@ -119,15 +134,18 @@ export default function ChangeInfo() {
                 />
               </TextDivForm>
 
-              <UnderDiv justifyContent="end">
-                {/* <VaildP>인증번호가 올바르지 않습니다.</VaildP> */}
+              <UnderDiv margintop="5px" justifyContent="space-between">
+                <VaildP>인증번호가 올바르지 않습니다.</VaildP>
+                {/* <VaildP color="#588539">인증되었습니다.</VaildP> */}
                 <Button backgroundcolor="#588539" color="#FFFFFF">
                   인증 확인
                 </Button>
               </UnderDiv>
 
               <TextDivForm>
-                {/* <TextSpan>비밀번호</TextSpan> */}
+                <TextDiv>
+                  <TextSpan>비밀번호</TextSpan>
+                </TextDiv>
                 <Input
                   id="password"
                   type="password"
@@ -140,17 +158,25 @@ export default function ChangeInfo() {
               </TextDivForm>
 
               <TextDivForm>
-                {/* <TextSpan>비밀번호 확인</TextSpan> */}
+                <TextDiv>
+                  <TextSpan>비밀번호 확인</TextSpan>
+                </TextDiv>
                 <Input
-                  id="password"
+                  id="passwordCheck"
                   type="password"
-                  onChange={handlePW}
+                  onChange={hadlePWCheck}
                   placeholder="비밀번호 확인"
                   width="410.975px"
                   height="53.82px"
                   borderRadius="9.78px"
                 />
               </TextDivForm>
+
+              {validPWCheck === false ? (
+                <UnderDiv>
+                  <VaildP>비밀번호가 일치하지 않습니다.</VaildP>
+                </UnderDiv>
+              ) : null}
 
               <SubmitButton
                 value="수정"
