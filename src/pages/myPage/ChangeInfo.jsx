@@ -4,7 +4,6 @@ import {
   BodyDiv,
   WrapperDiv,
   TextDivForm,
-  LeftDiv,
   RightDiv,
   Form,
   Input,
@@ -70,16 +69,9 @@ export default function ChangeInfo() {
         {/* 네비게이션바 */}
         <Header></Header>
 
-        <WrapperDiv justifyContent="center">
-          {/* <LeftDiv>
-            <TextSpan margintop="110px">닉네임</TextSpan>
-            <TextSpan margintop="50px">이메일</TextSpan>
-            <TextSpan margintop="107px">인증 번호</TextSpan>
-            <TextSpan margintop="105px">비밀번호</TextSpan>
-            <TextSpan margintop="50px">비밀번호 확인</TextSpan>
-          </LeftDiv> */}
+        <WrapperDiv>
           <TitleDiv>
-            <TextSpan fontsize="25px" fontweight="700" color="#000000">
+            <TextSpan fontsize="25px" fontweight="600" color="#000000">
               정보 수정
             </TextSpan>
           </TitleDiv>
@@ -120,7 +112,7 @@ export default function ChangeInfo() {
                 </Button>
               </UnderDiv>
 
-              <TextDivForm>
+              <TextDivForm margintop="10px">
                 <TextDiv>
                   <TextSpan>인증 번호</TextSpan>
                 </TextDiv>
@@ -142,7 +134,7 @@ export default function ChangeInfo() {
                 </Button>
               </UnderDiv>
 
-              <TextDivForm>
+              <TextDivForm margintop="10px">
                 <TextDiv>
                   <TextSpan>비밀번호</TextSpan>
                 </TextDiv>
@@ -178,13 +170,14 @@ export default function ChangeInfo() {
                 </UnderDiv>
               ) : null}
 
-              <SubmitButton
-                value="수정"
-                type="submit"
-                width="410.975px"
-                height="53.82px"
-                marginTop="60px"
-              />
+              <TextDivForm margintop="60px" justifycontent="end">
+                <SubmitButton
+                  value="수정"
+                  type="submit"
+                  width="410.975px"
+                  height="53.82px"
+                />
+              </TextDivForm>
             </Form>
           </RightDiv>
         </WrapperDiv>

@@ -25,7 +25,7 @@ export const BodyDiv = styled.div`
 `;
 
 export const WrapperDiv = styled.div`
-  width: 590px;
+  width: 560px;
   /* height: ${(props) => props.height || '100vh'}; */
   height: auto;
   /* background-color: lightgray; */
@@ -38,25 +38,13 @@ export const WrapperDiv = styled.div`
 export const TextDivForm = styled.div`
   width: 100%;
   height: 60px;
-  margin-top: 20px;
+  margin-top: ${(props) => props.margintop || '20px'};
 
   display: flex;
-  justify-content: space-between;
+  justify-content: ${(props) => props.justifycontent || 'space-between'};
   align-items: center;
 
   /* background-color: lightseagreen; */
-`;
-
-export const LeftDiv = styled.div`
-  width: 130px;
-  height: auto;
-  padding-right: 5px;
-  margin-right: 40px;
-  /* background-color: gold; */
-
-  display: flex;
-  align-items: end;
-  flex-direction: column;
 `;
 
 export const RightDiv = styled.div`
@@ -69,12 +57,12 @@ export const RightDiv = styled.div`
 `;
 
 export const TitleDiv = styled.div`
-  width: 68%;
+  width: 73%;
   height: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   align-self: end;
-
+  /* ${flexCenter()} */
   /* background-color: pink; */
 `;
 
@@ -100,7 +88,7 @@ export const TextSpan = styled.span`
 export const Form = styled.form`
   width: 100%;
   height: auto;
-  /* background-color: aqua; */
+  /* background-color: lightblue; */
   ${flexCenter()}
   flex-direction: column;
   align-items: ${(props) => props.alignItems};
@@ -140,7 +128,7 @@ export const Button = styled.button`
 `;
 
 export const UnderDiv = styled.div`
-  width: 70%;
+  width: 73%;
   height: 40px;
   margin-top: ${(props) => props.margintop};
   /* background-color: #eea5a5; */
@@ -168,10 +156,11 @@ export const SubmitButton = styled.input`
 
   ${flexCenter()}
   color: #FFFFFF;
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 600;
 
   margin-top: ${(props) => props.marginTop};
+  /* margin-right: 30px; */
 
   cursor: pointer;
 `;
