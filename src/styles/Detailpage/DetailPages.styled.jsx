@@ -116,9 +116,15 @@ export const AllMessageDiv = styled.div`
   /* max-height: 1100px; //뉴스레터 1000자 */
   overflow-y: auto;
 
-  scrollbar-color: #588539 transparent; // 스크롤바 색
-  /* scrollbar-width: thin; //스크롤바 두께 */
+  // 스크롤바 보이지 않도록 설정
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+  scrollbar-width: none; //Firefox에서의 스크롤바 숨김
+  -ms-overflow-style: none; //IE 및 Edge에서의 스크롤바 숨김
 
+  /* scrollbar-color: #588539 transparent; // 스크롤바 색 */
+  /* scrollbar-width: thin; //스크롤바 두께 */
   /* background-color: olive; */
 
   z-index: 2;
