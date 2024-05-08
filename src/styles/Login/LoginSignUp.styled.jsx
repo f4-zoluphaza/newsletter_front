@@ -29,7 +29,7 @@ export const LogoImg = styled.img`
 `;
 
 export const Form = styled.form`
-  width: 550px;
+  width: 510px;
   height: auto;
   /* background-color: aqua; */
   ${flexCenter()}
