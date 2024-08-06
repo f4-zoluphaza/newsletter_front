@@ -15,11 +15,11 @@ export default function Header() {
     <NavDiv>
       <LogoImg src={Logo} />
       <WrapperDiv>
-        <Links>
+        <Links to="/Login">
           <LoginLinkSignupP>Login</LoginLinkSignupP>
         </Links>
         <LoginLinkSignupP> | </LoginLinkSignupP>
-        <Links>
+        <Links to="/Signup">
           <LoginLinkSignupP>Join</LoginLinkSignupP>
         </Links>
       </WrapperDiv>

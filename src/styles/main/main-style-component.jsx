@@ -7,7 +7,7 @@ const flexCenter = () => `
 `;
 
 export const Div = styled.div`
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
 
   display: flex;
@@ -46,6 +46,7 @@ export const WrapperDiv = styled.div`
 export const LoginLinkSignupP = styled.p`
   color: black;
   font-size: 22px;
+  font-weight: 500;
   margin: 3px;
 
   cursor: pointer;
