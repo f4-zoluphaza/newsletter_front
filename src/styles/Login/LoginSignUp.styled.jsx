@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const flexCenter = () => `
   display: flex;
@@ -14,7 +14,7 @@ export const BodyDiv = styled.div`
 
 export const WrapperDiv = styled.div`
   width: 510px;
-  height: ${(props) => props.height || "100vh"};
+  height: ${(props) => props.height || '100vh'};
   /* background-color: #fff8ec; */
   ${flexCenter()}
   flex-direction: column;
@@ -25,7 +25,11 @@ export const LogoImg = styled.img`
   width: 256px;
   height: 200px;
 
+<<<<<<< HEAD
   margin-bottom: ${(props) => props.marginBottom || "35px"};
+=======
+  margin-bottom: ${(props) => props.marginBottom || '35px'};
+>>>>>>> develop
 `;
 
 export const Form = styled.form`
@@ -153,10 +157,17 @@ export const Button = styled.button`
   height: 35px;
 
   border-radius: 20px;
+<<<<<<< HEAD
   border: solid 2px;
   border-color: ${(props) => props.borderColor || "C0C0C0"};
   background-color: ${(props) => props.backgroundColor || "#ffffff"};
   color: ${(props) => props.color || "#C0C0C0"};
+=======
+  border: solid 2px #c0c0c0;
+
+  background-color: #ffffff;
+  color: #c0c0c0;
+>>>>>>> develop
   font-size: 13.7px;
   font-weight: 600;
 
@@ -170,7 +181,7 @@ export const UnderDiv = styled.div`
   /* background-color: #eea5a5; */
 
   ${flexCenter()}
-  justify-content: ${(props) => props.justifyContent || "start"};
+  justify-content: ${(props) => props.justifyContent || 'start'};
   align-items: start;
 `;
 

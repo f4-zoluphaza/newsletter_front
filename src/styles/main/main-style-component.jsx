@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const flexCenter = () => `
   display: flex;
@@ -7,7 +7,7 @@ const flexCenter = () => `
 `;
 
 export const Div = styled.div`
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
 
   display: flex;
@@ -46,6 +46,7 @@ export const WrapperDiv = styled.div`
 export const LoginLinkSignupP = styled.p`
   color: black;
   font-size: 22px;
+  font-weight: 500;
   margin: 3px;
 
   cursor: pointer;
@@ -58,15 +59,17 @@ export const Links = styled(Link)`
 
 export const HeaderDiv = styled.div`
   width: 100%;
-  height: 211px;
-  ${flexCenter()}/* background-color: lightcyan; */
+  height: 200px;
+  margin-top: 20px;
+  /* background-color: lightcyan; */
+  ${flexCenter()}
 `;
 
 export const ExplainDiv = styled.div`
   width: 40%;
   height: 107px;
   color: black;
-  margin-right: 5%;
+  margin-right: 4%;
   margin-top: 60px;
   text-align: right;
 
@@ -81,7 +84,11 @@ export const TitleSpan = styled.span`
 
 export const TextSpan = styled.span`
   display: block;
-  font-size: 20px;
+  font-size: ${(props) => props.fontsize || "20px"};
+  font-weight: ${(props) => props.fontweight || "500"};
+  text-align: ${(props) => props.textalign || "left"};
+
+  margin-left: ${(props) => props.marginleft || "0"};
 `;
 
 export const SubscribeDiv = styled.div`
@@ -91,9 +98,9 @@ export const SubscribeDiv = styled.div`
 `;
 
 export const Form = styled.form`
-  width:90%;
+  width: 90%;
   height: 170px;
-  margin-bottom: 10px;
+  /* margin-bottom: 3px; */
   ${flexCenter()}
   flex-direction: column;
   align-items: start;
@@ -102,116 +109,120 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   width: 100%;
+  height: 47px;
+  margin-bottom: 9px;
   display: flex;
+  align-items: center;
   /* background-color: blue; */
 `;
 
-export const SmallTextSpan = styled.span`
-  font-size: 15px;
-  font-weight: bolder;
-`;
-
 export const SubscribeInput = styled.input`
-  width: 100%;
+  width: 80%;
   height: 45px;
   border-radius: 12px;
   border: solid 2px #588539;
-  margin-left: 5px;
-  margin-bottom: 10px;
+  margin-left: 12px;
+  /* margin-bottom: 10px; */
   box-sizing: border-box;
 
-  padding-left: 10px;
+  padding-left: 15px;
 
   font-size: 15px;
 `;
 
 export const ButtonDiv = styled.div`
-  width: 100%;
+  width: 95%;
   height: 45px;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly; //디자인1번
+  /* justify-content: right; //디자인2번 */
 
-  /* background-color: blue; */
+  /* background-color: yellow; */
 `;
 
 export const Button = styled.input`
-  width: 220px;
+  width: 227px;
   height: 45px;
   border-radius: 12px;
   border: solid 0px;
   background-color: #588539;
   box-sizing: border-box;
 
-  margin-left: 20px;
-  /* margin-right: 20px; */
+  margin-left: 3px; //디자인1번
+  /* margin-left: 12px; //디자인2번 */
+  /* margin-right: 3px; //디자인2번 */
 
   color: #000000;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
+  text-align: center;
 
   cursor: pointer;
 `;
 
+export const SmallTextSpan = styled.span`
+  font-size: 17px;
+  font-weight: 500;
+
+  padding-left: ${(props) => props.paddingleft || "7px"};
+`;
+
 export const PersonalInformationSpan = styled.span`
   text-decoration: underline;
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0;
 `;
 
 // 검색 창
 export const SearchDiv = styled.div`
   width: 100%;
-  height: 60px;
-  margin-top: 30px;
-  ${flexCenter()}/* background-color: lightcoral; */
+  height: 55px;
+  margin-top: 40px;
+  margin-bottom: 42px;
+  /* background-color: lightcoral; */
+  ${flexCenter()}
 `;
 
 export const SearchBorderDiv = styled.div`
-  width: 600px;
+  width: ${(props) => props.width || "600px"};
   height: 50px;
-  /* margin-left: 190px;
-  margin-right: 180px; */
   border: solid 3px #588539;
   border-radius: 35px;
+  background-color: beige;
   ${flexCenter()}
 `;
 
 export const SearchInput = styled.input`
-  width: 500px;
+  width: ${(props) => props.width || "500px"};
   height: 45px;
   border: none;
   margin-top: 1.5px;
   margin-left: 30px;
   outline: none;
 
-  font-size: 18px;
+  font-size: 20px;
 `;
 
 export const SearchImg = styled.img`
   width: 42px;
   height: 43px;
-  /* border-radius: 12px;
-  border: solid 0px; */
-  /* box-sizing: border-box; */
 
   margin-top: 3px;
   margin-left: 20px;
   margin-right: 15px;
 
-  background-image: url('../images/MainPage/Search.svg');
-
-  /* color: #000000;
-  font-size: 16px;
-  font-weight: 600; */
+  background-image: url("../images/MainPage/Search.svg");
 
   cursor: pointer;
 `;
 
+// 정렬
 export const RangeDiv = styled.div`
   width: 100%;
   height: 45px;
-  margin-top: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 
   display: flex;
   justify-content: center;
@@ -220,7 +231,8 @@ export const RangeDiv = styled.div`
 `;
 
 export const RangeCenterDiv = styled.div`
-  width: 80%;
+  /* width: 80%; //컴퓨터 */
+  width: 93%; //노트북
   height: 45px;
 
   display: flex;
@@ -230,7 +242,7 @@ export const RangeCenterDiv = styled.div`
 `;
 
 export const RangeWapperDiv = styled.div`
-  width: 400px;
+  width: 397px;
   height: 45px;
   border: solid 0px;
   box-sizing: border-box;
@@ -248,7 +260,7 @@ export const RangeButton = styled.input`
   border: solid 0px;
   box-sizing: border-box;
 
-  background-color: ${(props) => props.backgroundcolor || "#000000" };
+  background-color: ${(props) => props.backgroundcolor || "#000000"};
 
   cursor: pointer;
 `;
@@ -267,7 +279,8 @@ export const PostAllDiv = styled.div`
 `;
 
 export const PostDiv = styled.div`
-  width: 85%;
+  /* width: 85%; //컴퓨터 */
+  width: 97%;
   height: 353px;
 
   display: flex;
@@ -287,11 +300,11 @@ export const PostWapperDiv = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: #CDDFAB;
+  background-color: #cddfab;
 `;
 
 export const NewsImg = styled.img`
-  width: 270px;
+  width: 90%;
   height: 170px;
   border: solid 0;
   border-radius: 5px;
@@ -302,7 +315,7 @@ export const NewsTitleDiv = styled.div`
   height: 60px;
   margin-top: 5px;
   /* padding-left: 5px; */
-  
+
   font-size: 20px;
   font-weight: 900;
 
@@ -311,11 +324,12 @@ export const NewsTitleDiv = styled.div`
 
 export const Line = styled.hr`
   width: 250px;
-  border-top: 1px; 
-  height: 0;
+  border-top: 0.5px;
+  /* height: 0; */
+  border-style: solid;
 
   align-self: center;
-  border-color: gray;
+  /* border-color: gray; */
 `;
 
 export const NewsDateDiv = styled.div`
@@ -339,16 +353,61 @@ export const HeartSaveDiv = styled.div`
   justify-content: end;
   align-items: center;
 
-
   /* background-color: white; */
 `;
 
-export const HeartImgScript = styled.img`
+export const HeartImgScrap = styled.img`
   width: 30px;
   height: 30px;
 `;
 
-export const HeartCountScript = styled.span`
+export const HeartCountScrap = styled.span`
   font-size: 28px;
   /* background-color: red; */
+`;
+
+// 포스터 페이지 순서
+export const PostNumberDiv = styled.div`
+  width: 100%;
+  height: 85px;
+
+  display: flex;
+  justify-content: ${(props) => props.justifycontent || "center"};
+  /* align-items: center; //간격 조정 시*/
+
+  /* background-color: lightgreen; */
+`;
+
+export const BoldLine = styled.hr`
+  width: 90%;
+  border-top: 7px;
+  border-style: solid;
+  height: 0;
+
+  align-self: center;
+  border-color: #588539;
+`;
+
+// Footer
+export const FooterDiv = styled.div`
+  width: 100%;
+  height: 90px;
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: space-around;
+
+  /* background-color: blue; */
+`;
+
+export const MakerDivContact = styled.div`
+  width: 22%;
+  height: 80px;
+  margin-top: 10px;
+
+  display: ${(props) => props.display || "block"};
+  justify-content: ${(props) => props.justifycontent || "center"};
+  align-items: center;
+
+  /* background-color: pink; */
 `;
