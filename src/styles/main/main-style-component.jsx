@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const flexCenter = () => `
   display: flex;
@@ -83,11 +83,11 @@ export const TitleSpan = styled.span`
 
 export const TextSpan = styled.span`
   display: block;
-  font-size: ${(props) => props.fontsize || '20px'};
-  font-weight: ${(props) => props.fontweight || '500'};
-  text-align: ${(props) => props.textalign || 'left'};
+  font-size: ${(props) => props.fontsize || "20px"};
+  font-weight: ${(props) => props.fontweight || "500"};
+  text-align: ${(props) => props.textalign || "left"};
 
-  margin-left: ${(props) => props.marginleft || '0'};
+  margin-left: ${(props) => props.marginleft || "0"};
 `;
 
 export const SubscribeDiv = styled.div`
@@ -164,7 +164,7 @@ export const SmallTextSpan = styled.span`
   font-size: 17px;
   font-weight: 500;
 
-  padding-left: ${(props) => props.paddingleft || '7px'};
+  padding-left: ${(props) => props.paddingleft || "7px"};
 `;
 
 export const PersonalInformationSpan = styled.span`
@@ -185,16 +185,16 @@ export const SearchDiv = styled.div`
 `;
 
 export const SearchBorderDiv = styled.div`
-  width: 600px;
+  width: ${(props) => props.width || "600px"};
   height: 50px;
   border: solid 3px #588539;
   border-radius: 35px;
-  /* background-color: beige; */
+  background-color: beige;
   ${flexCenter()}
 `;
 
 export const SearchInput = styled.input`
-  width: 500px;
+  width: ${(props) => props.width || "500px"};
   height: 45px;
   border: none;
   margin-top: 1.5px;
@@ -212,7 +212,7 @@ export const SearchImg = styled.img`
   margin-left: 20px;
   margin-right: 15px;
 
-  background-image: url('../images/MainPage/Search.svg');
+  background-image: url("../images/MainPage/Search.svg");
 
   cursor: pointer;
 `;
@@ -259,7 +259,7 @@ export const RangeButton = styled.input`
   border: solid 0px;
   box-sizing: border-box;
 
-  background-color: ${(props) => props.backgroundcolor || '#000000'};
+  background-color: ${(props) => props.backgroundcolor || "#000000"};
 
   cursor: pointer;
 `;
@@ -371,7 +371,7 @@ export const PostNumberDiv = styled.div`
   height: 85px;
 
   display: flex;
-  justify-content: ${(props) => props.justifycontent || 'center'};
+  justify-content: ${(props) => props.justifycontent || "center"};
   /* align-items: center; //간격 조정 시*/
 
   /* background-color: lightgreen; */
@@ -404,8 +404,8 @@ export const MakerDivContact = styled.div`
   height: 80px;
   margin-top: 10px;
 
-  display: ${(props) => props.display || 'block'};
-  justify-content: ${(props) => props.justifycontent || 'center'};
+  display: ${(props) => props.display || "block"};
+  justify-content: ${(props) => props.justifycontent || "center"};
   align-items: center;
 
   /* background-color: pink; */

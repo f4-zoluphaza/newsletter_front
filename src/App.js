@@ -1,20 +1,23 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Login-------------------------------------------------------------------
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 //mainPage
-import MainPage from './pages/MainPage';
+import MainPage from "./pages/MainPage";
 
 //detailPage
-import DetailPage from './pages/detailPage/DetailPages';
+import DetailPage from "./pages/detailPage/DetailPages";
 
 // mypage_s
-import Attendance from './pages/myPage/Attendance';
-import Unregister from './components/mypage/Unregister';
-import Unsubscribe from './pages/myPage/Unsubscribe';
+import Attendance from "./pages/myPage/Attendance";
+import Unregister from "./components/mypage/Unregister";
+import Unsubscribe from "./pages/myPage/Unsubscribe";
+
+//adminPage
+import Admin from "./pages/adminPage/Admin";
 
 function App() {
   return (
@@ -27,6 +30,7 @@ function App() {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Mypage" element={<Attendance />} />
           <Route path="/Mypage/Unsubscribe" element={<Unsubscribe />} />
+          <Route path="/Admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
     </div>
