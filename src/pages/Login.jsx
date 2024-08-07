@@ -30,12 +30,43 @@ export default function Login() {
   const [validCheck, setValidCheck] = useState(null);
   const [validLogin, setValidLogin] = useState(null);
 
+  const [vaildPassword, setVaildPassword] = useState(null);
+  const [vaildEmail, setVaildEmail] = useState(null);
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handlePasswordChange = (e) => {
+    const password = e.target.value;
+    setForm({ ...form, password });
+
+    if (password.trim() === "") {
+      setVaildPassword(null);
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const email = e.target.value;
+    setForm({ ...form, email });
+
+    if (email.trim() === "") {
+      setVaildEmail(null);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin();
+  };
+
   const handleLogin = async () => {
     try {
-      const url = "https://5758-203-252-213-221.ngrok-free.app/api/v1/login";
+      const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/login";
       const data = {
-        email: Form.email,
-        password: Form.password,
+        email: form.email,
+        passwd: form.password,
       };
 
       const response = await axios.post(url, data, {
@@ -45,12 +76,15 @@ export default function Login() {
       });
       const token = response.data.result;
       setValidLogin(true);
+      console.log(response.data);
     } catch (error) {
       console.error(
         "Login error",
         error.response ? error.response.data : error
       );
       setValidLogin(false);
+      console.log(form.email);
+      console.log(form.password);
     }
   };
 
@@ -58,7 +92,7 @@ export default function Login() {
     <BodyDiv>
       <WrapperDiv>
         <LogoImg src={Logo} top="150px" />
-        <Form alignItems="start">
+        <Form alignItems="flex-start" onSubmit={handleSubmit}>
           <Input
             id="email"
             type="email"
@@ -66,6 +100,8 @@ export default function Login() {
             width="508.48px"
             height="60px"
             borderRadius="12px"
+            value={form.email}
+            onChange={handleEmailChange}
           />
           <Input
             id="password"
@@ -74,13 +110,15 @@ export default function Login() {
             width="508.48px"
             height="60px"
             borderRadius="12px"
+            value={form.password}
+            onChange={handlePasswordChange}
           />
 
           <EyesImg src={PWOpen} />
           <div
             style={{
               display: "flex",
-              alignItems: "start",
+              alignItems: "flex-start",
               margin: "2px 0 30px 0",
             }}
           >
