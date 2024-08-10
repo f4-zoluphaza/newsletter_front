@@ -175,7 +175,7 @@ export default function Login() {
           </Links>
 
           <PWSearchSignUpP>|</PWSearchSignUpP>
-          <Links to="SignUp">
+          <Links to="/SignUp">
             <PWSearchSignUpP>회원가입</PWSearchSignUpP>
           </Links>
         </PWSearchSignUpDiv>
