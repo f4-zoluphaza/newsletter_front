@@ -23,12 +23,15 @@ import Logo from "../images/Logo.svg";
 import Check from "../images/Login/Check.svg";
 import CheckO from "../images/Login/CheckO.svg";
 import PWOpen from "../images/Login/PWOpen.svg";
+import PWClose from "../images/Login/PWClose.svg";
 import KaTalk from "../images/Login/KaTalk.svg";
 import Naver from "../images/Login/Naver.svg";
 
 export default function Login() {
   const [validCheck, setValidCheck] = useState(null);
   const [validLogin, setValidLogin] = useState(null);
+
+  const [validPWState, setValidPWState] = useState(false);
 
   const [vaildPassword, setVaildPassword] = useState(null);
   const [vaildEmail, setVaildEmail] = useState(null);
@@ -105,7 +108,8 @@ export default function Login() {
           />
           <Input
             id="password"
-            type="password"
+            // type="password"
+            type={validPWState ? "text" : "password"}
             placeholder="비밀번호"
             width="508.48px"
             height="60px"
@@ -114,7 +118,22 @@ export default function Login() {
             onChange={handlePasswordChange}
           />
 
-          <EyesImg src={PWOpen} />
+          {validPWState ? (
+            <EyesImg
+              src={PWClose}
+              onClick={() => {
+                setValidPWState();
+              }}
+            />
+          ) : (
+            <EyesImg
+              src={PWOpen}
+              onClick={() => {
+                setValidPWState(true);
+              }}
+            />
+          )}
+
           <div
             style={{
               display: "flex",
@@ -142,7 +161,7 @@ export default function Login() {
               <LoginStateP>로그인 상태 유지</LoginStateP>
             </LoginStateDiv>
 
-            {validLogin && false ? (
+            {validLogin === false ? (
               <VaildP>아이디 또는 비밀번호를 잘못 입력했습니다.</VaildP>
             ) : null}
           </div>
