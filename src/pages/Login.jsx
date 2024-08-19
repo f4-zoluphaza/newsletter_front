@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   BodyDiv,
@@ -28,6 +29,8 @@ import KaTalk from "../images/Login/KaTalk.svg";
 import Naver from "../images/Login/Naver.svg";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const [validCheck, setValidCheck] = useState(null);
   const [validLogin, setValidLogin] = useState(null);
 
@@ -76,18 +79,18 @@ export default function Login() {
         headers: {
           "Content-Type": "application/json",
         },
+        withCredentials: true, // 벡엔드에 쿠키를 포함해 요청, 서버에서 준 쿠키 저장 (로그인 토큰 저장)
       });
-      const token = response.data.result;
+
       setValidLogin(true);
       console.log(response.data);
+      navigate("/");
     } catch (error) {
       console.error(
         "Login error",
         error.response ? error.response.data : error
       );
       setValidLogin(false);
-      console.log(form.email);
-      console.log(form.password);
     }
   };
 

@@ -57,7 +57,7 @@ export const Submit = styled.input`
   height: ${(props) => props.height};
   border-radius: 12px;
   border: solid 0px;
-  background-color: #588539;
+  background-color: ${(props) => props.backgroundColor || "#588539"};
   box-sizing: border-box;
 
   ${flexCenter()}
@@ -175,7 +175,7 @@ export const UnderDiv = styled.div`
 
 export const VaildP = styled.p`
   font-size: 16px;
-  color: #e74f4f;
-
+  color: ${(props) => props.color || "#e74f4f"};
+  width: ${(props) => props.width};
   margin: 0;
 `;
