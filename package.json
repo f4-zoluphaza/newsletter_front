@@ -7,12 +7,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.4",
-<<<<<<< HEAD
-=======
     "buffer": "^6.0.3",
     "https-browserify": "^1.0.0",
-    "axios": "^1.7.3",
->>>>>>> 274277fd46bbc58b456fb151cf90e8a4e8ec066c
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0",
