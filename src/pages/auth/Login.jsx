@@ -171,7 +171,7 @@ export default function Login() {
         </Form>
 
         <PWSearchSignUpDiv>
-          <Links to="/">
+          <Links to="/ChangePW">
             <PWSearchSignUpP>비밀번호 찾기</PWSearchSignUpP>
           </Links>
 

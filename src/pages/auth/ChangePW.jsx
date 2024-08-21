@@ -15,12 +15,11 @@ import {
 
 import Logo from "../../images/Logo.svg";
 
-export default function SignUp() {
+export default function ChangePW() {
   const navigate = useNavigate();
 
   //form 관리
   const [form, setForm] = useState({
-    nickName: "",
     email: "",
     emailVerifyCode: "",
     password: "",
@@ -28,12 +27,10 @@ export default function SignUp() {
   });
 
   const [validEmailVerification, setValidEmailVerification] = useState(null); //인증번호 요청 유효값
-  const [validEmailDuplicate, setValidEmailDuplicate] = useState(null); // 이메일 중복 확인 유효값
   const [validEmailCheck, setValidEmailCheck] = useState(null); //인증번호 확인 유효값
   const [validEmail, setValidEmail] = useState(null); // 이메일 유효값
   const [validPW, setValidPW] = useState(null);
   const [validPWCheck, setValidPWCheck] = useState(null);
-  const [validNickName, setValidNickName] = useState(null);
 
   // 비밀번호 유효성 함수
   const handlePW = (e) => {
@@ -85,57 +82,19 @@ export default function SignUp() {
     }
   };
 
-  const handleNickNameChange = (e) => {
-    const nickName = e.target.value;
-    setForm({ ...form, nickName });
-    setValidNickName(true);
-
-    if (nickName.trim() === "") {
-      setValidNickName(null);
-    }
-  };
 
   // 화면 새로고침 막는 함수
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  // 이메일 중복 확인 함수
-  const isEmailDuplicateAPI = async () => {
-    try {
-      //API 요청 URL
-      const url =
-        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/duplicateCheck";
-
-      const data = {
-        email: form.email,
-      };
-
-      const response = await axios.post(url, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      setValidEmailDuplicate(true);
-      console.log(response.data.result);
-
-      // alert("사용 가능한 이메일입니다.");
-    } catch (error) {
-      console.error(
-        "이메일 중복 확인 에러",
-        error.response ? error.response.data : error
-      );
-      setValidEmailDuplicate(false);
-    }
-  };
 
   // 이메일 인증 요청 함수
   const requestEmailVerificationAPI = async () => {
     try {
       //API 요청 URL
       const url =
-        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/email/send";
+        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/email/pwsend";
 
       const data = {
         email: form.email,
@@ -194,20 +153,19 @@ export default function SignUp() {
     }
   };
 
-  // 회원가입 함수
-  const signUpAPI = async () => {
+  // 비밀번호 변경 함수
+  const changePWAPI = async () => {
     try {
       //API 요청 URL
-      const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/join";
+      const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/changePasswd";
 
       const data = {
         email: form.email,
-        passwd: form.password,
-        passwdCheck: form.passwordCheck,
-        nickname: form.nickName,
+        newPasswd: form.password,
+        newPasswdCheck: form.passwordCheck,
       };
 
-      const response = await axios.post(url, data, {
+      const response = await axios.put(url, data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -216,32 +174,22 @@ export default function SignUp() {
       const result = response.data.result;
       console.log(result);
 
-      alert("회원가입 되었습니다!");
+      alert("비밀번호가 성공적으로 변경되었습니다.");
       navigate("/Login");
     } catch (error) {
       console.error(
-        "회원가입 에러",
+        "비밀번호 변경 에러",
         error.response ? error.response.data : error
       );
       alert(error.response.data.result);
     }
   };
-
   return (
     <BodyDiv>
       <WrapperDiv>
         <LogoImg src={Logo} marginBottom="20px" />
 
         <Form onSubmit={handleSubmit}>
-          <Input
-            id="nickName"
-            type="text"
-            placeholder="닉네임"
-            width="410.975px"
-            height="53.82px"
-            borderRadius="9.78px"
-            onChange={handleNickNameChange}
-          />
 
           <Input
             id="email"
@@ -252,33 +200,14 @@ export default function SignUp() {
             borderRadius="9.78px"
             onChange={handleEmailChange}
           />
-          <UnderDiv justifyContent={validEmailDuplicate === null ? "end" : "space-between"}>
-            {validEmailDuplicate === null ? null : validEmailDuplicate ? (
+          <UnderDiv justifyContent={validEmailVerification === null ? "end" : "space-between"}>
+          {validEmailVerification === null ? null : validEmailVerification ? (
               <VaildP color="#588539" >
-                사용 가능한 이메일입니다.
+                전송되었습니다.
               </VaildP>
             ) : (
-              <VaildP >사용 불가능한 이메일입니다.</VaildP>
+              <VaildP >존재하지 않는 이메일입니다.</VaildP>
             )}
-
-            {validEmailDuplicate ? (
-              <Button
-                backgroundColor="#588539"
-                color="#FFFFFF"
-                borderColor="#588539"
-              >
-                중복 확인
-              </Button>
-            ) : (
-              <Button
-                onClick={() => {
-                  isEmailDuplicateAPI();
-                }}
-              >
-                중복 확인
-              </Button>
-            )}
-
             {validEmailVerification ? (
               <Button
                 backgroundColor="#588539"
@@ -311,7 +240,6 @@ export default function SignUp() {
             onChange={handleEmailVerifyCode}
           />
 
-          {/* <UnderDiv justifyContent="space-between"> */}
           <UnderDiv justifyContent={validEmailCheck === null ? "end" : "space-between"}>
             {validEmailCheck === null ? null : validEmailCheck ? (
               <VaildP color="#588539">인증되었습니다.</VaildP>
@@ -372,26 +300,24 @@ export default function SignUp() {
             </UnderDiv>
           ) : null}
 
-          {validNickName &&
-          validEmailCheck &&
-          validEmailDuplicate &&
+          {validEmailCheck &&
           validEmailVerification &&
           validPW &&
           validPWCheck ? (
             <Submit
-              value="회원가입"
+              value="비밀번호 변경"
               type="submit"
               width="410.975px"
               height="53.82px"
               marginTop="60px"
               marginBottom="30px"
               onClick={() => {
-                signUpAPI();
+                changePWAPI();
               }}
             />
           ) : (
             <Submit
-              value="회원가입"
+              value="비밀번호 변경"
               type="submit"
               width="410.975px"
               height="53.82px"

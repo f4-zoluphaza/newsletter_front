@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Login-------------------------------------------------------------------
+// auth-------------------------------------------------------------------
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
+import ChangePW from "./pages/auth/ChangePW";
 
 //mainPage
 import MainPage from "./pages/MainPage";
@@ -39,6 +40,7 @@ function App() {
           <Route path="/Mypage/Scrap" element={<Scrap />} />
           <Route path="/Mypage/ChangeInfo" element={<ChangeInfo />} />
           <Route path="/Admin" element={<Admin />} />
+          <Route path="/ChangePW" element={<ChangePW />} />
         </Routes>
       </BrowserRouter>
     </div>
