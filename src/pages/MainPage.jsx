@@ -176,7 +176,9 @@ export default function MainPage(props) {
                     subscribeAPI();
                   }}
                 />
-                <Button value="가입 먼저하기" type="submit" />
+                <Links to="/Signup">
+                  <Button value="가입 먼저하기" type="submit" />
+                </Links>
               </ButtonDiv>
             </Form>
 
