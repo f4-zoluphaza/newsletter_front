@@ -79,8 +79,8 @@ export default function MainPage(props) {
         email: form.email,
         nickname: form.nickName,
       };
-      console.log(form.email);
-      console.log(form.nickName);
+      // console.log(form.email);
+      // console.log(form.nickName);
 
       const response = await axios.post(url, data, {
         headers: {
@@ -96,8 +96,8 @@ export default function MainPage(props) {
         '이메일 중복 확인 에러',
         error.response ? error.response.data : error
       );
-      //오류났을때
-      // alert("사용 불가능한 이메일입니다.");
+      //이메일 중복일 때
+      alert('사용 불가능한 이메일입니다.');
     }
   };
 
