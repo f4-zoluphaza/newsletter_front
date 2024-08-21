@@ -10,7 +10,7 @@ const flexCenter = () => `
 export const BodyDiv = styled.div`
   height: 100vh;
   ${flexCenter()}
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
 `;
 
 export const WrapperDiv = styled.div`
@@ -18,7 +18,7 @@ export const WrapperDiv = styled.div`
   height: ${(props) => props.height || "100vh"};
   height: auto;
   margin: auto 0;
-  background-color: #fff8ec;
+  /* background-color: #fff8ec; */
   ${flexCenter()}
   flex-direction: column;
   justify-content: ${(props) => props.justifyContent};
