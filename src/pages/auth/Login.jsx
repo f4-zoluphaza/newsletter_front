@@ -25,8 +25,6 @@ import Check from "../../images/Login/Check.svg";
 import CheckO from "../../images/Login/CheckO.svg";
 import PWOpen from "../../images/Login/PWOpen.svg";
 import PWClose from "../../images/Login/PWClose.svg";
-import KaTalk from "../../images/Login/KaTalk.svg";
-import Naver from "../../images/Login/Naver.svg";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -182,11 +180,6 @@ export default function Login() {
             <PWSearchSignUpP>회원가입</PWSearchSignUpP>
           </Links>
         </PWSearchSignUpDiv>
-
-        <SocialLoginDiv>
-          <SocialLoginImg src={KaTalk} />
-          <SocialLoginImg src={Naver} />
-        </SocialLoginDiv>
       </WrapperDiv>
     </BodyDiv>
   );
