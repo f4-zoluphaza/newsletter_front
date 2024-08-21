@@ -18,15 +18,15 @@ import {
   SocialLoginImg,
   Links,
   VaildP,
-} from "../styles/Login/LoginSignUp.styled";
+} from "../../styles/Login/LoginSignUp.styled";
 
-import Logo from "../images/Logo.svg";
-import Check from "../images/Login/Check.svg";
-import CheckO from "../images/Login/CheckO.svg";
-import PWOpen from "../images/Login/PWOpen.svg";
-import PWClose from "../images/Login/PWClose.svg";
-import KaTalk from "../images/Login/KaTalk.svg";
-import Naver from "../images/Login/Naver.svg";
+import Logo from "../../images/Logo.svg";
+import Check from "../../images/Login/Check.svg";
+import CheckO from "../../images/Login/CheckO.svg";
+import PWOpen from "../../images/Login/PWOpen.svg";
+import PWClose from "../../images/Login/PWClose.svg";
+import KaTalk from "../../images/Login/KaTalk.svg";
+import Naver from "../../images/Login/Naver.svg";
 
 export default function Login() {
   const navigate = useNavigate();

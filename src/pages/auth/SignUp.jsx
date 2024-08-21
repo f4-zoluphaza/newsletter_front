@@ -11,9 +11,9 @@ import {
   UnderDiv,
   Button,
   VaildP,
-} from "../styles/Login/LoginSignUp.styled";
+} from "../../styles/Login/LoginSignUp.styled";
 
-import Logo from "../images/Logo.svg";
+import Logo from "../../images/Logo.svg";
 
 export default function SignUp() {
   const navigate = useNavigate();
