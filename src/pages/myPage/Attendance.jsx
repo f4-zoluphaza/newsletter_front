@@ -58,10 +58,10 @@ const [unregisterBt, setUnregisterBt] = useState(false)
 
             <MainWrapper>
               <MainPDiv flexDirection="column">
-                <Links>
+                <Links to="/Mypage/Scrap">
                   <MainP fontWeight="600" fontSize="30px" marginBottom="5px">나의 스크랩 〉</MainP>
                 </Links>
-                <Links>
+                <Links to="/Mypage/ChangeInfo">
                   <MainP fontWeight="600" fontSize="30px" marginBottom="15px">정보 수정 〉</MainP>
                 </Links>
               </MainPDiv>
