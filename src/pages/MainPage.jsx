@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import {
   Div,
   BodyDiv,
@@ -53,6 +54,73 @@ import NewsletterPost from '../components/NewsletterPost.jsx';
 import Footer from '../components/main/Footer.jsx';
 
 export default function MainPage(props) {
+  //form 관리
+  const [form, setForm] = useState({
+    nickName: '',
+    email: '',
+  });
+
+  const [validEmailDuplicate, setValidEmailDuplicate] = useState(null);
+  const [validNickName, setValidNickName] = useState(null);
+
+  // 화면 새로고침 막는 함수
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  // 뉴스레터 신청하기 함수
+  const subscribeAPI = async () => {
+    try {
+      //API 요청 URL
+      const url =
+        'https://humble-commonly-goshawk.ngrok-free.app/api/v1/subscribe';
+
+      const data = {
+        email: form.email,
+        nickname: form.nickName,
+      };
+      // console.log(form.email);
+      // console.log(form.nickName);
+
+      const response = await axios.post(url, data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      console.log(response.data.result);
+
+      // alert("사용 가능한 이메일입니다.");
+    } catch (error) {
+      console.error(
+        '이메일 중복 확인 에러',
+        error.response ? error.response.data : error
+      );
+      //이메일 중복일 때
+      alert('사용 불가능한 이메일입니다.');
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const email = e.target.value;
+    setForm({ ...form, email });
+
+    // if (email.trim() === "") {
+    //   setValidEmail(null);
+    // }
+  };
+
+  const handleNickNameChange = (e) => {
+    const nickName = e.target.value;
+    setForm({ ...form, nickName });
+
+    if (nickName.trim() === '') {
+      setValidNickName(null);
+    }
+
+    // console.log(nickName);
+  };
+
   return (
     <Div>
       <BodyDiv>
@@ -69,7 +137,7 @@ export default function MainPage(props) {
             <TextSpan textalign="right">무료 야구 뉴스를 받아보세요!</TextSpan>
           </ExplainDiv>
           <SubscribeDiv>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               {/* //placeholder에 설명 글자
               <SubscribeInput
                 type="email"
@@ -88,16 +156,26 @@ export default function MainPage(props) {
                 <SubscribeInput
                   type="email"
                   placeholder="1234abc@naver.com"
+                  onChange={handleEmailChange}
                 ></SubscribeInput>
               </Label>
               <Label>
                 <TextSpan textalign="center" fontweight="600">
                   닉네임
                 </TextSpan>
-                <SubscribeInput type="text"></SubscribeInput>
+                <SubscribeInput
+                  type="text"
+                  onChange={handleNickNameChange}
+                ></SubscribeInput>
               </Label>
               <ButtonDiv>
-                <Button value="뉴스레터 신청하기" type="submit" />
+                <Button
+                  value="뉴스레터 신청하기"
+                  type="submit"
+                  onClick={() => {
+                    subscribeAPI();
+                  }}
+                />
                 <Button value="가입 먼저하기" type="submit" />
               </ButtonDiv>
             </Form>
