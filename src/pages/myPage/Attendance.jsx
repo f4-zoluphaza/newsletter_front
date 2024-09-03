@@ -16,7 +16,7 @@ import Unregister from "../../components/mypage/Unregister";
 
 export default function Attendance() {
   const [unregisterBt, setUnregisterBt] = useState(false);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
 
   // 쿠키 값 읽는 함수
   function getCookie(name) {
@@ -87,7 +87,7 @@ export default function Attendance() {
 
               <MainPDiv marginTop="30px">
                 <MainP color="#4C8C5E" fontWeight="600" marginRight="0">
-                  홈런왕
+                  {data.next_grade}
                 </MainP>
                 <MainP>까지</MainP>
                 <MainP>{data.remainingLogins}번</MainP>
