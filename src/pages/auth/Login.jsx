@@ -191,6 +191,9 @@ export default function Login() {
           <Links to="/SignUp">
             <PWSearchSignUpP>회원가입</PWSearchSignUpP>
           </Links>
+          <Links to="/Mypage">
+            <PWSearchSignUpP>마이페이지</PWSearchSignUpP>
+          </Links>
         </PWSearchSignUpDiv>
       </WrapperDiv>
     </BodyDiv>

@@ -18,13 +18,30 @@ export default function Attendance() {
   const [unregisterBt, setUnregisterBt] = useState(false);
   const [data, setData] = useState(null);
 
+  // 쿠키 값 읽는 함수
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  }
+
   const handleMypageMainApi = async () => {
     try {
       //API 요청 URL
       const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage`;
 
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie('jwtToken');
+
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.get(url);
+      const response = await axios.get(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': '69420',
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       console.log(response.data.result);
       setData(response.data.result);
@@ -52,10 +69,10 @@ export default function Attendance() {
             <MainWrapper borderBottom="solid 2px #c4c4c4">
               <MainPDiv>
                 <MainP color="#4C8C5E" fontWeight="600">
-                  안타왕
+                  {data.grade}
                 </MainP>
                 <MainP fontWeight="600" marginRight="0">
-                  홍길동
+                  {data.nickname}
                 </MainP>
                 <MainP>님</MainP>
               </MainPDiv>
@@ -65,7 +82,7 @@ export default function Attendance() {
                 <MainP>달</MainP>
                 <MainP>누적</MainP>
                 <MainP>출석</MainP>
-                <MainP>13번</MainP>
+                <MainP>{data.grade_count}번</MainP>
               </MainPDiv>
 
               <MainPDiv marginTop="30px">
@@ -73,7 +90,7 @@ export default function Attendance() {
                   홈런왕
                 </MainP>
                 <MainP>까지</MainP>
-                <MainP>2번</MainP>
+                <MainP>{data.remainingLogins}번</MainP>
                 <MainP>남았어요!</MainP>
               </MainPDiv>
 
