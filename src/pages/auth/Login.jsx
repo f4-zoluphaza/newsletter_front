@@ -65,6 +65,17 @@ export default function Login() {
     handleLogin();
   };
 
+  // 쿠키 설정 함수
+  function setCookie(name, value, days){
+    let expires = "";
+    if(days){
+      const date = new Date();
+      date.setTime(date.getTime()+days*24*60*60*1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/"
+  }
+
   const handleLogin = async () => {
     try {
       const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/login";
@@ -76,12 +87,13 @@ export default function Login() {
       const response = await axios.post(url, data, {
         headers: {
           "Content-Type": "application/json",
-        },
-        withCredentials: true, // 벡엔드에 쿠키를 포함해 요청, 서버에서 준 쿠키 저장 (로그인 토큰 저장)
+        }
       });
 
       setValidLogin(true);
-      console.log(response.data);
+      const token = response.data.result;
+      const expires = validCheck ? 7 : 0;
+      setCookie("jwtToken", token, expires)
       navigate("/");
     } catch (error) {
       console.error(
