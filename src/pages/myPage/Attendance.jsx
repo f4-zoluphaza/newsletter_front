@@ -23,8 +23,10 @@ export default function Attendance() {
       //API 요청 URL
       const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage`;
 
-      //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.get(url);
+      //axios.get 메소드를 사용하여 요청을 보냄ㄴ
+      const response = await axios.get(url, {
+        withCredentials: true, // 쿠키를 자동으로 포함하도록 설정
+      });
 
       console.log(response.data.result);
       setData(response.data.result);

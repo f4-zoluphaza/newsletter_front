@@ -180,6 +180,9 @@ export default function Login() {
             <PWSearchSignUpP>회원가입</PWSearchSignUpP>
           </Links>
         </PWSearchSignUpDiv>
+        <Links to="/Mypage">
+          <PWSearchSignUpP>마이페이지</PWSearchSignUpP>
+        </Links>
       </WrapperDiv>
     </BodyDiv>
   );
