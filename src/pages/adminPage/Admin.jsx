@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header";
 import { BodyDiv } from "../../styles/Mypage_s/Attendance.styled";
 import {
@@ -18,6 +18,8 @@ import {
   TitleBox,
   DateBox,
   CheckImg,
+  DeleteBt,
+  DeleteDiv
 } from "../../styles/adminPage/Admin.styled.jsx";
 
 import Searchsvg from "../../images/MainPage/Search.svg";
@@ -25,6 +27,7 @@ import emptyCheck from "../../images/AdminPage/emptyCheck.svg";
 import fullCheck from "../../images/AdminPage/fullCheck.svg";
 
 export default function Admin() {
+  const [validCheck, setValidCheck] = useState(false);
   return (
     <div>
       <BodyDiv>
@@ -40,10 +43,28 @@ export default function Admin() {
           </SearchBorderDiv>
         </SearchDiv>
 
+        <DeleteDiv>
+          <DeleteBt>삭제</DeleteBt>
+        </DeleteDiv>
+        
         <WrapperBox>
           <EachBox>
             <CheckBox>
-              <CheckImg src={emptyCheck} />
+              {validCheck && true ? (
+                <CheckImg
+                  src={fullCheck}
+                  onClick={() => {
+                    setValidCheck(!validCheck);
+                  }}
+                />
+              ) : (
+                <CheckImg
+                  src={emptyCheck}
+                  onClick={() => {
+                    setValidCheck(!validCheck);
+                  }}
+                />
+              )}
             </CheckBox>
             <NumBox>1</NumBox>
             <TitleBox>키움, 개막 4연패 달성</TitleBox>

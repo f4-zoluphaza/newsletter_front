@@ -73,6 +73,19 @@ export const DateBox = styled.div`
 export const CheckImg = styled.img`
   width: 25px;
   height: 25px;
+
+  cursor: pointer;
 `;
 
-// export const DeleteBt = styled.button;
+export const DeleteDiv = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: end;
+`
+export const DeleteBt = styled.button`
+  background-color: #ffffff;
+  border: 0;
+
+  margin: 10px;
+  cursor: pointer;
+`
