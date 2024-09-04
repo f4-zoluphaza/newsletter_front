@@ -20,6 +20,7 @@ import Unsubscribe from "./pages/myPage/Unsubscribe";
 
 //adminPage
 import Admin from "./pages/adminPage/Admin";
+import AdminDetail from "./pages/adminPage/AdminDetail"
 
 // mypage_j
 import Scrap from "./pages/myPage/Scrap";
@@ -40,6 +41,7 @@ function App() {
           <Route path="/Mypage/Scrap" element={<Scrap />} />
           <Route path="/Mypage/ChangeInfo" element={<ChangeInfo />} />
           <Route path="/Admin" element={<Admin />} />
+          <Route path="/AdminDetail" element={<AdminDetail />} />
           <Route path="/ChangePW" element={<ChangePW />} />
         </Routes>
       </BrowserRouter>
