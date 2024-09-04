@@ -54,14 +54,8 @@ export default function Unsubscribe() {
             구독 해지하시겠어요?
           </MainP>
           <ButtonDiv>
-            <Links to="/mainpage">
-              <Button
-                backgroudColor="#588539"
-                color="#FFFFFF"
-                textDecoration="underline"
-              >
-                구독 유지하기
-              </Button>
+            <Links to="/Mypage">
+              <Button backgroudColor="#588539" color="#FFFFFF" textDecoration="underline">구독 유지하기</Button>
             </Links>
             <Button
               onClick={() => {
