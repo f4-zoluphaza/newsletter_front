@@ -19,7 +19,6 @@ import {
   SmallTextSpan,
   ButtonDiv,
   Button,
-  PersonalInformationSpan,
   SearchDiv,
   SearchBorderDiv,
   SearchInput,
@@ -181,15 +180,6 @@ export default function MainPage(props) {
                 </Links>
               </ButtonDiv>
             </Form>
-
-            {/* 정보동의 */}
-            <SmallTextSpan>구독 시, </SmallTextSpan>
-            <Links>
-              <PersonalInformationSpan>
-                개인정보 수집 및 이용
-              </PersonalInformationSpan>
-            </Links>
-            <SmallTextSpan paddingleft="0">에 동의하게 됩니다.</SmallTextSpan>
           </SubscribeDiv>
         </HeaderDiv>
 
@@ -204,7 +194,7 @@ export default function MainPage(props) {
         {/* 정렬 */}
         <RangeDiv>
           <RangeCenterDiv>
-            <RangeWapperDiv>
+            {/* <RangeWapperDiv>
               <RangeButton
                 value="오늘의 뉴스"
                 type="button"
@@ -215,9 +205,9 @@ export default function MainPage(props) {
                 type="button"
                 backgroundcolor="#FAF3E5"
               />
-            </RangeWapperDiv>
+            </RangeWapperDiv> */}
             <RangeButton
-              value="추천순"
+              value="인기순"
               type="button"
               backgroundcolor="#CDDFAB"
             />
