@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Header from "../../components/Header";
-import { BodyDiv } from "../../styles/Mypage_s/Attendance.styled";
 import {
+  Div,
+  BodyDiv,
   SearchDiv,
   SearchBorderDiv,
   SearchInput,
@@ -11,6 +12,7 @@ import {
   TextSpan,
 } from "../../styles/main/main-style-component.jsx";
 import {
+  WrapperDiv,
   WrapperBox,
   EachBox,
   CheckBox,
@@ -42,7 +44,7 @@ export default function Admin() {
   ];
 
   return (
-    <div>
+    <Div>
       <BodyDiv>
         <div style={{ width: "90vw" }}>
           <Header />
@@ -61,7 +63,9 @@ export default function Admin() {
           <DeleteBt>발행</DeleteBt>
         </DeleteDiv>
         
-        <WrapperBox>
+        <WrapperDiv>
+
+          <WrapperBox>
           {/* <EachBox>
             <CheckBox>
               {validCheck && true ? (
@@ -140,6 +144,8 @@ export default function Admin() {
 
         
         </WrapperBox>
+        </WrapperDiv>
+        
 
         {/* 게시물 페이지 번호 */}
         <PostNumberDiv>
@@ -187,6 +193,6 @@ export default function Admin() {
           </Links>
         </PostNumberDiv>
       </BodyDiv>
-    </div>
+    </Div>
   );
 }

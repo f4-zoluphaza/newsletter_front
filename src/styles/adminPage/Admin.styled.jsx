@@ -8,9 +8,11 @@ const flexCenter = () => `
 `;
 
 export const WrapperDiv = styled.div`
-  width: 1220px;
+  width: 100%;
   height: auto;
-  background-color: beige;
+  display: flex;
+  justify-content: center;
+  /* background-color: beige; */
 `;
 
 export const WrapperBox = styled.div`
@@ -81,9 +83,12 @@ export const CheckImg = styled.img`
 `;
 
 export const DeleteDiv = styled.div`
+  margin: auto;
   width: 80%;
   display: flex;
   justify-content: end;
+
+  /* background-color: bisque; */
 `
 export const DeleteBt = styled.button`
   font-size: 16px;

@@ -10,10 +10,9 @@ const flexCenter = () => `
 export const Form = styled.form`
   width: 80%;
   height: 70vh;
+  margin: 50px auto;
+
   /* background-color: beige; */
-
-  margin-top: 50px;
-
 `
 
 export const Label = styled.label`
