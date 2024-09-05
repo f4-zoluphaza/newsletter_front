@@ -16,7 +16,7 @@ export const Div = styled.div`
 `;
 
 export const BodyDiv = styled.div`
-  width: 90vw;
+  width: 1400px;
   height: auto;
   ${flexCenter()}
   flex-direction: column;
@@ -25,9 +25,10 @@ export const BodyDiv = styled.div`
 `;
 
 export const WrapperDiv = styled.div`
-  width: 560px;
+  width: 580px;
   /* height: ${(props) => props.height || '100vh'}; */
   height: auto;
+  margin-top: 80px;
   /* background-color: lightgray; */
 
   display: flex;
@@ -67,7 +68,7 @@ export const TitleDiv = styled.div`
 `;
 
 export const TextDiv = styled.div`
-  width: 120px;
+  width: 140px;
   height: 53.82px;
 
   display: flex;

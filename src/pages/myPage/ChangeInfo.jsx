@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios";
 import {
   Div,
   BodyDiv,
@@ -26,12 +27,20 @@ export default function ChangeInfo() {
     emailCheck: '',
     password: '',
     passwordCheck: '',
+    newPassword: '',
+    newPasswordCheck: ''
   });
 
-  const [validEmail, setValidEmail] = useState(null);
+
+  const [validEmail, setValidEmail] = useState(null); // 이메일 유효값
   const [validEmailCheck, setValidEmailCheck] = useState(null);
   const [validPW, setValidPW] = useState(null);
   const [validPWCheck, setValidPWCheck] = useState(null);
+
+  // 화면 새로고침 막는 함수
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   // 비밀번호 유효성 함수
   const handlePW = (e) => {
@@ -63,6 +72,38 @@ export default function ChangeInfo() {
     }
   };
 
+  // 내 정보 수정 함수
+  const changeinfoAPI = async () => {
+    try {
+      //API 요청 URL
+      const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage/change";
+
+      const data = {
+        nickname: form.nickName,
+        passwd: form.password,
+        newPasswd: form.newPassword,
+        newPasswdCheck: form.newPasswordCheck,
+      };
+
+      const response = await axios.put(url, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const result = response.data.result;
+      console.log(result);
+
+      alert("정보가 성공적으로 수정되었습니다.");
+    } catch (error) {
+      console.error(
+        "내 정보 수정 에러",
+        error.response ? error.response.data : error
+      );
+      alert(error.response.data.result);
+    }
+  };
+
   return (
     <Div>
       <BodyDiv>
@@ -76,7 +117,7 @@ export default function ChangeInfo() {
             </TextSpan>
           </TitleDiv>
           <RightDiv>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <TextDivForm>
                 <TextDiv>
                   <TextSpan>닉네임</TextSpan>
@@ -105,14 +146,14 @@ export default function ChangeInfo() {
                 />
               </TextDivForm>
 
-              <UnderDiv margintop="5px" justifyContent="end">
-                {/* <Button>중복 확인</Button> */}
+              {/* <UnderDiv margintop="5px" justifyContent="end">
+                <Button>중복 확인</Button>
                 <Button backgroundcolor="#588539" color="#FFFFFF">
                   인증 요청
                 </Button>
-              </UnderDiv>
+              </UnderDiv> */}
 
-              <TextDivForm margintop="10px">
+              {/* <TextDivForm margintop="10px">
                 <TextDiv>
                   <TextSpan>인증 번호</TextSpan>
                 </TextDiv>
@@ -124,19 +165,33 @@ export default function ChangeInfo() {
                   height="53.82px"
                   borderRadius="9.78px"
                 />
-              </TextDivForm>
+              </TextDivForm> */}
 
-              <UnderDiv margintop="5px" justifyContent="space-between">
+              {/* <UnderDiv margintop="5px" justifyContent="space-between">
                 <VaildP>인증번호가 올바르지 않습니다.</VaildP>
-                {/* <VaildP color="#588539">인증되었습니다.</VaildP> */}
+                <VaildP color="#588539">인증되었습니다.</VaildP>
                 <Button backgroundcolor="#588539" color="#FFFFFF">
                   인증 확인
                 </Button>
-              </UnderDiv>
+              </UnderDiv> */}
+
+              <TextDivForm>
+                <TextDiv>
+                  <TextSpan>기존 비밀번호</TextSpan>
+                </TextDiv>
+                <Input
+                  id="currentPW"
+                  type="text"
+                  placeholder="기존 비밀번호"
+                  width="410.975px"
+                  height="53.82px"
+                  borderRadius="9.78px"
+                />
+              </TextDivForm>
 
               <TextDivForm margintop="10px">
                 <TextDiv>
-                  <TextSpan>비밀번호</TextSpan>
+                  <TextSpan>새 비밀번호</TextSpan>
                 </TextDiv>
                 <Input
                   id="password"
@@ -151,7 +206,7 @@ export default function ChangeInfo() {
 
               <TextDivForm>
                 <TextDiv>
-                  <TextSpan>비밀번호 확인</TextSpan>
+                  <TextSpan>새 비밀번호 확인</TextSpan>
                 </TextDiv>
                 <Input
                   id="passwordCheck"
@@ -176,6 +231,9 @@ export default function ChangeInfo() {
                   type="submit"
                   width="410.975px"
                   height="53.82px"
+                  onClick={() => {
+                    changeinfoAPI();
+                  }}
                 />
               </TextDivForm>
             </Form>
