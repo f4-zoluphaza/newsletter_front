@@ -11,9 +11,9 @@ import {
   UnderDiv,
   Button,
   VaildP,
-} from "../styles/Login/LoginSignUp.styled";
+} from "../../styles/Login/LoginSignUp.styled";
 
-import Logo from "../images/Logo.svg";
+import Logo from "../../images/Logo.svg";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -223,7 +223,7 @@ export default function SignUp() {
         "회원가입 에러",
         error.response ? error.response.data : error
       );
-      alert("회원가입에 실패했습니다. 다시 시도해주세요.");
+      alert(error.response.data.result);
     }
   };
 
@@ -252,13 +252,13 @@ export default function SignUp() {
             borderRadius="9.78px"
             onChange={handleEmailChange}
           />
-          <UnderDiv justifyContent="end">
+          <UnderDiv justifyContent={validEmailDuplicate === null ? "end" : "space-between"}>
             {validEmailDuplicate === null ? null : validEmailDuplicate ? (
-              <VaildP color="#588539" width="230px">
+              <VaildP color="#588539" >
                 사용 가능한 이메일입니다.
               </VaildP>
             ) : (
-              <VaildP width="230px">사용 불가능한 이메일입니다.</VaildP>
+              <VaildP >사용 불가능한 이메일입니다.</VaildP>
             )}
 
             {validEmailDuplicate ? (
@@ -311,7 +311,8 @@ export default function SignUp() {
             onChange={handleEmailVerifyCode}
           />
 
-          <UnderDiv justifyContent="space-between">
+          {/* <UnderDiv justifyContent="space-between"> */}
+          <UnderDiv justifyContent={validEmailCheck === null ? "end" : "space-between"}>
             {validEmailCheck === null ? null : validEmailCheck ? (
               <VaildP color="#588539">인증되었습니다.</VaildP>
             ) : (
@@ -383,6 +384,7 @@ export default function SignUp() {
               width="410.975px"
               height="53.82px"
               marginTop="60px"
+              marginBottom="30px"
               onClick={() => {
                 signUpAPI();
               }}
@@ -394,6 +396,7 @@ export default function SignUp() {
               width="410.975px"
               height="53.82px"
               marginTop="60px"
+              marginBottom="30px"
               backgroundColor="#C0C0C0"
             />
           )}

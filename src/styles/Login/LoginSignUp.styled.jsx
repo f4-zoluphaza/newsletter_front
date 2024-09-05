@@ -10,11 +10,14 @@ const flexCenter = () => `
 export const BodyDiv = styled.div`
   height: 100vh;
   ${flexCenter()}
+  /* background-color: aliceblue; */
 `;
 
 export const WrapperDiv = styled.div`
   width: 510px;
-  height: ${(props) => props.height || '100vh'};
+  height: ${(props) => props.height || "100vh"};
+  height: auto;
+  margin: auto 0;
   /* background-color: #fff8ec; */
   ${flexCenter()}
   flex-direction: column;
@@ -66,6 +69,7 @@ export const Submit = styled.input`
   font-weight: 600;
 
   margin-top: ${(props) => props.marginTop};
+  margin-bottom: ${(props) => props.marginBottom};
 
   cursor: pointer;
 `;
@@ -175,7 +179,6 @@ export const UnderDiv = styled.div`
 
 export const VaildP = styled.p`
   font-size: 16px;
-  color: ${(props) => props.color || '#e74f4f'};
-  width: ${(props) => props.width};
+  color: ${(props) => props.color || "#e74f4f"};
   margin: 0;
 `;

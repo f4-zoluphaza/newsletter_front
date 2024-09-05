@@ -18,15 +18,13 @@ import {
   SocialLoginImg,
   Links,
   VaildP,
-} from "../styles/Login/LoginSignUp.styled";
+} from "../../styles/Login/LoginSignUp.styled";
 
-import Logo from "../images/Logo.svg";
-import Check from "../images/Login/Check.svg";
-import CheckO from "../images/Login/CheckO.svg";
-import PWOpen from "../images/Login/PWOpen.svg";
-import PWClose from "../images/Login/PWClose.svg";
-import KaTalk from "../images/Login/KaTalk.svg";
-import Naver from "../images/Login/Naver.svg";
+import Logo from "../../images/Logo.svg";
+import Check from "../../images/Login/Check.svg";
+import CheckO from "../../images/Login/CheckO.svg";
+import PWOpen from "../../images/Login/PWOpen.svg";
+import PWClose from "../../images/Login/PWClose.svg";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -67,6 +65,17 @@ export default function Login() {
     handleLogin();
   };
 
+  // 쿠키 설정 함수
+  function setCookie(name, value, days){
+    let expires = "";
+    if(days){
+      const date = new Date();
+      date.setTime(date.getTime()+days*24*60*60*1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/"
+  }
+
   const handleLogin = async () => {
     try {
       const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/login";
@@ -78,12 +87,13 @@ export default function Login() {
       const response = await axios.post(url, data, {
         headers: {
           "Content-Type": "application/json",
-        },
-        withCredentials: true, // 벡엔드에 쿠키를 포함해 요청, 서버에서 준 쿠키 저장 (로그인 토큰 저장)
+        }
       });
 
       setValidLogin(true);
-      console.log(response.data);
+      const token = response.data.result;
+      const expires = validCheck ? 7 : 0;
+      setCookie("jwtToken", token, expires)
       navigate("/");
     } catch (error) {
       console.error(
@@ -173,7 +183,7 @@ export default function Login() {
         </Form>
 
         <PWSearchSignUpDiv>
-          <Links to="/">
+          <Links to="/ChangePW">
             <PWSearchSignUpP>비밀번호 찾기</PWSearchSignUpP>
           </Links>
 
@@ -181,12 +191,13 @@ export default function Login() {
           <Links to="/SignUp">
             <PWSearchSignUpP>회원가입</PWSearchSignUpP>
           </Links>
+          <Links to="/Mypage">
+            <PWSearchSignUpP>마이페이지</PWSearchSignUpP>
+          </Links>
         </PWSearchSignUpDiv>
-
-        <SocialLoginDiv>
-          <SocialLoginImg src={KaTalk} />
-          <SocialLoginImg src={Naver} />
-        </SocialLoginDiv>
+        <Links to="/Mypage">
+          <PWSearchSignUpP>마이페이지</PWSearchSignUpP>
+        </Links>
       </WrapperDiv>
     </BodyDiv>
   );
