@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const flexCenter = () => `
   display: flex;
@@ -27,7 +27,7 @@ export const WrapperDiv = styled.div`
 export const LogoImg = styled.img`
   width: 256px;
   height: 200px;
-  margin-bottom: ${(props) => props.marginBottom || "35px"};
+  margin-bottom: ${(props) => props.marginBottom || '35px'};
 `;
 
 export const Form = styled.form`
@@ -60,7 +60,7 @@ export const Submit = styled.input`
   height: ${(props) => props.height};
   border-radius: 12px;
   border: solid 0px;
-  background-color: ${(props) => props.backgroundColor || "#588539"};
+  background-color: ${(props) => props.backgroundColor || '#588539'};
   box-sizing: border-box;
 
   ${flexCenter()}
@@ -157,9 +157,9 @@ export const Button = styled.button`
 
   border-radius: 20px;
   border: solid 2px;
-  border-color: ${(props) => props.borderColor || "C0C0C0"};
-  background-color: ${(props) => props.backgroundColor || "#ffffff"};
-  color: ${(props) => props.color || "#C0C0C0"};
+  border-color: ${(props) => props.borderColor || 'C0C0C0'};
+  background-color: ${(props) => props.backgroundColor || '#ffffff'};
+  color: ${(props) => props.color || '#C0C0C0'};
   font-size: 13.7px;
   font-weight: 600;
 
@@ -173,7 +173,7 @@ export const UnderDiv = styled.div`
   /* background-color: #eea5a5; */
 
   ${flexCenter()}
-  justify-content: ${(props) => props.justifyContent || "start"};
+  justify-content: ${(props) => props.justifyContent || 'start'};
   align-items: start;
 `;
 
