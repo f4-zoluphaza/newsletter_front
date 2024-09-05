@@ -14,7 +14,7 @@ import NewsImage from '../images/MainPage/News.svg';
 import HeartImage from '../images/MainPage/Heart.svg';
 import ScraptImage from '../images/MainPage/Scrapt.svg';
 
-export default function Header() {
+export default function NewsletterPost() {
   return (
     <PostWapperDiv>
       <NewsImg src={NewsImage} />

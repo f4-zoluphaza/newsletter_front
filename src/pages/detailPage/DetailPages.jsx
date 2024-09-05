@@ -206,7 +206,7 @@ export default function DetailPage() {
               </MessageDiv>
 
               {/* 스크롤 예 */}
-              <MessageDiv>
+              {/* <MessageDiv>
                 <ChatbotImg src={CircleImage}></ChatbotImg>
                 <SendspeechbubbleDiv height="33px">
                   <Textspan fontsize="15px" marginbottom="0">
@@ -245,7 +245,7 @@ export default function DetailPage() {
                     동안만 유지됩니다.
                   </Textspan>
                 </BotspeechbubbleDiv>
-              </MessageDiv>
+              </MessageDiv> */}
             </AllMessageDiv>
 
             {/* 채팅 영역 */}
