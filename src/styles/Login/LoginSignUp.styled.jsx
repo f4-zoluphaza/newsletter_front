@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const flexCenter = () => `
   display: flex;
@@ -10,11 +10,14 @@ const flexCenter = () => `
 export const BodyDiv = styled.div`
   height: 100vh;
   ${flexCenter()}
+  /* background-color: aliceblue; */
 `;
 
 export const WrapperDiv = styled.div`
   width: 510px;
-  height: ${(props) => props.height || '100vh'};
+  height: ${(props) => props.height || "100vh"};
+  height: auto;
+  margin: auto 0;
   /* background-color: #fff8ec; */
   ${flexCenter()}
   flex-direction: column;
@@ -24,8 +27,7 @@ export const WrapperDiv = styled.div`
 export const LogoImg = styled.img`
   width: 256px;
   height: 200px;
-
-  margin-bottom: ${(props) => props.marginBottom || '35px'};
+  margin-bottom: ${(props) => props.marginBottom || "35px"};
 `;
 
 export const Form = styled.form`
@@ -58,7 +60,7 @@ export const Submit = styled.input`
   height: ${(props) => props.height};
   border-radius: 12px;
   border: solid 0px;
-  background-color: #588539;
+  background-color: ${(props) => props.backgroundColor || "#588539"};
   box-sizing: border-box;
 
   ${flexCenter()}
@@ -67,6 +69,7 @@ export const Submit = styled.input`
   font-weight: 600;
 
   margin-top: ${(props) => props.marginTop};
+  margin-bottom: ${(props) => props.marginBottom};
 
   cursor: pointer;
 `;
@@ -153,10 +156,10 @@ export const Button = styled.button`
   height: 35px;
 
   border-radius: 20px;
-  border: solid 2px #c0c0c0;
-
-  background-color: #ffffff;
-  color: #c0c0c0;
+  border: solid 2px;
+  border-color: ${(props) => props.borderColor || "C0C0C0"};
+  background-color: ${(props) => props.backgroundColor || "#ffffff"};
+  color: ${(props) => props.color || "#C0C0C0"};
   font-size: 13.7px;
   font-weight: 600;
 
@@ -170,13 +173,12 @@ export const UnderDiv = styled.div`
   /* background-color: #eea5a5; */
 
   ${flexCenter()}
-  justify-content: ${(props) => props.justifyContent || 'start'};
+  justify-content: ${(props) => props.justifyContent || "start"};
   align-items: start;
 `;
 
 export const VaildP = styled.p`
   font-size: 16px;
-  color: #e74f4f;
-
+  color: ${(props) => props.color || "#e74f4f"};
   margin: 0;
 `;

@@ -186,7 +186,7 @@ export const SearchDiv = styled.div`
 `;
 
 export const SearchBorderDiv = styled.div`
-  width: 600px;
+  width: ${(props) => props.width || '600px'};
   height: 50px;
   border: solid 3px #588539;
   border-radius: 35px;
@@ -195,7 +195,7 @@ export const SearchBorderDiv = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  width: 500px;
+  width: ${(props) => props.width || '500px'};
   height: 45px;
   border: none;
   margin-top: 1.5px;
