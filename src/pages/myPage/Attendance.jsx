@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../../components/Header";
 import {
-  BodyDiv,
+  // BodyDiv,
   WrapperDiv,
   LeftDiv,
   RightDiv,
@@ -11,6 +11,11 @@ import {
   MainP,
   Links,
 } from "../../styles/Mypage_s/Attendance.styled";
+
+import {
+  Div,
+  BodyDiv
+} from "../../styles/main/main-style-component.jsx";
 
 import Unregister from "../../components/mypage/Unregister";
 
@@ -58,12 +63,10 @@ export default function Attendance() {
   }, []);
 
   return (
-    <div>
+    <Div>
       <BodyDiv>
-        <div style={{ width: "90vw" }}>
-          <Header />
-        </div>
-
+        <Header />
+        
         <WrapperDiv>
           <LeftDiv>
             <MainWrapper borderBottom="solid 2px #c4c4c4">
@@ -144,6 +147,6 @@ export default function Attendance() {
           <Unregister setUnregisterBt={setUnregisterBt} />
         ) : null}
       </BodyDiv>
-    </div>
+    </Div>
   );
 }
