@@ -44,8 +44,9 @@ export const NumBox = styled.div`
   height: 100%;
   border-right: 2px solid #588539;
   /* background-color: aquamarine; */
-  color: #588539;
+  color:  ${(props) => props.color||"#588539"};
   font-size: 18px;
+  font-weight:  ${(props) => props.fontWeight};
   ${flexCenter()};
 `;
 
@@ -54,8 +55,9 @@ export const TitleBox = styled.div`
   height: 100%;
   border-right: 2px solid #588539;
   font-size: 20px;
+  font-weight:  600;
   ${flexCenter()};
-  justify-content: start;
+  justify-content: ${(props) => props.justifycontent||"start"};
 
   padding-left: 20px;
 `;
@@ -65,7 +67,8 @@ export const DateBox = styled.div`
   height: 100%;
   border-right: 2px solid #588539;
   /* background-color: bisque; */
-  color: #588539;
+  color:  ${(props) => props.color||"#588539"};
+  font-weight:  ${(props) => props.fontWeight};
   font-size: 18px;
   ${flexCenter()};
 `;
@@ -83,9 +86,10 @@ export const DeleteDiv = styled.div`
   justify-content: end;
 `
 export const DeleteBt = styled.button`
+  font-size: 16px;
   background-color: #ffffff;
   border: 0;
 
-  margin: 10px;
+  margin: 10px 0;
   cursor: pointer;
 `

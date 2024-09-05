@@ -29,15 +29,40 @@ export const Input = styled.input`
     border: 1px solid black;
     box-sizing: border-box;
 `
+
+export const TextareaWrapper = styled.div`
+  width: 100%;
+  height: 80%;
+  ${flexCenter()}
+  justify-content: space-between;
+  margin-bottom: 10px;
+  
+  /* background-color: beige; */
+`
+export const TextareaDiv = styled.div`
+    width: 30%;
+    height: 95%;
+
+    /* border: 1px solid black;
+    box-sizing: border-box;
+    resize: none; */
+
+    /* background-color: azure; */
+`
 export const Textarea = styled.textarea`
     width: 100%;
-    height: 80%;
+    height: 95%;
 
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid black;
     box-sizing: border-box;
     resize: none;
+`
+
+export const FixTextarea = styled.div`
+    width: 100%;
+    height: 95%;
+
+    border: 1px solid black;
+    box-sizing: border-box;
 `
 
 export const ButtonDiv = styled.div`
