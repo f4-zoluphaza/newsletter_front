@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Header from "../../components/Header";
-import { BodyDiv } from "../../styles/Mypage_s/Attendance.styled";
+// import { BodyDiv } from "../../styles/Mypage_s/Attendance.styled";
+import {
+  Div,
+  BodyDiv
+} from "../../styles/main/main-style-component.jsx";
 import {Form, Label, Input, Textarea, TextareaWrapper,TextareaDiv, FixTextarea, Button, ButtonDiv, Links} from "../../styles/adminPage/AdminDetail.styled"
 
 
@@ -8,7 +12,7 @@ import {Form, Label, Input, Textarea, TextareaWrapper,TextareaDiv, FixTextarea, 
 export default function Admin() {
   const [validCheck, setValidCheck] = useState(false);
   return (
-    <div>
+    <Div>
       <BodyDiv>
         <div style={{ width: "90vw" }}>
           <Header />
@@ -51,6 +55,6 @@ export default function Admin() {
         
       </Form>
       </BodyDiv>
-    </div>
+    </Div>
   );
 }
