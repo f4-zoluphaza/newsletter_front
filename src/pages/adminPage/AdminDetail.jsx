@@ -14,9 +14,7 @@ export default function Admin() {
   return (
     <Div>
       <BodyDiv>
-        <div style={{ width: "90vw" }}>
           <Header />
-        </div>
 
       <Form>
         <Label for="title">제목</Label>

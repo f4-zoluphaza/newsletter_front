@@ -46,9 +46,7 @@ export default function Admin() {
   return (
     <Div>
       <BodyDiv>
-        <div style={{ width: "90vw" }}>
           <Header />
-        </div>
 
         {/* 검색 창 */}
         <SearchDiv>
