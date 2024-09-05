@@ -72,11 +72,24 @@ export default function ChangeInfo() {
     }
   };
 
+  // 쿠키 값 읽는 함수
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  }
+
+
+
   // 내 정보 수정 함수
   const changeinfoAPI = async () => {
     try {
       //API 요청 URL
       const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage/change";
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
 
       const data = {
         nickname: form.nickName,
@@ -88,6 +101,7 @@ export default function ChangeInfo() {
       const response = await axios.put(url, data, {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       });
 
