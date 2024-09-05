@@ -15,7 +15,7 @@ export const Div = styled.div`
 `;
 
 export const BodyDiv = styled.div`
-  width: 90vw;
+  width: 1400px;
   height: 100vh;
   /* background-color: beige; */
 `;
@@ -168,19 +168,12 @@ export const SmallTextSpan = styled.span`
   padding-left: ${(props) => props.paddingleft || '7px'};
 `;
 
-export const PersonalInformationSpan = styled.span`
-  text-decoration: underline;
-  font-size: 17px;
-  font-weight: bold;
-  margin: 0;
-`;
-
 // 검색 창
 export const SearchDiv = styled.div`
   width: 100%;
   height: 55px;
   margin-top: 40px;
-  margin-bottom: 42px;
+  margin-bottom: 30px;
   /* background-color: lightcoral; */
   ${flexCenter()}
 `;
@@ -222,12 +215,12 @@ export const SearchImg = styled.img`
 export const RangeDiv = styled.div`
   width: 100%;
   height: 45px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
   display: flex;
   justify-content: center;
 
-  /* background-color: lightgray; */
+  /* background-color: ligshtgray; */
 `;
 
 export const RangeCenterDiv = styled.div`
@@ -236,7 +229,7 @@ export const RangeCenterDiv = styled.div`
   height: 45px;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
 
   /* background-color: #2a5dba; */
 `;
@@ -259,8 +252,14 @@ export const RangeButton = styled.input`
   border-radius: 20px;
   border: solid 0px;
   box-sizing: border-box;
+  /* margin-right: 60px; */
 
   background-color: ${(props) => props.backgroundcolor || '#000000'};
+
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
 
   cursor: pointer;
 `;
@@ -280,7 +279,7 @@ export const PostAllDiv = styled.div`
 
 export const PostDiv = styled.div`
   /* width: 85%; //컴퓨터 */
-  width: 97%;
+  width: 96%;
   height: 353px;
 
   display: flex;
