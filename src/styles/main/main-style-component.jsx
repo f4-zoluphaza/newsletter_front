@@ -15,7 +15,7 @@ export const Div = styled.div`
 `;
 
 export const BodyDiv = styled.div`
-  width: 90vw;
+  width: 1400px;
   height: 100vh;
   /* background-color: beige; */
 `;
@@ -252,7 +252,7 @@ export const RangeButton = styled.input`
   border-radius: 20px;
   border: solid 0px;
   box-sizing: border-box;
-  margin-right: 60px;
+  /* margin-right: 60px; */
 
   background-color: ${(props) => props.backgroundcolor || '#000000'};
 
@@ -279,7 +279,7 @@ export const PostAllDiv = styled.div`
 
 export const PostDiv = styled.div`
   /* width: 85%; //컴퓨터 */
-  width: 97%;
+  width: 96%;
   height: 353px;
 
   display: flex;
