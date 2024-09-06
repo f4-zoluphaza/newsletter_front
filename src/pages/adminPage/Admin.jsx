@@ -18,6 +18,7 @@ import {
   EachBox,
   CheckBox,
   NumBox,
+  TitleLinks,
   TitleBox,
   DateBox,
   CheckImg,
@@ -69,7 +70,7 @@ export default function Admin() {
   const handleAdminPageMainApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin`;
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin?page=2`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
@@ -117,31 +118,6 @@ export default function Admin() {
 
         <WrapperDiv>
           <WrapperBox>
-            {/* <EachBox>
-            <CheckBox>
-              {validCheck && true ? (
-                <CheckImg
-                  src={fullCheck}
-                  onClick={() => {
-                    setValidCheck(!validCheck);
-                  }}
-                />
-              ) : (
-                <CheckImg
-                  src={emptyCheck}
-                  onClick={() => {
-                    setValidCheck(!validCheck);
-                  }}
-                />
-              )}
-            </CheckBox>
-            <NumBox>1</NumBox>
-            <TitleBox>키움, 개막 4연패 달성</TitleBox>
-            <DateBox>2024.03.26</DateBox>
-            <DateBox>2024.03.26</DateBox>
-
-          </EachBox> */}
-
             <EachBox>
               <CheckBox>
                 <CheckImg
@@ -152,16 +128,19 @@ export default function Admin() {
               <NumBox color="black" fontWeight="600">
                 번호
               </NumBox>
-              <TitleBox justifycontent="center">제목</TitleBox>
+              <TitleLinks>
+                <TitleBox justifycontent="center">제목</TitleBox>
+              </TitleLinks>
+
               <DateBox color="black" fontWeight="600">
                 생성일
               </DateBox>
-              <DateBox color="black" fontWeight="600">
+              <DateBox color="black" fontWeight="600" borderLeft="0px">
                 발행일
               </DateBox>
             </EachBox>
 
-            {data.map((item, index) => (
+            {Data.map((item, index) => (
               <EachBox key={item.id}>
                 <CheckBox>
                   <CheckImg
@@ -170,9 +149,11 @@ export default function Admin() {
                   />
                 </CheckBox>
                 <NumBox>{item.id}</NumBox>
-                <TitleBox>{item.title}</TitleBox>
-                <DateBox>{item.date}</DateBox>
-                <DateBox>{item.date}</DateBox>
+                <TitleLinks to={`/Admin/${item.id}`}>
+                  <TitleBox>{item.title}</TitleBox>
+                </TitleLinks>
+                <DateBox>{item.createDate}</DateBox>
+                <DateBox borderLeft="0">{item.publishDate}</DateBox>
               </EachBox>
             ))}
           </WrapperBox>
