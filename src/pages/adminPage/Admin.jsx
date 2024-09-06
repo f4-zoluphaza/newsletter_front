@@ -21,7 +21,7 @@ import {
   DateBox,
   CheckImg,
   DeleteBt,
-  DeleteDiv
+  DeleteDiv,
 } from "../../styles/adminPage/Admin.styled.jsx";
 
 import Searchsvg from "../../images/MainPage/Search.svg";
@@ -29,9 +29,10 @@ import emptyCheck from "../../images/AdminPage/emptyCheck.svg";
 import fullCheck from "../../images/AdminPage/fullCheck.svg";
 
 export default function Admin() {
-  const [validCheck, setValidCheck] = useState(false);
+  const [checkStates, setCheckStates] = useState(Array(10).fill(false));
 
-  const data = [,
+  const data = [
+    ,
     { id: 2, title: "키움, 개막 5연패 달성", date: "2024.03.27" },
     { id: 3, title: "키움, 개막 6연패 달성", date: "2024.03.28" },
     { id: 4, title: "키움, 개막 7연패 달성", date: "2024.03.29" },
@@ -40,13 +41,25 @@ export default function Admin() {
     { id: 7, title: "키움, 개막 10연패 달성", date: "2024.04.01" },
     { id: 8, title: "키움, 개막 11연패 달성", date: "2024.04.02" },
     { id: 9, title: "키움, 개막 12연패 달성", date: "2024.04.03" },
-    { id: 10, title: "키움, 개막 13연패 달성", date: "2024.04.04" }
+    { id: 10, title: "키움, 개막 13연패 달성", date: "2024.04.04" },
   ];
+
+  // 체크박스의 상테를 개별적으로 업데이트하는 함수
+  const handleCheckToggle = (index) => {
+    const newCheckStates = [...checkStates];
+    newCheckStates[index] = !newCheckStates[index];
+    if (index === 0) {
+      for (var i = 1; i < 11; i++) {
+        newCheckStates[i] = newCheckStates[0];
+      }
+    }
+    setCheckStates(newCheckStates);
+  };
 
   return (
     <Div>
       <BodyDiv>
-          <Header />
+        <Header />
 
         {/* 검색 창 */}
         <SearchDiv>
@@ -60,11 +73,10 @@ export default function Admin() {
           <DeleteBt>삭제</DeleteBt>
           <DeleteBt>발행</DeleteBt>
         </DeleteDiv>
-        
-        <WrapperDiv>
 
+        <WrapperDiv>
           <WrapperBox>
-          {/* <EachBox>
+            {/* <EachBox>
             <CheckBox>
               {validCheck && true ? (
                 <CheckImg
@@ -89,61 +101,41 @@ export default function Admin() {
 
           </EachBox> */}
 
-          <EachBox>
-            <CheckBox>
-              {validCheck && true ? (
+            <EachBox>
+              <CheckBox>
                 <CheckImg
-                  src={fullCheck}
-                  onClick={() => {
-                    setValidCheck(!validCheck);
-                  }}
+                  src={checkStates[0] ? fullCheck : emptyCheck}
+                  onClick={() => handleCheckToggle(0)}
                 />
-              ) : (
-                <CheckImg
-                  src={emptyCheck}
-                  onClick={() => {
-                    setValidCheck(!validCheck);
-                  }}
-                />
-              )}
-            </CheckBox>
-            <NumBox color="black" fontWeight="600">번호</NumBox>
-            <TitleBox justifycontent="center">제목</TitleBox>
-            <DateBox color="black" fontWeight="600">생성일</DateBox>
-            <DateBox color="black" fontWeight="600">발행일</DateBox>
+              </CheckBox>
+              <NumBox color="black" fontWeight="600">
+                번호
+              </NumBox>
+              <TitleBox justifycontent="center">제목</TitleBox>
+              <DateBox color="black" fontWeight="600">
+                생성일
+              </DateBox>
+              <DateBox color="black" fontWeight="600">
+                발행일
+              </DateBox>
+            </EachBox>
 
-          </EachBox> 
-
-{data.map((item) => (
-        <EachBox key={item.id}>
-          <CheckBox>
-            {validCheck && true ? (
-              <CheckImg
-                src={fullCheck}
-                onClick={() => {
-                  setValidCheck(!validCheck);
-                }}
-              />
-            ) : (
-              <CheckImg
-                src={emptyCheck}
-                onClick={() => {
-                  setValidCheck(!validCheck);
-                }}
-              />
-            )}
-          </CheckBox>
-          <NumBox>{item.id}</NumBox>
-          <TitleBox>{item.title}</TitleBox>
-          <DateBox>{item.date}</DateBox>
-          <DateBox>{item.date}</DateBox>
-        </EachBox>
-      ))}
-
-        
-        </WrapperBox>
+            {data.map((item, index) => (
+              <EachBox key={item.id}>
+                <CheckBox>
+                  <CheckImg
+                    src={checkStates[index + 1] ? fullCheck : emptyCheck}
+                    onClick={() => handleCheckToggle(index + 1)}
+                  />
+                </CheckBox>
+                <NumBox>{item.id}</NumBox>
+                <TitleBox>{item.title}</TitleBox>
+                <DateBox>{item.date}</DateBox>
+                <DateBox>{item.date}</DateBox>
+              </EachBox>
+            ))}
+          </WrapperBox>
         </WrapperDiv>
-        
 
         {/* 게시물 페이지 번호 */}
         <PostNumberDiv>
