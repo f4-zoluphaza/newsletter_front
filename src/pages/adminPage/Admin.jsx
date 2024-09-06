@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Header from "../../components/Header";
 import {
   Div,
@@ -30,6 +31,7 @@ import fullCheck from "../../images/AdminPage/fullCheck.svg";
 
 export default function Admin() {
   const [checkStates, setCheckStates] = useState(Array(10).fill(false));
+  const [Data, setData] = useState([]);
 
   const data = [
     ,
@@ -55,6 +57,45 @@ export default function Admin() {
     }
     setCheckStates(newCheckStates);
   };
+
+  // 쿠키 값 읽는 함수
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  }
+
+  const handleAdminPageMainApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin`;
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.get(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log(response.data.items);
+      setData(response.data.items);
+    } catch (error) {
+      console.error(
+        "adminPage 메인 api 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  useEffect(() => {
+    handleAdminPageMainApi();
+  }, []);
 
   return (
     <Div>
