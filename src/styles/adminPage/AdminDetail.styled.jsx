@@ -21,8 +21,9 @@ export const Label = styled.label`
   font-weight: bold;
 `;
 
-export const Input = styled.input`
+export const Input = styled.div`
   width: 100%;
+  height: 35px;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid black;

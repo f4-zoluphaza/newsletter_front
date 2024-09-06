@@ -34,19 +34,6 @@ export default function Admin() {
   const [checkStates, setCheckStates] = useState(Array(10).fill(false));
   const [Data, setData] = useState([]);
 
-  const data = [
-    ,
-    { id: 2, title: "키움, 개막 5연패 달성", date: "2024.03.27" },
-    { id: 3, title: "키움, 개막 6연패 달성", date: "2024.03.28" },
-    { id: 4, title: "키움, 개막 7연패 달성", date: "2024.03.29" },
-    { id: 5, title: "키움, 개막 8연패 달성", date: "2024.03.30" },
-    { id: 6, title: "키움, 개막 9연패 달성", date: "2024.03.31" },
-    { id: 7, title: "키움, 개막 10연패 달성", date: "2024.04.01" },
-    { id: 8, title: "키움, 개막 11연패 달성", date: "2024.04.02" },
-    { id: 9, title: "키움, 개막 12연패 달성", date: "2024.04.03" },
-    { id: 10, title: "키움, 개막 13연패 달성", date: "2024.04.04" },
-  ];
-
   // 체크박스의 상테를 개별적으로 업데이트하는 함수
   const handleCheckToggle = (index) => {
     const newCheckStates = [...checkStates];

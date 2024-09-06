@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
-// import { BodyDiv } from "../../styles/Mypage_s/Attendance.styled";
 import { Div, BodyDiv } from "../../styles/main/main-style-component.jsx";
 import {
   Form,
@@ -16,6 +17,47 @@ import {
 
 export default function Admin() {
   const [validCheck, setValidCheck] = useState(false);
+  const [data, setData] = useState([]);
+  const { id } = useParams();
+
+  // 쿠키 값 읽는 함수
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  }
+
+  const handleAdminDetailApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/${id}`;
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.get(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log(response.data.items);
+      setData(response.data.items);
+    } catch (error) {
+      console.error(
+        "adminPage 메인 api 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  useEffect(() => {
+    handleAdminDetailApi();
+  }, []);
   return (
     <Div>
       <BodyDiv>
@@ -23,10 +65,12 @@ export default function Admin() {
 
         <Form>
           <Label for="title">제목</Label>
-          <Input type="text" id="title" name="title" required></Input>
+          <Input type="textarea" id="title" name="title" required></Input>
 
           <Label for="title">링크</Label>
-          <Input type="text" id="title" name="title" value=""></Input>
+          <Input type="textarea" id="title" name="title" value="">
+            {data.link}
+          </Input>
 
           <TextareaWrapper>
             <TextareaDiv>
