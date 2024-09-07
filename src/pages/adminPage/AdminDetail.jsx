@@ -17,8 +17,26 @@ import {
 
 export default function Admin() {
   const [validCheck, setValidCheck] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({
+    title: "",
+    link: "",
+    original: "",
+    fiveW1H: "",
+    content: "",
+  });
+
   const { id } = useParams();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
+    // console.log(name, value);
+  };
 
   // 쿠키 값 읽는 함수
   function getCookie(name) {
@@ -46,7 +64,13 @@ export default function Admin() {
       });
 
       console.log(response.data.items);
-      setData(response.data.items);
+      setData({
+        title: response.data.items[0].title,
+        link: response.data.items[0].link,
+        original: response.data.items[0].source,
+        fiveW1H: response.data.items[0].five_w_one_h,
+        content: response.data.items[0].content,
+      });
     } catch (error) {
       console.error(
         "adminPage 메인 api 에러",
@@ -65,27 +89,53 @@ export default function Admin() {
 
         <Form>
           <Label for="title">제목</Label>
-          <Input type="textarea" id="title" name="title" required></Input>
+          <Input
+            type="textarea"
+            id="title"
+            name="title"
+            required
+            value={data.title}
+            onChange={handleChange}
+          />
 
-          <Label for="title">링크</Label>
-          <Input type="textarea" id="title" name="title" value="">
-            {data.link}
-          </Input>
+          <Label for="link">링크</Label>
+          <Input
+            type="textarea"
+            id="link"
+            name="link"
+            value={data.link}
+            readOnly
+          />
 
           <TextareaWrapper>
             <TextareaDiv>
-              <Label for="title">원본</Label>
-              <Textarea value=""></Textarea>
+              <Label for="original">원본</Label>
+              <Textarea
+                id="original"
+                name="original"
+                value={data.original}
+                readOnly
+              ></Textarea>
             </TextareaDiv>
 
             <TextareaDiv>
-              <Label for="title">육하원칙</Label>
-              <Textarea value=""></Textarea>
+              <Label for="fiveW1H">육하원칙</Label>
+              <Textarea
+                id="fiveW1H"
+                name="fiveW1H"
+                value={data.fiveW1H}
+                readOnly
+              ></Textarea>
             </TextareaDiv>
 
             <TextareaDiv>
-              <Label for="title">내용</Label>
-              <Textarea></Textarea>
+              <Label for="content">내용</Label>
+              <Textarea
+                id="content"
+                name="content"
+                value={data.content}
+                onChange={handleChange}
+              ></Textarea>
             </TextareaDiv>
           </TextareaWrapper>
 

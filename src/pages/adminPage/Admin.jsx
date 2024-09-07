@@ -57,7 +57,7 @@ export default function Admin() {
   const handleAdminPageMainApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin?page=2`;
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin?page=1`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
