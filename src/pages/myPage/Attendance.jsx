@@ -12,10 +12,7 @@ import {
   Links,
 } from "../../styles/Mypage_s/Attendance.styled";
 
-import {
-  Div,
-  BodyDiv
-} from "../../styles/main/main-style-component.jsx";
+import { Div, BodyDiv } from "../../styles/main/main-style-component.jsx";
 
 import Unregister from "../../components/mypage/Unregister";
 
@@ -66,7 +63,7 @@ export default function Attendance() {
     <Div>
       <BodyDiv>
         <Header />
-        
+
         <WrapperDiv>
           <LeftDiv>
             <MainWrapper borderBottom="solid 2px #c4c4c4">
@@ -133,6 +130,7 @@ export default function Attendance() {
                   fontWeight="600"
                   fontSize="21px"
                   cursor="pointer"
+                  width="150px"
                   onClick={() => setUnregisterBt(true)}
                 >
                   회원 탈퇴
