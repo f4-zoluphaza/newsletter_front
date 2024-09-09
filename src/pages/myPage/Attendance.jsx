@@ -131,10 +131,19 @@ export default function Attendance() {
                   fontSize="21px"
                   cursor="pointer"
                   width="150px"
+                  marginBottom="8px"
                   onClick={() => setUnregisterBt(true)}
                 >
                   회원 탈퇴
                 </MainP>
+
+                {data.role === "ADMIN" ? (
+                  <Links to="/Admin">
+                    <MainP fontWeight="600" fontSize="21px" marginBottom="15px">
+                      관리자 페이지
+                    </MainP>
+                  </Links>
+                ) : null}
               </MainPDiv>
             </MainWrapper>
           </LeftDiv>
