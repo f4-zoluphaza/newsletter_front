@@ -34,6 +34,14 @@ export default function Admin() {
   const [checkStates, setCheckStates] = useState(Array(10).fill(false));
   const [Data, setData] = useState([]);
 
+  const getCheckedIds = () => {
+    // 체크된 항목들 중에서, index가 1 이상인 항목들에 대해서 Data 배열에서 ID를 가져옴
+    const checkedIds = Data.filter((item, index) => checkStates[index + 1]).map(
+      (item) => item.id
+    );
+    return checkedIds;
+  };
+
   // 체크박스의 상테를 개별적으로 업데이트하는 함수
   const handleCheckToggle = (index) => {
     const newCheckStates = [...checkStates];
@@ -81,6 +89,68 @@ export default function Admin() {
     }
   };
 
+  // 뉴스 발행 api
+  const handlePublishApi = async () => {
+    try {
+      const checkedIds = getCheckedIds();
+      //API 요청 URL
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/publish?ids=${checkedIds}`;
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.put(
+        url,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(response.data);
+      alert("발행되었습니다.");
+      window.location.reload();
+    } catch (error) {
+      console.error(
+        "adminPageDetail 뉴스 발행 api 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  const handleDeleteApi = async () => {
+    try {
+      const checkedIds = getCheckedIds();
+      //API 요청 URL
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/delete?ids=${checkedIds}`;
+      //API 요청 URL
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.delete(url, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log(response.data);
+      alert("삭제되었습니다.");
+      window.location.reload();
+    } catch (error) {
+      console.error(
+        "adminPageDetail 뉴스 삭제 api 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
   useEffect(() => {
     handleAdminPageMainApi();
   }, []);
@@ -99,8 +169,8 @@ export default function Admin() {
         </SearchDiv>
 
         <DeleteDiv>
-          <DeleteBt>삭제</DeleteBt>
-          <DeleteBt>발행</DeleteBt>
+          <DeleteBt onClick={() => handleDeleteApi()}>삭제</DeleteBt>
+          <DeleteBt onClick={() => handlePublishApi()}>발행</DeleteBt>
         </DeleteDiv>
 
         <WrapperDiv>
