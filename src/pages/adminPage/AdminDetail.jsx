@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import { Div, BodyDiv } from "../../styles/main/main-style-component.jsx";
 import {
@@ -16,16 +16,23 @@ import {
 } from "../../styles/adminPage/AdminDetail.styled";
 
 export default function Admin() {
-  const [validCheck, setValidCheck] = useState(false);
+  const [validPublish, setPublish] = useState(null);
   const [data, setData] = useState({
     title: "",
     link: "",
     original: "",
     fiveW1H: "",
     content: "",
+    id: null,
+    published: null,
   });
 
   const { id } = useParams();
+
+  // 화면 새로고침 막는 함수
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,6 +77,8 @@ export default function Admin() {
         original: response.data.items[0].source,
         fiveW1H: response.data.items[0].five_w_one_h,
         content: response.data.items[0].content,
+        id: response.data.items[0].id,
+        published: response.data.items[0].published,
       });
     } catch (error) {
       console.error(
@@ -79,15 +88,77 @@ export default function Admin() {
     }
   };
 
+  const handlePublishApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/publish?ids=${id}`;
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.put(
+        url,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(response.data);
+      alert("발행되었습니다.");
+      setPublish(true);
+    } catch (error) {
+      console.error(
+        "adminPageDetail 뉴스 발행 api 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  const handleUnpublishApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/unpublish/${id}`;
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.put(
+        url,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(response.data);
+      alert("발행 취소되었습니다.");
+      setPublish(false);
+    } catch (error) {
+      console.error(
+        "adminPageDetail 뉴스 발행 취소 api 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
   useEffect(() => {
     handleAdminDetailApi();
-  }, []);
+  }, [validPublish]);
   return (
     <Div>
       <BodyDiv>
         <Header />
 
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Label for="title">제목</Label>
           <Input
             type="textarea"
@@ -143,9 +214,14 @@ export default function Admin() {
             <Links to="/Admin">
               <Button type="button">취소</Button>
             </Links>
-
-            <Button type="submit" backgroundColor="#588539">
-              발행
+            <Button
+              type="submit"
+              backgroundColor={data.published ? "#588539" : null}
+              onClick={() => {
+                data.published ? handleUnpublishApi() : handlePublishApi();
+              }}
+            >
+              {data.published ? "발행취소" : "발행"}
             </Button>
 
             <Button type="submit" backgroundColor="#588539">
