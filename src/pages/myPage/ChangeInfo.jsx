@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import {
   Div,
   BodyDiv,
@@ -40,17 +41,18 @@ export default function ChangeInfo() {
     newPasswordCheck: '',
   });
 
-  const [validEmail, setValidEmail] = useState(null); // 이메일 유효값
-  const [validEmailCheck, setValidEmailCheck] = useState(null);
+  const [validNickName, setValidNickName] = useState(null);
   const [validPW, setValidPW] = useState(null);
   const [validPWCheck, setValidPWCheck] = useState(null);
+
+  const navigate = useNavigate();
 
   // 화면 새로고침 막는 함수
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  // 비밀번호 유효성 함수
+  // 새 비밀번호 유효성 함수
   const handlePW = (e) => {
     const password = e.target.value;
     setForm({ ...form, password });
@@ -66,7 +68,7 @@ export default function ChangeInfo() {
     }
   };
 
-  // 비밀번호 확인 유효성 함수
+  // 새 비밀번호 확인 유효성 함수
   const hadlePWCheck = (e) => {
     const passwordCheck = e.target.value;
     setForm((prevForm) => ({ ...prevForm, passwordCheck }));
@@ -80,12 +82,23 @@ export default function ChangeInfo() {
     }
   };
 
+  // 쿠키 값 읽는 함수
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  }
+
   // 내 정보 수정 함수
   const changeinfoAPI = async () => {
     try {
       //API 요청 URL
       const url =
         'https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage/change';
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie('jwtToken');
 
       const data = {
         nickname: form.nickName,
@@ -97,20 +110,46 @@ export default function ChangeInfo() {
       const response = await axios.put(url, data, {
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       });
 
       const result = response.data.result;
       console.log(result);
 
-      alert('정보가 성공적으로 수정되었습니다.');
+      navigate('/Login');
+      // alert('정보가 성공적으로 수정되었습니다.');
     } catch (error) {
       console.error(
         '내 정보 수정 에러',
         error.response ? error.response.data : error
       );
-      alert(error.response.data.result);
+      alert(error.response.data.message);
     }
+  };
+
+  const handleNickNameChange = (e) => {
+    const nickName = e.target.value;
+    setForm({ ...form, nickName });
+
+    if (nickName.trim() === '') {
+      setValidNickName(null);
+    }
+  };
+
+  const handlePasswdChange = (e) => {
+    const password = e.target.value;
+    setForm({ ...form, password });
+  };
+
+  const handleNewPasswdChange = (e) => {
+    const newPassword = e.target.value;
+    setForm({ ...form, newPassword });
+  };
+
+  const handleNewPasswdCheckChange = (e) => {
+    const newPasswordCheck = e.target.value;
+    setForm({ ...form, newPasswordCheck });
   };
 
   return (
@@ -134,6 +173,7 @@ export default function ChangeInfo() {
                 <Input
                   id="nickName"
                   type="text"
+                  onChange={handleNickNameChange}
                   placeholder="nick1"
                   width="410.975px"
                   height="53.82px"
@@ -162,6 +202,7 @@ export default function ChangeInfo() {
                 <Input
                   id="currentPW"
                   type={validPWState ? 'text' : 'password'}
+                  onChange={handlePasswdChange}
                   placeholder="기존 비밀번호"
                   width="410.975px"
                   height="53.82px"
@@ -192,7 +233,10 @@ export default function ChangeInfo() {
                 <Input
                   id="password"
                   type={validNewPWState ? 'text' : 'password'}
-                  onChange={handlePW}
+                  onChange={(e) => {
+                    handlePW(e);
+                    handleNewPasswdChange(e);
+                  }}
                   placeholder="비밀번호 (숫자, 영문 8~12자리)"
                   width="410.975px"
                   height="53.82px"
@@ -230,7 +274,10 @@ export default function ChangeInfo() {
                 <Input
                   id="passwordCheck"
                   type={validRepeatNewPWState ? 'text' : 'password'}
-                  onChange={hadlePWCheck}
+                  onChange={(e) => {
+                    handlePW(e);
+                    handleNewPasswdCheckChange(e);
+                  }}
                   placeholder="비밀번호 확인"
                   width="410.975px"
                   height="53.82px"
