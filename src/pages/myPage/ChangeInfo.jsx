@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from "axios";
+import axios from 'axios';
 import {
   Div,
   BodyDiv,
@@ -11,6 +11,9 @@ import {
   TitleDiv,
   TextDiv,
   TextSpan,
+  EyesImg1,
+  EyesImg2,
+  EyesImg3,
   Button,
   UnderDiv,
   VaildP,
@@ -18,8 +21,14 @@ import {
 } from '../../styles/Mypage_j/ChangeInfo.styled.jsx';
 
 import Header from '../../components/Header.jsx';
+import PWOpen from '../../images/Login/PWOpen.svg';
+import PWClose from '../../images/Login/PWClose.svg';
 
 export default function ChangeInfo() {
+  const [validPWState, setValidPWState] = useState(false);
+  const [validNewPWState, setValidNewPWState] = useState(false);
+  const [validRepeatNewPWState, setValidRepeatNewPWState] = useState(false);
+
   //form 관리
   const [form, setForm] = useState({
     nickName: '',
@@ -28,9 +37,8 @@ export default function ChangeInfo() {
     password: '',
     passwordCheck: '',
     newPassword: '',
-    newPasswordCheck: ''
+    newPasswordCheck: '',
   });
-
 
   const [validEmail, setValidEmail] = useState(null); // 이메일 유효값
   const [validEmailCheck, setValidEmailCheck] = useState(null);
@@ -76,7 +84,8 @@ export default function ChangeInfo() {
   const changeinfoAPI = async () => {
     try {
       //API 요청 URL
-      const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage/change";
+      const url =
+        'https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage/change';
 
       const data = {
         nickname: form.nickName,
@@ -87,17 +96,17 @@ export default function ChangeInfo() {
 
       const response = await axios.put(url, data, {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
 
       const result = response.data.result;
       console.log(result);
 
-      alert("정보가 성공적으로 수정되었습니다.");
+      alert('정보가 성공적으로 수정되었습니다.');
     } catch (error) {
       console.error(
-        "내 정보 수정 에러",
+        '내 정보 수정 에러',
         error.response ? error.response.data : error
       );
       alert(error.response.data.result);
@@ -112,12 +121,12 @@ export default function ChangeInfo() {
 
         <WrapperDiv>
           <TitleDiv>
-            <TextSpan fontsize="25px" fontweight="600" color="#000000">
+            <TextSpan fontsize="30px" fontweight="600" color="#000000">
               정보 수정
             </TextSpan>
           </TitleDiv>
           <RightDiv>
-            <Form onSubmit={handleSubmit}>
+            <Form alignItems="flex-start" onSubmit={handleSubmit}>
               <TextDivForm>
                 <TextDiv>
                   <TextSpan>닉네임</TextSpan>
@@ -146,42 +155,13 @@ export default function ChangeInfo() {
                 />
               </TextDivForm>
 
-              {/* <UnderDiv margintop="5px" justifyContent="end">
-                <Button>중복 확인</Button>
-                <Button backgroundcolor="#588539" color="#FFFFFF">
-                  인증 요청
-                </Button>
-              </UnderDiv> */}
-
-              {/* <TextDivForm margintop="10px">
-                <TextDiv>
-                  <TextSpan>인증 번호</TextSpan>
-                </TextDiv>
-                <Input
-                  id="emailCheck"
-                  type="number"
-                  placeholder="이메일 인증번호"
-                  width="410.975px"
-                  height="53.82px"
-                  borderRadius="9.78px"
-                />
-              </TextDivForm> */}
-
-              {/* <UnderDiv margintop="5px" justifyContent="space-between">
-                <VaildP>인증번호가 올바르지 않습니다.</VaildP>
-                <VaildP color="#588539">인증되었습니다.</VaildP>
-                <Button backgroundcolor="#588539" color="#FFFFFF">
-                  인증 확인
-                </Button>
-              </UnderDiv> */}
-
               <TextDivForm>
                 <TextDiv>
                   <TextSpan>기존 비밀번호</TextSpan>
                 </TextDiv>
                 <Input
                   id="currentPW"
-                  type="text"
+                  type={validPWState ? 'text' : 'password'}
                   placeholder="기존 비밀번호"
                   width="410.975px"
                   height="53.82px"
@@ -189,20 +169,59 @@ export default function ChangeInfo() {
                 />
               </TextDivForm>
 
-              <TextDivForm margintop="10px">
+              {validPWState ? (
+                <EyesImg1
+                  src={PWClose}
+                  onClick={() => {
+                    setValidPWState();
+                  }}
+                />
+              ) : (
+                <EyesImg1
+                  src={PWOpen}
+                  onClick={() => {
+                    setValidPWState(true);
+                  }}
+                />
+              )}
+
+              <TextDivForm>
                 <TextDiv>
                   <TextSpan>새 비밀번호</TextSpan>
                 </TextDiv>
                 <Input
                   id="password"
-                  type="password"
+                  type={validNewPWState ? 'text' : 'password'}
                   onChange={handlePW}
-                  placeholder="비밀번호"
+                  placeholder="비밀번호 (숫자, 영문 8~12자리)"
                   width="410.975px"
                   height="53.82px"
                   borderRadius="9.78px"
                 />
+                {validNewPWState ? (
+                  <EyesImg2
+                    src={PWClose}
+                    onClick={() => {
+                      setValidNewPWState();
+                    }}
+                  />
+                ) : (
+                  <EyesImg2
+                    src={PWOpen}
+                    onClick={() => {
+                      setValidNewPWState(true);
+                    }}
+                  />
+                )}
               </TextDivForm>
+              {validPW === false ? (
+                <UnderDiv>
+                  <VaildP>
+                    비밀번호를 영문, 숫자, 특수문자 포함 8~12자리로
+                    설정해주세요.
+                  </VaildP>
+                </UnderDiv>
+              ) : null}
 
               <TextDivForm>
                 <TextDiv>
@@ -210,13 +229,31 @@ export default function ChangeInfo() {
                 </TextDiv>
                 <Input
                   id="passwordCheck"
-                  type="password"
+                  type={validRepeatNewPWState ? 'text' : 'password'}
                   onChange={hadlePWCheck}
                   placeholder="비밀번호 확인"
                   width="410.975px"
                   height="53.82px"
                   borderRadius="9.78px"
                 />
+                {validRepeatNewPWState ? (
+                  <EyesImg3
+                    src={PWClose}
+                    onClick={() => {
+                      setValidRepeatNewPWState();
+                    }}
+                  />
+                ) : (
+                  <EyesImg3
+                    src={PWOpen}
+                    style={{
+                      top: validPW === false ? '395px' : '355px', //EyesImg3 위치 변경
+                    }}
+                    onClick={() => {
+                      setValidRepeatNewPWState(true);
+                    }}
+                  />
+                )}
               </TextDivForm>
 
               {validPWCheck === false ? (
