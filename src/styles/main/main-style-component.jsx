@@ -22,7 +22,7 @@ export const BodyDiv = styled.div`
 
 export const NavDiv = styled.div`
   width: 100%;
-  height: 116px;
+  height: 140px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,7 +33,7 @@ export const NavDiv = styled.div`
 export const LogoImg = styled.img`
   width: 148px;
   height: 116px;
-  padding-top: 7px;
+  padding-top: 10px;
 `;
 
 export const WrapperDiv = styled.div`
@@ -59,8 +59,8 @@ export const Links = styled(Link)`
 
 export const HeaderDiv = styled.div`
   width: 100%;
-  height: 200px;
-  margin-top: 20px;
+  height: 175px;
+  margin-top: 7px;
   /* background-color: lightcyan; */
   ${flexCenter()}
 `;
@@ -118,7 +118,7 @@ export const Label = styled.label`
 
 export const SubscribeInput = styled.input`
   width: 80%;
-  height: 45px;
+  height: 40px;
   border-radius: 12px;
   border: solid 2px #588539;
   margin-left: 12px;
@@ -143,7 +143,7 @@ export const ButtonDiv = styled.div`
 
 export const Button = styled.input`
   width: 227px;
-  height: 45px;
+  height: 40px;
   border-radius: 12px;
   border: solid 0px;
   background-color: #588539;
@@ -172,8 +172,8 @@ export const SmallTextSpan = styled.span`
 export const SearchDiv = styled.div`
   width: 100%;
   height: 55px;
-  margin-top: 40px;
-  margin-bottom: 30px;
+  margin-top: 35px;
+  margin-bottom: 20px;
   /* background-color: lightcoral; */
   ${flexCenter()}
 `;
