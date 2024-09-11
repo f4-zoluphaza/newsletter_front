@@ -150,6 +150,40 @@ export default function Admin() {
     }
   };
 
+  const handleUpdateApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/update`;
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.put(
+        url,
+        {id: data.id,
+          title: data.title,
+          content: data.content
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(response.data);
+      alert("저장되었습니다.");
+      setPublish(false);
+    } catch (error) {
+      console.error(
+        "adminPageDetail 뉴스 저장 api 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
   useEffect(() => {
     handleAdminDetailApi();
   }, [validPublish]);
@@ -224,7 +258,7 @@ export default function Admin() {
               {data.published ? "발행취소" : "발행"}
             </Button>
 
-            <Button type="submit" backgroundColor="#588539">
+            <Button type="submit" backgroundColor="#588539" onClick={()=>handleUpdateApi()}>
               저장
             </Button>
           </ButtonDiv>
