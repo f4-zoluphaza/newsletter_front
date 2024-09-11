@@ -48,7 +48,7 @@ export default function Unregister({ setUnregisterBt }) {
         "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
       // 탈퇴하고 Login 페이지로 이동
-      navigate("/Login");
+      navigate("/");
     } catch (error) {
       console.error(
         "마이페이지 회원 탈퇴 api 에러",
