@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   BodyDiv,
@@ -12,6 +13,8 @@ import {
 import Logo from "../images/Logo.svg";
 
 export default function Header() {
+  const navigate = useNavigate();
+
   const [validLogin, setValidLogin] = useState(null);
   // 쿠키 값 읽는 함수
   function getCookie(name) {
@@ -36,12 +39,14 @@ export default function Header() {
       "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
     alert("로그아웃 되었습니다.");
-    window.location.reload();
+    // 로그아웃하고 메인 페이지로 이동
+    setValidLogin(false);
+    navigate("/");
   };
 
   useEffect(() => {
     handleHeaderFont();
-  }, []);
+  }, [validLogin]);
 
   return (
     <NavDiv>
