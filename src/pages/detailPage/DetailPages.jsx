@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 import {
   Div,
   BodyDiv,
@@ -28,24 +28,24 @@ import {
   HeartDiv,
   PreNextpostDiv,
   OnClickTextspan,
-} from '../../styles/Detailpage/DetailPages.styled.jsx';
+} from "../../styles/Detailpage/DetailPages.styled.jsx";
 
-import Header from '../../components/Header.jsx';
-import NewsImage from '../../images/MainPage/News.svg';
-import CircleImage from '../../images/DetailPage/Circle.svg';
-import MessageSendImage from '../../images/DetailPage/MessageSend.svg';
-import ScrapBlackImage from '../../images/DetailPage/ScrapBlank.svg';
-import HeartBlackImage from '../../images/DetailPage/HeartBlank.svg';
-import ShareImage from '../../images/DetailPage/Share.svg';
+import Header from "../../components/Header.jsx";
+import NewsImage from "../../images/MainPage/News.svg";
+import CircleImage from "../../images/DetailPage/Circle.svg";
+import MessageSendImage from "../../images/DetailPage/MessageSend.svg";
+import ScrapBlackImage from "../../images/DetailPage/ScrapBlank.svg";
+import HeartBlackImage from "../../images/DetailPage/HeartBlank.svg";
+import ShareImage from "../../images/DetailPage/Share.svg";
 
 export default function DetailPage() {
   const [data, setData] = useState({
-    title: '',
-    link: '',
-    original: '',
-    content: '',
-    publishDate: '',
-    thumbnail: '',
+    title: "",
+    link: "",
+    original: "",
+    content: "",
+    publishDate: "",
+    thumbnail: "",
     id: null,
     published: null,
   });
@@ -61,14 +61,13 @@ export default function DetailPage() {
   const newsdetailPageApi = async () => {
     try {
       //API 요청 URL
-      const url =
-        'https://humble-commonly-goshawk.ngrok-free.app/api/v1/news/15';
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/news/${id}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url, {
         headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': '69420',
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
         },
       });
 
@@ -85,17 +84,17 @@ export default function DetailPage() {
         published: response.data.items[0].published,
       });
 
-      alert('뉴스 상세 조회 되었습니다.');
       // window.location.reload();
     } catch (error) {
       console.error(
-        'detailPage 메인 뉴스 상세 조회 에러',
+        "detailPage 메인 뉴스 상세 조회 에러",
         error.response ? error.response.data : error
       );
     }
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0); // 페이지의 맨 위로 스크롤
     newsdetailPageApi();
   }, []);
 
