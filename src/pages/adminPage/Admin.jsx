@@ -25,6 +25,7 @@ import {
   DeleteBt,
   DeleteDiv,
 } from "../../styles/adminPage/Admin.styled.jsx";
+import Pagination from "../../components/Pagination.jsx";
 
 import Searchsvg from "../../images/MainPage/Search.svg";
 import emptyCheck from "../../images/AdminPage/emptyCheck.svg";
@@ -33,6 +34,8 @@ import fullCheck from "../../images/AdminPage/fullCheck.svg";
 export default function Admin() {
   const [checkStates, setCheckStates] = useState(Array(10).fill(false));
   const [Data, setData] = useState([]);
+  const [paginationNum, setPaginationNum] = useState(1);
+  const [totalPages, setTotalPages] = useState();
 
   const getCheckedIds = () => {
     // 체크된 항목들 중에서, index가 1 이상인 항목들에 대해서 Data 배열에서 ID를 가져옴
@@ -65,7 +68,7 @@ export default function Admin() {
   const handleAdminPageMainApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin?page=1`;
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin?page=${paginationNum}`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
@@ -79,8 +82,8 @@ export default function Admin() {
         },
       });
 
-      console.log(response.data.items);
       setData(response.data.items);
+      setTotalPages(response.data.totalPages);
     } catch (error) {
       console.error(
         "adminPage 메인 api 에러",
@@ -153,7 +156,7 @@ export default function Admin() {
 
   useEffect(() => {
     handleAdminPageMainApi();
-  }, []);
+  }, [paginationNum]);
 
   return (
     <Div>
@@ -217,50 +220,12 @@ export default function Admin() {
         </WrapperDiv>
 
         {/* 게시물 페이지 번호 */}
-        <PostNumberDiv>
-          <Links>
-            <TextSpan fontsize="23px" fontweight="400">
-              1
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              2
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              3
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              4
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              5
-            </TextSpan>
-          </Links>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="10px">
-              &gt;
-            </TextSpan>
-          </Links>
-        </PostNumberDiv>
+        {/* 게시물 페이지 번호 */}
+        <Pagination
+          totalPage={totalPages}
+          setPaginationNum={setPaginationNum}
+          margin={"0px"}
+        />
       </BodyDiv>
     </Div>
   );

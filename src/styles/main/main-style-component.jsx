@@ -374,7 +374,8 @@ export const PostNumberDiv = styled.div`
   display: flex;
   justify-content: ${(props) => props.justifycontent || "center"};
 
-  margin-top: 100px;
+  margin-top: ${(props) => props.marginTop || "100px"};
+
   /* align-items: center; //간격 조정 시*/
 
   /* background-color: lightgreen; */

@@ -5,7 +5,7 @@ import {
   PostNumberDiv,
 } from "../styles/main/main-style-component.jsx";
 
-const Pagination = ({ totalPage, setPaginationNum }) => {
+const Pagination = ({ totalPage, setPaginationNum, margin }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageGroup, setPageGroup] = useState(0);
 
@@ -41,7 +41,7 @@ const Pagination = ({ totalPage, setPaginationNum }) => {
   }
 
   return (
-    <PostNumberDiv>
+    <PostNumberDiv marginTop={margin}>
       {pageGroup > 0 && (
         <Links onClick={handlePrevGroup}>
           <TextSpan fontsize="23px" marginleft="10px">
