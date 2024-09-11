@@ -28,7 +28,8 @@ export const WrapperDiv = styled.div`
   width: 580px;
   /* height: ${(props) => props.height || '100vh'}; */
   height: auto;
-  margin-top: 80px;
+  margin-top: 20px;
+  margin-bottom: 50px;
   /* background-color: lightgray; */
 
   display: flex;
@@ -58,7 +59,7 @@ export const RightDiv = styled.div`
 `;
 
 export const TitleDiv = styled.div`
-  width: 73%;
+  width: 70%;
   height: 40px;
   margin-bottom: 20px;
 
@@ -93,6 +94,7 @@ export const Form = styled.form`
   ${flexCenter()}
   flex-direction: column;
   align-items: ${(props) => props.alignItems};
+  position: relative; //eyesImg 때문에 설정
 `;
 
 export const Input = styled.input`
@@ -109,6 +111,36 @@ export const Input = styled.input`
 
   padding-left: 20px;
   box-sizing: border-box;
+`;
+
+export const EyesImg1 = styled.img`
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 195px;
+  right: 20px;
+
+  cursor: pointer;
+`;
+
+export const EyesImg2 = styled.img`
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 275px;
+  right: 20px;
+
+  cursor: pointer;
+`;
+
+export const EyesImg3 = styled.img`
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 355px;
+  right: 20px;
+
+  cursor: pointer;
 `;
 
 export const Button = styled.button`
@@ -129,7 +161,7 @@ export const Button = styled.button`
 `;
 
 export const UnderDiv = styled.div`
-  width: 73%;
+  width: 70%;
   height: 40px;
   margin-top: ${(props) => props.margintop};
   /* background-color: #eea5a5; */
