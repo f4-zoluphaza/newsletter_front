@@ -267,50 +267,6 @@ export default function MainPage(props) {
         </PostAllDiv>
 
         {/* 게시물 페이지 번호 */}
-        {/* <PostNumberDiv>
-          <Links>
-            <TextSpan fontsize="23px" fontweight="400">
-              1
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              2
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              3
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              4
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              5
-            </TextSpan>
-          </Links>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="10px">
-              &gt;
-            </TextSpan>
-          </Links>
-        </PostNumberDiv> */}
         <Pagination
           totalPage={totalPages}
           setPaginationNum={setPaginationNum}
