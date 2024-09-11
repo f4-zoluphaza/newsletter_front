@@ -268,13 +268,14 @@ export const RangeButton = styled.input`
 
 export const PostAllDiv = styled.div`
   width: 100%;
-  height: auto;
+  height: 1000px;
   margin-bottom: 50px;
 
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 
-  /* background-color: lightslategrey; */
+  background-color: lightslategrey;
 `;
 
 export const PostDiv = styled.div`
@@ -285,7 +286,7 @@ export const PostDiv = styled.div`
   display: flex;
   justify-content: space-evenly;
 
-  /* background-color: lightyellow; */
+  background-color: lightyellow;
 `;
 
 export const PostWapperDiv = styled.div`
