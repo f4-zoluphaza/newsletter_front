@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   PostWapperDiv,
   NewsImg,
@@ -14,13 +14,13 @@ import NewsImage from '../images/MainPage/News.svg';
 import HeartImage from '../images/MainPage/Heart.svg';
 import ScraptImage from '../images/MainPage/Scrapt.svg';
 
-export default function NewsletterPost() {
+export default function NewsletterPost({ title, content, publishDate, thumbnail, heartCount, scrapCount }) {
   return (
     <PostWapperDiv>
-      <NewsImg src={NewsImage} />
-      <NewsTitleDiv>한화 또 져... 팬들 실망이 크다.</NewsTitleDiv>
+      <NewsImg src={thumbnail} />
+      <NewsTitleDiv>{title}</NewsTitleDiv>
       <Line />
-      <NewsDateDiv>24.04.12</NewsDateDiv>
+      <NewsDateDiv>{publishDate}</NewsDateDiv>
       <HeartSaveDiv>
         <HeartImgScrap src={HeartImage} />
         <HeartCountScrap>10</HeartCountScrap>
