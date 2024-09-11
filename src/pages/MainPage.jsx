@@ -49,6 +49,7 @@ import NewsImage from "../images/MainPage/News.svg";
 import Header from "../components/Header.jsx";
 import NewsletterPost from "../components/NewsletterPost.jsx";
 import Footer from "../components/main/Footer.jsx";
+import Pagination from "../components/Pagination.jsx";
 
 export default function MainPage(props) {
   //form 관리
@@ -59,14 +60,9 @@ export default function MainPage(props) {
 
   const [validEmailDuplicate, setValidEmailDuplicate] = useState(null);
   const [validNickName, setValidNickName] = useState(null);
-
-  const [data, setData] = useState({
-    title: "",
-    content: "",
-    publishDate: "",
-    thumbnail: "",
-    id: null,
-  });
+  const [paginationNum, setPaginationNum] = useState(1);
+  const [totalPages, setTotalPages] = useState();
+  const [data, setData] = useState({});
 
   const { id } = useParams();
 
@@ -132,7 +128,7 @@ export default function MainPage(props) {
   const newsmainPageAPI = async () => {
     try {
       //API 요청 URL
-      const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/news";
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/news?page=${paginationNum}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url, {
@@ -146,6 +142,8 @@ export default function MainPage(props) {
 
       const result = response.data.items;
       setData(result);
+      const totalPages = response.data.totalPages;
+      setTotalPages(totalPages);
     } catch (error) {
       console.error(
         "mainPage 뉴스 리스트 불러오기 에러",
@@ -156,7 +154,7 @@ export default function MainPage(props) {
 
   useEffect(() => {
     newsmainPageAPI();
-  }, []);
+  }, [paginationNum]);
 
   return (
     <Div>
@@ -269,7 +267,7 @@ export default function MainPage(props) {
         </PostAllDiv>
 
         {/* 게시물 페이지 번호 */}
-        <PostNumberDiv>
+        {/* <PostNumberDiv>
           <Links>
             <TextSpan fontsize="23px" fontweight="400">
               1
@@ -312,7 +310,11 @@ export default function MainPage(props) {
               &gt;
             </TextSpan>
           </Links>
-        </PostNumberDiv>
+        </PostNumberDiv> */}
+        <Pagination
+          totalPage={totalPages}
+          setPaginationNum={setPaginationNum}
+        />
 
         {/* footer 구분 선 */}
         <BoldLine></BoldLine>
