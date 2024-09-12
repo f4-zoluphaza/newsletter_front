@@ -17,6 +17,7 @@ export const Div = styled.div`
 export const BodyDiv = styled.div`
   width: 1400px;
   height: 100vh;
+  
   /* background-color: beige; */
 `;
 
@@ -172,15 +173,15 @@ export const SmallTextSpan = styled.span`
 export const SearchDiv = styled.div`
   width: 100%;
   height: 55px;
-  margin-top: 35px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 25px;
   /* background-color: lightcoral; */
   ${flexCenter()}
 `;
 
 export const SearchBorderDiv = styled.div`
   width: ${(props) => props.width || "600px"};
-  height: 50px;
+  height: 48px;
   border: solid 3px #588539;
   border-radius: 35px;
   /* background-color: beige; */
@@ -189,7 +190,7 @@ export const SearchBorderDiv = styled.div`
 
 export const SearchInput = styled.input`
   width: ${(props) => props.width || "500px"};
-  height: 45px;
+  height: 43px;
   border: none;
   margin-top: 1.5px;
   margin-left: 30px;
@@ -220,12 +221,12 @@ export const RangeDiv = styled.div`
   display: flex;
   justify-content: center;
 
-  /* background-color: ligshtgray; */
+  /* background-color: lightgray; */
 `;
 
 export const RangeCenterDiv = styled.div`
   /* width: 80%; //컴퓨터 */
-  width: 93%; //노트북
+  width: 96%; //노트북
   height: 45px;
 
   display: flex;
@@ -268,11 +269,11 @@ export const RangeButton = styled.input`
 
 export const PostAllDiv = styled.div`
   width: 100%;
-  height: 1000px;
+  height: 1100px;
   margin-bottom: 50px;
 
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
 
   /* background-color: lightslategrey; */
@@ -299,6 +300,8 @@ export const PostWapperDiv = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  margin: 0 20px 50px 20px;
 
   background-color: #cddfab;
 `;
@@ -382,7 +385,7 @@ export const PostNumberDiv = styled.div`
 `;
 
 export const BoldLine = styled.hr`
-  width: 90%;
+  width: 97%;
   border-top: 7px;
   border-style: solid;
   height: 0;
@@ -394,13 +397,24 @@ export const BoldLine = styled.hr`
 // Footer
 export const FooterDiv = styled.div`
   width: 100%;
-  height: 90px;
-  margin-bottom: 20px;
+  height: 105px;
+  margin-bottom: 50px;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 
   /* background-color: blue; */
+`;
+
+export const FooterWrapperDiv = styled.div`
+  width: 95%;
+  height: 105px;
+  margin-bottom: 50px;
+
+  display: flex;
+  justify-content: space-between;
+
+  /* background-color: red; */
 `;
 
 export const MakerDivContact = styled.div`
