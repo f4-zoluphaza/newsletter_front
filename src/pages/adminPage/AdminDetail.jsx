@@ -62,7 +62,7 @@ export default function Admin() {
       const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = api.get(url, {
+      const response = await api.get(url, {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",

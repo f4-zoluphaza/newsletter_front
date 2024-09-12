@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from '../../api/api.js'
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   Div,
   BodyDiv,
@@ -30,9 +30,9 @@ import HeartBlackImage from "../../images/DetailPage/HeartBlank.svg";
 import ShareImage from "../../images/DetailPage/Share.svg";
 
 export default function DetailPage() {
+  const navigate = useNavigate();
   const [validLogin, setValidLogin] = useState(null);
-  const { id: paramId } = useParams();  // URL 파라미터로부터 id 값 받기
-  const [id, setId] = useState(paramId); // 상태로 id 값을 관리
+  const { id } = useParams();
 
   // 쿠키 값 읽는 함수
   function getCookie(name) {
@@ -107,7 +107,7 @@ export default function DetailPage() {
   const handlePreviousPostApi = async () => {
     try {
       //API 요청 URL
-      const url = `api/v1/news/${id}/next}`;
+      const url = `api/v1/news/${id}/previous`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
@@ -118,7 +118,14 @@ export default function DetailPage() {
       });
 
       console.log(response.data);
-      setId(response.data)
+      
+      if(response.data.isSuccess){
+        const previousId = response.data.items[0].id
+        navigate(`/detailPage/${previousId}`);
+      }
+      else{
+        alert(response.data.message)
+      }
       
     } catch (error) {
       console.error(
@@ -132,7 +139,8 @@ export default function DetailPage() {
   const handleNextPostApi = async () => {
     try {
       //API 요청 URL
-      const url = `api/v1/news/${id}/previoius}`;
+      const url = `api/v1/news/${id}/next`;
+
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
@@ -143,7 +151,13 @@ export default function DetailPage() {
       });
 
       console.log(response.data);
-      setId(response.data);
+      if(response.data.isSuccess){
+        const nextId = response.data.items[0].id
+        navigate(`/detailPage/${nextId}`);
+      }
+      else{
+        alert(response.data.message)
+      }
       
     } catch (error) {
       console.error(
@@ -157,8 +171,7 @@ export default function DetailPage() {
     window.scrollTo(0, 0); // 페이지의 맨 위로 스크롤
     newsdetailPageApi();
     validLoginFuntion();
-    setId(paramId);
-  }, [paramId]);
+  }, [id]);
 
   return (
     <Div>
