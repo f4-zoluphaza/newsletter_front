@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../../api/api.js'
 import { useNavigate } from 'react-router-dom';
 import {
   Div,
@@ -86,17 +86,16 @@ export default function ChangeInfo() {
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
+    if (parts.length === 2) return parts.pop().split(';').shift();
     return null;
   }
-
 
   // 내 정보 수정 함수
   const changeinfoAPI = async () => {
     try {
       //API 요청 URL
       const url =
-        'https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage/change';
+        'api/v1/mypage/change';
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie('jwtToken');
@@ -108,15 +107,19 @@ export default function ChangeInfo() {
         newPasswdCheck: form.newPasswordCheck,
       };
 
-      const response = await axios.put(url, data, {
+      const response = await api.put(url, data, {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
       });
 
       const result = response.data.result;
       console.log(result);
+
+      //쿠키 삭제
+      document.cookie =
+        "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
       navigate('/Login');
       // alert('정보가 성공적으로 수정되었습니다.');
@@ -294,9 +297,7 @@ export default function ChangeInfo() {
                 ) : (
                   <EyesImg3
                     src={PWOpen}
-                    style={{
-                      top: validPW === false ? '395px' : '355px', //EyesImg3 위치 변경
-                    }}
+                    top={validPW ? "395px" : null}
                     onClick={() => {
                       setValidRepeatNewPWState(true);
                     }}
