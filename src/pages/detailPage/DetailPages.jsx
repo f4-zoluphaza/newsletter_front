@@ -33,6 +33,7 @@ export default function DetailPage() {
   const navigate = useNavigate();
   const [validLogin, setValidLogin] = useState(null);
   const { id } = useParams();
+  // const [prompt, setPrompt] = useState("");
 
   // 쿠키 값 읽는 함수
   function getCookie(name) {
@@ -167,6 +168,30 @@ export default function DetailPage() {
     }
   };
 
+  // //챗봇  api
+  // const handleChatApi = async () => {
+  //   try {
+  //     const url = "api/v1/chat/send";
+  //     const data = {
+  //       prompt: prompt
+  //     };
+
+  //     const response = await api.post(url, data, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       }
+  //     });
+
+  //     console.log(response.data)
+  //   } catch (error) {
+  //     console.error(
+  //       "Chatbot error",
+  //       error.response ? error.response.data : error
+  //     );
+  //     setValidLogin(false);
+  //   }
+  // };
+
   useEffect(() => {
     window.scrollTo(0, 0); // 페이지의 맨 위로 스크롤
     newsdetailPageApi();
@@ -225,7 +250,7 @@ export default function DetailPage() {
             </NewsDiv>
 
             {/* 챗봇 영역 */}
-            {validLogin ? <LoginChat /> : <NoLoginChat />}
+            {validLogin ? <LoginChat  /> : <NoLoginChat />}
           </NewsDivChat>
 
           {/* 좋아요, 저장, 공유 영역 */}
