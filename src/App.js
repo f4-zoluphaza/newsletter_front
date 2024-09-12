@@ -11,7 +11,7 @@ import MainPage from "./pages/MainPage";
 
 //detailPage
 import DetailPage from "./pages/detailPage/DetailPages";
-import NoLoginDetailPages from "./pages/detailPage/NoLoginDetailPages";
+import NoLoginDetailPages from "./components/detailPage/NoLoginDetailPages";
 
 // mypage_s
 import Attendance from "./pages/myPage/Attendance";

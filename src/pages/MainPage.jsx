@@ -254,8 +254,12 @@ export default function MainPage(props) {
         {/* 뉴스레터 게시물 */}
         <PostAllDiv>
           {data.length > 0 &&
-            data.map((item) => (
-              <Links to={`/detailPage/${item.id}`}>
+            data.map((item, index) => (
+              <Links
+                to={{
+                  pathname: `/detailPage/${item.id}`,
+                }}
+              >
                 <NewsletterPost
                   key={item.id}
                   title={item.title}
