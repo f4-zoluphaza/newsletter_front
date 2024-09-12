@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from '../../api/api.js'
 import { useParams, useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import { Div, BodyDiv } from "../../styles/main/main-style-component.jsx";
@@ -56,13 +56,13 @@ export default function Admin() {
   const handleAdminDetailApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/${id}`;
+      const url = `api/v1/admin/${id}`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.get(url, {
+      const response = api.get(url, {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",
@@ -91,13 +91,13 @@ export default function Admin() {
   const handlePublishApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/publish?ids=${id}`;
+      const url = `api/v1/admin/publish?ids=${id}`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.put(
+      const response = await api.put(
         url,
         {},
         {
@@ -122,13 +122,13 @@ export default function Admin() {
   const handleUnpublishApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/unpublish/${id}`;
+      const url = `api/v1/admin/unpublish/${id}`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.put(
+      const response = await api.put(
         url,
         {},
         {
@@ -153,13 +153,13 @@ export default function Admin() {
   const handleUpdateApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/update`;
+      const url = `api/v1/admin/update`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.put(
+      const response = await api.put(
         url,
         {id: data.id,
           title: data.title,

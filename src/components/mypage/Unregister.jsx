@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import api from '../../api/api.js'
 import { useNavigate } from "react-router-dom";
 import {
   BkackScreenDiv,
@@ -27,13 +27,13 @@ export default function Unregister({ setUnregisterBt }) {
   const handleUnregisterApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage/delete`;
+      const url = `api/v1/mypage/delete`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.delete(url, {
+      const response = await api.delete(url, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import api from '../../api/api.js'
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -33,11 +33,11 @@ export default function Unsubscribe() {
   const handleUnsubscribeAPI = async () => {
     try {
       const url =
-        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage/unsubscribe";
+        "api/v1/mypage/unsubscribe";
       
         // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
-      const response = await axios.delete(url, {
+      const response = await api.delete(url, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

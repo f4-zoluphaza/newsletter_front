@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from '../../api/api.js'
 import {
   BodyDiv,
   WrapperDiv,
@@ -94,13 +94,13 @@ export default function ChangePW() {
     try {
       //API 요청 URL
       const url =
-        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/email/pwsend";
+        "api/v1/email/pwsend";
 
       const data = {
         email: form.email,
       };
 
-      const response = await axios.post(url, data, {
+      const response = await api.post(url, data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -125,14 +125,14 @@ export default function ChangePW() {
     try {
       //API 요청 URL
       const url =
-        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/email/verify";
+        "api/v1/email/verify";
 
       const data = {
         email: form.email,
         verifyCode: form.emailVerifyCode,
       };
 
-      const response = await axios.post(url, data, {
+      const response = await api.post(url, data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -157,7 +157,7 @@ export default function ChangePW() {
   const changePWAPI = async () => {
     try {
       //API 요청 URL
-      const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/changePasswd";
+      const url = "api/v1/changePasswd";
 
       const data = {
         email: form.email,
@@ -165,7 +165,7 @@ export default function ChangePW() {
         newPasswdCheck: form.passwordCheck,
       };
 
-      const response = await axios.put(url, data, {
+      const response = await api.put(url, data, {
         headers: {
           "Content-Type": "application/json",
         },

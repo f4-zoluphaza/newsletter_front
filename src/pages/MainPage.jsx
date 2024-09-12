@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from '../api/api.js'
+
 import { useParams } from "react-router-dom";
 
 import {
@@ -77,7 +78,7 @@ export default function MainPage(props) {
     try {
       //API 요청 URL
       const url =
-        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/subscribe";
+        "api/v1/subscribe";
 
       const data = {
         email: form.email,
@@ -86,7 +87,7 @@ export default function MainPage(props) {
       // console.log(form.email);
       // console.log(form.nickName);
 
-      const response = await axios.post(url, data, {
+      const response = await api.post(url, data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -129,10 +130,10 @@ export default function MainPage(props) {
   const newsmainPageAPI = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/news?page=${paginationNum}`;
+      const url = `api/v1/news?page=${paginationNum}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.get(url, {
+      const response = await api.get(url, {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",

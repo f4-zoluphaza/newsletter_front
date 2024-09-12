@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from '../../api/api.js'
 import { useParams } from "react-router-dom";
 import {
   Div,
@@ -71,10 +71,10 @@ export default function DetailPage() {
   const newsdetailPageApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/news/${id}`;
+      const url = `api/v1/news/${id}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.get(url, {
+      const response = await api.get(url, {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",
@@ -107,10 +107,10 @@ export default function DetailPage() {
   const handlePreviousPostApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/news/${id}/next}`;
+      const url = `api/v1/news/${id}/next}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.get(url, {
+      const response = await api.get(url, {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",
@@ -132,10 +132,10 @@ export default function DetailPage() {
   const handleNextPostApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/news/${id}/previoius}`;
+      const url = `api/v1/news/${id}/previoius}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.get(url, {
+      const response = await api.get(url, {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../../api/api.js'
 import { useNavigate } from 'react-router-dom';
 import {
   Div,
@@ -95,7 +95,7 @@ export default function ChangeInfo() {
     try {
       //API 요청 URL
       const url =
-        'https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage/change';
+        'api/v1/mypage/change';
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie('jwtToken');
@@ -107,7 +107,7 @@ export default function ChangeInfo() {
         newPasswdCheck: form.newPasswordCheck,
       };
 
-      const response = await axios.put(url, data, {
+      const response = await api.put(url, data, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,

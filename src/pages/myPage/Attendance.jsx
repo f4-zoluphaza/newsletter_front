@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from '../../api/api.js'
 import Header from "../../components/Header";
 import {
   // BodyDiv,
@@ -31,13 +31,13 @@ export default function Attendance() {
   const handleMypageMainApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage`;
+      const url = `api/v1/mypage`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.get(url, {
+      const response = await api.get(url, {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",

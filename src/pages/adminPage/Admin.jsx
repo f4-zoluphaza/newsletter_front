@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from '../../api/api.js'
 import Header from "../../components/Header";
 import {
   Div,
@@ -68,13 +68,13 @@ export default function Admin() {
   const handleAdminPageMainApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin?page=${paginationNum}`;
+      const url = `api/v1/admin?page=${paginationNum}`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.get(url, {
+      const response = await api.get(url, {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",
@@ -97,13 +97,13 @@ export default function Admin() {
     try {
       const checkedIds = getCheckedIds();
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/publish?ids=${checkedIds}`;
+      const url = `api/v1/admin/publish?ids=${checkedIds}`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.put(
+      const response = await api.put(
         url,
         {},
         {
@@ -129,14 +129,14 @@ export default function Admin() {
     try {
       const checkedIds = getCheckedIds();
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/admin/delete?ids=${checkedIds}`;
+      const url = `api/v1/admin/delete?ids=${checkedIds}`;
       //API 요청 URL
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.delete(url, {
+      const response = await api.delete(url, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
