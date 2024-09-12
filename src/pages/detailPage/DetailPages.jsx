@@ -20,6 +20,7 @@ import {
   PreNextpostDiv,
   OnClickTextspan,
 } from "../../styles/Detailpage/DetailPages.styled.jsx";
+import{Links} from "../../styles/main/main-style-component.jsx";
 import NoLoginChat from "../../components/detailPage/NoLoginDetailPages.jsx";
 import LoginChat from "../../components/detailPage/LoginDetailPages.jsx";
 
@@ -30,6 +31,8 @@ import ShareImage from "../../images/DetailPage/Share.svg";
 
 export default function DetailPage() {
   const [validLogin, setValidLogin] = useState(null);
+  const { id: paramId } = useParams();  // URL 파라미터로부터 id 값 받기
+  const [id, setId] = useState(paramId); // 상태로 id 값을 관리
 
   // 쿠키 값 읽는 함수
   function getCookie(name) {
@@ -49,8 +52,6 @@ export default function DetailPage() {
     id: null,
     published: null,
   });
-
-  const { id } = useParams();
 
   const validLoginFuntion = () => {
     const isLogin = getCookie("jwtToken");
@@ -102,11 +103,62 @@ export default function DetailPage() {
     }
   };
 
+  // 메인 뉴스 상세 이전 페이지
+  const handlePreviousPostApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/news/${id}/next}`;
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.get(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
+        },
+      });
+
+      console.log(response.data);
+      setId(response.data)
+      
+    } catch (error) {
+      console.error(
+        "detailPage 이전 페이지 api 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  //메인 뉴스 상세 다음 페이지 api
+  const handleNextPostApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/news/${id}/previoius}`;
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.get(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
+        },
+      });
+
+      console.log(response.data);
+      setId(response.data);
+      
+    } catch (error) {
+      console.error(
+        "detailPage 다음 페이지 api 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0); // 페이지의 맨 위로 스크롤
     newsdetailPageApi();
     validLoginFuntion();
-  }, [id]);
+    setId(paramId);
+  }, [paramId]);
 
   return (
     <Div>
@@ -179,8 +231,8 @@ export default function DetailPage() {
             </HeartScrapWrapperDivShare>
             {/* 이전글, 다음글 영역 */}
             <PreNextpostDiv>
-              <OnClickTextspan>&lt; 이전 글 보기</OnClickTextspan>
-              <OnClickTextspan>다음 글 보기 &gt;</OnClickTextspan>
+              <OnClickTextspan onClick={()=>handlePreviousPostApi()}>&lt; 이전 글 보기</OnClickTextspan>
+              <OnClickTextspan onClick={()=>handleNextPostApi()}>다음 글 보기 &gt;</OnClickTextspan>
             </PreNextpostDiv>
           </HeartScrapDivShare>
         </Form>
