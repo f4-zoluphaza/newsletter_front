@@ -76,8 +76,9 @@ export default function MainPage(props) {
   const subscribeAPI = async () => {
     try {
       //API 요청 URL
-      const url =
-        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/subscribe";
+      // const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/subscribe";
+
+        const url = "https://catfish-solid-specially.ngrok-free.app/api/v1/subscribe"; // 임시
 
       const data = {
         email: form.email,
@@ -129,7 +130,8 @@ export default function MainPage(props) {
   const newsmainPageAPI = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/news?page=${paginationNum}`;
+      // const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/news?page=${paginationNum}`;
+      const url = `https://catfish-solid-specially.ngrok-free.app/api/v1/news?page=${paginationNum}`; //임시
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url, {
