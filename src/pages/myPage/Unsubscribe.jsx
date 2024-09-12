@@ -1,5 +1,6 @@
 import React from "react";
-import axios from "axios";
+import api from '../../api/api.js'
+import { useNavigate } from "react-router-dom";
 
 import {
   BodyDiv,
@@ -19,16 +20,32 @@ import Comment from "../../components/mypage/UnregisterComment";
 import Logo from "../../images/Logo.svg";
 
 export default function Unsubscribe() {
+  const navigate = useNavigate();
+
+  // 쿠키 값 읽는 함수
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  }
+
   const handleUnsubscribeAPI = async () => {
     try {
       const url =
-        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage/unsubscribe";
-
-      const response = await axios.post(url, {
-        withCredentials: true, // 쿠키를 자동으로 포함하도록 설정
+        "api/v1/mypage/unsubscribe";
+      
+        // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
+      const response = await api.delete(url, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       });
 
-      console.log(response.data);
+      navigate("/Mypage");
+      // console.log(response.data);
     } catch (error) {
       console.error(
         "구독해지 error",

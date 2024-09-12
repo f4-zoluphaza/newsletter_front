@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from '../../api/api.js'
 import {
   BodyDiv,
   WrapperDiv,
@@ -105,13 +105,13 @@ export default function SignUp() {
     try {
       //API 요청 URL
       const url =
-        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/duplicateCheck";
+        "api/v1/duplicateCheck";
 
       const data = {
         email: form.email,
       };
 
-      const response = await axios.post(url, data, {
+      const response = await api.post(url, data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -135,13 +135,13 @@ export default function SignUp() {
     try {
       //API 요청 URL
       const url =
-        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/email/send";
+        "api/v1/email/send";
 
       const data = {
         email: form.email,
       };
 
-      const response = await axios.post(url, data, {
+      const response = await api.post(url, data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -166,14 +166,14 @@ export default function SignUp() {
     try {
       //API 요청 URL
       const url =
-        "https://humble-commonly-goshawk.ngrok-free.app/api/v1/email/verify";
+        "api/v1/email/verify";
 
       const data = {
         email: form.email,
         verifyCode: form.emailVerifyCode,
       };
 
-      const response = await axios.post(url, data, {
+      const response = await api.post(url, data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -198,7 +198,7 @@ export default function SignUp() {
   const signUpAPI = async () => {
     try {
       //API 요청 URL
-      const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/join";
+      const url = "api/v1/join";
 
       const data = {
         email: form.email,
@@ -207,7 +207,7 @@ export default function SignUp() {
         nickname: form.nickName,
       };
 
-      const response = await axios.post(url, data, {
+      const response = await api.post(url, data, {
         headers: {
           "Content-Type": "application/json",
         },

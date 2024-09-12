@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from '../../api/api.js'
 import Header from "../../components/Header";
 import {
-  BodyDiv,
+  // BodyDiv,
   WrapperDiv,
   LeftDiv,
   RightDiv,
@@ -12,11 +12,13 @@ import {
   Links,
 } from "../../styles/Mypage_s/Attendance.styled";
 
+import { Div, BodyDiv } from "../../styles/main/main-style-component.jsx";
+
 import Unregister from "../../components/mypage/Unregister";
 
 export default function Attendance() {
   const [unregisterBt, setUnregisterBt] = useState(false);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
 
   // 쿠키 값 읽는 함수
   function getCookie(name) {
@@ -29,13 +31,13 @@ export default function Attendance() {
   const handleMypageMainApi = async () => {
     try {
       //API 요청 URL
-      const url = `https://humble-commonly-goshawk.ngrok-free.app/api/v1/mypage`;
+      const url = `api/v1/mypage`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await axios.get(url, {
+      const response = await api.get(url, {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",
@@ -58,11 +60,9 @@ export default function Attendance() {
   }, []);
 
   return (
-    <div>
+    <Div>
       <BodyDiv>
-        <div style={{ width: "90vw" }}>
-          <Header />
-        </div>
+        <Header />
 
         <WrapperDiv>
           <LeftDiv>
@@ -87,7 +87,7 @@ export default function Attendance() {
 
               <MainPDiv marginTop="30px">
                 <MainP color="#4C8C5E" fontWeight="600" marginRight="0">
-                  홈런왕
+                  {data.next_grade}
                 </MainP>
                 <MainP>까지</MainP>
                 <MainP>{data.remainingLogins}번</MainP>
@@ -130,10 +130,20 @@ export default function Attendance() {
                   fontWeight="600"
                   fontSize="21px"
                   cursor="pointer"
+                  width="150px"
+                  marginBottom="8px"
                   onClick={() => setUnregisterBt(true)}
                 >
                   회원 탈퇴
                 </MainP>
+
+                {data.role === "ADMIN" ? (
+                  <Links to="/Admin">
+                    <MainP fontWeight="600" fontSize="21px" marginBottom="15px">
+                      관리자 페이지
+                    </MainP>
+                  </Links>
+                ) : null}
               </MainPDiv>
             </MainWrapper>
           </LeftDiv>
@@ -144,6 +154,6 @@ export default function Attendance() {
           <Unregister setUnregisterBt={setUnregisterBt} />
         ) : null}
       </BodyDiv>
-    </div>
+    </Div>
   );
 }

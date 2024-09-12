@@ -7,22 +7,16 @@ const flexCenter = () => `
   align-items: center;
 `;
 
-export const BodyDiv = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`
-
 export const WrapperDiv = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 70vh;
 
   display: flex;
-  justify-content: center;
-  margin-top: 70px;
+  justify-content: space-around;
+  margin: 3% auto;
 
   /* background-color: bisque; */
-`
+`;
 
 // 전체 레이아웃
 export const LeftDiv = styled.div`
@@ -30,14 +24,14 @@ export const LeftDiv = styled.div`
   height: 100%;
 
   /* background-color: #cacaf3; */
-`
+`;
 
 export const RightDiv = styled.div`
   width: 50%;
   height: 100%;
 
   background-color: #f5d5d5;
-`
+`;
 
 // 메인 p
 
@@ -51,7 +45,7 @@ export const MainWrapper = styled.div`
   box-sizing: border-box;
 
   /* background-color: #ffff45; */
-`
+`;
 
 export const MainPDiv = styled.div`
   width: auto;
@@ -62,23 +56,26 @@ export const MainPDiv = styled.div`
   margin-top: ${(props) => props.marginTop || "0"};
 
   /* background-color: aqua; */
-`
+`;
 
 export const MainP = styled.div`
   color: ${(props) => props.color || "#000000"};
   font-size: ${(props) => props.fontSize || "36px"};
   font-weight: ${(props) => props.fontWeight || "500"};
+  /* width: ${(props) => props.width}; */
 
   margin-right: ${(props) => props.marginRight || "10px"};
   margin-bottom: ${(props) => props.marginBottom};
-  margin: ${(props) => props.margin}; 
+  margin: ${(props) => props.margin};
 
-  cursor: ${(props) => props.cursor}; ;
+  cursor: ${(props) => props.cursor};
 
-`
+  /* background-color: darkcyan; */
+`;
 
 // 등급 자세히 보기
 export const Links = styled(Link)`
+  width: 200px;
   text-decoration: none;
   /* color: #424242; */
   /* font-size: 20px; */
@@ -86,6 +83,7 @@ export const Links = styled(Link)`
 
   display: block;
   /* margin: 20px 0; */
+  /* background-color: aqua; */
 `;
 
 // 회원 탈퇴
@@ -101,7 +99,7 @@ export const BkackScreenDiv = styled.div`
   ${flexCenter()}
 
   background-color: #4f4f4f75;
-`
+`;
 
 export const ModuleDiv = styled.div`
   width: 541px;
@@ -121,7 +119,7 @@ export const ModuleDiv = styled.div`
   justify-content: space-between;
 
   position: relative;
-`
+`;
 
 export const Ximg = styled.img`
   width: 45px;
@@ -132,22 +130,22 @@ export const Ximg = styled.img`
   right: 25px;
 
   cursor: pointer;
-`
+`;
 
 export const Li = styled.li`
   font-size: 21px;
   color: #414141;
   font-weight: 600;
 
-  list-style-position: outside; 
-  text-indent: -1.4em;  
-  padding-left: 1.4em;  
-`
+  list-style-position: outside;
+  text-indent: -1.4em;
+  padding-left: 1.4em;
+`;
 
 export const LiP = styled.span`
-  color: #699BF7;
+  color: #699bf7;
   text-decoration: underline;
-`
+`;
 
 export const ButtonDiv = styled.div`
   width: 100%;
@@ -158,7 +156,7 @@ export const ButtonDiv = styled.div`
   /* margin-top: 30px; */
 
   /* background-color: #d3d3ff; */
-`
+`;
 
 export const Button = styled.button`
   width: 176px;
@@ -168,10 +166,10 @@ export const Button = styled.button`
   border-radius: 19px;
   border: 0px;
 
-  font-size:19px;
+  font-size: 19px;
   font-weight: 600;
   color: ${(props) => props.color};
   text-decoration: ${(props) => props.textDecoration};
 
   cursor: pointer;
-`
+`;

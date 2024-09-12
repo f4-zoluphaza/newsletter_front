@@ -19,10 +19,18 @@ export const BodyDiv = styled.div`
   /* background-color: beige; */
 `;
 
+export const Form = styled.form`
+  width: 80%;
+  height: 1220px;
+  margin: 20px auto;
+
+  /* background-color: lightblue; */
+`;
+
 export const NewsDivChat = styled.div`
   width: 100%;
   /* height: auto; */
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 13px;
 
   display: flex;
@@ -87,7 +95,7 @@ export const NewsImg = styled.img`
 
 export const NewsContentDiv = styled.div`
   width: 80%;
-  height: auto;
+  height: 70px;
 
   /* background-color: lightsalmon; */
 `;

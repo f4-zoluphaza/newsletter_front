@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from '../../api/api.js'
 import {
   BodyDiv,
   WrapperDiv,
@@ -78,13 +78,13 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const url = "https://humble-commonly-goshawk.ngrok-free.app/api/v1/login";
+      const url = "api/v1/login";
       const data = {
         email: form.email,
         passwd: form.password,
       };
 
-      const response = await axios.post(url, data, {
+      const response = await api.post(url, data, {
         headers: {
           "Content-Type": "application/json",
         }
@@ -190,9 +190,6 @@ export default function Login() {
           <PWSearchSignUpP>|</PWSearchSignUpP>
           <Links to="/SignUp">
             <PWSearchSignUpP>회원가입</PWSearchSignUpP>
-          </Links>
-          <Links to="/Mypage">
-            <PWSearchSignUpP>마이페이지</PWSearchSignUpP>
           </Links>
         </PWSearchSignUpDiv>
         <Links to="/Mypage">

@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import api from '../api/api.js'
+
+import { useParams } from "react-router-dom";
+
 import {
   Div,
   BodyDiv,
@@ -28,7 +31,6 @@ import {
   RangeWapperDiv,
   RangeButton,
   PostAllDiv,
-  PostDiv,
   PostWapperDiv,
   NewsImg,
   NewsTitleDiv,
@@ -41,38 +43,42 @@ import {
   BoldLine,
   FooterDiv,
   MakerDivContact,
-} from '../styles/main/main-style-component.jsx';
+} from "../styles/main/main-style-component.jsx";
 
-import Logo from '../images/Logo.svg';
-import Searchsvg from '../images/MainPage/Search.svg';
-import NewsImage from '../images/MainPage/News.svg';
-import HeartImage from '../images/MainPage/Heart.svg';
-import ScraptImage from '../images/MainPage/Scrapt.svg';
-import Header from '../components/Header.jsx';
-import NewsletterPost from '../components/NewsletterPost.jsx';
-import Footer from '../components/main/Footer.jsx';
+import Logo from "../images/Logo.svg";
+import Searchsvg from "../images/MainPage/Search.svg";
+import NewsImage from "../images/MainPage/News.svg";
+import Header from "../components/Header.jsx";
+import NewsletterPost from "../components/NewsletterPost.jsx";
+import Footer from "../components/main/Footer.jsx";
+import Pagination from "../components/Pagination.jsx";
 
 export default function MainPage(props) {
   //form 관리
   const [form, setForm] = useState({
-    nickName: '',
-    email: '',
+    nickName: "",
+    email: "",
   });
 
   const [validEmailDuplicate, setValidEmailDuplicate] = useState(null);
   const [validNickName, setValidNickName] = useState(null);
+  const [paginationNum, setPaginationNum] = useState(1);
+  const [totalPages, setTotalPages] = useState();
+  const [data, setData] = useState({});
+
+  const { id } = useParams();
 
   // 화면 새로고침 막는 함수
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  // 뉴스레터 신청하기 함수
+  // 뉴스레터 구독하기 함수
   const subscribeAPI = async () => {
     try {
       //API 요청 URL
       const url =
-        'https://humble-commonly-goshawk.ngrok-free.app/api/v1/subscribe';
+        "api/v1/subscribe";
 
       const data = {
         email: form.email,
@@ -81,22 +87,22 @@ export default function MainPage(props) {
       // console.log(form.email);
       // console.log(form.nickName);
 
-      const response = await axios.post(url, data, {
+      const response = await api.post(url, data, {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
       console.log(response.data.result);
 
-      // alert("사용 가능한 이메일입니다.");
+      alert("뉴스레터 신청 완료!");
     } catch (error) {
       console.error(
-        '이메일 중복 확인 에러',
+        "이메일 중복 확인 에러",
         error.response ? error.response.data : error
       );
       //이메일 중복일 때
-      alert('사용 불가능한 이메일입니다.');
+      alert("사용 불가능한 이메일입니다.");
     }
   };
 
@@ -113,12 +119,44 @@ export default function MainPage(props) {
     const nickName = e.target.value;
     setForm({ ...form, nickName });
 
-    if (nickName.trim() === '') {
+    if (nickName.trim() === "") {
       setValidNickName(null);
     }
 
     // console.log(nickName);
   };
+
+  // 뉴스 리스트 불러오기 api 함수
+  const newsmainPageAPI = async () => {
+    try {
+      //API 요청 URL
+      const url = `api/v1/news?page=${paginationNum}`;
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await api.get(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
+        },
+      });
+
+      console.log(response.data.items);
+
+      const result = response.data.items;
+      setData(result);
+      const totalPages = response.data.totalPages;
+      setTotalPages(totalPages);
+    } catch (error) {
+      console.error(
+        "mainPage 뉴스 리스트 불러오기 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  useEffect(() => {
+    newsmainPageAPI();
+  }, [paginationNum]);
 
   return (
     <Div>
@@ -216,83 +254,29 @@ export default function MainPage(props) {
 
         {/* 뉴스레터 게시물 */}
         <PostAllDiv>
-          <PostDiv>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-          </PostDiv>
+          {data.length > 0 &&
+            data.map((item, index) => (
+              <Links
+                to={{
+                  pathname: `/detailPage/${item.id}`,
+                }}
+              >
+                <NewsletterPost
+                  key={item.id}
+                  title={item.title}
+                  content={item.content}
+                  publishDate={item.publishDate}
+                  thumbnail={item.thumbnail}
+                ></NewsletterPost>
+              </Links>
+            ))}
         </PostAllDiv>
-        <PostAllDiv>
-          <PostDiv>
-            <NewsletterPost></NewsletterPost>
-            <PostWapperDiv></PostWapperDiv>
-            <PostWapperDiv></PostWapperDiv>
-            <PostWapperDiv></PostWapperDiv>
-          </PostDiv>
-        </PostAllDiv>
-        <PostAllDiv>
-          <PostDiv>
-            <NewsletterPost></NewsletterPost>
-            <PostWapperDiv></PostWapperDiv>
-            <PostWapperDiv></PostWapperDiv>
-            <PostWapperDiv></PostWapperDiv>
-          </PostDiv>
-        </PostAllDiv>
-        {/* <PostAllDiv>
-          <PostDiv>
-          <NewsletterPost></NewsletterPost>
-          <PostWapperDiv></PostWapperDiv>
-          <PostWapperDiv></PostWapperDiv>
-          <PostWapperDiv></PostWapperDiv>
-          </PostDiv>
-        </PostAllDiv> */}
 
         {/* 게시물 페이지 번호 */}
-        <PostNumberDiv>
-          <Links>
-            <TextSpan fontsize="23px" fontweight="400">
-              1
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              2
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              3
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              4
-            </TextSpan>
-          </Links>
-          <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-            |
-          </TextSpan>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              5
-            </TextSpan>
-          </Links>
-          <Links>
-            <TextSpan fontsize="23px" marginleft="10px">
-              &gt;
-            </TextSpan>
-          </Links>
-        </PostNumberDiv>
+        <Pagination
+          totalPage={totalPages}
+          setPaginationNum={setPaginationNum}
+        />
 
         {/* footer 구분 선 */}
         <BoldLine></BoldLine>

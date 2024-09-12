@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const flexCenter = () => `
   display: flex;
@@ -17,12 +17,13 @@ export const Div = styled.div`
 export const BodyDiv = styled.div`
   width: 1400px;
   height: 100vh;
+  
   /* background-color: beige; */
 `;
 
 export const NavDiv = styled.div`
   width: 100%;
-  height: 116px;
+  height: 140px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,7 +34,7 @@ export const NavDiv = styled.div`
 export const LogoImg = styled.img`
   width: 148px;
   height: 116px;
-  padding-top: 7px;
+  padding-top: 10px;
 `;
 
 export const WrapperDiv = styled.div`
@@ -59,8 +60,8 @@ export const Links = styled(Link)`
 
 export const HeaderDiv = styled.div`
   width: 100%;
-  height: 200px;
-  margin-top: 20px;
+  height: 175px;
+  margin-top: 7px;
   /* background-color: lightcyan; */
   ${flexCenter()}
 `;
@@ -84,11 +85,11 @@ export const TitleSpan = styled.span`
 
 export const TextSpan = styled.span`
   display: block;
-  font-size: ${(props) => props.fontsize || '20px'};
-  font-weight: ${(props) => props.fontweight || '500'};
-  text-align: ${(props) => props.textalign || 'left'};
+  font-size: ${(props) => props.fontsize || "20px"};
+  font-weight: ${(props) => props.fontweight || "500"};
+  text-align: ${(props) => props.textalign || "left"};
 
-  margin-left: ${(props) => props.marginleft || '0'};
+  margin-left: ${(props) => props.marginleft || "0"};
 `;
 
 export const SubscribeDiv = styled.div`
@@ -118,7 +119,7 @@ export const Label = styled.label`
 
 export const SubscribeInput = styled.input`
   width: 80%;
-  height: 45px;
+  height: 40px;
   border-radius: 12px;
   border: solid 2px #588539;
   margin-left: 12px;
@@ -143,7 +144,7 @@ export const ButtonDiv = styled.div`
 
 export const Button = styled.input`
   width: 227px;
-  height: 45px;
+  height: 40px;
   border-radius: 12px;
   border: solid 0px;
   background-color: #588539;
@@ -165,7 +166,7 @@ export const SmallTextSpan = styled.span`
   font-size: 17px;
   font-weight: 500;
 
-  padding-left: ${(props) => props.paddingleft || '7px'};
+  padding-left: ${(props) => props.paddingleft || "7px"};
 `;
 
 // 검색 창
@@ -173,14 +174,14 @@ export const SearchDiv = styled.div`
   width: 100%;
   height: 55px;
   margin-top: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   /* background-color: lightcoral; */
   ${flexCenter()}
 `;
 
 export const SearchBorderDiv = styled.div`
-  width: ${(props) => props.width || '600px'};
-  height: 50px;
+  width: ${(props) => props.width || "600px"};
+  height: 48px;
   border: solid 3px #588539;
   border-radius: 35px;
   /* background-color: beige; */
@@ -188,8 +189,8 @@ export const SearchBorderDiv = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  width: ${(props) => props.width || '500px'};
-  height: 45px;
+  width: ${(props) => props.width || "500px"};
+  height: 43px;
   border: none;
   margin-top: 1.5px;
   margin-left: 30px;
@@ -206,7 +207,7 @@ export const SearchImg = styled.img`
   margin-left: 20px;
   margin-right: 15px;
 
-  background-image: url('../images/MainPage/Search.svg');
+  background-image: url("../images/MainPage/Search.svg");
 
   cursor: pointer;
 `;
@@ -220,12 +221,12 @@ export const RangeDiv = styled.div`
   display: flex;
   justify-content: center;
 
-  /* background-color: ligshtgray; */
+  /* background-color: lightgray; */
 `;
 
 export const RangeCenterDiv = styled.div`
   /* width: 80%; //컴퓨터 */
-  width: 93%; //노트북
+  width: 96%; //노트북
   height: 45px;
 
   display: flex;
@@ -254,7 +255,7 @@ export const RangeButton = styled.input`
   box-sizing: border-box;
   /* margin-right: 60px; */
 
-  background-color: ${(props) => props.backgroundcolor || '#000000'};
+  background-color: ${(props) => props.backgroundcolor || "#000000"};
 
   color: #000000;
   font-size: 16px;
@@ -268,11 +269,12 @@ export const RangeButton = styled.input`
 
 export const PostAllDiv = styled.div`
   width: 100%;
-  height: auto;
+  height: 1100px;
   margin-bottom: 50px;
 
   display: flex;
-  justify-content: center;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
 
   /* background-color: lightslategrey; */
 `;
@@ -285,7 +287,7 @@ export const PostDiv = styled.div`
   display: flex;
   justify-content: space-evenly;
 
-  /* background-color: lightyellow; */
+  background-color: lightyellow;
 `;
 
 export const PostWapperDiv = styled.div`
@@ -298,6 +300,8 @@ export const PostWapperDiv = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  margin: 0 20px 50px 20px;
 
   background-color: #cddfab;
 `;
@@ -371,14 +375,17 @@ export const PostNumberDiv = styled.div`
   height: 85px;
 
   display: flex;
-  justify-content: ${(props) => props.justifycontent || 'center'};
+  justify-content: ${(props) => props.justifycontent || "center"};
+
+  margin-top: ${(props) => props.marginTop || "100px"};
+
   /* align-items: center; //간격 조정 시*/
 
   /* background-color: lightgreen; */
 `;
 
 export const BoldLine = styled.hr`
-  width: 90%;
+  width: 97%;
   border-top: 7px;
   border-style: solid;
   height: 0;
@@ -390,13 +397,24 @@ export const BoldLine = styled.hr`
 // Footer
 export const FooterDiv = styled.div`
   width: 100%;
-  height: 90px;
-  margin-bottom: 20px;
+  height: 105px;
+  margin-bottom: 50px;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 
   /* background-color: blue; */
+`;
+
+export const FooterWrapperDiv = styled.div`
+  width: 95%;
+  height: 105px;
+  margin-bottom: 50px;
+
+  display: flex;
+  justify-content: space-between;
+
+  /* background-color: red; */
 `;
 
 export const MakerDivContact = styled.div`
@@ -404,8 +422,8 @@ export const MakerDivContact = styled.div`
   height: 80px;
   margin-top: 10px;
 
-  display: ${(props) => props.display || 'block'};
-  justify-content: ${(props) => props.justifycontent || 'center'};
+  display: ${(props) => props.display || "block"};
+  justify-content: ${(props) => props.justifycontent || "center"};
   align-items: center;
 
   /* background-color: pink; */
