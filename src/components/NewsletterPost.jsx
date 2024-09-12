@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import api from '../api/api.js'
 import {
   PostWapperDiv,
   NewsImg,
@@ -17,7 +18,7 @@ import ScraptImage from '../images/MainPage/Scrapt.svg';
 export default function NewsletterPost({ title, content, publishDate, thumbnail, heartCount, scrapCount }) {
   return (
     <PostWapperDiv>
-      <NewsImg src={thumbnail} />
+      <NewsImg src={api.defaults.imgBaseURL + thumbnail} />
       <NewsTitleDiv>{title}</NewsTitleDiv>
       <Line />
       <NewsDateDiv>{publishDate}</NewsDateDiv>
