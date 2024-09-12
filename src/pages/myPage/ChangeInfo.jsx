@@ -146,16 +146,6 @@ export default function ChangeInfo() {
     setForm({ ...form, password });
   };
 
-  const handleNewPasswdChange = (e) => {
-    const newPassword = e.target.value;
-    setForm({ ...form, newPassword });
-  };
-
-  const handleNewPasswdCheckChange = (e) => {
-    const newPasswordCheck = e.target.value;
-    setForm({ ...form, newPasswordCheck });
-  };
-
   return (
     <Div>
       <BodyDiv>
@@ -239,7 +229,6 @@ export default function ChangeInfo() {
                   type={validNewPWState ? 'text' : 'password'}
                   onChange={(e) => {
                     handlePW(e);
-                    handleNewPasswdChange(e);
                   }}
                   placeholder="비밀번호 (숫자, 영문 8~12자리)"
                   width="410.975px"
@@ -279,8 +268,7 @@ export default function ChangeInfo() {
                   id="passwordCheck"
                   type={validRepeatNewPWState ? 'text' : 'password'}
                   onChange={(e) => {
-                    handlePW(e);
-                    handleNewPasswdCheckChange(e);
+                    hadlePWCheck(e);
                   }}
                   placeholder="비밀번호 확인"
                   width="410.975px"
@@ -297,7 +285,7 @@ export default function ChangeInfo() {
                 ) : (
                   <EyesImg3
                     src={PWOpen}
-                    top={validPW ? "395px" : null}
+                    top={validPW === false ? "395px" : null}
                     onClick={() => {
                       setValidRepeatNewPWState(true);
                     }}

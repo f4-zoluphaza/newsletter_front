@@ -137,7 +137,8 @@ export const EyesImg3 = styled.img`
   width: 30px;
   height: 30px;
   position: absolute;
-  top: 355px;
+  /* top: 355px; */
+  top: ${(props) => props.top || '355px'};
   right: 20px;
 
   cursor: pointer;
