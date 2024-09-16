@@ -114,7 +114,7 @@ export const ChatbotDiv = styled.div`
 
 export const AllMessageDiv = styled.div`
   width: 100%;
-  /* height: auto; */
+  height: 790px;
 
   display: flex;
   align-items: center;
@@ -135,7 +135,7 @@ export const AllMessageDiv = styled.div`
 
   /* scrollbar-color: #588539 transparent; // 스크롤바 색 */
   /* scrollbar-width: thin; //스크롤바 두께 */
-  /* background-color: olive; */
+  /* background-color: lightgray; */
 
   z-index: 2;
 `;
