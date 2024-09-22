@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import api from '../../api/api.js'
+import api from "../../api/api.js";
 import Header from "../../components/Header";
 import {
   Div,
@@ -36,6 +36,7 @@ export default function Admin() {
   const [Data, setData] = useState([]);
   const [paginationNum, setPaginationNum] = useState(1);
   const [totalPages, setTotalPages] = useState();
+  const [searchTerm, setSearchTerm] = useState("");
 
   const getCheckedIds = () => {
     // 체크된 항목들 중에서, index가 1 이상인 항목들에 대해서 Data 배열에서 ID를 가져옴
@@ -65,10 +66,10 @@ export default function Admin() {
     return null;
   }
 
-  const handleAdminPageMainApi = async () => {
+  const handleAdminPageMainApi = async (searchTerm = "") => {
     try {
       //API 요청 URL
-      const url = `api/v1/admin?page=${paginationNum}`;
+      const url = `api/v1/admin?page=${paginationNum}&searchTerm=${searchTerm}`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
@@ -166,8 +167,22 @@ export default function Admin() {
         {/* 검색 창 */}
         <SearchDiv>
           <SearchBorderDiv width="900px">
-            <SearchInput type="text" width="800px"></SearchInput>
-            <SearchImg id="search" src={Searchsvg} />
+            <SearchInput
+              type="text"
+              width="800px"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  handleAdminPageMainApi(searchTerm); // 엔터키를 눌렀을 때 검색 실행
+                }
+              }}
+            ></SearchInput>
+            <SearchImg
+              id="search"
+              src={Searchsvg}
+              onClick={() => handleAdminPageMainApi(searchTerm)}
+            />
           </SearchBorderDiv>
         </SearchDiv>
 
