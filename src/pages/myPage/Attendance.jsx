@@ -10,20 +10,15 @@ import {
   MainPDiv,
   MainP,
   Links,
-  PostMyPageDiv,
 } from "../../styles/Mypage_s/Attendance.styled";
 
 import { Div, BodyDiv } from "../../styles/main/main-style-component.jsx";
 
-import Header from "../../components/Header";
 import Unregister from "../../components/mypage/Unregister";
-import NewsletterPost from "../../components/NewsletterPost.jsx";
 
 export default function Attendance() {
   const [unregisterBt, setUnregisterBt] = useState(false);
   const [data, setData] = useState({});
-
-  const { id } = useParams();
 
   // 쿠키 값 읽는 함수
   function getCookie(name) {
@@ -60,38 +55,9 @@ export default function Attendance() {
     }
   };
 
-  // 스크랩한 뉴스 목록 불러오기 api 함수
-  const scrappedNewsAPI = async () => {
-    try {
-      const url = `api/v1/news/scrapped`;
-
-      // 쿠키에서 'jwtToken' 값을 가져옴
-      const token = getCookie("jwtToken");
-
-      const response = await api.get(url, {
-        headers: {
-          "Content-Type": "application/json",
-          "ngrok-skip-browser-warning": "69420",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      console.log(response.data.items);
-
-      const result = response.data.items;
-      setData(result);
-    } catch (error) {
-      console.error(
-        "스크랩한 뉴스 목록 불러오기 에러",
-        error.response ? error.response.data : error
-      );
-    }
-  };
-
   useEffect(() => {
     handleMypageMainApi();
-    scrappedNewsAPI();
-  }, [id]);
+  }, []);
 
   return (
     <Div>
@@ -142,11 +108,11 @@ export default function Attendance() {
 
             <MainWrapper>
               <MainPDiv flexDirection="column">
-                {/* <Links to="/Mypage/Scrap">
+                <Links to="/Mypage/Scrap">
                   <MainP fontWeight="600" fontSize="30px" marginBottom="5px">
                     나의 스크랩 〉
                   </MainP>
-                </Links> */}
+                </Links>
                 <Links to="/Mypage/ChangeInfo">
                   <MainP fontWeight="600" fontSize="30px" marginBottom="15px">
                     정보 수정 〉
@@ -181,36 +147,7 @@ export default function Attendance() {
               </MainPDiv>
             </MainWrapper>
           </LeftDiv>
-          <RightDiv>
-            <MainP fontWeight="600" fontSize="30px" marginBottom="15px">
-              나의 스크랩
-            </MainP>
-
-            {/* 스크랩한 뉴스 목록*/}
-            <PostMyPageDiv>
-              {data.length > 0 &&
-                data.map((item, index) => (
-                  <Links
-                    width="310px"
-                    to={{
-                      pathname: `/detailPage/${item.id}`,
-                    }}
-                  >
-                    <NewsletterPost
-                      key={item.id}
-                      title={item.title}
-                      content={item.content}
-                      publishDate={item.publishDate}
-                      thumbnail={item.thumbnail}
-                    ></NewsletterPost>
-                  </Links>
-                ))}
-            </PostMyPageDiv>
-
-            <MainP fontWeight="600" fontSize="20px" margin="0 0 0 620px">
-              <Links to="/Mypage/Scrap">더보기 〉</Links>
-            </MainP>
-          </RightDiv>
+          <RightDiv></RightDiv>
         </WrapperDiv>
 
         {unregisterBt === true ? (
