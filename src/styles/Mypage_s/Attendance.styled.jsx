@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const flexCenter = () => `
   display: flex;
@@ -9,7 +9,7 @@ const flexCenter = () => `
 
 export const WrapperDiv = styled.div`
   width: 100%;
-  height: 70vh;
+  /* height: 70vh; */
 
   display: flex;
   justify-content: space-around;
@@ -28,12 +28,11 @@ export const LeftDiv = styled.div`
 
 export const RightDiv = styled.div`
   width: 50%;
-  height: 100%;
+  /* height: auto; */
 
   /* background-color: #f5d5d5; */
+  margin-bottom: 30px;
 `;
-
-// 메인 p
 
 export const MainWrapper = styled.div`
   width: 95%;
@@ -53,18 +52,18 @@ export const MainPDiv = styled.div`
 
   display: flex;
   flex-direction: ${(props) => props.flexDirection};
-  margin-top: ${(props) => props.marginTop || '0'};
+  margin-top: ${(props) => props.marginTop || "0"};
 
   /* background-color: aqua; */
 `;
 
 export const MainP = styled.div`
-  color: ${(props) => props.color || '#000000'};
-  font-size: ${(props) => props.fontSize || '36px'};
-  font-weight: ${(props) => props.fontWeight || '500'};
+  color: ${(props) => props.color || "#000000"};
+  font-size: ${(props) => props.fontSize || "36px"};
+  font-weight: ${(props) => props.fontWeight || "500"};
   /* width: ${(props) => props.width}; */
 
-  margin-right: ${(props) => props.marginRight || '10px'};
+  margin-right: ${(props) => props.marginRight || "10px"};
   margin-bottom: ${(props) => props.marginBottom};
   margin: ${(props) => props.margin};
 
@@ -75,15 +74,15 @@ export const MainP = styled.div`
 
 // 등급 자세히 보기
 export const Links = styled(Link)`
-  width: ${(props) => props.marginRight || '200px'};
+  /* width: ${(props) => props.width || "200px"}; */
+  height: auto;
   text-decoration: none;
-  /* color: #424242; */
-  /* font-size: 20px; */
-  /* font-weight: 600; */
 
   display: block;
-  /* margin: 20px 0; */
-  /* background-color: aqua; */
+
+  color: black;
+
+  /* background-color: #2b4963; */
 `;
 
 // 회원 탈퇴
@@ -103,7 +102,7 @@ export const BkackScreenDiv = styled.div`
 
 export const ModuleDiv = styled.div`
   width: 541px;
-  height: ${(props) => props.height || '528px'};
+  height: ${(props) => props.height || "528px"};
 
   border-radius: 47px;
   background-color: #ffffff;
@@ -162,7 +161,7 @@ export const Button = styled.button`
   width: 176px;
   height: 52px;
 
-  background-color: ${(props) => props.backgroudColor || '#D9D9D9'};
+  background-color: ${(props) => props.backgroudColor || "#D9D9D9"};
   border-radius: 19px;
   border: 0px;
 
@@ -177,11 +176,17 @@ export const Button = styled.button`
 // 내 스크랩
 export const PostMyPageDiv = styled.div`
   width: 100%;
-  height: 870px;
+  /* height: 870px; */
+  height: auto;
 
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-around;
   flex-wrap: wrap;
 
   /* background-color: lightslategrey; */
+
+  /* 자식 요소의 너비 설정 */
+  & > * {
+    flex-basis: 310px;
+  }
 `;

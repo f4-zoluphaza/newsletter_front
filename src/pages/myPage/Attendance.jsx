@@ -24,6 +24,7 @@ import NewsletterPost from "../../components/NewsletterPost.jsx";
 export default function Attendance() {
   const [unregisterBt, setUnregisterBt] = useState(false);
   const [data, setData] = useState({});
+  const [scrap, setScrap] = useState([]);
 
   const { id } = useParams();
 
@@ -81,7 +82,7 @@ export default function Attendance() {
       console.log(response.data.items);
 
       const result = response.data.items;
-      setData(result);
+      setScrap(result);
     } catch (error) {
       console.error(
         "스크랩한 뉴스 목록 불러오기 에러",
@@ -93,7 +94,7 @@ export default function Attendance() {
   useEffect(() => {
     handleMypageMainApi();
     scrappedNewsAPI();
-  }, [id]);
+  }, []);
 
   return (
     <Div>
@@ -187,13 +188,11 @@ export default function Attendance() {
             <MainP fontWeight="600" fontSize="30px" marginBottom="15px">
               나의 스크랩
             </MainP>
-
             {/* 스크랩한 뉴스 목록*/}
             <PostMyPageDiv>
-              {data.length > 0 &&
-                data.map((item, index) => (
+              {scrap.length > 0 &&
+                scrap.slice(0, 4).map((item, index) => (
                   <Links
-                    width="310px"
                     to={{
                       pathname: `/detailPage/${item.id}`,
                     }}
