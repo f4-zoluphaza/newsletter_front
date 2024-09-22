@@ -4,13 +4,16 @@ import api from '../../api/api.js';
 import { useParams } from 'react-router-dom';
 
 import {
-  Div,
-  BodyDiv,
   TitleDiv,
   Textspan,
   PostAllDiv,
 } from '../../styles/Mypage_j/ScrapPage.styled.jsx';
-import { Links } from '../../styles/main/main-style-component.jsx';
+
+import {
+  Div,
+  BodyDiv,
+  Links,
+} from '../../styles/main/main-style-component.jsx';
 
 import Header from '../../components/Header.jsx';
 import NewsletterPost from '../../components/NewsletterPost.jsx';
