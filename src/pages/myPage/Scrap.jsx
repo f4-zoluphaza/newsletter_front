@@ -9,7 +9,6 @@ import {
   TitleDiv,
   Textspan,
   PostAllDiv,
-  PostDiv,
 } from '../../styles/Mypage_j/ScrapPage.styled.jsx';
 import { Links } from '../../styles/main/main-style-component.jsx';
 
@@ -17,8 +16,6 @@ import Header from '../../components/Header.jsx';
 import NewsletterPost from '../../components/NewsletterPost.jsx';
 
 export default function Scrap() {
-  const [paginationNum, setPaginationNum] = useState(1);
-  const [totalPages, setTotalPages] = useState();
   const [data, setData] = useState({});
 
   const { id } = useParams();
@@ -51,8 +48,6 @@ export default function Scrap() {
 
       const result = response.data.items;
       setData(result);
-      // const totalPages = response.data.totalPages;
-      // setTotalPages(totalPages);
     } catch (error) {
       console.error(
         '스크랩한 뉴스 목록 불러오기 에러',
@@ -61,13 +56,9 @@ export default function Scrap() {
     }
   };
 
-  // useEffect(() => {
-  //   scrappedNewsAPI();
-  // }, [paginationNum]);
-
   useEffect(() => {
     scrappedNewsAPI();
-  });
+  }, [id]);
 
   return (
     <Div>
@@ -79,7 +70,7 @@ export default function Scrap() {
           <Textspan>내 스크랩 목록</Textspan>
         </TitleDiv>
 
-        {/* 뉴스레터 게시물 */}
+        {/* 스크랩한 뉴스 */}
         <PostAllDiv>
           {data.length > 0 &&
             data.map((item, index) => (
@@ -98,34 +89,6 @@ export default function Scrap() {
               </Links>
             ))}
         </PostAllDiv>
-
-        {/* 스크랩 게시물 예시*/}
-        {/* <PostAllDiv>
-          <PostDiv>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-          </PostDiv>
-        </PostAllDiv>
-
-        <PostAllDiv>
-          <PostDiv>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-          </PostDiv>
-        </PostAllDiv>
-
-        <PostAllDiv>
-          <PostDiv>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-            <NewsletterPost></NewsletterPost>
-          </PostDiv>
-        </PostAllDiv> */}
       </BodyDiv>
     </Div>
   );
