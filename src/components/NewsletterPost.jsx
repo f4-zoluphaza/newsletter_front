@@ -20,7 +20,7 @@ export default function NewsletterPost({
   content,
   publishDate,
   thumbnail,
-  heartCount,
+  likeCount,
   scrapCount,
 }) {
   return (
@@ -31,9 +31,9 @@ export default function NewsletterPost({
       <NewsDateDiv>{publishDate}</NewsDateDiv>
       <HeartSaveDiv>
         <HeartImgScrap src={HeartImage} />
-        <HeartCountScrap>10</HeartCountScrap>
+        <HeartCountScrap>{likeCount}</HeartCountScrap>
         <HeartImgScrap src={ScraptImage} />
-        <HeartCountScrap>10</HeartCountScrap>
+        <HeartCountScrap>{scrapCount}</HeartCountScrap>
       </HeartSaveDiv>
     </PostWapperDiv>
   );
