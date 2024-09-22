@@ -236,7 +236,7 @@ export default function DetailPage() {
 
               {/* 뉴스레터 이미지 */}
               <NewsWrapperDiv height="240px" margintop="15px">
-                <NewsImg id="thumbnail" src={data.thumbnail}></NewsImg>
+                <NewsImg id="thumbnail" src={api.defaults.imgBaseURL + data.thumbnail}></NewsImg>
               </NewsWrapperDiv>
 
               {/* 뉴스레터 내용 */}
