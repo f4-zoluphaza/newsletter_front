@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import api from '../api/api.js'
+import React, { useState } from "react";
+import api from "../api/api.js";
 import {
   PostWapperDiv,
   NewsImg,
@@ -9,13 +9,20 @@ import {
   HeartSaveDiv,
   HeartImgScrap,
   HeartCountScrap,
-} from '../styles/main/main-style-component.jsx';
+} from "../styles/main/main-style-component.jsx";
 
-import NewsImage from '../images/MainPage/News.svg';
-import HeartImage from '../images/MainPage/Heart.svg';
-import ScraptImage from '../images/MainPage/Scrapt.svg';
+import NewsImage from "../images/MainPage/News.svg";
+import HeartImage from "../images/MainPage/Heart.svg";
+import ScraptImage from "../images/MainPage/Scrapt.svg";
 
-export default function NewsletterPost({ title, content, publishDate, thumbnail, heartCount, scrapCount }) {
+export default function NewsletterPost({
+  title,
+  content,
+  publishDate,
+  thumbnail,
+  heartCount,
+  scrapCount,
+}) {
   return (
     <PostWapperDiv>
       <NewsImg src={api.defaults.imgBaseURL + thumbnail} />
