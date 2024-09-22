@@ -18,7 +18,7 @@ export const TitleDiv = styled.div`
   width: 100%;
   height: 80px;
   margin-top: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 
   display: flex;
   justify-content: center;
@@ -37,7 +37,8 @@ export const PostAllDiv = styled.div`
   margin-bottom: 50px;
 
   display: flex;
-  justify-content: center;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
 
   /* background-color: lightslategrey; */
 `;
