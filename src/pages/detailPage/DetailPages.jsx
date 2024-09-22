@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import api from '../../api/api.js'
+import React, { useState, useEffect, useRef } from "react";
+import api from "../../api/api.js";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   Div,
@@ -20,7 +20,7 @@ import {
   PreNextpostDiv,
   OnClickTextspan,
 } from "../../styles/Detailpage/DetailPages.styled.jsx";
-import{Links} from "../../styles/main/main-style-component.jsx";
+import { Links } from "../../styles/main/main-style-component.jsx";
 import NoLoginChat from "../../components/detailPage/NoLoginDetailPages.jsx";
 import LoginChat from "../../components/detailPage/LoginDetailPages.jsx";
 
@@ -28,11 +28,16 @@ import Header from "../../components/Header.jsx";
 import ScrapBlackImage from "../../images/DetailPage/ScrapBlank.svg";
 import HeartBlackImage from "../../images/DetailPage/HeartBlank.svg";
 import ShareImage from "../../images/DetailPage/Share.svg";
+import HeartImage from "../../images/MainPage/Heart.svg";
+import ScrapImage from "../../images/MainPage/Scrapt.svg";
 
 export default function DetailPage() {
   const navigate = useNavigate();
   const [validLogin, setValidLogin] = useState(null);
   const { id } = useParams();
+  const [validLike, setValidLike] = useState(false);
+  const [validScrap, setValidScrap] = useState(false);
+  const prevIdRef = useRef(null);
   // const [prompt, setPrompt] = useState("");
 
   // 쿠키 값 읽는 함수
@@ -43,16 +48,7 @@ export default function DetailPage() {
     return null;
   }
 
-  const [data, setData] = useState({
-    title: "",
-    link: "",
-    original: "",
-    content: "",
-    publishDate: "",
-    thumbnail: "",
-    id: null,
-    published: null,
-  });
+  const [data, setData] = useState({});
 
   const validLoginFuntion = () => {
     const isLogin = getCookie("jwtToken");
@@ -68,32 +64,39 @@ export default function DetailPage() {
     e.preventDefault();
   };
 
-  // 뉴스 발행 api
+  // 상세조회 api
   const newsdetailPageApi = async () => {
     try {
       //API 요청 URL
       const url = `api/v1/news/${id}`;
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",
+          Authorization: `Bearer ${token}`,
         },
       });
 
       console.log(response.data.items);
 
       setData({
-        title: response.data.items[0].title,
-        link: response.data.items[0].link,
-        original: response.data.items[0].source,
-        content: response.data.items[0].content,
-        publishDate: response.data.items[0].publishDate,
-        thumbnail: response.data.items[0].thumbnail,
-        id: response.data.items[0].id,
-        published: response.data.items[0].published,
+        title: response.data.items[0].news.title,
+        link: response.data.items[0].news.link,
+        original: response.data.items[0].news.source,
+        content: response.data.items[0].news.content,
+        publishDate: response.data.items[0].news.publishDate,
+        thumbnail: response.data.items[0].news.thumbnail,
+        id: response.data.items[0].news.id,
+        published: response.data.items[0].news.published,
+        likeCount: response.data.items[0].news.likeCount,
       });
+      setValidLike(response.data.items[0].liked);
+      setValidScrap(response.data.items[0].scrapped);
 
       // window.location.reload();
     } catch (error) {
@@ -119,15 +122,13 @@ export default function DetailPage() {
       });
 
       console.log(response.data);
-      
-      if(response.data.isSuccess){
-        const previousId = response.data.items[0].id
+
+      if (response.data.isSuccess) {
+        const previousId = response.data.items[0].id;
         navigate(`/detailPage/${previousId}`);
+      } else {
+        alert(response.data.message);
       }
-      else{
-        alert(response.data.message)
-      }
-      
     } catch (error) {
       console.error(
         "detailPage 이전 페이지 api 에러",
@@ -142,7 +143,6 @@ export default function DetailPage() {
       //API 요청 URL
       const url = `api/v1/news/${id}/next`;
 
-
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
         headers: {
@@ -152,17 +152,77 @@ export default function DetailPage() {
       });
 
       console.log(response.data);
-      if(response.data.isSuccess){
-        const nextId = response.data.items[0].id
+      if (response.data.isSuccess) {
+        const nextId = response.data.items[0].id;
         navigate(`/detailPage/${nextId}`);
+      } else {
+        alert(response.data.message);
       }
-      else{
-        alert(response.data.message)
-      }
-      
     } catch (error) {
       console.error(
         "detailPage 다음 페이지 api 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  // 좋아요, 좋아요 취소 api
+  const handleLikeApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `api/v1/news/${id}/like`;
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
+
+      //axios.post 메소드를 사용하여 요청을 보냄
+      const response = await api.post(
+        url,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(response.data);
+      setValidLike(response.data.items[0].liked);
+    } catch (error) {
+      console.error(
+        "detailPage 좋아요 api 에러",
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  // 스크랩, 스크랩 취소 취소 api
+  const handleScrapApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `api/v1/news/${id}/scrap`;
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie("jwtToken");
+
+      //axios.post 메소드를 사용하여 요청을 보냄
+      const response = await api.post(
+        url,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(response.data);
+      setValidScrap(response.data.items[0].scrapped);
+    } catch (error) {
+      console.error(
+        "detailPage 스크랩 api 에러",
         error.response ? error.response.data : error
       );
     }
@@ -193,10 +253,18 @@ export default function DetailPage() {
   // };
 
   useEffect(() => {
-    window.scrollTo(0, 0); // 페이지의 맨 위로 스크롤
+    // 이전 id와 현재 id를 비교하여 id가 변경된 경우에만 스크롤 이동
+    if (prevIdRef.current !== id) {
+      window.scrollTo(0, 0);
+    }
+
+    // id와 validLike가 변경될 때마다 API 호출
     newsdetailPageApi();
     validLoginFuntion();
-  }, [id]);
+
+    // useEffect가 실행될 때마다 이전 id 값을 업데이트
+    prevIdRef.current = id;
+  }, [id, validLike]);
 
   return (
     <Div>
@@ -236,7 +304,10 @@ export default function DetailPage() {
 
               {/* 뉴스레터 이미지 */}
               <NewsWrapperDiv height="240px" margintop="15px">
-                <NewsImg id="thumbnail" src={api.defaults.imgBaseURL + data.thumbnail}></NewsImg>
+                <NewsImg
+                  id="thumbnail"
+                  src={api.defaults.imgBaseURL + data.thumbnail}
+                ></NewsImg>
               </NewsWrapperDiv>
 
               {/* 뉴스레터 내용 */}
@@ -250,18 +321,27 @@ export default function DetailPage() {
             </NewsDiv>
 
             {/* 챗봇 영역 */}
-            {validLogin ? <LoginChat  /> : <NoLoginChat />}
+            {validLogin ? <LoginChat /> : <NoLoginChat />}
           </NewsDivChat>
 
           {/* 좋아요, 저장, 공유 영역 */}
           <HeartScrapDivShare>
             <HeartScrapWrapperDivShare>
               <HeartDivScrap>
-                <OnClickImg src={ScrapBlackImage} width="28px" />
+                <OnClickImg
+                  src={validScrap ? ScrapImage : ScrapBlackImage}
+                  width="28px"
+                  onClick={() => handleScrapApi()}
+                />
+
                 <HeartDiv>
-                  <OnClickImg src={HeartBlackImage} width="33px" />
+                  <OnClickImg
+                    src={validLike ? HeartImage : HeartBlackImage}
+                    width="33px"
+                    onClick={() => handleLikeApi()}
+                  />
                   <Textspan fontsize="13px" textalign="center" marginbottom="0">
-                    2
+                    {data.likeCount}
                   </Textspan>
                 </HeartDiv>
               </HeartDivScrap>
@@ -269,8 +349,12 @@ export default function DetailPage() {
             </HeartScrapWrapperDivShare>
             {/* 이전글, 다음글 영역 */}
             <PreNextpostDiv>
-              <OnClickTextspan onClick={()=>handlePreviousPostApi()}>&lt; 이전 글 보기</OnClickTextspan>
-              <OnClickTextspan onClick={()=>handleNextPostApi()}>다음 글 보기 &gt;</OnClickTextspan>
+              <OnClickTextspan onClick={() => handlePreviousPostApi()}>
+                &lt; 이전 글 보기
+              </OnClickTextspan>
+              <OnClickTextspan onClick={() => handleNextPostApi()}>
+                다음 글 보기 &gt;
+              </OnClickTextspan>
             </PreNextpostDiv>
           </HeartScrapDivShare>
         </Form>

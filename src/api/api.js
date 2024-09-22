@@ -10,13 +10,13 @@ const api = axios.create({
   // imgBaseURL: 'https://catfish-solid-specially.ngrok-free.app',
 
   // 임시 url 2
-  // baseURL: 'https://humble-commonly-goshawk.ngrok-free.app/',
-  // imgBaseURL: "https://humble-commonly-goshawk.ngrok-free.app",
+  baseURL: "https://humble-commonly-goshawk.ngrok-free.app/",
+  imgBaseURL: "https://humble-commonly-goshawk.ngrok-free.app",
 
   // 임시 url 3
-  baseURL: "https://catfish-solid-specially.ngrok-free.app/",
+  // baseURL: "https://catfish-solid-specially.ngrok-free.app/",
 
-  imgBaseURL: "https://catfish-solid-specially.ngrok-free.app",
+  // imgBaseURL: "https://catfish-solid-specially.ngrok-free.app",
 });
 
 export default api;
