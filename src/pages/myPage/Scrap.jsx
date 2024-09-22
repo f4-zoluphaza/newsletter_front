@@ -70,7 +70,7 @@ export default function Scrap() {
           <Textspan>내 스크랩 목록</Textspan>
         </TitleDiv>
 
-        {/* 스크랩한 뉴스 */}
+        {/* 스크랩한 뉴스 목록*/}
         <PostAllDiv>
           {data.length > 0 &&
             data.map((item, index) => (
