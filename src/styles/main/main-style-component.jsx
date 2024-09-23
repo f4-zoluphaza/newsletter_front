@@ -17,7 +17,7 @@ export const Div = styled.div`
 export const BodyDiv = styled.div`
   width: 1400px;
   height: 100vh;
-  
+
   /* background-color: beige; */
 `;
 

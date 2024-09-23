@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import api from '../../api/api.js'
-import Header from "../../components/Header";
+import React, { useState, useEffect } from 'react';
+import api from '../../api/api.js';
+
+import { useParams } from 'react-router-dom';
+
 import {
   // BodyDiv,
   WrapperDiv,
@@ -10,21 +12,27 @@ import {
   MainPDiv,
   MainP,
   Links,
-} from "../../styles/Mypage_s/Attendance.styled";
+  PostMyPageDiv,
+} from '../../styles/Mypage_s/Attendance.styled';
 
-import { Div, BodyDiv } from "../../styles/main/main-style-component.jsx";
+import { Div, BodyDiv } from '../../styles/main/main-style-component.jsx';
 
-import Unregister from "../../components/mypage/Unregister";
+import Header from '../../components/Header';
+import Unregister from '../../components/mypage/Unregister';
+import NewsletterPost from '../../components/NewsletterPost.jsx';
 
 export default function Attendance() {
   const [unregisterBt, setUnregisterBt] = useState(false);
   const [data, setData] = useState({});
+  const [scrap, setScrap] = useState([]);
+
+  const { id } = useParams();
 
   // 쿠키 값 읽는 함수
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
+    if (parts.length === 2) return parts.pop().split(';').shift();
     return null;
   }
 
@@ -34,13 +42,13 @@ export default function Attendance() {
       const url = `api/v1/mypage`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
-      const token = getCookie("jwtToken");
+      const token = getCookie('jwtToken');
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
         headers: {
-          "Content-Type": "application/json",
-          "ngrok-skip-browser-warning": "69420",
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': '69420',
           Authorization: `Bearer ${token}`,
         },
       });
@@ -49,7 +57,35 @@ export default function Attendance() {
       setData(response.data.result);
     } catch (error) {
       console.error(
-        "마이페이지 메인 api 에러",
+        '마이페이지 메인 api 에러',
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  // 스크랩한 뉴스 목록 불러오기 api 함수
+  const scrappedNewsAPI = async () => {
+    try {
+      const url = `api/v1/news/scrapped`;
+
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie('jwtToken');
+
+      const response = await api.get(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': '69420',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log(response.data.items);
+
+      const result = response.data.items;
+      setScrap(result);
+    } catch (error) {
+      console.error(
+        '스크랩한 뉴스 목록 불러오기 에러',
         error.response ? error.response.data : error
       );
     }
@@ -57,6 +93,7 @@ export default function Attendance() {
 
   useEffect(() => {
     handleMypageMainApi();
+    scrappedNewsAPI();
   }, []);
 
   return (
@@ -108,11 +145,11 @@ export default function Attendance() {
 
             <MainWrapper>
               <MainPDiv flexDirection="column">
-                <Links to="/Mypage/Scrap">
+                {/* <Links to="/Mypage/Scrap">
                   <MainP fontWeight="600" fontSize="30px" marginBottom="5px">
                     나의 스크랩 〉
                   </MainP>
-                </Links>
+                </Links> */}
                 <Links to="/Mypage/ChangeInfo">
                   <MainP fontWeight="600" fontSize="30px" marginBottom="15px">
                     정보 수정 〉
@@ -137,7 +174,7 @@ export default function Attendance() {
                   회원 탈퇴
                 </MainP>
 
-                {data.role === "ADMIN" ? (
+                {data.role === 'ADMIN' ? (
                   <Links to="/Admin">
                     <MainP fontWeight="600" fontSize="21px" marginBottom="15px">
                       관리자 페이지
@@ -147,7 +184,34 @@ export default function Attendance() {
               </MainPDiv>
             </MainWrapper>
           </LeftDiv>
-          <RightDiv></RightDiv>
+          <RightDiv>
+            <MainP fontWeight="700" fontSize="30px" margin="0 0 15px 25px">
+              나의 스크랩
+            </MainP>
+            {/* 스크랩한 뉴스 목록*/}
+            <PostMyPageDiv>
+              {scrap.length > 0 &&
+                scrap.slice(0, 4).map((item, index) => (
+                  <Links
+                    to={{
+                      pathname: `/detailPage/${item.id}`,
+                    }}
+                  >
+                    <NewsletterPost
+                      key={item.id}
+                      title={item.title}
+                      content={item.content}
+                      publishDate={item.publishDate}
+                      thumbnail={item.thumbnail}
+                    ></NewsletterPost>
+                  </Links>
+                ))}
+            </PostMyPageDiv>
+
+            <MainP fontWeight="600" fontSize="20px" margin="0 0 0 620px">
+              <Links to="/Mypage/Scrap">더보기 〉</Links>
+            </MainP>
+          </RightDiv>
         </WrapperDiv>
 
         {unregisterBt === true ? (

@@ -142,7 +142,7 @@ export const AllMessageDiv = styled.div`
 
 export const MessageDiv = styled.div`
   width: 96%;
-  height: ${(props) => props.height || '46px'};
+  height: ${(props) => props.height || 'auto'};
   margin-top: ${(props) => props.margintop || '25px'};
 
   display: flex;
@@ -180,6 +180,8 @@ export const BotspeechbubbleDiv = styled.div`
   border: solid 0;
   border-radius: 16px;
   padding: 17px 20px 17px 20px;
+
+  word-wrap: break-word;
 
   background-color: #cddfab;
 `;
