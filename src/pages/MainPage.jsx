@@ -45,9 +45,7 @@ import {
   MakerDivContact,
 } from '../styles/main/main-style-component.jsx';
 
-import Logo from '../images/Logo.svg';
 import Searchsvg from '../images/MainPage/Search.svg';
-import NewsImage from '../images/MainPage/News.svg';
 import Header from '../components/Header.jsx';
 import NewsletterPost from '../components/NewsletterPost.jsx';
 import Footer from '../components/main/Footer.jsx';
@@ -60,7 +58,6 @@ export default function MainPage(props) {
     email: '',
   });
 
-  const [validEmailDuplicate, setValidEmailDuplicate] = useState(null);
   const [validNickName, setValidNickName] = useState(null);
   const [paginationNum, setPaginationNum] = useState(1);
   const [searchString, setSearchString] = useState('');
@@ -159,11 +156,11 @@ export default function MainPage(props) {
     newsmainPageAPI();
   }, [paginationNum]);
 
-  // 검색창, 정렬 api 함수
-  const searchSortAPI = async (sortChoice) => {
+  // 검색창 api 함수
+  const searchAPI = async () => {
     try {
       //API 요청 URL
-      const url = `api/v1/news?searchTerm=${searchString}&sortType=${sortChoice}`;
+      const url = `api/v1/news?searchTerm=${searchString}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
@@ -180,7 +177,34 @@ export default function MainPage(props) {
       setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
     } catch (error) {
       console.error(
-        'mainPage 검색창, 정렬 에러',
+        'mainPage 검색창 에러',
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  // 정렬 api 함수
+  const sortAPI = async (sortChoice) => {
+    try {
+      //API 요청 URL
+      const url = `api/v1/news?sortType=${sortChoice}`;
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await api.get(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': '69420',
+        },
+      });
+
+      console.log(response.data.items);
+
+      const result = response.data.items;
+      setData(result);
+      setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
+    } catch (error) {
+      console.error(
+        'mainPage 정렬 에러',
         error.response ? error.response.data : error
       );
     }
@@ -190,7 +214,7 @@ export default function MainPage(props) {
   const handleSortToggle = () => {
     const newSortChoice = sortChoice === 'latest' ? 'popular' : 'latest';
     setSortChoice(newSortChoice);
-    searchSortAPI(newSortChoice); // 토글된 값으로 API 호출
+    sortAPI(newSortChoice); // 토글된 값으로 API 호출
   };
 
   return (
@@ -255,7 +279,7 @@ export default function MainPage(props) {
               // onChange={handleInputChange} // 검색어 변경 시 호출
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  searchSortAPI();
+                  searchAPI();
                 }
               }}
             ></SearchInput>
@@ -263,7 +287,7 @@ export default function MainPage(props) {
               id="search"
               src={Searchsvg}
               onClick={() => {
-                searchSortAPI();
+                searchAPI();
               }}
             />
           </SearchBorderDiv>
@@ -273,12 +297,12 @@ export default function MainPage(props) {
         <RangeDiv>
           <RangeCenterDiv>
             <RangeButton
-              value={sortChoice}
+              value={sortChoice === 'latest' ? '최신순' : '인기순'}
               type="button"
               onClick={handleSortToggle}
               backgroundcolor="#CDDFAB"
             >
-              {sortChoice === 'latest' ? '최신순' : '인기순'}
+              {/* {sortChoice === 'latest' ? '최신순' : '인기순'} */}
             </RangeButton>
           </RangeCenterDiv>
         </RangeDiv>
