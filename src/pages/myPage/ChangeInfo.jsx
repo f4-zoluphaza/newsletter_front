@@ -81,16 +81,16 @@ export default function ChangeInfo() {
   };
 
   // 새 비밀번호 유효성 함수
-  const handlePW = (e) => {
-    const password = e.target.value;
-    setForm({ ...form, password });
+  const handleNewPW = (e) => {
+    const newPassword = e.target.value;
+    setForm({ ...form, newPassword });
 
-    if (password.trim() === '') {
+    if (newPassword.trim() === '') {
       setValidPW(null);
     } else {
       const isValidPassword =
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&^#()])[A-Za-z\d@$!%*?&^#()]{8,12}$/.test(
-          password
+          newPassword
         );
       setValidPW(isValidPassword);
     }
@@ -98,12 +98,12 @@ export default function ChangeInfo() {
 
   // 새 비밀번호 확인 유효성 함수
   const hadlePWCheck = (e) => {
-    const passwordCheck = e.target.value;
-    setForm((prevForm) => ({ ...prevForm, passwordCheck }));
+    const newPasswordCheck = e.target.value;
+    setForm({ ...form, newPasswordCheck });
 
-    if (passwordCheck.trim() === '') {
+    if (newPasswordCheck.trim() === '') {
       setValidPWCheck(null);
-    } else if (passwordCheck === form.password) {
+    } else if (newPasswordCheck === form.newPassword) {
       setValidPWCheck(true);
     } else {
       setValidPWCheck(false);
@@ -148,8 +148,8 @@ export default function ChangeInfo() {
       document.cookie =
         'jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
+      alert('정보가 성공적으로 수정되었습니다.');
       navigate('/Login');
-      // alert('정보가 성공적으로 수정되었습니다.');
     } catch (error) {
       console.error(
         '내 정보 수정 에러',
@@ -260,7 +260,7 @@ export default function ChangeInfo() {
                   id="password"
                   type={validNewPWState ? 'text' : 'password'}
                   onChange={(e) => {
-                    handlePW(e);
+                    handleNewPW(e);
                   }}
                   placeholder="비밀번호 (숫자, 영문 8~12자리)"
                   width="410.975px"
