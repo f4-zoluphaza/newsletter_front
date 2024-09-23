@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import api from '../../api/api.js';
+import React, { useState, useEffect } from "react";
+import api from "../../api/api.js";
 
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 import {
   // BodyDiv,
@@ -13,16 +13,18 @@ import {
   MainP,
   Links,
   PostMyPageDiv,
-} from '../../styles/Mypage_s/Attendance.styled';
+} from "../../styles/Mypage_s/Attendance.styled";
 
-import { Div, BodyDiv } from '../../styles/main/main-style-component.jsx';
+import { Div, BodyDiv } from "../../styles/main/main-style-component.jsx";
 
-import Header from '../../components/Header';
-import Unregister from '../../components/mypage/Unregister';
-import NewsletterPost from '../../components/NewsletterPost.jsx';
+import Header from "../../components/Header";
+import Unregister from "../../components/mypage/Unregister";
+import NewsletterPost from "../../components/NewsletterPost.jsx";
+import GradeList from "../../components/mypage/GradeList.jsx";
 
 export default function Attendance() {
   const [unregisterBt, setUnregisterBt] = useState(false);
+  const [gradeBt, setGradeBt] = useState(false);
   const [data, setData] = useState({});
   const [scrap, setScrap] = useState([]);
 
@@ -32,7 +34,7 @@ export default function Attendance() {
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+    if (parts.length === 2) return parts.pop().split(";").shift();
     return null;
   }
 
@@ -42,13 +44,13 @@ export default function Attendance() {
       const url = `api/v1/mypage`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
-      const token = getCookie('jwtToken');
+      const token = getCookie("jwtToken");
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
         headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': '69420',
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
           Authorization: `Bearer ${token}`,
         },
       });
@@ -57,7 +59,7 @@ export default function Attendance() {
       setData(response.data.result);
     } catch (error) {
       console.error(
-        '마이페이지 메인 api 에러',
+        "마이페이지 메인 api 에러",
         error.response ? error.response.data : error
       );
     }
@@ -69,12 +71,12 @@ export default function Attendance() {
       const url = `api/v1/news/scrapped`;
 
       // 쿠키에서 'jwtToken' 값을 가져옴
-      const token = getCookie('jwtToken');
+      const token = getCookie("jwtToken");
 
       const response = await api.get(url, {
         headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': '69420',
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
           Authorization: `Bearer ${token}`,
         },
       });
@@ -85,7 +87,7 @@ export default function Attendance() {
       setScrap(result);
     } catch (error) {
       console.error(
-        '스크랩한 뉴스 목록 불러오기 에러',
+        "스크랩한 뉴스 목록 불러오기 에러",
         error.response ? error.response.data : error
       );
     }
@@ -137,6 +139,7 @@ export default function Attendance() {
                   fontWeight="600"
                   fontSize="20px"
                   margin="20px 0"
+                  onClick={() => setGradeBt(true)}
                 >
                   등급 자세히 보기 〉
                 </MainP>
@@ -174,7 +177,7 @@ export default function Attendance() {
                   회원 탈퇴
                 </MainP>
 
-                {data.role === 'ADMIN' ? (
+                {data.role === "ADMIN" ? (
                   <Links to="/Admin">
                     <MainP fontWeight="600" fontSize="21px" marginBottom="15px">
                       관리자 페이지
@@ -217,6 +220,8 @@ export default function Attendance() {
         {unregisterBt === true ? (
           <Unregister setUnregisterBt={setUnregisterBt} />
         ) : null}
+
+        {gradeBt === true ? <GradeList setGradeBt={setGradeBt} /> : null}
       </BodyDiv>
     </Div>
   );
