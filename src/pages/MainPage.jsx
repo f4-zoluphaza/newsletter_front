@@ -163,7 +163,7 @@ export default function MainPage(props) {
   const searchSortAPI = async (sortChoice) => {
     try {
       //API 요청 URL
-      const url = `api/v1/news?searchTerm=${searchString} and sortType=${sortChoice}`;
+      const url = `api/v1/news?searchTerm=${searchString}&sortType=${sortChoice}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
@@ -210,17 +210,6 @@ export default function MainPage(props) {
           </ExplainDiv>
           <SubscribeDiv>
             <Form onSubmit={handleSubmit}>
-              {/* //placeholder에 설명 글자
-              <SubscribeInput
-                type="email"
-                placeholder="이메일"
-              ></SubscribeInput>
-              <SubscribeInput type="text" placeholder="닉네임"></SubscribeInput>
-              <ButtonDiv>
-                <Button value="뉴스레터 신청하기" type="submit" />
-                <Button value="가입 먼저하기" type="submit" />
-              </ButtonDiv>{' '}
-              */}
               <Label>
                 <TextSpan textalign="center" fontweight="600">
                   이메일
