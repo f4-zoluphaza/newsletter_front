@@ -7,6 +7,8 @@ import {
   MakerDivContact,
   FooterWrapperDiv,
 } from '../../styles/main/main-style-component.jsx';
+import GithubImg from '../../images/MainPage/GithubLogo.svg';
+
 
 export default function Footer() {
   return (
@@ -24,15 +26,11 @@ export default function Footer() {
             Copyright ⓒ Newstrike. All rights reserved.
           </TextSpan>
         </MakerDivContact>
-        <MakerDivContact>
-          <TextSpan fontsize="18px" textalign="right">
-            CONTACT
-          </TextSpan>
-          <TextSpan fontsize="18px" textalign="right">
-            대표자 이메일 12345@naver.com
-          </TextSpan>
-          <TextSpan fontsize="18px" textalign="right">
-            02-901-2004
+        <MakerDivContact display="flex" justifycontent="end">
+          <TextSpan fontsize="18px" textalign="right" style={{display:"flex", justifyContent:"end", alignItems:"center"}}>
+            <img src={GithubImg} style={{ width: "30px", height: "30px",  marginRight:"5px"}}/>
+            <a href="https://github.com/f4-zoluphaza/newsletter_front" target="_blank" rel="noopener noreferrer" style={{ textDecoration:"none", fontSize:"18px"
+            }}>GitHub</a>
           </TextSpan>
         </MakerDivContact>
       </FooterWrapperDiv>

@@ -90,6 +90,7 @@ export const TextSpan = styled.span`
   text-align: ${(props) => props.textalign || "left"};
 
   margin-left: ${(props) => props.marginleft || "0"};
+  /* background-color: aqua; */
 `;
 
 export const SubscribeDiv = styled.div`
@@ -428,6 +429,7 @@ export const MakerDivContact = styled.div`
   display: ${(props) => props.display || "block"};
   justify-content: ${(props) => props.justifycontent || "center"};
   align-items: center;
+
 
   /* background-color: pink; */
 `;
