@@ -366,6 +366,8 @@ export const HeartImgScrap = styled.img`
 
 export const HeartCountScrap = styled.span`
   font-size: 28px;
+  margin-right: 7px;
+  margin-left: 5px;
   /* background-color: red; */
 `;
 
