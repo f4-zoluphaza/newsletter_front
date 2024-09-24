@@ -105,6 +105,7 @@ export default function DetailPage() {
         id: response.data.items[0].news.id,
         published: response.data.items[0].news.published,
         likeCount: response.data.items[0].news.likeCount,
+        scrapCount: response.data.items[0].news.scrapCount,
       });
       setValidLike(response.data.items[0].liked);
       setValidScrap(response.data.items[0].scrapped);
@@ -339,17 +340,30 @@ export default function DetailPage() {
           <HeartScrapDivShare>
             <HeartScrapWrapperDivShare>
               <HeartDivScrap>
-                <OnClickImg
-                  src={validScrap ? ScrapImage : ScrapBlackImage}
-                  width="28px"
-                  onClick={() => handleScrapApi()}
-                />
+                <HeartDiv>
+                  <OnClickImg
+                    src={validScrap ? ScrapImage : ScrapBlackImage}
+                    width="28px"
+                    onClick={
+                      validLogin
+                        ? () => handleScrapApi()
+                        : () => alert("로그인 후 이용해주세요.")
+                    }
+                  />
+                  <Textspan fontsize="13px" textalign="center" marginbottom="0">
+                    {data.scrapCount}
+                  </Textspan>
+                </HeartDiv>
 
                 <HeartDiv>
                   <OnClickImg
                     src={validLike ? HeartImage : HeartBlackImage}
                     width="33px"
-                    onClick={() => handleLikeApi()}
+                    onClick={
+                      validLogin
+                        ? () => handleLikeApi()
+                        : () => alert("로그인 후 이용해주세요.")
+                    }
                   />
                   <Textspan fontsize="13px" textalign="center" marginbottom="0">
                     {data.likeCount}
