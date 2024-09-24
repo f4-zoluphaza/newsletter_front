@@ -177,7 +177,7 @@ export const SendspeechbubbleDiv = styled.div`
 `;
 
 export const BotspeechbubbleDiv = styled.div`
-  width: 375px;
+  width: ${(props) => props.width || '375px'};
   /* height: ${(props) => props.height || 'auto'}; */
   height: auto;
   border: solid 0;
@@ -224,6 +224,44 @@ export const ChattingInput = styled.input`
   font-size: 15px;
 
   background-color: #cddfab;
+`;
+
+// 로딩 애니메이션
+export const DotsLoader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 20px;
+`;
+
+export const Dot = styled.div`
+  width: 5px;
+  height: 5px;
+  margin: 0 4px;
+  background-color: #a8e6a1; /* 연한 초록 */
+  border-radius: 50%;
+  animation: dotFlashing 1s infinite alternate;
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes dotFlashing {
+    0% {
+      background-color: #a8e6a1; /* 연한 초록 */
+    }
+    50% {
+      background-color: #76c893; /* 초록 */
+    }
+    100% {
+      background-color: #3b9d58; /* 진한 초록 */
+    }
+  }
 `;
 
 // 좋아요, 스크랩, 공유 영역

@@ -11,6 +11,8 @@ import {
   AllChattingDiv,
   ChattingDiv,
   ChattingInput,
+  DotsLoader,
+  Dot,
 } from '../../styles/Detailpage/DetailPages.styled.jsx';
 import CircleImage from '../../images/DetailPage/Circle.svg';
 import MessageSendImage from '../../images/DetailPage/MessageSend.svg';
@@ -138,14 +140,16 @@ export default function DetailPage() {
               )}
             </>
           ))}
-          {/* 로딩 중일 때 '답변 생성 중입니다.' 표시 */}
+          {/* 로딩 중일 때 로딩 애니메이션 표시 */}
           {loading && (
             <MessageDiv margintop="10px" flexdirection="column">
               <ChatbotImg src={CircleImage} />
-              <BotspeechbubbleDiv>
-                <Textspan fontsize="15px" marginbottom="0">
-                  답변 생성 중입니다.
-                </Textspan>
+              <BotspeechbubbleDiv width="102px">
+                <DotsLoader>
+                  <Dot />
+                  <Dot />
+                  <Dot />
+                </DotsLoader>
               </BotspeechbubbleDiv>
             </MessageDiv>
           )}
