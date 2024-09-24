@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const flexCenter = () => `
   display: flex;
@@ -63,8 +63,8 @@ export const NewsDiv = styled.div`
 
 export const NewsWrapperDiv = styled.div`
   width: 100%;
-  height: ${(props) => props.height || '48px'};
-  margin-top: ${(props) => props.margintop || '80px'};
+  height: ${(props) => props.height || "48px"};
+  margin-top: ${(props) => props.margintop || "80px"};
 
   ${flexCenter()}/* background-color: lightyellow; */
 `;
@@ -77,19 +77,19 @@ export const NewsTitleWrapperDivDate = styled.div`
 `;
 
 export const Textspan = styled.span`
-  display: ${(props) => props.display || 'block'};
-  font-size: ${(props) => props.fontsize || '17px'};
-  font-weight: ${(props) => props.fontweight || '500'};
-  text-align: ${(props) => props.textalign || 'left'};
+  display: ${(props) => props.display || "block"};
+  font-size: ${(props) => props.fontsize || "17px"};
+  font-weight: ${(props) => props.fontweight || "500"};
+  text-align: ${(props) => props.textalign || "left"};
 
-  margin-bottom: ${(props) => props.marginbottom || '8px'};
+  margin-bottom: ${(props) => props.marginbottom || "8px"};
 
   /* background-color: green; */
 `;
 
 export const NewsImg = styled.img`
   width: 90%;
-  height: 240px;
+  height: auto;
   border: solid 0;
 `;
 
@@ -142,8 +142,8 @@ export const AllMessageDiv = styled.div`
 
 export const MessageDiv = styled.div`
   width: 96%;
-  height: ${(props) => props.height || 'auto'};
-  margin-top: ${(props) => props.margintop || '25px'};
+  height: ${(props) => props.height || "auto"};
+  margin-top: ${(props) => props.margintop || "25px"};
 
   display: flex;
   justify-content: space-between;
@@ -153,16 +153,16 @@ export const MessageDiv = styled.div`
 `;
 
 export const ChatbotImg = styled.img`
-  width: ${(props) => props.width || '46px'};
-  height: ${(props) => props.height || '46px'};
+  width: ${(props) => props.width || "46px"};
+  height: ${(props) => props.height || "46px"};
   border: solid 0;
 
-  cursor: ${(props) => props.cursor || ''};
+  cursor: ${(props) => props.cursor || ""};
 `;
 
 export const SendspeechbubbleDiv = styled.div`
   width: auto;
-  height: ${(props) => props.height || 'auto'};
+  height: ${(props) => props.height || "auto"};
   border: solid 0;
   border-radius: 13px;
   padding: 3px 20px 3px 20px;
@@ -175,7 +175,7 @@ export const SendspeechbubbleDiv = styled.div`
 
 export const BotspeechbubbleDiv = styled.div`
   width: 375px;
-  /* height: ${(props) => props.height || 'auto'}; */
+  /* height: ${(props) => props.height || "auto"}; */
   height: auto;
   border: solid 0;
   border-radius: 16px;
@@ -258,8 +258,8 @@ export const HeartDivScrap = styled.div`
 `;
 
 export const OnClickImg = styled.img`
-  width: ${(props) => props.width || '27px'};
-  height: ${(props) => props.height || '29px'};
+  width: ${(props) => props.width || "27px"};
+  height: ${(props) => props.height || "29px"};
   border: solid 0;
 
   cursor: pointer;
@@ -304,7 +304,7 @@ export const NoLoginChatDiv = styled.div`
 
   /* 원하는 배경 스타일을 가진 불투명한 레이어 */
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
