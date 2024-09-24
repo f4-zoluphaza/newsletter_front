@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import api from '../../api/api.js'
+import React, { useState, useEffect } from 'react';
+import api from '../../api/api.js';
 import { useNavigate } from 'react-router-dom';
 import {
   Div,
@@ -44,6 +44,7 @@ export default function ChangeInfo() {
   const [validNickName, setValidNickName] = useState(null);
   const [validPW, setValidPW] = useState(null);
   const [validPWCheck, setValidPWCheck] = useState(null);
+  const [data, setData] = useState({});
 
   const navigate = useNavigate();
 
@@ -52,17 +53,44 @@ export default function ChangeInfo() {
     e.preventDefault();
   };
 
-  // 새 비밀번호 유효성 함수
-  const handlePW = (e) => {
-    const password = e.target.value;
-    setForm({ ...form, password });
+  const handleMypageMainApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `api/v1/mypage`;
 
-    if (password.trim() === '') {
+      // 쿠키에서 'jwtToken' 값을 가져옴
+      const token = getCookie('jwtToken');
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await api.get(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': '69420',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log(response.data.result);
+      setData(response.data.result);
+    } catch (error) {
+      console.error(
+        '마이페이지 메인 api 에러',
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  // 새 비밀번호 유효성 함수
+  const handleNewPW = (e) => {
+    const newPassword = e.target.value;
+    setForm({ ...form, newPassword });
+
+    if (newPassword.trim() === '') {
       setValidPW(null);
     } else {
       const isValidPassword =
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&^#()])[A-Za-z\d@$!%*?&^#()]{8,12}$/.test(
-          password
+          newPassword
         );
       setValidPW(isValidPassword);
     }
@@ -70,12 +98,12 @@ export default function ChangeInfo() {
 
   // 새 비밀번호 확인 유효성 함수
   const hadlePWCheck = (e) => {
-    const passwordCheck = e.target.value;
-    setForm((prevForm) => ({ ...prevForm, passwordCheck }));
+    const newPasswordCheck = e.target.value;
+    setForm({ ...form, newPasswordCheck });
 
-    if (passwordCheck.trim() === '') {
+    if (newPasswordCheck.trim() === '') {
       setValidPWCheck(null);
-    } else if (passwordCheck === form.password) {
+    } else if (newPasswordCheck === form.newPassword) {
       setValidPWCheck(true);
     } else {
       setValidPWCheck(false);
@@ -94,8 +122,7 @@ export default function ChangeInfo() {
   const changeinfoAPI = async () => {
     try {
       //API 요청 URL
-      const url =
-        'api/v1/mypage/change';
+      const url = 'api/v1/mypage/change';
 
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie('jwtToken');
@@ -119,10 +146,10 @@ export default function ChangeInfo() {
 
       //쿠키 삭제
       document.cookie =
-        "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        'jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
+      alert('정보가 성공적으로 수정되었습니다.');
       navigate('/Login');
-      // alert('정보가 성공적으로 수정되었습니다.');
     } catch (error) {
       console.error(
         '내 정보 수정 에러',
@@ -146,6 +173,10 @@ export default function ChangeInfo() {
     setForm({ ...form, password });
   };
 
+  useEffect(() => {
+    handleMypageMainApi();
+  }, []);
+
   return (
     <Div>
       <BodyDiv>
@@ -168,7 +199,7 @@ export default function ChangeInfo() {
                   id="nickName"
                   type="text"
                   onChange={handleNickNameChange}
-                  placeholder="nick1"
+                  placeholder={data.nickname}
                   width="410.975px"
                   height="53.82px"
                   borderRadius="9.78px"
@@ -182,10 +213,11 @@ export default function ChangeInfo() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="email@naver.com"
+                  value={data.email}
                   width="410.975px"
                   height="53.82px"
                   borderRadius="9.78px"
+                  readOnly
                 />
               </TextDivForm>
 
@@ -228,7 +260,7 @@ export default function ChangeInfo() {
                   id="password"
                   type={validNewPWState ? 'text' : 'password'}
                   onChange={(e) => {
-                    handlePW(e);
+                    handleNewPW(e);
                   }}
                   placeholder="비밀번호 (숫자, 영문 8~12자리)"
                   width="410.975px"
@@ -285,7 +317,7 @@ export default function ChangeInfo() {
                 ) : (
                   <EyesImg3
                     src={PWOpen}
-                    top={validPW === false ? "395px" : null}
+                    top={validPW === false ? '395px' : null}
                     onClick={() => {
                       setValidRepeatNewPWState(true);
                     }}

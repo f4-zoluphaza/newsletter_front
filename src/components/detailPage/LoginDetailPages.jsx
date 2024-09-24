@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../api/api.js';
 import {
-  NewsDivChat,
   ChatbotDiv,
   AllMessageDiv,
   Textspan,
@@ -19,6 +18,8 @@ import MessageSendImage from '../../images/DetailPage/MessageSend.svg';
 export default function DetailPage() {
   const [prompt, setPrompt] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
+
+  const [loading, setLoading] = useState(false); // 로딩 상태 관리
 
   // 쿠키 값 읽는 함수
   function getCookie(name) {
@@ -42,6 +43,8 @@ export default function DetailPage() {
     const newQuestion = { type: 'question', content: prompt };
     setChatHistory((prevHistory) => [...prevHistory, newQuestion]);
 
+    setLoading(true); // 로딩 상태로 전환
+
     try {
       const url = 'api/v1/chat/send';
       const data = {
@@ -58,13 +61,6 @@ export default function DetailPage() {
         },
       });
 
-      // API 응답을 채팅창에 추가
-      // const newAnswer = {
-      //   type: 'answer',
-      //   content: response.data.result[1].split('Bot: ')[1],
-      // };
-      // setChatHistory((prevHistory) => [...prevHistory, newAnswer]);
-
       // Bot의 응답을 찾음
       const botResponse = response.data
         .reverse()
@@ -80,8 +76,8 @@ export default function DetailPage() {
       };
       setChatHistory((prevHistory) => [...prevHistory, newAnswer]);
 
-      // 입력 필드 초기화
-      setPrompt('');
+      setLoading(false); // 로딩 상태 해제
+      setPrompt(''); // 입력 필드 초기화
 
       console.log(response.data);
     } catch (error) {
@@ -89,6 +85,7 @@ export default function DetailPage() {
         'Chatbot error',
         error.response ? error.response.data : error
       );
+      setLoading(false); // 오류 발생 시 로딩 상태 해제
     }
   };
 
@@ -119,6 +116,16 @@ export default function DetailPage() {
               )}
             </>
           ))}
+          {/* 로딩 중일 때 '답변 생성 중입니다.' 표시 */}
+          {loading && (
+            <MessageDiv margintop="10px">
+              <BotspeechbubbleDiv>
+                <Textspan fontsize="15px" marginbottom="0">
+                  답변 생성 중입니다.
+                </Textspan>
+              </BotspeechbubbleDiv>
+            </MessageDiv>
+          )}
         </AllMessageDiv>
 
         {/* 채팅 영역 */}
