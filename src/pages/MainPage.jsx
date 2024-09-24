@@ -44,7 +44,7 @@ export default function MainPage(props) {
 
   const [validNickName, setValidNickName] = useState(null);
   const [paginationNum, setPaginationNum] = useState(1);
-  const [searchString, setSearchString] = useState('latest');
+  const [searchString, setSearchString] = useState('');
   const [sortChoice, setSortChoice] = useState();
   const [totalPages, setTotalPages] = useState();
   const [data, setData] = useState({});
