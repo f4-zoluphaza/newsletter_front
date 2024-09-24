@@ -53,13 +53,13 @@ export default function MainPage(props) {
 
   // 쿠키 설정 함수
   function setCookie(name, value, days) {
-    let expires = "";
+    let expires = '';
     if (days) {
       const date = new Date();
       date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-      expires = "; expires=" + date.toUTCString();
+      expires = '; expires=' + date.toUTCString();
     }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    document.cookie = name + '=' + (value || '') + expires + '; path=/';
   }
 
   // 쿠키 값 읽는 함수
@@ -130,10 +130,10 @@ export default function MainPage(props) {
   };
 
   // 뉴스 리스트 불러오기 api 함수
-  const newsmainPageAPI = async () => {
+  const newsmainPageAPI = async (paginationNum, sortChoice) => {
     try {
       //API 요청 URL
-      const url = `api/v1/news?page=${paginationNum}`;
+      const url = `api/v1/news?page=${paginationNum}&sortType=${sortChoice}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
@@ -158,22 +158,22 @@ export default function MainPage(props) {
   };
 
   useEffect(() => {
-    newsmainPageAPI();
-  }, [paginationNum]);
+    newsmainPageAPI(paginationNum, sortChoice);
+  }, [paginationNum, sortChoice]);
 
   useEffect(() => {
-    const cookieSortChoice = getCookie("sortChoice"); // 쿠키에서 값을 읽어옴
+    const cookieSortChoice = getCookie('sortChoice'); // 쿠키에서 값을 읽어옴
     if (cookieSortChoice) {
       setSortChoice(cookieSortChoice); // 쿠키 값이 있으면 그 값으로 설정
     } else {
-      setSortChoice("latest"); // 쿠키 값이 없으면 기본 값인 "최신순"으로 설정
-      setCookie("sortChoice", "latest", 0); // "최신순"을 쿠키에 저장 (7일 유지)
+      setSortChoice('latest'); // 쿠키 값이 없으면 기본 값인 "최신순"으로 설정
+      setCookie('sortChoice', 'latest', 0); // "최신순"을 쿠키에 저장 (7일 유지)
     }
   }, []); // 컴포넌트가 처음 로드될 때만 실행
-  
+
   useEffect(() => {
     if (sortChoice) {
-      setCookie("sortChoice", sortChoice, 0); // 쿠키에 7일 동안 유지되도록 저장
+      setCookie('sortChoice', sortChoice, 0); // 쿠키에 7일 동안 유지되도록 저장
     }
   }, [sortChoice]);
 
@@ -205,37 +205,36 @@ export default function MainPage(props) {
   };
 
   // 정렬 api 함수
-  const sortAPI = async (sortChoice) => {
-    try {
-      //API 요청 URL
-      const url = `api/v1/news?sortType=${sortChoice}`;
+  // const sortAPI = async (sortChoice) => {
+  //   try {
+  //     //API 요청 URL
+  //     const url = `api/v1/news?sortType=${sortChoice}`;
 
-      //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await api.get(url, {
-        headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': '69420',
-        },
-      });
+  //     //axios.get 메소드를 사용하여 요청을 보냄
+  //     const response = await api.get(url, {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'ngrok-skip-browser-warning': '69420',
+  //       },
+  //     });
 
-      console.log(response.data.items);
+  //     console.log(response.data.items);
 
-      const result = response.data.items;
-      setData(result);
-      setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
-    } catch (error) {
-      console.error(
-        'mainPage 정렬 에러',
-        error.response ? error.response.data : error
-      );
-    }
-  };
+  //     const result = response.data.items;
+  //     setData(result);
+  //     setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
+  //   } catch (error) {
+  //     console.error(
+  //       'mainPage 정렬 에러',
+  //       error.response ? error.response.data : error
+  //     );
+  //   }
+  // };
 
   // 버튼 클릭 시 최신순/인기순 토글 및 API 호출
   const handleSortToggle = () => {
-    const newSortChoice = sortChoice === 'latest' ? 'popular' : 'latest';
-    setSortChoice(newSortChoice);
-    sortAPI(newSortChoice); // 토글된 값으로 API 호출
+    setSortChoice((prevSort) => (prevSort === 'latest' ? 'popular' : 'latest'));
+    setPaginationNum(1); // 정렬이 바뀔 때는 첫 페이지로 이동
   };
 
   return (
@@ -322,9 +321,7 @@ export default function MainPage(props) {
               type="button"
               onClick={handleSortToggle}
               backgroundcolor="#CDDFAB"
-            >
-              {/* {sortChoice === 'latest' ? '최신순' : '인기순'} */}
-            </RangeButton>
+            ></RangeButton>
           </RangeCenterDiv>
         </RangeDiv>
 
