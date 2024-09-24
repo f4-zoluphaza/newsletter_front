@@ -73,14 +73,25 @@ export default function DetailPage() {
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
+      let response;
+
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await api.get(url, {
-        headers: {
-          "Content-Type": "application/json",
-          "ngrok-skip-browser-warning": "69420",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      if (validLogin) {
+        response = await api.get(url, {
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      } else {
+        response = await api.get(url, {
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
+          },
+        });
+      }
 
       console.log(response.data.items);
 
