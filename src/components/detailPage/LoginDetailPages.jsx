@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import api from '../../api/api.js';
 import {
   ChatbotDiv,
@@ -20,6 +20,16 @@ export default function DetailPage() {
   const [chatHistory, setChatHistory] = useState([]);
 
   const [loading, setLoading] = useState(false); // 로딩 상태 관리
+
+  const allMessageDivRef = useRef(null); // AllMessageDiv의 스크롤을 제어하기 위한 ref
+
+  // 메시지가 추가될 때마다 AllMessageDiv의 스크롤을 하단으로 이동
+  useEffect(() => {
+    if (allMessageDivRef.current) {
+      allMessageDivRef.current.scrollTop =
+        allMessageDivRef.current.scrollHeight;
+    }
+  }, [chatHistory, loading]);
 
   // 쿠키 값 읽는 함수
   function getCookie(name) {
@@ -93,7 +103,7 @@ export default function DetailPage() {
     <>
       {/* 챗봇 영역 */}
       <ChatbotDiv>
-        <AllMessageDiv>
+        <AllMessageDiv ref={allMessageDivRef}>
           {/* 첫 질문 전에는 '챗봇에게 질문해보세요!' 메시지 표시 */}
           {chatHistory.length === 0 && (
             <MessageDiv margintop="10px" flexdirection="column">

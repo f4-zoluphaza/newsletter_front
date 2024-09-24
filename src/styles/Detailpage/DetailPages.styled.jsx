@@ -156,6 +156,7 @@ export const MessageDiv = styled.div`
 export const ChatbotImg = styled.img`
   width: ${(props) => props.width || '40px'};
   height: ${(props) => props.height || '40px'};
+  margin-bottom: 5px;
 
   border: solid 0;
 
