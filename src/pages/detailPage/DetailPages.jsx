@@ -240,6 +240,14 @@ export default function DetailPage() {
     }
   };
 
+  // 복사하는 함수
+
+    const handleCopyLink = () => {
+      const currentLink = window.location.href; // 현재 페이지의 URL 가져오기
+      navigator.clipboard.writeText(currentLink) // 클립보드에 복사
+      alert("링크가 복사되었습니다.")
+    };
+
 
   useEffect(() => {
     // 이전 id와 현재 id를 비교하여 id가 변경된 경우에만 스크롤 이동
@@ -353,7 +361,7 @@ export default function DetailPage() {
                   </Textspan>
                 </HeartDiv>
               </HeartDivScrap>
-              <OnClickImg src={ShareImage} />
+              <OnClickImg src={ShareImage} onClick={handleCopyLink} />
             </HeartScrapWrapperDivShare>
             {/* 이전글, 다음글 영역 */}
             <PreNextpostDiv>
