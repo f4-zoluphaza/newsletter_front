@@ -271,12 +271,18 @@ export default function DetailPage() {
     }
 
     // id와 validLike가 변경될 때마다 API 호출
-    newsdetailPageApi();
     validLoginFuntion();
 
     // useEffect가 실행될 때마다 이전 id 값을 업데이트
     prevIdRef.current = id;
   }, [id, validLike, validScrap]);
+
+  useEffect(() => {
+    if (validLogin !== null) {
+      // validLogin 값이 null이 아닐 때만 API 호출
+      newsdetailPageApi();
+    }
+  }, [validLogin, id, validLike, validScrap]); // validLogin이 변경될 때마다 실행
 
   return (
     <Div>
