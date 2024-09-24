@@ -63,15 +63,17 @@ export const NewsDiv = styled.div`
 
 export const NewsWrapperDiv = styled.div`
   width: 100%;
-  height: ${(props) => props.height || '48px'};
+  height: auto;
   margin-top: ${(props) => props.margintop || '80px'};
 
-  ${flexCenter()}/* background-color: lightyellow; */
+  ${flexCenter()}
+  /* background-color: lightyellow; */
 `;
 
 export const NewsTitleWrapperDivDate = styled.div`
   width: 80%;
-  height: 48px;
+  height: auto;
+  height:auto;
 
   /* background-color: lightseagreen; */
 `;
