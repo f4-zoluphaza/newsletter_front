@@ -269,11 +269,9 @@ export const RangeButton = styled.input`
 
 export const PostAllDiv = styled.div`
   width: 100%;
-  height: 1100px;
-  margin-bottom: 50px;
+  height: auto;
 
   display: flex;
-  /* justify-content: space-between; */
   flex-wrap: wrap;
 
   /* background-color: lightslategrey; */
@@ -382,7 +380,7 @@ export const PostNumberDiv = styled.div`
   display: flex;
   justify-content: ${(props) => props.justifycontent || "center"};
 
-  margin-top: ${(props) => props.marginTop || "100px"};
+  margin-top: ${(props) => props.marginTop || "50px"};
 
   /* align-items: center; //간격 조정 시*/
 
