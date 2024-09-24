@@ -1,40 +1,30 @@
-import React, { useState } from "react";
-import {
-  Links,
-  TextSpan,
-  PostNumberDiv,
-} from "../styles/main/main-style-component.jsx";
+import React from 'react';
+import { Links, TextSpan, PostNumberDiv } from '../styles/main/main-style-component.jsx';
 
-const Pagination = ({ totalPage, setPaginationNum, margin }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageGroup, setPageGroup] = useState(0);
-
-  // 한 페이지 그룹의 크기
-  const pageGroupSize = 5;
+const Pagination = ({ totalPage, currentPage, setPaginationNum, margin }) => {
+  const pageGroupSize = 5;  // 페이지 그룹 크기 설정
   const totalPageGroups = Math.ceil(totalPage / pageGroupSize);
+  const currentGroup = Math.floor((currentPage - 1) / pageGroupSize);
 
   const handlePageClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    setPaginationNum(pageNumber);
+    setPaginationNum(pageNumber);  // 부모 컴포넌트에서 페이지 번호 변경
   };
 
   const handleNextGroup = () => {
-    if (pageGroup < totalPageGroups - 1) {
-      setPageGroup(pageGroup + 1);
-      setCurrentPage(pageGroup * pageGroupSize + pageGroupSize + 1);
+    if (currentGroup < totalPageGroups - 1) {
+      setPaginationNum(currentGroup * pageGroupSize + pageGroupSize + 1);
     }
   };
 
   const handlePrevGroup = () => {
-    if (pageGroup > 0) {
-      setPageGroup(pageGroup - 1);
-      setCurrentPage(pageGroup * pageGroupSize - pageGroupSize + 1);
+    if (currentGroup > 0) {
+      setPaginationNum(currentGroup * pageGroupSize);
     }
   };
 
   const pageNumbers = [];
   for (let i = 0; i < pageGroupSize; i++) {
-    const pageNumber = pageGroup * pageGroupSize + i + 1;
+    const pageNumber = currentGroup * pageGroupSize + i + 1;
     if (pageNumber <= totalPage) {
       pageNumbers.push(pageNumber);
     }
@@ -42,14 +32,12 @@ const Pagination = ({ totalPage, setPaginationNum, margin }) => {
 
   return (
     <PostNumberDiv marginTop={margin}>
-      {pageGroup > 0 && (
+      {currentGroup > 0 && (
         <Links onClick={handlePrevGroup}>
-          <TextSpan fontsize="23px" marginleft="10px">
-            &lt;
-          </TextSpan>
+          <TextSpan fontsize="23px" marginleft="10px">&lt;</TextSpan>
         </Links>
       )}
-      {pageNumbers.map((number) => (
+      {pageNumbers.map((number, index) => (
         <React.Fragment key={number}>
           <Links onClick={() => handlePageClick(number)}>
             <TextSpan
@@ -60,21 +48,19 @@ const Pagination = ({ totalPage, setPaginationNum, margin }) => {
               {number}
             </TextSpan>
           </Links>
-          {number < totalPage && (
-            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">
-              |
-            </TextSpan>
+          {/* 마지막 페이지가 아니면 | 표시 */}
+          {index < pageNumbers.length - 1 && (
+            <TextSpan fontsize="23px" marginleft="5px" fontweight="400">|</TextSpan>
           )}
         </React.Fragment>
       ))}
-      {pageGroup < totalPageGroups - 1 && (
+      {currentGroup < totalPageGroups - 1 && (
         <Links onClick={handleNextGroup}>
-          <TextSpan fontsize="23px" marginleft="10px">
-            &gt;
-          </TextSpan>
+          <TextSpan fontsize="23px" marginleft="10px">&gt;</TextSpan>
         </Links>
       )}
     </PostNumberDiv>
   );
 };
+
 export default Pagination;
