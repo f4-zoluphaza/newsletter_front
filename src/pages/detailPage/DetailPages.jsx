@@ -240,29 +240,6 @@ export default function DetailPage() {
     }
   };
 
-  // //챗봇  api
-  // const handleChatApi = async () => {
-  //   try {
-  //     const url = "api/v1/chat/send";
-  //     const data = {
-  //       prompt: prompt
-  //     };
-
-  //     const response = await api.post(url, data, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       }
-  //     });
-
-  //     console.log(response.data)
-  //   } catch (error) {
-  //     console.error(
-  //       "Chatbot error",
-  //       error.response ? error.response.data : error
-  //     );
-  //     setValidLogin(false);
-  //   }
-  // };
 
   useEffect(() => {
     // 이전 id와 현재 id를 비교하여 id가 변경된 경우에만 스크롤 이동
@@ -321,7 +298,7 @@ export default function DetailPage() {
               </NewsWrapperDiv>
 
               {/* 뉴스레터 이미지 */}
-              <NewsWrapperDiv height="auto" margintop="15px">
+              <NewsWrapperDiv margintop="15px">
                 <NewsImg
                   id="thumbnail"
                   src={api.defaults.imgBaseURL + data.thumbnail}
@@ -329,7 +306,7 @@ export default function DetailPage() {
               </NewsWrapperDiv>
 
               {/* 뉴스레터 내용 */}
-              <NewsWrapperDiv height="auto" margintop="25px">
+              <NewsWrapperDiv  margintop="25px">
                 <NewsContentDiv>
                   <Textspan id="content" marginbottom="15px">
                     {data.content}
