@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   NewsDivChat,
   AllMessageDiv,
@@ -12,10 +12,10 @@ import {
   ChattingInput,
   NoLoginChatDiv,
   NoticeDiv,
-} from "../../styles/Detailpage/DetailPages.styled.jsx";
+} from '../../styles/Detailpage/DetailPages.styled.jsx';
 
-import CircleImage from "../../images/DetailPage/Circle.svg";
-import MessageSendImage from "../../images/DetailPage/MessageSend.svg";
+import CircleImage from '../../images/DetailPage/Circle.svg';
+import MessageSendImage from '../../images/DetailPage/MessageSend.svg';
 
 export default function NoLoginDetailPage() {
   return (
@@ -29,15 +29,15 @@ export default function NoLoginDetailPage() {
           </Textspan>
         </NoticeDiv>
         <AllMessageDiv>
-          <MessageDiv>
-            <ChatbotImg src={CircleImage}></ChatbotImg>
+          <MessageDiv justifycontent="end">
             <SendspeechbubbleDiv height="33px">
               <Textspan fontsize="15px" marginbottom="0">
                 장타력이 뭐야?
               </Textspan>
             </SendspeechbubbleDiv>
           </MessageDiv>
-          <MessageDiv height="auto" margintop="10px">
+          <MessageDiv height="auto" margintop="10px" flexdirection="column">
+            <ChatbotImg src={CircleImage} />
             <BotspeechbubbleDiv>
               <Textspan fontsize="15px" marginbottom="0">
                 야구에서 장타력은 타자가 타구를 멀리 치는 능력을 말합니다. 이는
@@ -51,36 +51,15 @@ export default function NoLoginDetailPage() {
             </BotspeechbubbleDiv>
           </MessageDiv>
 
-          <MessageDiv>
-            <ChatbotImg src={CircleImage}></ChatbotImg>
+          <MessageDiv justifycontent="end">
             <SendspeechbubbleDiv height="33px">
               <Textspan fontsize="15px" marginbottom="0">
                 타율 5할이면 평균 타율보다 높은 거야?
               </Textspan>
             </SendspeechbubbleDiv>
           </MessageDiv>
-          <MessageDiv height="auto" margintop="10px">
-            <BotspeechbubbleDiv>
-              <Textspan fontsize="15px" marginbottom="0">
-                타율 .500(5할)은 야구에서 매우 높은 타율로 간주됩니다.
-                일반적으로 전문 야구 리그에서 선수들의 평균 타율은 대략 .250에서
-                .300 사이입니다. 타율이 .300을 넘으면 그 선수를 우수한 타자로
-                여기며, .400 이상의 타율은 역사적으로 매우 드문 성취로 간주되며,
-                대부분의 경우 단기간 동안만 유지됩니다.
-              </Textspan>
-            </BotspeechbubbleDiv>
-          </MessageDiv>
-
-          {/* 답변 생성 중일 경우 */}
-          <MessageDiv>
-            <ChatbotImg src={CircleImage}></ChatbotImg>
-            <SendspeechbubbleDiv height="33px">
-              <Textspan fontsize="15px" marginbottom="0">
-                홈런이 뭐야?
-              </Textspan>
-            </SendspeechbubbleDiv>
-          </MessageDiv>
-          <MessageDiv height="auto" margintop="10px">
+          <MessageDiv height="auto" margintop="10px" flexdirection="column">
+            <ChatbotImg src={CircleImage} />
             <BotspeechbubbleDiv>
               <Textspan fontsize="15px" marginbottom="0">
                 답변 생성 중입니다.
