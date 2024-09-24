@@ -276,7 +276,7 @@ export default function DetailPage() {
 
     // useEffect가 실행될 때마다 이전 id 값을 업데이트
     prevIdRef.current = id;
-  }, [id, validLike]);
+  }, [id, validLike, validScrap]);
 
   return (
     <Div>
