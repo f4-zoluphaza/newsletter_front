@@ -60,12 +60,33 @@ export default function MainPage(props) {
 
   const [validNickName, setValidNickName] = useState(null);
   const [paginationNum, setPaginationNum] = useState(1);
-  const [searchString, setSearchString] = useState('');
-  const [sortChoice, setSortChoice] = useState('latest');
+  const [searchString, setSearchString] = useState('latest');
+  const [sortChoice, setSortChoice] = useState();
   const [totalPages, setTotalPages] = useState();
   const [data, setData] = useState({});
 
   const { id } = useParams();
+
+  // 쿠키 설정 함수
+  function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  // 쿠키 값 읽는 함수
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+      return parts.pop().split(';').shift(); // 쿠키 값 반환
+    }
+    return null; // 쿠키가 없으면 null 반환
+  }
 
   // 화면 새로고침 막는 함수
   const handleSubmit = (e) => {
@@ -155,6 +176,22 @@ export default function MainPage(props) {
   useEffect(() => {
     newsmainPageAPI();
   }, [paginationNum]);
+
+  useEffect(() => {
+    const cookieSortChoice = getCookie("sortChoice"); // 쿠키에서 값을 읽어옴
+    if (cookieSortChoice) {
+      setSortChoice(cookieSortChoice); // 쿠키 값이 있으면 그 값으로 설정
+    } else {
+      setSortChoice("latest"); // 쿠키 값이 없으면 기본 값인 "최신순"으로 설정
+      setCookie("sortChoice", "latest", 0); // "최신순"을 쿠키에 저장 (7일 유지)
+    }
+  }, []); // 컴포넌트가 처음 로드될 때만 실행
+  
+  useEffect(() => {
+    if (sortChoice) {
+      setCookie("sortChoice", sortChoice, 0); // 쿠키에 7일 동안 유지되도록 저장
+    }
+  }, [sortChoice]);
 
   // 검색창 api 함수
   const searchAPI = async () => {
