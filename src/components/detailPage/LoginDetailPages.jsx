@@ -94,11 +94,22 @@ export default function DetailPage() {
       {/* 챗봇 영역 */}
       <ChatbotDiv>
         <AllMessageDiv>
+          {/* 첫 질문 전에는 '챗봇에게 질문해보세요!' 메시지 표시 */}
+          {chatHistory.length === 0 && (
+            <MessageDiv margintop="10px" flexdirection="column">
+              <ChatbotImg src={CircleImage} />
+              <BotspeechbubbleDiv>
+                <Textspan fontsize="18px" marginbottom="0">
+                  챗봇에게 질문해보세요!
+                </Textspan>
+              </BotspeechbubbleDiv>
+            </MessageDiv>
+          )}
+
           {chatHistory.map((message, index) => (
             <>
               {message.type === 'question' ? (
-                <MessageDiv key={index}>
-                  <ChatbotImg src={CircleImage} />
+                <MessageDiv key={index} justifycontent="end">
                   <SendspeechbubbleDiv height="33px">
                     <Textspan fontsize="15px" marginbottom="0">
                       {message.content}
@@ -106,7 +117,8 @@ export default function DetailPage() {
                   </SendspeechbubbleDiv>
                 </MessageDiv>
               ) : (
-                <MessageDiv key={index} margintop="10px">
+                <MessageDiv key={index} margintop="10px" flexdirection="column">
+                  <ChatbotImg src={CircleImage} />
                   <BotspeechbubbleDiv>
                     <Textspan fontsize="15px" marginbottom="0">
                       {message.content}
@@ -118,7 +130,8 @@ export default function DetailPage() {
           ))}
           {/* 로딩 중일 때 '답변 생성 중입니다.' 표시 */}
           {loading && (
-            <MessageDiv margintop="10px">
+            <MessageDiv margintop="10px" flexdirection="column">
+              <ChatbotImg src={CircleImage} />
               <BotspeechbubbleDiv>
                 <Textspan fontsize="15px" marginbottom="0">
                   답변 생성 중입니다.

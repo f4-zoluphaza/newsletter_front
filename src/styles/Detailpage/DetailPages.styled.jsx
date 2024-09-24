@@ -146,15 +146,16 @@ export const MessageDiv = styled.div`
   margin-top: ${(props) => props.margintop || '25px'};
 
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: ${(props) => props.justifycontent || 'start'};
+  /* align-items: center; */
+  flex-direction: ${(props) => props.flexdirection || 'row'};
 
   /* background-color: greenyellow; */
 `;
 
 export const ChatbotImg = styled.img`
-  width: ${(props) => props.width || '46px'};
-  height: ${(props) => props.height || '46px'};
+  width: ${(props) => props.width || '40px'};
+  height: ${(props) => props.height || '40px'};
   border: solid 0;
 
   cursor: ${(props) => props.cursor || ''};
