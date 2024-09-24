@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const flexCenter = () => `
   display: flex;
@@ -35,6 +35,11 @@ export const LogoImg = styled.img`
   width: 148px;
   height: 116px;
   padding-top: 10px;
+`;
+
+export const GithubLogoImg = styled.img`
+  width: 20px;
+  height: 20px;
 `;
 
 export const WrapperDiv = styled.div`
@@ -85,12 +90,11 @@ export const TitleSpan = styled.span`
 
 export const TextSpan = styled.span`
   display: block;
-  font-size: ${(props) => props.fontsize || "20px"};
-  font-weight: ${(props) => props.fontweight || "500"};
-  text-align: ${(props) => props.textalign || "left"};
-
-  margin-left: ${(props) => props.marginleft || "0"};
-  /* background-color: aqua; */
+  font-size: ${(props) => props.fontsize || '20px'};
+  font-weight: ${(props) => props.fontweight || '500'};
+  text-align: ${(props) => props.textalign || 'left'};
+  margin-top: ${(props) => props.margintop || '0'};
+  margin-left: ${(props) => props.marginleft || '0'};
 `;
 
 export const SubscribeDiv = styled.div`
@@ -167,7 +171,7 @@ export const SmallTextSpan = styled.span`
   font-size: 17px;
   font-weight: 500;
 
-  padding-left: ${(props) => props.paddingleft || "7px"};
+  padding-left: ${(props) => props.paddingleft || '7px'};
 `;
 
 // 검색 창
@@ -181,7 +185,7 @@ export const SearchDiv = styled.div`
 `;
 
 export const SearchBorderDiv = styled.div`
-  width: ${(props) => props.width || "600px"};
+  width: ${(props) => props.width || '600px'};
   height: 48px;
   border: solid 3px #588539;
   border-radius: 35px;
@@ -190,7 +194,7 @@ export const SearchBorderDiv = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  width: ${(props) => props.width || "500px"};
+  width: ${(props) => props.width || '500px'};
   height: 43px;
   border: none;
   margin-top: 1.5px;
@@ -208,7 +212,7 @@ export const SearchImg = styled.img`
   margin-left: 20px;
   margin-right: 15px;
 
-  background-image: url("../images/MainPage/Search.svg");
+  background-image: url('../images/MainPage/Search.svg');
 
   cursor: pointer;
 `;
@@ -256,7 +260,7 @@ export const RangeButton = styled.input`
   box-sizing: border-box;
   /* margin-right: 60px; */
 
-  background-color: ${(props) => props.backgroundcolor || "#000000"};
+  background-color: ${(props) => props.backgroundcolor || '#000000'};
 
   color: #000000;
   font-size: 16px;
@@ -379,9 +383,9 @@ export const PostNumberDiv = styled.div`
   height: 85px;
 
   display: flex;
-  justify-content: ${(props) => props.justifycontent || "center"};
+  justify-content: ${(props) => props.justifycontent || 'center'};
 
-  margin-top: ${(props) => props.marginTop || "50px"};
+  margin-top: ${(props) => props.marginTop || '50px'};
 
   /* align-items: center; //간격 조정 시*/
 
@@ -426,10 +430,23 @@ export const MakerDivContact = styled.div`
   height: 80px;
   margin-top: 10px;
 
-  display: ${(props) => props.display || "block"};
-  justify-content: ${(props) => props.justifycontent || "center"};
-  align-items: center;
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 배치 */
+  justify-content: ${(props) => props.justifycontent || 'center'};
+  align-items: ${(props) => props.alignitems || 'first'};
 
 
   /* background-color: pink; */
+`;
+
+export const MakerWrapperDivContact = styled.div`
+  width: 40%;
+  height: 20px;
+  margin-top: 5px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* background-color: blue; */
 `;
