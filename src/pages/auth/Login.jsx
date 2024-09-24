@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from '../../api/api.js'
+import api from "../../api/api.js";
 import {
   BodyDiv,
   WrapperDiv,
@@ -66,14 +66,14 @@ export default function Login() {
   };
 
   // 쿠키 설정 함수
-  function setCookie(name, value, days){
+  function setCookie(name, value, days) {
     let expires = "";
-    if(days){
+    if (days) {
       const date = new Date();
-      date.setTime(date.getTime()+days*24*60*60*1000);
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
       expires = "; expires=" + date.toUTCString();
     }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/"
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
   }
 
   const handleLogin = async () => {
@@ -87,13 +87,13 @@ export default function Login() {
       const response = await api.post(url, data, {
         headers: {
           "Content-Type": "application/json",
-        }
+        },
       });
 
       setValidLogin(true);
       const token = response.data.result;
       const expires = validCheck ? 7 : 0;
-      setCookie("jwtToken", token, expires)
+      setCookie("jwtToken", token, expires);
       navigate("/");
     } catch (error) {
       console.error(
@@ -192,9 +192,6 @@ export default function Login() {
             <PWSearchSignUpP>회원가입</PWSearchSignUpP>
           </Links>
         </PWSearchSignUpDiv>
-        <Links to="/Mypage">
-          <PWSearchSignUpP>마이페이지</PWSearchSignUpP>
-        </Links>
       </WrapperDiv>
     </BodyDiv>
   );

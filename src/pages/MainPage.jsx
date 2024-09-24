@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
-import api from "../api/api.js";
+import React, { useState, useEffect } from 'react';
+import api from '../api/api.js';
 
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 import {
   Div,
@@ -43,27 +43,25 @@ import {
   BoldLine,
   FooterDiv,
   MakerDivContact,
-} from "../styles/main/main-style-component.jsx";
+} from '../styles/main/main-style-component.jsx';
 
-import Logo from "../images/Logo.svg";
-import Searchsvg from "../images/MainPage/Search.svg";
-import NewsImage from "../images/MainPage/News.svg";
-import Header from "../components/Header.jsx";
-import NewsletterPost from "../components/NewsletterPost.jsx";
-import Footer from "../components/main/Footer.jsx";
-import Pagination from "../components/Pagination.jsx";
+import Searchsvg from '../images/MainPage/Search.svg';
+import Header from '../components/Header.jsx';
+import NewsletterPost from '../components/NewsletterPost.jsx';
+import Footer from '../components/main/Footer.jsx';
+import Pagination from '../components/Pagination.jsx';
 
 export default function MainPage(props) {
   //form 관리
   const [form, setForm] = useState({
-    nickName: "",
-    email: "",
+    nickName: '',
+    email: '',
   });
 
-  const [validEmailDuplicate, setValidEmailDuplicate] = useState(null);
   const [validNickName, setValidNickName] = useState(null);
   const [paginationNum, setPaginationNum] = useState(1);
-  const [searchString, setSearchString] = useState("");
+  const [searchString, setSearchString] = useState('');
+  const [sortChoice, setSortChoice] = useState('latest');
   const [totalPages, setTotalPages] = useState();
   const [data, setData] = useState({});
 
@@ -78,7 +76,7 @@ export default function MainPage(props) {
   const subscribeAPI = async () => {
     try {
       //API 요청 URL
-      const url = "api/v1/subscribe";
+      const url = 'api/v1/subscribe';
 
       const data = {
         email: form.email,
@@ -89,20 +87,20 @@ export default function MainPage(props) {
 
       const response = await api.post(url, data, {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
 
       console.log(response.data.result);
 
-      alert("뉴스레터 신청 완료!");
+      alert('뉴스레터 신청 완료!');
     } catch (error) {
       console.error(
-        "이메일 중복 확인 에러",
+        '이메일 중복 확인 에러',
         error.response ? error.response.data : error
       );
       //이메일 중복일 때
-      alert("사용 불가능한 이메일입니다.");
+      alert('사용 불가능한 이메일입니다.');
     }
   };
 
@@ -119,7 +117,7 @@ export default function MainPage(props) {
     const nickName = e.target.value;
     setForm({ ...form, nickName });
 
-    if (nickName.trim() === "") {
+    if (nickName.trim() === '') {
       setValidNickName(null);
     }
 
@@ -135,8 +133,8 @@ export default function MainPage(props) {
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
         headers: {
-          "Content-Type": "application/json",
-          "ngrok-skip-browser-warning": "69420",
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': '69420',
         },
       });
 
@@ -148,7 +146,7 @@ export default function MainPage(props) {
       setTotalPages(totalPages);
     } catch (error) {
       console.error(
-        "mainPage 뉴스 리스트 불러오기 에러",
+        'mainPage 뉴스 리스트 불러오기 에러',
         error.response ? error.response.data : error
       );
     }
@@ -167,8 +165,8 @@ export default function MainPage(props) {
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
         headers: {
-          "Content-Type": "application/json",
-          "ngrok-skip-browser-warning": "69420",
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': '69420',
         },
       });
 
@@ -179,10 +177,44 @@ export default function MainPage(props) {
       setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
     } catch (error) {
       console.error(
-        "mainPage 검색 에러",
+        'mainPage 검색창 에러',
         error.response ? error.response.data : error
       );
     }
+  };
+
+  // 정렬 api 함수
+  const sortAPI = async (sortChoice) => {
+    try {
+      //API 요청 URL
+      const url = `api/v1/news?sortType=${sortChoice}`;
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await api.get(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': '69420',
+        },
+      });
+
+      console.log(response.data.items);
+
+      const result = response.data.items;
+      setData(result);
+      setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
+    } catch (error) {
+      console.error(
+        'mainPage 정렬 에러',
+        error.response ? error.response.data : error
+      );
+    }
+  };
+
+  // 버튼 클릭 시 최신순/인기순 토글 및 API 호출
+  const handleSortToggle = () => {
+    const newSortChoice = sortChoice === 'latest' ? 'popular' : 'latest';
+    setSortChoice(newSortChoice);
+    sortAPI(newSortChoice); // 토글된 값으로 API 호출
   };
 
   return (
@@ -202,17 +234,6 @@ export default function MainPage(props) {
           </ExplainDiv>
           <SubscribeDiv>
             <Form onSubmit={handleSubmit}>
-              {/* //placeholder에 설명 글자
-              <SubscribeInput
-                type="email"
-                placeholder="이메일"
-              ></SubscribeInput>
-              <SubscribeInput type="text" placeholder="닉네임"></SubscribeInput>
-              <ButtonDiv>
-                <Button value="뉴스레터 신청하기" type="submit" />
-                <Button value="가입 먼저하기" type="submit" />
-              </ButtonDiv>{' '}
-              */}
               <Label>
                 <TextSpan textalign="center" fontweight="600">
                   이메일
@@ -257,7 +278,7 @@ export default function MainPage(props) {
               onChange={(e) => setSearchString(e.target.value)}
               // onChange={handleInputChange} // 검색어 변경 시 호출
               onKeyDown={(e) => {
-                if (e.key === "Enter") {
+                if (e.key === 'Enter') {
                   searchAPI();
                 }
               }}
@@ -275,23 +296,14 @@ export default function MainPage(props) {
         {/* 정렬 */}
         <RangeDiv>
           <RangeCenterDiv>
-            {/* <RangeWapperDiv>
-              <RangeButton
-                value="오늘의 뉴스"
-                type="button"
-                backgroundcolor="#588539"
-              />
-              <RangeButton
-                value="한입뉴스"
-                type="button"
-                backgroundcolor="#FAF3E5"
-              />
-            </RangeWapperDiv> */}
             <RangeButton
-              value="인기순"
+              value={sortChoice === 'latest' ? '최신순' : '인기순'}
               type="button"
+              onClick={handleSortToggle}
               backgroundcolor="#CDDFAB"
-            />
+            >
+              {/* {sortChoice === 'latest' ? '최신순' : '인기순'} */}
+            </RangeButton>
           </RangeCenterDiv>
         </RangeDiv>
 

@@ -89,7 +89,7 @@ export const Textspan = styled.span`
 
 export const NewsImg = styled.img`
   width: 90%;
-  height: 240px;
+  height: auto;
   border: solid 0;
 `;
 
@@ -156,6 +156,7 @@ export const MessageDiv = styled.div`
 export const ChatbotImg = styled.img`
   width: ${(props) => props.width || '40px'};
   height: ${(props) => props.height || '40px'};
+
   border: solid 0;
 
   cursor: ${(props) => props.cursor || ''};

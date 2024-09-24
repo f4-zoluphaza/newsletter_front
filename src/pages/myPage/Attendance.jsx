@@ -13,6 +13,7 @@ import {
   MainP,
   Links,
   PostMyPageDiv,
+  NoScrapImg,
 } from "../../styles/Mypage_s/Attendance.styled";
 
 import { Div, BodyDiv } from "../../styles/main/main-style-component.jsx";
@@ -20,9 +21,12 @@ import { Div, BodyDiv } from "../../styles/main/main-style-component.jsx";
 import Header from "../../components/Header";
 import Unregister from "../../components/mypage/Unregister";
 import NewsletterPost from "../../components/NewsletterPost.jsx";
+import GradeList from "../../components/mypage/GradeList.jsx";
+import NoScrap from "../../images/mypage/NoScrapPage.svg";
 
 export default function Attendance() {
   const [unregisterBt, setUnregisterBt] = useState(false);
+  const [gradeBt, setGradeBt] = useState(false);
   const [data, setData] = useState({});
   const [scrap, setScrap] = useState([]);
 
@@ -137,6 +141,7 @@ export default function Attendance() {
                   fontWeight="600"
                   fontSize="20px"
                   margin="20px 0"
+                  onClick={() => setGradeBt(true)}
                 >
                   등급 자세히 보기 〉
                 </MainP>
@@ -185,12 +190,12 @@ export default function Attendance() {
             </MainWrapper>
           </LeftDiv>
           <RightDiv>
-            <MainP fontWeight="600" fontSize="30px" marginBottom="15px">
+            <MainP fontWeight="700" fontSize="30px" margin="0 0 15px 25px">
               나의 스크랩
             </MainP>
             {/* 스크랩한 뉴스 목록*/}
             <PostMyPageDiv>
-              {scrap.length > 0 &&
+              {scrap.length > 0 ? (
                 scrap.slice(0, 4).map((item, index) => (
                   <Links
                     to={{
@@ -205,18 +210,24 @@ export default function Attendance() {
                       thumbnail={item.thumbnail}
                     ></NewsletterPost>
                   </Links>
-                ))}
+                ))
+              ) : (
+                <NoScrapImg src={NoScrap} />
+              )}
             </PostMyPageDiv>
-
-            <MainP fontWeight="600" fontSize="20px" margin="0 0 0 620px">
-              <Links to="/Mypage/Scrap">더보기 〉</Links>
-            </MainP>
+            {scrap.length > 0 ? (
+              <MainP fontWeight="600" fontSize="20px" margin="0 0 0 620px">
+                <Links to="/Mypage/Scrap">더보기 〉</Links>
+              </MainP>
+            ) : null}
           </RightDiv>
         </WrapperDiv>
 
         {unregisterBt === true ? (
           <Unregister setUnregisterBt={setUnregisterBt} />
         ) : null}
+
+        {gradeBt === true ? <GradeList setGradeBt={setGradeBt} /> : null}
       </BodyDiv>
     </Div>
   );

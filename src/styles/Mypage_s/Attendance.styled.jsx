@@ -180,7 +180,7 @@ export const PostMyPageDiv = styled.div`
   height: auto;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
 
   /* background-color: lightslategrey; */
@@ -189,4 +189,10 @@ export const PostMyPageDiv = styled.div`
   & > * {
     flex-basis: 310px;
   }
+`;
+
+// 스크랩 없을 때
+export const NoScrapImg = styled.img`
+  width: 80%;
+  height: auto;
 `;

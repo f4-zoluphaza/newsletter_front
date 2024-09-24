@@ -73,14 +73,25 @@ export default function DetailPage() {
       // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
+      let response;
+
       //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await api.get(url, {
-        headers: {
-          "Content-Type": "application/json",
-          "ngrok-skip-browser-warning": "69420",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      if (validLogin) {
+        response = await api.get(url, {
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      } else {
+        response = await api.get(url, {
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
+          },
+        });
+      }
 
       console.log(response.data.items);
 
@@ -94,6 +105,7 @@ export default function DetailPage() {
         id: response.data.items[0].news.id,
         published: response.data.items[0].news.published,
         likeCount: response.data.items[0].news.likeCount,
+        scrapCount: response.data.items[0].news.scrapCount,
       });
       setValidLike(response.data.items[0].liked);
       setValidScrap(response.data.items[0].scrapped);
@@ -259,12 +271,18 @@ export default function DetailPage() {
     }
 
     // id와 validLike가 변경될 때마다 API 호출
-    newsdetailPageApi();
     validLoginFuntion();
 
     // useEffect가 실행될 때마다 이전 id 값을 업데이트
     prevIdRef.current = id;
-  }, [id, validLike]);
+  }, [id, validLike, validScrap]);
+
+  useEffect(() => {
+    if (validLogin !== null) {
+      // validLogin 값이 null이 아닐 때만 API 호출
+      newsdetailPageApi();
+    }
+  }, [validLogin, id, validLike, validScrap]); // validLogin이 변경될 때마다 실행
 
   return (
     <Div>
@@ -328,17 +346,30 @@ export default function DetailPage() {
           <HeartScrapDivShare>
             <HeartScrapWrapperDivShare>
               <HeartDivScrap>
-                <OnClickImg
-                  src={validScrap ? ScrapImage : ScrapBlackImage}
-                  width="28px"
-                  onClick={() => handleScrapApi()}
-                />
+                <HeartDiv>
+                  <OnClickImg
+                    src={validScrap ? ScrapImage : ScrapBlackImage}
+                    width="28px"
+                    onClick={
+                      validLogin
+                        ? () => handleScrapApi()
+                        : () => alert("로그인 후 이용해주세요.")
+                    }
+                  />
+                  <Textspan fontsize="13px" textalign="center" marginbottom="0">
+                    {data.scrapCount}
+                  </Textspan>
+                </HeartDiv>
 
                 <HeartDiv>
                   <OnClickImg
                     src={validLike ? HeartImage : HeartBlackImage}
                     width="33px"
-                    onClick={() => handleLikeApi()}
+                    onClick={
+                      validLogin
+                        ? () => handleLikeApi()
+                        : () => alert("로그인 후 이용해주세요.")
+                    }
                   />
                   <Textspan fontsize="13px" textalign="center" marginbottom="0">
                     {data.likeCount}
