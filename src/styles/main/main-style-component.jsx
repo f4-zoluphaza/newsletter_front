@@ -315,12 +315,15 @@ export const NewsImg = styled.img`
 
 export const NewsTitleDiv = styled.div`
   width: 260px;
-  height: 60px;
+  height: 70px;
   margin-top: 5px;
   /* padding-left: 5px; */
 
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
+
+  display: flex;
+  align-items: center;
 
   /* background-color: lightcyan; */
 `;
@@ -339,7 +342,7 @@ export const NewsDateDiv = styled.div`
   width: 260px;
   height: 20px;
 
-  font-size: 20px;
+  font-size: 18px;
 
   display: flex;
   align-items: center;
