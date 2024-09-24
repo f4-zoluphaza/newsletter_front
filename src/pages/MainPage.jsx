@@ -6,10 +6,6 @@ import { useParams } from 'react-router-dom';
 import {
   Div,
   BodyDiv,
-  NavDiv,
-  LogoImg,
-  WrapperDiv,
-  LoginLinkSignupP,
   Links,
   HeaderDiv,
   ExplainDiv,
@@ -19,7 +15,6 @@ import {
   Form,
   Label,
   SubscribeInput,
-  SmallTextSpan,
   ButtonDiv,
   Button,
   SearchDiv,
@@ -31,18 +26,7 @@ import {
   RangeWapperDiv,
   RangeButton,
   PostAllDiv,
-  PostWapperDiv,
-  NewsImg,
-  NewsTitleDiv,
-  Line,
-  NewsDateDiv,
-  HeartSaveDiv,
-  HeartImgScrap,
-  HeartCountScrap,
-  PostNumberDiv,
   BoldLine,
-  FooterDiv,
-  MakerDivContact,
 } from '../styles/main/main-style-component.jsx';
 
 import Searchsvg from '../images/MainPage/Search.svg';
