@@ -144,12 +144,10 @@ export default function ChangeInfo() {
       const result = response.data.result;
       console.log(result);
 
-      //쿠키 삭제
-      document.cookie =
-        'jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
       alert('정보가 성공적으로 수정되었습니다.');
-      navigate('/Login');
+      navigate('/Mypage');
+
     } catch (error) {
       console.error(
         '내 정보 수정 에러',

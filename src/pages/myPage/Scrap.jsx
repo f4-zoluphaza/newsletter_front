@@ -88,6 +88,8 @@ export default function Scrap() {
                   content={item.content}
                   publishDate={item.publishDate}
                   thumbnail={item.thumbnail}
+                  likeCount={item.likeCount}
+                  scrapCount={item.scrapCount}
                 ></NewsletterPost>
               </Links>
             ))}

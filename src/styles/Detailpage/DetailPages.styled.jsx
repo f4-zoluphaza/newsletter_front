@@ -88,14 +88,14 @@ export const Textspan = styled.span`
 `;
 
 export const NewsImg = styled.img`
-  width: 90%;
+  width: 80%;
   height: auto;
   border: solid 0;
 `;
 
 export const NewsContentDiv = styled.div`
   width: 80%;
-  height: 70px;
+  height: auto;
 
   /* background-color: lightsalmon; */
 `;
