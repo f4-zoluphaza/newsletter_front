@@ -88,9 +88,9 @@ export const Links = styled(Link)`
 // 회원 탈퇴
 export const BkackScreenDiv = styled.div`
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

@@ -3,10 +3,17 @@ import {
   TextSpan,
   PostNumberDiv,
   BoldLine,
+  Links,
   FooterDiv,
   MakerDivContact,
+  MakerWrapperDivContact,
   FooterWrapperDiv,
+  GithubLogoImg,
 } from '../../styles/main/main-style-component.jsx';
+import GithubImg from '../../images/MainPage/GithubLogo.svg';
+
+
+import GithubLogo from '../../images/MainPage/Github.svg';
 
 export default function Footer() {
   return (
@@ -19,21 +26,21 @@ export default function Footer() {
           <TextSpan fontsize="18px">조시은 인다운</TextSpan>
           <TextSpan fontsize="18px">김나영 임지아</TextSpan>
         </MakerDivContact>
-        <MakerDivContact display="flex">
-          <TextSpan fontsize="15px">
+        <MakerDivContact alignitems="center">
+          <TextSpan fontsize="13px">
             Copyright ⓒ Newstrike. All rights reserved.
           </TextSpan>
         </MakerDivContact>
-        <MakerDivContact>
-          <TextSpan fontsize="18px" textalign="right">
+        <MakerDivContact alignitems="end" justifycontent="first">
+          <TextSpan fontsize="18px" textalign="right" margintop="5px">
             CONTACT
           </TextSpan>
-          <TextSpan fontsize="18px" textalign="right">
-            대표자 이메일 12345@naver.com
-          </TextSpan>
-          <TextSpan fontsize="18px" textalign="right">
-            02-901-2004
-          </TextSpan>
+          <MakerWrapperDivContact>
+            <GithubLogoImg src={GithubLogo} />
+            <Links to={'https://github.com/f4-zoluphaza'} target="_blank">
+              f4-zoluphaza
+            </Links>
+          </MakerWrapperDivContact>
         </MakerDivContact>
       </FooterWrapperDiv>
     </FooterDiv>

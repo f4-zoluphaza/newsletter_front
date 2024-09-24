@@ -75,7 +75,8 @@ export default function Admin() {
         title: response.data.items[0].title,
         link: response.data.items[0].link,
         original: response.data.items[0].source,
-        fiveW1H: response.data.items[0].five_w_one_h,
+        fiveWOneH: response.data.items[0].fiveWOneH
+        ,
         content: response.data.items[0].content,
         id: response.data.items[0].id,
         published: response.data.items[0].published,
@@ -228,7 +229,7 @@ export default function Admin() {
               <Textarea
                 id="fiveW1H"
                 name="fiveW1H"
-                value={data.fiveW1H}
+                value={data.fiveWOneH}
                 readOnly
               ></Textarea>
             </TextareaDiv>

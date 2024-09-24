@@ -6,10 +6,6 @@ import { useParams } from 'react-router-dom';
 import {
   Div,
   BodyDiv,
-  NavDiv,
-  LogoImg,
-  WrapperDiv,
-  LoginLinkSignupP,
   Links,
   HeaderDiv,
   ExplainDiv,
@@ -19,7 +15,6 @@ import {
   Form,
   Label,
   SubscribeInput,
-  SmallTextSpan,
   ButtonDiv,
   Button,
   SearchDiv,
@@ -31,18 +26,7 @@ import {
   RangeWapperDiv,
   RangeButton,
   PostAllDiv,
-  PostWapperDiv,
-  NewsImg,
-  NewsTitleDiv,
-  Line,
-  NewsDateDiv,
-  HeartSaveDiv,
-  HeartImgScrap,
-  HeartCountScrap,
-  PostNumberDiv,
   BoldLine,
-  FooterDiv,
-  MakerDivContact,
 } from '../styles/main/main-style-component.jsx';
 
 import Searchsvg from '../images/MainPage/Search.svg';
@@ -61,11 +45,32 @@ export default function MainPage(props) {
   const [validNickName, setValidNickName] = useState(null);
   const [paginationNum, setPaginationNum] = useState(1);
   const [searchString, setSearchString] = useState('');
-  const [sortChoice, setSortChoice] = useState('latest');
+  const [sortChoice, setSortChoice] = useState();
   const [totalPages, setTotalPages] = useState();
   const [data, setData] = useState({});
 
   const { id } = useParams();
+
+  // 쿠키 설정 함수
+  function setCookie(name, value, days) {
+    let expires = '';
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = '; expires=' + date.toUTCString();
+    }
+    document.cookie = name + '=' + (value || '') + expires + '; path=/';
+  }
+
+  // 쿠키 값 읽는 함수
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+      return parts.pop().split(';').shift(); // 쿠키 값 반환
+    }
+    return null; // 쿠키가 없으면 null 반환
+  }
 
   // 화면 새로고침 막는 함수
   const handleSubmit = (e) => {
@@ -124,37 +129,20 @@ export default function MainPage(props) {
     // console.log(nickName);
   };
 
-  // 뉴스 리스트 불러오기 api 함수
-  const newsmainPageAPI = async () => {
-    try {
-      //API 요청 URL
-      const url = `api/v1/news?page=${paginationNum}`;
+ // 뉴스 리스트 불러오기 함수
+ const newsmainPageAPI = async (pageNum, sortType) => {
+  try {
+    const url = `api/v1/news?page=${pageNum}&sortType=${sortType}`;
+    const response = await api.get(url, {
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': '69420' },
+    });
+    setData(response.data.items);
+    setTotalPages(response.data.totalPages);
+  } catch (error) {
+    console.error('뉴스 리스트 에러', error.response ? error.response.data : error);
+  }
+};
 
-      //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await api.get(url, {
-        headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': '69420',
-        },
-      });
-
-      console.log(response.data.items);
-
-      const result = response.data.items;
-      setData(result);
-      const totalPages = response.data.totalPages;
-      setTotalPages(totalPages);
-    } catch (error) {
-      console.error(
-        'mainPage 뉴스 리스트 불러오기 에러',
-        error.response ? error.response.data : error
-      );
-    }
-  };
-
-  useEffect(() => {
-    newsmainPageAPI();
-  }, [paginationNum]);
 
   // 검색창 api 함수
   const searchAPI = async () => {
@@ -184,38 +172,57 @@ export default function MainPage(props) {
   };
 
   // 정렬 api 함수
-  const sortAPI = async (sortChoice) => {
-    try {
-      //API 요청 URL
-      const url = `api/v1/news?sortType=${sortChoice}`;
+  // const sortAPI = async (sortChoice) => {
+  //   try {
+  //     //API 요청 URL
+  //     const url = `api/v1/news?sortType=${sortChoice}`;
 
-      //axios.get 메소드를 사용하여 요청을 보냄
-      const response = await api.get(url, {
-        headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': '69420',
-        },
-      });
+  //     //axios.get 메소드를 사용하여 요청을 보냄
+  //     const response = await api.get(url, {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'ngrok-skip-browser-warning': '69420',
+  //       },
+  //     });
 
-      console.log(response.data.items);
+  //     console.log(response.data.items);
 
-      const result = response.data.items;
-      setData(result);
-      setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
-    } catch (error) {
-      console.error(
-        'mainPage 정렬 에러',
-        error.response ? error.response.data : error
-      );
+  //     const result = response.data.items;
+  //     setData(result);
+  //     setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
+  //   } catch (error) {
+  //     console.error(
+  //       'mainPage 정렬 에러',
+  //       error.response ? error.response.data : error
+  //     );
+  //   }
+  // };
+
+// 정렬 버튼 클릭 시 처리
+const handleSortToggle = () => {
+  setSortChoice((prevSort) => (prevSort === 'latest' ? 'popular' : 'latest'));
+  setPaginationNum(1);  // 페이지 번호를 1로 리셋
+};
+  // 페이지 번호나 정렬 방식이 변경될 때마다 API 호출
+  useEffect(() => {
+    newsmainPageAPI(paginationNum, sortChoice);
+  }, [paginationNum, sortChoice]);
+
+  useEffect(() => {
+    const cookieSortChoice = getCookie('sortChoice'); // 쿠키에서 값을 읽어옴
+    if (cookieSortChoice) {
+      setSortChoice(cookieSortChoice); // 쿠키 값이 있으면 그 값으로 설정
+    } else {
+      setSortChoice('latest'); // 쿠키 값이 없으면 기본 값인 "최신순"으로 설정
+      setCookie('sortChoice', 'latest', 0); // "최신순"을 쿠키에 저장 (7일 유지)
     }
-  };
+  }, []); // 컴포넌트가 처음 로드될 때만 실행
 
-  // 버튼 클릭 시 최신순/인기순 토글 및 API 호출
-  const handleSortToggle = () => {
-    const newSortChoice = sortChoice === 'latest' ? 'popular' : 'latest';
-    setSortChoice(newSortChoice);
-    sortAPI(newSortChoice); // 토글된 값으로 API 호출
-  };
+  useEffect(() => {
+    if (sortChoice) {
+      setCookie('sortChoice', sortChoice, 0); // 쿠키에 7일 동안 유지되도록 저장
+    }
+  }, [sortChoice]);
 
   return (
     <Div>
@@ -301,9 +308,7 @@ export default function MainPage(props) {
               type="button"
               onClick={handleSortToggle}
               backgroundcolor="#CDDFAB"
-            >
-              {/* {sortChoice === 'latest' ? '최신순' : '인기순'} */}
-            </RangeButton>
+            ></RangeButton>
           </RangeCenterDiv>
         </RangeDiv>
 
@@ -329,9 +334,10 @@ export default function MainPage(props) {
             ))}
         </PostAllDiv>
 
-        {/* 게시물 페이지 번호 */}
+        {/* 페이지네이션 */}
         <Pagination
           totalPage={totalPages}
+          currentPage={paginationNum}
           setPaginationNum={setPaginationNum}
         />
 
