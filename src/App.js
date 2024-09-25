@@ -35,7 +35,6 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
   
-
 `;
 
 
