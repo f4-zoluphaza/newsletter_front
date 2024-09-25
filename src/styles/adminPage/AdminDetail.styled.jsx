@@ -61,7 +61,7 @@ export const ButtonDiv = styled.div`
   width: 100%;
   height: 40px;
   ${flexCenter()}
-  justify-content: end;
+  justify-content: space-between;
 
   margin: 10px 0;
 

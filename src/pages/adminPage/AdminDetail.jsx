@@ -70,7 +70,7 @@ export default function Admin() {
         },
       });
 
-      console.log(response.data.items);
+      // console.log(response.data);
       setData({
         title: response.data.items[0].title,
         link: response.data.items[0].link,
@@ -246,7 +246,13 @@ export default function Admin() {
           </TextareaWrapper>
 
           <ButtonDiv>
-            <Links to="/Admin">
+            <div>
+            <Links to={data.published ? `/detailPage/${data.id}` : "#"}>
+              <Button type="button" backgroundColor={data.published ? "#588539" : null}>상세페이지</Button>
+            </Links>
+            </div>
+            <div>
+              <Links to="/Admin">
               <Button type="button">취소</Button>
             </Links>
             <Button
@@ -262,6 +268,8 @@ export default function Admin() {
             <Button type="submit" backgroundColor="#588539" onClick={()=>handleUpdateApi()}>
               저장
             </Button>
+            </div>
+            
           </ButtonDiv>
         </Form>
       </BodyDiv>
