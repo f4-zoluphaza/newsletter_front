@@ -239,6 +239,7 @@ export default function Admin() {
         <Pagination
           totalPage={totalPages}
           setPaginationNum={setPaginationNum}
+          currentPage={paginationNum}
           margin={"0px"}
         />
       </BodyDiv>
