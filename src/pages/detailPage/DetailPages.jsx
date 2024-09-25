@@ -316,9 +316,18 @@ export default function DetailPage() {
               {/* 뉴스레터 내용 */}
               <NewsWrapperDiv  margintop="25px">
                 <NewsContentDiv>
-                  <Textspan id="content" marginbottom="15px">
-                    {data.content}
-                  </Textspan>
+                <Textspan id="content" marginbottom="15px">
+  {data.content ? (
+    data.content.split('\n').map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ))
+  ) : (
+    <span>내용이 없습니다.</span>
+  )}
+</Textspan>
                 </NewsContentDiv>
               </NewsWrapperDiv>
             </NewsDiv>
