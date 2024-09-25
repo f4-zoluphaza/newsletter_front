@@ -15,10 +15,10 @@ export default function UnregisterComment() {
         marginTop: "50px",
       }}
     >
-      <Li>아마추어: 기본 등급</Li>
-      <Li>퓨쳐스: 월 7회 이상 출석</Li>
-      <Li>프로: 월 14회 이상 출석</Li>
-      <Li>메이저: 월 21회 이상 출석</Li>
+      <Li>뉴비: 기본 등급</Li>
+      <Li>애청자: 월 7회 이상 출석</Li>
+      <Li>매니아: 월 14회 이상 출석</Li>
+      <Li>전문가: 월 21회 이상 출석</Li>
       <div
         style={{
           // backgroundColor: "yellow",
