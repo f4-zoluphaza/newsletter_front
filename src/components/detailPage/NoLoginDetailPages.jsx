@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  NewsDivChat,
   AllMessageDiv,
   Textspan,
   MessageDiv,

@@ -1,8 +1,6 @@
 import React from 'react';
 import {
   TextSpan,
-  PostNumberDiv,
-  BoldLine,
   Links,
   FooterDiv,
   MakerDivContact,
@@ -10,8 +8,6 @@ import {
   FooterWrapperDiv,
   GithubLogoImg,
 } from '../../styles/main/main-style-component.jsx';
-import GithubImg from '../../images/MainPage/GithubLogo.svg';
-
 
 import GithubLogo from '../../images/MainPage/Github.svg';
 

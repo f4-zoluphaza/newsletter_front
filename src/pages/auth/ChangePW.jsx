@@ -184,6 +184,7 @@ export default function ChangePW() {
       alert(error.response.data.result);
     }
   };
+  
   return (
     <BodyDiv>
       <WrapperDiv>

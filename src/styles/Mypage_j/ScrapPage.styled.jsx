@@ -37,7 +37,6 @@ export const PostAllDiv = styled.div`
   margin-bottom: 50px;
 
   display: flex;
-  /* justify-content: space-between; */
   flex-wrap: wrap;
 
   /* background-color: lightslategrey; */

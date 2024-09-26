@@ -23,7 +23,6 @@ import {
   SearchImg,
   RangeDiv,
   RangeCenterDiv,
-  RangeWapperDiv,
   RangeButton,
   PostAllDiv,
   BoldLine,
@@ -87,8 +86,6 @@ export default function MainPage(props) {
         email: form.email,
         nickname: form.nickName,
       };
-      // console.log(form.email);
-      // console.log(form.nickName);
 
       const response = await api.post(url, data, {
         headers: {
@@ -112,10 +109,6 @@ export default function MainPage(props) {
   const handleEmailChange = (e) => {
     const email = e.target.value;
     setForm({ ...form, email });
-
-    // if (email.trim() === "") {
-    //   setValidEmail(null);
-    // }
   };
 
   const handleNickNameChange = (e) => {
@@ -125,8 +118,6 @@ export default function MainPage(props) {
     if (nickName.trim() === '') {
       setValidNickName(null);
     }
-
-    // console.log(nickName);
   };
 
  // 뉴스 리스트 불러오기 함수
@@ -171,33 +162,6 @@ export default function MainPage(props) {
     }
   };
 
-  // 정렬 api 함수
-  // const sortAPI = async (sortChoice) => {
-  //   try {
-  //     //API 요청 URL
-  //     const url = `api/v1/news?sortType=${sortChoice}`;
-
-  //     //axios.get 메소드를 사용하여 요청을 보냄
-  //     const response = await api.get(url, {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'ngrok-skip-browser-warning': '69420',
-  //       },
-  //     });
-
-  //     console.log(response.data.items);
-
-  //     const result = response.data.items;
-  //     setData(result);
-  //     setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
-  //   } catch (error) {
-  //     console.error(
-  //       'mainPage 정렬 에러',
-  //       error.response ? error.response.data : error
-  //     );
-  //   }
-  // };
-
 // 정렬 버튼 클릭 시 처리
 const handleSortToggle = () => {
   setSortChoice((prevSort) => (prevSort === 'latest' ? 'popular' : 'latest'));
@@ -209,18 +173,18 @@ const handleSortToggle = () => {
   }, [paginationNum, sortChoice]);
 
   useEffect(() => {
-    const cookieSortChoice = getCookie('sortChoice'); // 쿠키에서 값을 읽어옴
+    const cookieSortChoice = getCookie('sortChoice');
     if (cookieSortChoice) {
       setSortChoice(cookieSortChoice); // 쿠키 값이 있으면 그 값으로 설정
     } else {
       setSortChoice('latest'); // 쿠키 값이 없으면 기본 값인 "최신순"으로 설정
-      setCookie('sortChoice', 'latest', 0); // "최신순"을 쿠키에 저장 (7일 유지)
+      setCookie('sortChoice', 'latest', 0); // "최신순"을 쿠키에 저장
     }
   }, []); // 컴포넌트가 처음 로드될 때만 실행
 
   useEffect(() => {
     if (sortChoice) {
-      setCookie('sortChoice', sortChoice, 0); // 쿠키에 7일 동안 유지되도록 저장
+      setCookie('sortChoice', sortChoice, 0);
     }
   }, [sortChoice]);
 
@@ -283,7 +247,6 @@ const handleSortToggle = () => {
               type="text"
               value={searchString}
               onChange={(e) => setSearchString(e.target.value)}
-              // onChange={handleInputChange} // 검색어 변경 시 호출
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   searchAPI();

@@ -4,7 +4,6 @@ import api from "../../api/api.js";
 import { useParams } from "react-router-dom";
 
 import {
-  // BodyDiv,
   WrapperDiv,
   LeftDiv,
   RightDiv,
@@ -104,7 +103,6 @@ export default function Attendance() {
     <Div>
       <BodyDiv>
         <Header />
-
         <WrapperDiv>
           <LeftDiv>
             <MainWrapper borderBottom="solid 2px #c4c4c4">
@@ -150,11 +148,6 @@ export default function Attendance() {
 
             <MainWrapper>
               <MainPDiv flexDirection="column">
-                {/* <Links to="/Mypage/Scrap">
-                  <MainP fontWeight="600" fontSize="30px" marginBottom="5px">
-                    나의 스크랩 〉
-                  </MainP>
-                </Links> */}
                 <Links to="/Mypage/ChangeInfo">
                   <MainP fontWeight="600" fontSize="30px" marginBottom="15px">
                     정보 수정 〉

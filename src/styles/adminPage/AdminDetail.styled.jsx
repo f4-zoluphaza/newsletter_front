@@ -35,17 +35,12 @@ export const TextareaWrapper = styled.div`
   height: 70%;
   ${flexCenter()}
   justify-content: space-between;
-  /* margin-bottom: 10px; */
 
   /* background-color: pink; */
 `;
 export const TextareaDiv = styled.div`
   width: 30%;
   height: 95%;
-
-  /* border: 1px solid black;
-    box-sizing: border-box;
-    resize: none; */
 
   /* background-color: azure; */
 `;
