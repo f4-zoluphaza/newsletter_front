@@ -20,7 +20,6 @@ import {
   PreNextpostDiv,
   OnClickTextspan,
 } from "../../styles/Detailpage/DetailPages.styled.jsx";
-import { Links } from "../../styles/main/main-style-component.jsx";
 import NoLoginChat from "../../components/detailPage/NoLoginDetailPages.jsx";
 import LoginChat from "../../components/detailPage/LoginDetailPages.jsx";
 
@@ -38,7 +37,6 @@ export default function DetailPage() {
   const [validLike, setValidLike] = useState(false);
   const [validScrap, setValidScrap] = useState(false);
   const prevIdRef = useRef(null);
-  // const [prompt, setPrompt] = useState("");
 
   // 쿠키 값 읽는 함수
   function getCookie(name) {
@@ -67,15 +65,11 @@ export default function DetailPage() {
   // 상세조회 api
   const newsdetailPageApi = async () => {
     try {
-      //API 요청 URL
       const url = `api/v1/news/${id}`;
-
-      // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
       let response;
 
-      //axios.get 메소드를 사용하여 요청을 보냄
       if (validLogin) {
         response = await api.get(url, {
           headers: {
@@ -110,7 +104,6 @@ export default function DetailPage() {
       setValidLike(response.data.items[0].liked);
       setValidScrap(response.data.items[0].scrapped);
 
-      // window.location.reload();
     } catch (error) {
       console.error(
         "detailPage 메인 뉴스 상세 조회 에러",
@@ -122,10 +115,8 @@ export default function DetailPage() {
   // 메인 뉴스 상세 이전 페이지
   const handlePreviousPostApi = async () => {
     try {
-      //API 요청 URL
       const url = `api/v1/news/${id}/previous`;
 
-      //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
         headers: {
           "Content-Type": "application/json",
@@ -152,10 +143,8 @@ export default function DetailPage() {
   //메인 뉴스 상세 다음 페이지 api
   const handleNextPostApi = async () => {
     try {
-      //API 요청 URL
       const url = `api/v1/news/${id}/next`;
 
-      //axios.get 메소드를 사용하여 요청을 보냄
       const response = await api.get(url, {
         headers: {
           "Content-Type": "application/json",
@@ -181,13 +170,9 @@ export default function DetailPage() {
   // 좋아요, 좋아요 취소 api
   const handleLikeApi = async () => {
     try {
-      //API 요청 URL
       const url = `api/v1/news/${id}/like`;
-
-      // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
-      //axios.post 메소드를 사용하여 요청을 보냄
       const response = await api.post(
         url,
         {},
@@ -209,16 +194,12 @@ export default function DetailPage() {
     }
   };
 
-  // 스크랩, 스크랩 취소 취소 api
+  // 스크랩, 스크랩 취소 api
   const handleScrapApi = async () => {
     try {
-      //API 요청 URL
       const url = `api/v1/news/${id}/scrap`;
-
-      // 쿠키에서 'jwtToken' 값을 가져옴
       const token = getCookie("jwtToken");
 
-      //axios.post 메소드를 사용하여 요청을 보냄
       const response = await api.post(
         url,
         {},
@@ -239,6 +220,13 @@ export default function DetailPage() {
       );
     }
   };
+
+  // 복사하는 함수
+    const handleCopyLink = () => {
+      const currentLink = window.location.href; // 현재 페이지의 URL 가져오기
+      navigator.clipboard.writeText(currentLink) // 클립보드에 복사
+      alert("링크가 복사되었습니다.")
+    };
 
 
   useEffect(() => {
@@ -309,7 +297,16 @@ export default function DetailPage() {
               <NewsWrapperDiv  margintop="25px">
                 <NewsContentDiv>
                   <Textspan id="content" marginbottom="15px">
-                    {data.content}
+                    {data.content ? (
+                      data.content.split('\n').map((line, index) => (
+                        <React.Fragment key={index}>
+                          {line}
+                          <br />
+                        </React.Fragment>
+                      ))
+                    ) : (
+                      <span>내용이 없습니다.</span>
+                    )}
                   </Textspan>
                 </NewsContentDiv>
               </NewsWrapperDiv>
@@ -353,7 +350,7 @@ export default function DetailPage() {
                   </Textspan>
                 </HeartDiv>
               </HeartDivScrap>
-              <OnClickImg src={ShareImage} />
+              <OnClickImg src={ShareImage} onClick={handleCopyLink} />
             </HeartScrapWrapperDivShare>
             {/* 이전글, 다음글 영역 */}
             <PreNextpostDiv>

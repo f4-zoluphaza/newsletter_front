@@ -1,8 +1,6 @@
 import React from 'react';
 import {
   TextSpan,
-  PostNumberDiv,
-  BoldLine,
   Links,
   FooterDiv,
   MakerDivContact,

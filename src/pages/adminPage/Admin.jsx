@@ -235,10 +235,10 @@ export default function Admin() {
         </WrapperDiv>
 
         {/* 게시물 페이지 번호 */}
-        {/* 게시물 페이지 번호 */}
         <Pagination
           totalPage={totalPages}
           setPaginationNum={setPaginationNum}
+          currentPage={paginationNum}
           margin={"0px"}
         />
       </BodyDiv>

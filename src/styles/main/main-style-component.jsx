@@ -93,7 +93,6 @@ export const TextSpan = styled.span`
   font-size: ${(props) => props.fontsize || '20px'};
   font-weight: ${(props) => props.fontweight || '500'};
   text-align: ${(props) => props.textalign || 'left'};
-
   margin-top: ${(props) => props.margintop || '0'};
   margin-left: ${(props) => props.marginleft || '0'};
 `;
@@ -129,7 +128,6 @@ export const SubscribeInput = styled.input`
   border-radius: 12px;
   border: solid 2px #588539;
   margin-left: 12px;
-  /* margin-bottom: 10px; */
   box-sizing: border-box;
 
   padding-left: 15px;
@@ -142,8 +140,7 @@ export const ButtonDiv = styled.div`
   height: 45px;
 
   display: flex;
-  justify-content: space-evenly; //디자인1번
-  /* justify-content: right; //디자인2번 */
+  justify-content: space-evenly;
 
   /* background-color: yellow; */
 `;
@@ -155,10 +152,7 @@ export const Button = styled.input`
   border: solid 0px;
   background-color: #588539;
   box-sizing: border-box;
-
-  margin-left: 3px; //디자인1번
-  /* margin-left: 12px; //디자인2번 */
-  /* margin-right: 3px; //디자인2번 */
+  margin-left: 3px; 
 
   color: #000000;
   font-size: 17px;
@@ -231,8 +225,7 @@ export const RangeDiv = styled.div`
 `;
 
 export const RangeCenterDiv = styled.div`
-  /* width: 80%; //컴퓨터 */
-  width: 96%; //노트북
+  width: 96%;
   height: 45px;
 
   display: flex;
@@ -284,7 +277,6 @@ export const PostAllDiv = styled.div`
 `;
 
 export const PostDiv = styled.div`
-  /* width: 85%; //컴퓨터 */
   width: 96%;
   height: 353px;
 
@@ -321,7 +313,6 @@ export const NewsTitleDiv = styled.div`
   width: 260px;
   height: 70px;
   margin-top: 5px;
-  /* padding-left: 5px; */
 
   font-size: 18px;
   font-weight: 900;
@@ -335,7 +326,6 @@ export const NewsTitleDiv = styled.div`
 export const Line = styled.hr`
   width: 250px;
   border-top: 0.5px;
-  /* height: 0; */
   border-style: solid;
 
   align-self: center;
@@ -357,7 +347,6 @@ export const NewsDateDiv = styled.div`
 export const HeartSaveDiv = styled.div`
   width: 260px;
   height: 40px;
-  /* margin-top: 3px; */
 
   display: flex;
   justify-content: end;
@@ -387,8 +376,6 @@ export const PostNumberDiv = styled.div`
   justify-content: ${(props) => props.justifycontent || 'center'};
 
   margin-top: ${(props) => props.marginTop || '50px'};
-
-  /* align-items: center; //간격 조정 시*/
 
   /* background-color: lightgreen; */
 `;
