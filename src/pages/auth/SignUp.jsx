@@ -120,7 +120,6 @@ export default function SignUp() {
       setValidEmailDuplicate(true);
       console.log(response.data.result);
 
-      // alert("사용 가능한 이메일입니다.");
     } catch (error) {
       console.error(
         "이메일 중복 확인 에러",
@@ -311,7 +310,6 @@ export default function SignUp() {
             onChange={handleEmailVerifyCode}
           />
 
-          {/* <UnderDiv justifyContent="space-between"> */}
           <UnderDiv justifyContent={validEmailCheck === null ? "end" : "space-between"}>
             {validEmailCheck === null ? null : validEmailCheck ? (
               <VaildP color="#588539">인증되었습니다.</VaildP>

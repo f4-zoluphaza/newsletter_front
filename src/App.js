@@ -16,7 +16,6 @@ import NoLoginDetailPages from "./components/detailPage/NoLoginDetailPages";
 
 // mypage_s
 import Attendance from "./pages/myPage/Attendance";
-import Unregister from "./components/mypage/Unregister";
 import Unsubscribe from "./pages/myPage/Unsubscribe";
 
 //adminPage

@@ -10,8 +10,6 @@ export default function UnregisterComment() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-around",
-        // backgroundColor: "blue",
-        // marginBottom: "30px",
         marginTop: "50px",
       }}
     >
@@ -21,7 +19,6 @@ export default function UnregisterComment() {
       <Li>전문가: 월 21회 이상 출석</Li>
       <div
         style={{
-          // backgroundColor: "yellow",
           height: "80px",
           display: "flex",
           justifyContent: "end",

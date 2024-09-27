@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 const flexCenter = () => `
   display: flex;
@@ -8,7 +7,6 @@ const flexCenter = () => `
 `;
 
 export const Div = styled.div`
-  /* width: 100vw; */
   height: auto;
 
   display: flex;
@@ -64,7 +62,7 @@ export const TitleDiv = styled.div`
   margin-bottom: 20px;
 
   align-self: end;
-  /* ${flexCenter()} */
+
   /* background-color: pink; */
 `;
 
@@ -194,7 +192,6 @@ export const SubmitButton = styled.input`
   font-weight: 600;
 
   margin-top: ${(props) => props.marginTop};
-  /* margin-right: 30px; */
 
   cursor: pointer;
 `;

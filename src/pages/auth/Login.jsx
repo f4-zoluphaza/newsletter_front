@@ -14,8 +14,6 @@ import {
   Submit,
   PWSearchSignUpDiv,
   PWSearchSignUpP,
-  SocialLoginDiv,
-  SocialLoginImg,
   Links,
   VaildP,
 } from "../../styles/Login/LoginSignUp.styled";

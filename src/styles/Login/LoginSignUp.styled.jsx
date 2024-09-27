@@ -44,7 +44,6 @@ export const Input = styled.input`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   border-radius: ${(props) => props.borderRadius};
-  /* border-radius: 12px; */
   border: solid 2px #c0c0c0;
   margin: 10px 0 10px 0;
 
@@ -92,9 +91,6 @@ export const LoginStateDiv = styled.div`
   /* background-color: #b4ffb4; */
   display: flex;
   align-items: center;
-
-  /* margin-top: 10px;
-  margin-bottom: 30px; */
 `;
 
 export const CheckImg = styled.img`

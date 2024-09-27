@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from '../../api/api.js'
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import { Div, BodyDiv } from "../../styles/main/main-style-component.jsx";
 import {
@@ -269,7 +269,6 @@ export default function Admin() {
               저장
             </Button>
             </div>
-            
           </ButtonDiv>
         </Form>
       </BodyDiv>

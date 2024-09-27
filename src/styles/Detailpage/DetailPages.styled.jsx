@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 const flexCenter = () => `
   display: flex;
@@ -7,7 +6,6 @@ const flexCenter = () => `
 `;
 
 export const Div = styled.div`
-  /* width: 100vw; */
   height: 100vh;
 
   ${flexCenter()}
@@ -46,8 +44,6 @@ export const NewsDiv = styled.div`
   border-radius: 12px;
   padding-bottom: 40px;
 
-  /* 스크롤 */
-  /* max-height: 950px; */
   max-height: 780px;
   overflow-y: auto;
 
@@ -58,7 +54,7 @@ export const NewsDiv = styled.div`
   scrollbar-width: none; //Firefox에서의 스크롤바 숨김
   -ms-overflow-style: none; //IE 및 Edge에서의 스크롤바 숨김
 
-  background-color: #cddfab; //고정
+  background-color: #cddfab;
 `;
 
 export const NewsWrapperDiv = styled.div`
@@ -123,9 +119,7 @@ export const AllMessageDiv = styled.div`
   flex-direction: column;
 
   //스크롤
-  max-height: 720px; //디자인 기준
-  /* max-height: 900px; //뉴스레터 700자&뉴스레터 스크롤 */
-  /* max-height: 1100px; //뉴스레터 1000자 */
+  max-height: 720px;
   overflow-y: auto;
 
   // 스크롤바 보이지 않도록 설정
@@ -134,10 +128,6 @@ export const AllMessageDiv = styled.div`
   }
   scrollbar-width: none; //Firefox에서의 스크롤바 숨김
   -ms-overflow-style: none; //IE 및 Edge에서의 스크롤바 숨김
-
-  /* scrollbar-color: #588539 transparent; // 스크롤바 색 */
-  /* scrollbar-width: thin; //스크롤바 두께 */
-  /* background-color: lightgray; */
 
   z-index: 2;
 `;
@@ -180,7 +170,6 @@ export const SendspeechbubbleDiv = styled.div`
 
 export const BotspeechbubbleDiv = styled.div`
   width: ${(props) => props.width || '375px'};
-  /* height: ${(props) => props.height || 'auto'}; */
   height: auto;
   border: solid 0;
   border-radius: 16px;
@@ -194,7 +183,6 @@ export const BotspeechbubbleDiv = styled.div`
 export const AllChattingDiv = styled.div`
   width: 100%;
   height: 45px;
-  /* margin-top: 30px; */
 
   /* background-color: antiquewhite; */
 

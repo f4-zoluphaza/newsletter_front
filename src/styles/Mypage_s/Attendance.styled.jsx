@@ -9,7 +9,6 @@ const flexCenter = () => `
 
 export const WrapperDiv = styled.div`
   width: 100%;
-  /* height: 70vh; */
 
   display: flex;
   justify-content: space-around;
@@ -28,7 +27,6 @@ export const LeftDiv = styled.div`
 
 export const RightDiv = styled.div`
   width: 50%;
-  /* height: auto; */
 
   /* background-color: #f5d5d5; */
   margin-bottom: 30px;
@@ -74,7 +72,6 @@ export const MainP = styled.div`
 
 // 등급 자세히 보기
 export const Links = styled(Link)`
-  /* width: ${(props) => props.width || "200px"}; */
   height: auto;
   text-decoration: none;
 
@@ -152,8 +149,6 @@ export const ButtonDiv = styled.div`
   display: flex;
   justify-content: space-around;
 
-  /* margin-top: 30px; */
-
   /* background-color: #d3d3ff; */
 `;
 
@@ -176,7 +171,6 @@ export const Button = styled.button`
 // 내 스크랩
 export const PostMyPageDiv = styled.div`
   width: 100%;
-  /* height: 870px; */
   height: auto;
 
   display: flex;
