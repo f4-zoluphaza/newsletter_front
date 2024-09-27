@@ -26,7 +26,7 @@ export default function NewsletterPost({
       <NewsImg src={api.defaults.imgBaseURL + thumbnail} />
       <NewsTitleDiv>{title}</NewsTitleDiv>
       <Line />
-      <NewsDateDiv>{publishDate}</NewsDateDiv>
+      <NewsDateDiv>{publishDate.split("T")[0]}</NewsDateDiv>
       <HeartSaveDiv>
         <HeartImgScrap src={HeartImage} />
         <HeartCountScrap>{likeCount}</HeartCountScrap>
