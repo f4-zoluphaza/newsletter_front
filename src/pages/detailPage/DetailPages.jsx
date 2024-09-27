@@ -88,13 +88,14 @@ export default function DetailPage() {
       }
 
       console.log(response.data.items);
+      const publishDate = response.data.items[0].news.publishDate.split("T")[0];
 
       setData({
         title: response.data.items[0].news.title,
         link: response.data.items[0].news.link,
         original: response.data.items[0].news.source,
         content: response.data.items[0].news.content,
-        publishDate: response.data.items[0].news.publishDate,
+        publishDate: publishDate,
         thumbnail: response.data.items[0].news.thumbnail,
         id: response.data.items[0].news.id,
         published: response.data.items[0].news.published,
@@ -103,7 +104,6 @@ export default function DetailPage() {
       });
       setValidLike(response.data.items[0].liked);
       setValidScrap(response.data.items[0].scrapped);
-
     } catch (error) {
       console.error(
         "detailPage 메인 뉴스 상세 조회 에러",
@@ -222,12 +222,11 @@ export default function DetailPage() {
   };
 
   // 복사하는 함수
-    const handleCopyLink = () => {
-      const currentLink = window.location.href; // 현재 페이지의 URL 가져오기
-      navigator.clipboard.writeText(currentLink) // 클립보드에 복사
-      alert("링크가 복사되었습니다.")
-    };
-
+  const handleCopyLink = () => {
+    const currentLink = window.location.href; // 현재 페이지의 URL 가져오기
+    navigator.clipboard.writeText(currentLink); // 클립보드에 복사
+    alert("링크가 복사되었습니다.");
+  };
 
   useEffect(() => {
     // 이전 id와 현재 id를 비교하여 id가 변경된 경우에만 스크롤 이동
@@ -294,11 +293,11 @@ export default function DetailPage() {
               </NewsWrapperDiv>
 
               {/* 뉴스레터 내용 */}
-              <NewsWrapperDiv  margintop="25px">
+              <NewsWrapperDiv margintop="25px">
                 <NewsContentDiv>
                   <Textspan id="content" marginbottom="15px">
                     {data.content ? (
-                      data.content.split('\n').map((line, index) => (
+                      data.content.split("\n").map((line, index) => (
                         <React.Fragment key={index}>
                           {line}
                           <br />
