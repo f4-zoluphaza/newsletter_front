@@ -227,8 +227,10 @@ export default function Admin() {
                 <TitleLinks to={`/Admin/${item.id}`}>
                   <TitleBox>{item.title}</TitleBox>
                 </TitleLinks>
-                <DateBox>{item.createDate}</DateBox>
-                <DateBox borderLeft="0">{item.publishDate}</DateBox>
+                <DateBox>{item.createDate.split(" ")[0]}</DateBox>
+                <DateBox borderLeft="0">
+                  {item.publishDate.split(" ")[0]}
+                </DateBox>
               </EachBox>
             ))}
           </WrapperBox>
